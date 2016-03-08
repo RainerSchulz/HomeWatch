@@ -5,6 +5,31 @@
 
 (function () {
     'use strict';
+    function AssessingController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('AssessingController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'Assessing';
+        $scope.location = '/';
+
+        // set Page Title
+        Page.setTitle($scope.header);
+    }
+
+    AssessingController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+
+
+    angular.module('myApp')
+        .controller('AssessingController', AssessingController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
     function AgbController($scope, $location, $rootScope, $http, $log, Page) {
         $log.debug('AgbController startet');
         var self = this;
@@ -24,31 +49,6 @@
 
     angular.module('myApp')
         .controller('AgbController', AgbController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
-    function AssessingController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('AssessingController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'Assessing';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-    }
-
-    AssessingController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
-
-
-    angular.module('myApp')
-        .controller('AssessingController', AssessingController);
 }());
 /**
  * Created by Rainer on 09.01.2016.
@@ -143,33 +143,6 @@
 
     angular.module('myApp')
         .controller('DemowandController', DemowandController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
-    function ImpressumController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('ImpressumController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'Impressum';
-        $scope.location = '/';
-
-        $scope.ImpressumButton = [];
-
-        // set Page Title
-        Page.setTitle($scope.header);
-    }
-
-    ImpressumController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
-
-
-    angular.module('myApp')
-        .controller('ImpressumController', ImpressumController);
 }());
 /**
  * Created by B026789 on 03.12.2015.
@@ -273,6 +246,83 @@
         .controller('HomeController', HomeController);
 }());
 /**
+ * Created by B026789 on 03.12.2015.
+ */
+(function () {
+    'use strict';
+    function LogonController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug( 'LogonController gestartet!');
+
+        var self = this;
+
+// create a message to display in our view
+        $scope.company = "CAMDATA";
+        $scope.showModal = false;
+
+        $scope.LogonButton = [];
+
+        // set Page Title
+        Page.setTitle("");
+
+        $scope.init = function () {
+            //LogonService.IsOnline
+            //GetJsonFile($scope, $http);
+        };
+
+        $scope.startLiegenschaften = function () {
+            var name = "/Liegenschaften";
+            $location.path(name);
+        };
+
+        function GetJsonFile($scope, $http) {
+            $http({
+                method: 'POST',
+                url: 'json/LogonButton.json'
+            }).success(function (data) {
+                    $scope.LogonButton = data.LogonButton; // response data
+                })
+                .error(function (data, status) {
+                    // log error
+                    console.log('error: ' + status);
+                });
+        }
+
+    }
+
+    LogonController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log','Page'];
+
+
+    angular.module('myApp')
+        .controller('LogonController', LogonController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
+    function ImpressumController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('ImpressumController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'Impressum';
+        $scope.location = '/';
+
+        $scope.ImpressumButton = [];
+
+        // set Page Title
+        Page.setTitle($scope.header);
+    }
+
+    ImpressumController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+
+
+    angular.module('myApp')
+        .controller('ImpressumController', ImpressumController);
+}());
+/**
  * Created by Rainer on 09.01.2016.
  */
 
@@ -360,6 +410,33 @@
 
         }
 
+        function GetSites($scope, $http) {
+
+            var value = 'site';
+            var type = 'genericDeviceType';
+            HomeService.getHome(value, type).then(function () {
+                    $log.debug(type + ' : ' + value);
+                    var data = HomeService.data();
+                    $scope.result = data.Results;
+                    $log.debug('$scope.result.length: ' + $scope.result.length);
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                    Jsonervice.getJson(value).then(function () {
+                            var data = Jsonervice.data();
+                            $scope.result = data.Results; // response data
+                        })
+                        .catch(function (callback) {
+                            $log.debug(callback);
+                        });
+
+                });
+
+
+        }
+
     }
 
     LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'connection', 'MetaService'];
@@ -367,56 +444,6 @@
 
     angular.module('myApp')
         .controller('LiegenschaftenController', LiegenschaftenController);
-}());
-/**
- * Created by B026789 on 03.12.2015.
- */
-(function () {
-    'use strict';
-    function LogonController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug( 'LogonController gestartet!');
-
-        var self = this;
-
-// create a message to display in our view
-        $scope.company = "CAMDATA";
-        $scope.showModal = false;
-
-        $scope.LogonButton = [];
-
-        // set Page Title
-        Page.setTitle("");
-
-        $scope.init = function () {
-            //LogonService.IsOnline
-            //GetJsonFile($scope, $http);
-        };
-
-        $scope.startLiegenschaften = function () {
-            var name = "/Liegenschaften";
-            $location.path(name);
-        };
-
-        function GetJsonFile($scope, $http) {
-            $http({
-                method: 'POST',
-                url: 'json/LogonButton.json'
-            }).success(function (data) {
-                    $scope.LogonButton = data.LogonButton; // response data
-                })
-                .error(function (data, status) {
-                    // log error
-                    console.log('error: ' + status);
-                });
-        }
-
-    }
-
-    LogonController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log','Page'];
-
-
-    angular.module('myApp')
-        .controller('LogonController', LogonController);
 }());
 /**
  * Created by Rainer on 09.01.2016.

@@ -1,28 +1,32 @@
-<div ng-init="init()">
+<div id="wrapper" ng-init="init()">
     <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
-    <div class="clearfix"></div>
 
-    <div class="top100_home">
-        <div class="row">
-            <div class="col col-xs-12">
-                <!-- Navigation-Left -->
-                <div class="col col-xs-2 hidden-xs pull-left">
-                    <div class=" hidden-xs" ng-if="navLeft.length > 0">
-                        <div cnd-navigations-left ng-nav-button="{{navLeft}}"></div>
-                    </div>
+    <!-- Navigation-Left -->
+    <div class="mar_h" cnd-navigations-left ng-nav-button="{{navLeft}}"></div>
+
+    <!-- Widgets -->
+    <div id="page-content-wrapper" class="row-e">
+        <a class=" touch-moveable margtopF margtopFi">
+            <div class="nav_down touch-moveable"></div>
+        </a>
+        <div class="container-fluid">
+            <div class="row text-center mar_h">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 margeI" ng-repeat="item in home">
+                    <a ng-click="buttonClick(item)" class="touch-moveable">
+                        <img class="img-responsive joimh center-block margtopJL" ng-src="{{item.image}}" alt="">
+                        <h4 class="icon-list h4wid2 home_big"> {{item.alias}} </h4>
+                    </a>
                 </div>
-                <!-- Widgets -->
-                <div class="col col-xs-12 col-md-10 pull-right">
-                    <figure class=" col-xs-3" ng-repeat="item in home">
-                        <a ng-click="buttonClick(item)" class="touch-moveable">
-                            <img class="img-responsive img-center" ng-src="{{item.image}}"
-                                 alt="">
-                            <figcaption>
-                                <h4 class="h4home"> {{item.alias}} </h4>
-                            </figcaption>
-                        </a>
 
-                    </figure>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-ip">
+                    <div class="col-xs-offset-5 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+                        <footer>
+                            <div class="sol_home">
+                                <div data-type="homestatus" data-device='HomeStatus' data-version='' class="toggle3"
+                                     style="display:none;"></div>
+                            </div>
+                        </footer>
+                    </div>
                 </div>
             </div>
         </div>

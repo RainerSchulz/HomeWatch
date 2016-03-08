@@ -1,14 +1,27 @@
-<div class="col col-xs-10_handy navigation-left">
-    <div class="col-xs-4_handy">
-        <a ng-href="/Liegenschaften" class="touch-moveable">
-            <img style="max-height: 120px" class="img-responsive img-center" ng-src="images/home_main.png"
-                 title="Liegenschaften">
-        </a>
-    </div>
-    <div class="col-xs-4_handy" ng-repeat="item in navButton">
-        <a ng-click="buttonClick(item)" class="touch-moveable">
-            <img class="img-responsive img-center" ng-class="item.Attributes.icon"
-                 title="{{item.Attributes.alias}}">
-        </a>
-    </div>
+<div id="sidebar-wrapper" class="wrapper ">
+    <ul class="sidebar-nav text-center main-menu">
+        <li class="margenladoiz">
+            <a ng-href="#/Liegenschaften" class=" touch-moveable text-center margtopF margtopFi ">
+                <span> <img style="height:110px" class="imgminim2" src="images/home_main.png"
+                            title="Liegenschaften"></span>
+            </a>
+        </li>
+        <li>
+            <a class=" touch-moveable  margtopF margtopFi">
+                <span class="nav_left touch-moveable"></span>
+            </a>
+        </li>
+        <li ng-repeat="item in navButton">
+            <a ng-href="{{item.Internals.LINK}}"
+               class="touch-moveable margtopF margtopFi">
+            <span>
+                <img style="height:100px; width: 100px;"
+                     ng-class="item.Attributes.icon"
+                     class="imgminim img-center"
+                     content="{{item.Attributes.alias}}">
+            </span>
+            </a>
+        </li>
+
+    </ul>
 </div>

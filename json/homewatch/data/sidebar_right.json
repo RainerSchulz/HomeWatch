@@ -1,0 +1,25 @@
+{
+  "Arg":"room=sidebar_right",
+  "Results": [
+    {
+      "Name":"URL_digital_n",
+      "PossibleSets":"",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,energy_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon ,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "link http://homewatch-smarthome.de/sensor-hausmeister/",
+        "LINK": "http://homewatch-smarthome.de/sensor-hausmeister/",
+        "NAME": "URL_digital_n",
+        "NR": "75",
+        "STATE": "initialized",
+        "TYPE": "weblink",
+        "WLTYPE": "link"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "alias": "digitaler Hausmeister neue Services",
+        "icon": "hausmeister",
+        "room": "sidebar_right"
+      }
+    }  ],
+  "totalResultsReturned":1
+}

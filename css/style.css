@@ -225,6 +225,28 @@ img.hoversize {
 
 }
 
+.row-p {
+    height: 5em;
+}
+
+.row-e {
+    margin-top: 4px !important;
+}
+
+ul.main-menu > li {
+    margin: -5px 0px 15px 0;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.wrapperrespo {
+
+    margin-top: 50px !important;
+}
+
 .margenladoiz {
 
     margin-top: 45px !important;
@@ -248,8 +270,38 @@ img.hoversize {
     margin-bottom: 32px !important
 }
 
+.margtopFi {
+    margin-bottom: 15px !important;
+}
+
 .row-spc1 {
     margin-bottom: 20px;
+}
+
+.padiimagns {
+    margin-left: -30px;
+    margin-bottom: 40px !important;
+}
+
+.imgmiipne_h {
+    height: 70px !important;
+}
+
+.imgmiipnedown {
+    height: 80px !important;
+}
+
+.imgminim {
+    width: 35%;
+}
+
+.mar_h {
+    margin-top: 50px;
+}
+
+.margeI {
+    margin-bottom: 3.5em;
+    /* margin-bottom: 4em; */
 }
 
 select {
@@ -267,14 +319,9 @@ select option {
     color: white;
 }
 
-
 .hausmeister {
     background-image: url("../images/tool_main.png");
     background-repeat: no-repeat;
 
-    min-height: 100%;
-    min-width: 100%;
-    height: auto;
-    width: 100%;
 }
 

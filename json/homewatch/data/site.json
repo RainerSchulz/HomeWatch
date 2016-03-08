@@ -2,101 +2,35 @@
   "Arg":"genericDeviceType=site",
   "Results": [
     {
-      "Name":"URL_DC",
+      "Name":"URL_site01",
       "PossibleSets":"",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type like:yes,no background genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,lock,window,contact,camera,heating,aircon,site icon sortby webCmd widgetOverride userattr",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,motion_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
       "Internals": {
         "DEF": "link http://login.th.homewatch-smarthome.de:8079",
         "LINK": "http://login.th.homewatch-smarthome.de:8079",
-        "NAME": "URL_DC",
-        "NR": "75",
-        "STATE": "initialized",
-        "TYPE": "weblink",
-        "WLTYPE": "link"
-      },
-      "Readings": {    },
-      "Attributes": {
-        "alias": "Samui Musterhaus",
-        "background": "HomeWatch.jpg",
-        "genericDeviceType": "site",
-        "icon": "site",
-        "room": "HomeWatch"
-      }
-    },
-    {
-      "Name":"URL_dyndns",
-      "PossibleSets":"",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type like:yes,no background genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,lock,window,contact,camera,heating,aircon,site icon sortby webCmd widgetOverride userattr",
-      "Internals": {
-        "DEF": "link http://srvth001.noip.me:8079",
-        "LINK": "http://srvth001.noip.me:8079",
-        "NAME": "URL_dyndns",
-        "NR": "73",
-        "STATE": "initialized",
-        "TYPE": "weblink",
-        "WLTYPE": "link"
-      },
-      "Readings": {    },
-      "Attributes": {
-        "alias": "Samui Musterhaus",
-        "background": "HomeWatch.jpg",
-        "genericDeviceType": "site",
-        "icon": "site",
-        "room": "HomeWatch"
-      }
-    },
-    {
-      "Name":"URL_local",
-      "PossibleSets":"",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type like:yes,no background genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,lock,window,contact,camera,heating,aircon,site icon sortby webCmd widgetOverride userattr",
-      "Internals": {
-        "DEF": "link http://192.168.1.1:8079",
-        "LINK": "http://192.168.1.1:8079",
-        "NAME": "URL_local",
-        "NR": "71",
-        "STATE": "initialized",
-        "TYPE": "weblink",
-        "WLTYPE": "link"
-      },
-      "Readings": {    },
-      "Attributes": {
-        "alias": "Samui Musterhaus",
-        "background": "HomeWatch.jpg",
-        "genericDeviceType": "site",
-        "icon": "site",
-        "room": "HomeWatch"
-      }
-    },
-    {
-      "Name":"URL_site01",
-      "PossibleSets":"",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type like:yes,no background genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,lock,window,contact,camera,heating,aircon,site icon sortby webCmd widgetOverride userattr",
-      "Internals": {
-        "DEF": "link http://login.homewatch-smarthome.de:8239",
-        "LINK": "http://login.homewatch-smarthome.de:8239",
         "NAME": "URL_site01",
-        "NR": "78",
+        "NR": "79",
         "STATE": "initialized",
         "TYPE": "weblink",
         "WLTYPE": "link"
       },
       "Readings": {    },
       "Attributes": {
-        "alias": "CamData Eickener Str",
+        "alias": "Samui Musterhaus",
         "genericDeviceType": "site",
         "icon": "site_a",
-        "room": "HomeWatch"
+        "room": "homewatch"
       }
     },
     {
       "Name":"URL_site02",
       "PossibleSets":"",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type like:yes,no background genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,lock,window,contact,camera,heating,aircon,site icon sortby webCmd widgetOverride userattr",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,motion_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
       "Internals": {
         "DEF": "link http://login.th.homewatch-smarthome.de:8059",
         "LINK": "http://login.th.homewatch-smarthome.de:8059",
         "NAME": "URL_site02",
-        "NR": "80",
+        "NR": "81",
         "STATE": "initialized",
         "TYPE": "weblink",
         "WLTYPE": "link"
@@ -106,8 +40,8 @@
         "alias": "Samui Musterhaus2",
         "genericDeviceType": "site",
         "icon": "site_a",
-        "room": "HomeWatch"
+        "room": "homewatch"
       }
     }  ],
-  "totalResultsReturned":5
+  "totalResultsReturned":2
 }

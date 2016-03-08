@@ -36,9 +36,6 @@
 
     <link rel="stylesheet" href="dist/css/style.css">
 
-    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -99,6 +96,11 @@
 <script src="dist/js/services.js"></script>
 <script src="dist/js/filters.js"></script>
 <script src="dist/js/directives.js"></script>
-
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
 </body>
 </html>

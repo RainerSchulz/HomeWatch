@@ -86,6 +86,33 @@
 
         }
 
+        function GetSites($scope, $http) {
+
+            var value = 'site';
+            var type = 'genericDeviceType';
+            HomeService.getHome(value, type).then(function () {
+                    $log.debug(type + ' : ' + value);
+                    var data = HomeService.data();
+                    $scope.result = data.Results;
+                    $log.debug('$scope.result.length: ' + $scope.result.length);
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                    Jsonervice.getJson(value).then(function () {
+                            var data = Jsonervice.data();
+                            $scope.result = data.Results; // response data
+                        })
+                        .catch(function (callback) {
+                            $log.debug(callback);
+                        });
+
+                });
+
+
+        }
+
     }
 
     LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'connection', 'MetaService'];
