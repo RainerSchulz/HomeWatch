@@ -1,0 +1,7 @@
+<div>
+    <a ng-click="setFavorite(model)" title="{{FavoritTitle}}">
+        <i ng-if="model.Attributes.like != null && model.Attributes.like == 'no'" class="fa fa-heart-o fa-2x"></i>
+        <i ng-if="model.Attributes.like != null && model.Attributes.like == 'yes'" class="fa fa-heart fa-2x"></i>
+        <i ng-if="model.Attributes.like == null" class="fa fa-heart-o fa-2x"></i>
+    </a>
+</div>

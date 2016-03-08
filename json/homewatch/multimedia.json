@@ -1,0 +1,11 @@
+{
+  "result": [
+    {
+      "alias": "Multimedia",
+      "image": "images/multimedia.png",
+      "show": "true",
+      "buttonClick": "/kamera"
+
+    }
+  ]
+}

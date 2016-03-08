@@ -1,0 +1,129 @@
+<div class="ngdialog-message" ng-init="init()">
+    <div class="page-header">
+        <h2>Vermittler</h2>
+    </div>
+
+    <!-- Nav tabs -->
+    <div id="tabs">
+        <ul class="nav nav-tabs">
+            <li ng-repeat="tab in tabs"
+                ng-class="{active: isActiveTab(tab.url)}"
+                ng-click="onClickTab(tab)">
+                <a href="">{{tab.title}}</a>
+            </li>
+        </ul>
+        <div id="mainView">
+            <div ng-include="currentTab"></div>
+        </div>
+    </div>
+    <form role="form" name="frmUserAgent">
+        <script type="text/ng-template" id="one.tpl.html">
+            <div id="viewOne">
+                <section class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3>Adresse</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form id="userProfileSettings">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="input-block-level"
+                                                 ng-repeat="item in userAddress as results">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label"
+                                                               for="{{item.id}}">{{item.labelText}}</label>
+                                                        <input class="form-control" type="text"
+                                                               name="{{item.id}}"
+                                                               id=":item.id:">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </script>
+        <script type="text/ng-template" id="two.tpl.html">
+            <div id="viewTwo">
+                <section class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3>Agentur</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form id="userAgenturSettings">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="input-block-level"
+                                                 ng-repeat="item in userAgentur as results">
+                                                <div class="col-md-6">
+                                                    <label class="control-label"
+                                                           for="{{item.id}}">{{item.labelText}}</label>
+                                                    <input class="form-control" type="text" name=":item.id"
+                                                           id="{{item.id}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </script>
+        <script type="text/ng-template" id="three.tpl.html">
+            <div id="viewThree">
+                <section class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3>In Kooperation mit:</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form id="userKooperationSettings">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="input-block-level"
+                                                 ng-repeat="item in anotherAgency as results">
+                                                <div class="col-md-6">
+                                                    <label class="control-label"
+                                                           for="{{item.id}}">{{item.labelText}}</label>
+                                                    <input class="form-control" type="text" name="{{item.id}}"
+                                                           id=":item.id">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </script>
+
+
+        <div class="ngdialog-buttons">
+            <button type="button" class="ngdialog-button ngdialog-button-primary"
+                    ng-click="confirm(confirmValue)">
+                Confirm
+            </button>
+            <button type="button" class="ngdialog-button ngdialog-button-secondary"
+                    ng-click="closeThisDialog('button')">Cancel
+            </button>
+        </div>
+
+    </form>
+</div>

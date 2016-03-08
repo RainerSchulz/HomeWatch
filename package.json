@@ -1,0 +1,17 @@
+{
+  "name": "homewatch",
+  "version": "1.0.0",
+  "description": "HomeWatch 2.0",
+  "main": "server.js",
+  "directories": {
+    "test": ""
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Rainer Schulz",
+  "license": "ISC"
+}

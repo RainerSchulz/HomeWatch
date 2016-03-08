@@ -1,0 +1,11 @@
+{
+  "verwaltungNav": [
+    {
+      "title": "Verwaltung",
+      "image": "images/guiico13.png",
+      "show": "true",
+      "location": "/Liegenschaften",
+      "url": ""
+    }
+  ]
+}

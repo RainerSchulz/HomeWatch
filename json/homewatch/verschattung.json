@@ -1,0 +1,12 @@
+{
+  "result": [
+    {
+      "alias": "Verschattung",
+      "image": "images/verschattung.png",
+      "show": "true",
+      "buttonClick": "/kamera"
+
+    }
+
+  ]
+}

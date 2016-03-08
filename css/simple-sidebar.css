@@ -1,0 +1,295 @@
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 240px;
+    width: 0;
+    height: 100%;
+    margin-left: -275px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#sidebar-wrapper1 {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper1 {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #433FA2;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    /* background: rgba(255,255,255,0.2);*/
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav1 li {
+    text-indent: -75px;
+    line-height: 40px;
+}
+
+.sidebar-nav1 li a {
+    display: block;
+    text-decoration: none;
+    color: #433FA2;
+}
+
+.sidebar-nav1 li a:hover {
+    text-decoration: none;
+    color: #fff;
+    /* background: rgba(255,255,255,0.2);*/
+}
+
+.sidebar-nav1 li a:active,
+.sidebar-nav1 li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav1 {
+    position: absolute;
+    top: 0;
+    width: 320px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #444242;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media (min-width: 1350px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 250px;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 100px) {
+    #wrapper2 {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 194px;
+    }
+
+    #sidebar-wrapper1 {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper1 {
+        width: 250px;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+        right: -1px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .wrapper1 {
+        width: 170px !important;
+
+    }
+
+    #wrapper2 {
+        padding-left: 178px;
+    }
+
+    .sidebar-nav1 {
+        position: absolute;
+        top: 0;
+        width: 230px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+}
+
+.margin {
+
+    margin-top: 15px;
+}
+.spmar {
+    margin-top: -18px;
+}
+
+.maginS {
+
+    margin-left: -60px;
+
+}
+
+@media only screen and (min-width: 280px) and (max-width: 1240px) {
+
+    .spcing2 {
+
+        margin-right: -60px !important;
+        margin-left: 37px !important;
+    }
+
+    .spcing3 {
+
+        margin-right: -15px !important;
+        margin-left: -10px;
+    }
+
+}
+
+@media only screen and (min-width: 538px) and (max-width: 719px) {
+
+    .spcing11 {
+
+        margin-right: -35px !important;
+        margin-left: -10px;
+    }
+
+}
+
+@media only screen and (min-width: 280px) and (max-width: 450px) {
+
+    .maginS {
+
+        margin-left: -10px;
+
+    }
+
+    .spcing11 {
+
+        margin-right: 5px !important;
+        margin-left: -10px;
+    }
+
+}
+
+.spcing2 {
+
+    margin-left: -5px;
+}
+
+@media only screen and (min-width: 280px) and (max-width: 715px) {
+
+}
+
+
+
+

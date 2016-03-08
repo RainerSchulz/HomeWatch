@@ -1,0 +1,25 @@
+{
+  "Arg":"genericDeviceType=aircon",
+  "Results": [
+    {
+      "Name":"Klimaanlage",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,dpt3,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt13,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,dpt13.013,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,dpt13.010,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,lock,window,contact,camera,heating,aircon,site icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "15/3/21",
+        "GROUP": "f315",
+        "NAME": "Klimaanlage",
+        "NR": "219",
+        "STATE": "off",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"off", "Time":"2016-01-27 08:28:35" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "genericDeviceType": "aircon",
+        "model": "dpt1",
+        "room": "Homekit,Bungalow"
+      }
+    }  ],
+  "totalResultsReturned":1
+}

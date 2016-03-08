@@ -1,0 +1,12 @@
+{
+  "result": [
+    {
+      "alias": "Sicherheit",
+      "image": "images/sicherheit.png",
+      "show": "true",
+      "buttonClick": "/kamera"
+
+    }
+
+  ]
+}

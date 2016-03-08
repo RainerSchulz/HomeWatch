@@ -1,0 +1,15 @@
+<div class="volume">
+
+    <div data-type="volume"
+         data-device='{{model.Name}}'
+         data-min='0' data-max='100'
+         data-tickstep='4'
+         data-get='state'
+         data-set='value'
+         class="cell small"
+         id="{{model.Name}}">
+    </div>
+    <div class="col-xs-12">
+        <div data-type="label" class="cell">{{model.Attributes.alias}}</div>
+    </div>
+</div>

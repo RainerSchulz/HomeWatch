@@ -1,0 +1,85 @@
+{
+  "home": [
+    {
+      "alias": "Kamera",
+      "image": "images/kamera.png",
+      "headerImage": "images/kamera_1.png",
+      "show": "false",
+      "buttonClick": "/Kamera",
+      "name": "camera",
+      "type": "genericDeviceType"
+    },
+    {
+      "alias": "Beleuchtung",
+      "image": "images/beleuchtung.png",
+      "headerImage": "images/headlight.png",
+      "show": "true",
+      "buttonClick": "/Beleuchtung",
+      "name": "light_hm,dimmer_hm,light_gira,dimmer_gira,light,dimmer",
+      "type": "genericDeviceType"
+    },
+    {
+      "alias": "Klimatisierung",
+      "image": "images/heizung.png",
+      "headerImage": "images/heizung_1.png",
+      "show": "true",
+      "buttonClick": "/Klimatisierung",
+      "name": "heating_hm,heating_gira",
+      "type": "genericDeviceType"
+    },
+    {
+      "alias": "Verschattung",
+      "image": "images/verschattung.png",
+      "headerImage": "images/headlight.png",
+      "show": "true",
+      "buttonClick": "/Verschattung",
+      "name": "blind_gira,blind_hm",
+      "type": "genericDeviceType"
+    },
+    {
+      "alias": "Favoriten",
+      "image": "images/grundriss.png",
+      "headerImage": "images/grundriss43.png",
+      "show": "true",
+      "buttonClick": "/Favoriten",
+      "name": "yes",
+      "type": "like"
+    },
+    {
+      "alias": "Sicherheit",
+      "image": "images/sicherheit.png",
+      "headerImage": "images/sicherheit_1.png",
+      "show": "true",
+      "buttonClick": "/Sicherheit",
+      "name": "window,window_hm,window_gira,water_hm,water_gira,smoke_hm,smoke_gira,motion_hm,motion_gira,dummy_sec",
+      "type": "genericDeviceType"
+    },
+    {
+      "alias": "Energie",
+      "image": "images/energie.png",
+      "headerImage": "images/energie_1.png",
+      "show": "true",
+      "buttonClick": "/Energie",
+      "name": "energy",
+      "type": "room"
+    },
+    {
+      "alias": "Multimedia",
+      "image": "images/multimedia.png",
+      "headerImage": "images/multimedia_1.png",
+      "show": "true",
+      "buttonClick": "/Multimedia",
+      "name": "multimedia",
+      "type": "room"
+    },
+    {
+      "alias": "Wellness/Health",
+      "image": "images/welness.png",
+      "headerImage": "images/welness_1.png",
+      "show": "true",
+      "buttonClick": "/Wellness",
+      "name": "wellness",
+      "type": "room"
+    }
+  ]
+}

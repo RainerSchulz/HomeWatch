@@ -1,0 +1,25 @@
+{
+  "default": [
+    {
+      "title": "Digitaler Hausmeister",
+      "image": "images/casa.png",
+      "show": "true",
+      "buttonClick": "/digitaler",
+      "url": "http://homewatch-smarthome.de/service/#clubmitgliedschaft"
+    },
+    {
+      "title": "Demowand",
+      "image": "images/guiico.png",
+      "show": "true",
+      "buttonClick": "/demowand",
+      "url": ""
+    },
+    {
+      "title": "Verwaltung",
+      "image": "images/guiico13.png",
+      "show": "true",
+      "buttonClick": "/verwaltung",
+      "url": "http://homewatch-smarthome.de/myaccount"
+    }
+  ]
+}

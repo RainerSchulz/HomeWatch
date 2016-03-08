@@ -1,0 +1,40 @@
+{
+  "resultNavRight": [
+     {
+      "title": "Shop",
+      "image": "images/einkaufswagen1.png",
+      "imagemini": "images/mini_einkaufswagen.png",
+      "show": "true",
+      "location": "/shop",
+      "url": "http://homewatch-smarthome.de/shop/#$Produktkaegorie",
+       "target": "_blank"
+    },
+    {
+      "title": "Digitaler Hausmeister",
+      "image": "images/tool_main1.png",
+      "imagemini": "images/mini_tool.png",
+      "show": "true",
+      "location": "/digitaler",
+      "url": "http://homewatch-smarthome.de/sensor-hausmeister/",
+      "target": "_blank"
+    },
+    {
+      "title": "Assessing",
+      "image": "images/pen_main1.png",
+      "imagemini": "images/mini_pen.png",
+      "show": "true",
+      "location": "/assessing",
+      "url": "http://homewatch-smarthomede/assessing",
+      "target": "_blank"
+    },
+    {
+      "title": "Secure",
+      "image": "images/hand1.png",
+      "imagemini": "images/mini_hand.png",
+      "show": "true",
+      "location": "/secure",
+      "url": "http://homewatch.smarthome.de/services/#secure",
+      "target": "_blank"
+    }
+  ]
+}

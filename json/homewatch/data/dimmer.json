@@ -1,0 +1,128 @@
+{
+  "Arg":"genericDeviceType=dimmer",
+  "Results": [
+    {
+      "Name":"EIB_7166",
+      "PossibleSets":"AN:noArg AUS:noArg off on on-for-timer on-till raw string value:slider,0,1,100",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "7/1/102",
+        "GROUP": "7166",
+        "KNX_MSGCNT": "5",
+        "KNX_RAWMSG": "B1712w716600",
+        "KNX_TIME": "2016-03-02 21:50:57",
+        "LASTGROUP": "7166",
+        "LASTInputDev": "KNX",
+        "MSGCNT": "5",
+        "NAME": "EIB_7166",
+        "NR": "531",
+        "RAWSTATE": "off",
+        "STATE": "0 %",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"0 %", "Time":"2016-03-02 21:50:57" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Dimmer Billiard",
+        "eventMap": "/on g2:AN/off g2:AUS/value:slider,0,1,100 g1",
+        "genericDeviceType": "dimmer",
+        "like": "yes",
+        "model": "percent",
+        "room": "LoftEG",
+        "stateFormat": "state",
+        "webCmd": "AN::AUS::value"
+      }
+    },
+    {
+      "Name":"EIB_7168",
+      "PossibleSets":"AN:noArg AUS:noArg off on on-for-timer on-till raw string value:slider,0,1,100",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "7/1/104",
+        "GROUP": "7168",
+        "KNX_MSGCNT": "10",
+        "KNX_RAWMSG": "B1712w716800",
+        "KNX_TIME": "2016-03-03 23:33:17",
+        "LASTGROUP": "7168",
+        "LASTInputDev": "KNX",
+        "MSGCNT": "10",
+        "NAME": "EIB_7168",
+        "NR": "542",
+        "RAWSTATE": "off",
+        "STATE": "0 %",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"0 %", "Time":"2016-03-03 23:33:17" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Dimmer Wohnzimmer",
+        "eventMap": "/on g2:AN/off g2:AUS/value:slider,0,1,100 g1",
+        "genericDeviceType": "dimmer",
+        "model": "percent",
+        "room": "LoftEG",
+        "webCmd": "AN::AUS::value"
+      }
+    },
+    {
+      "Name":"EIB_716a",
+      "PossibleSets":"AN:noArg AUS:noArg off on on-for-timer on-till raw string value:slider,0,1,100",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "7/1/106 7/1/5 7/1/106 7/1/105",
+        "GROUP": "716a",
+        "KNX_MSGCNT": "35",
+        "KNX_RAWMSG": "B1711w716a00",
+        "KNX_TIME": "2016-03-03 20:08:56",
+        "LASTGROUP": "716a",
+        "LASTInputDev": "KNX",
+        "MSGCNT": "35",
+        "NAME": "EIB_716a",
+        "NR": "470",
+        "RAWSTATE": "off",
+        "STATE": "0 %",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"0 %", "Time":"2016-03-03 20:08:56" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Dimmer Esszimmer",
+        "eventMap": "/on g2:AN/off g2:AUS/value:slider,0,1,100 g1",
+        "genericDeviceType": "dimmer",
+        "model": "percent",
+        "room": "LoftEG",
+        "stateFormat": "state",
+        "webCmd": "AN::AUS::value"
+      }
+    },
+    {
+      "Name":"EIB_7567",
+      "PossibleSets":"AN:noArg AUS:noArg off on on-for-timer on-till raw string value:slider,0,1,100",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "7/5/103 7/5/2 7/5/103 7/5/102",
+        "GROUP": "7567",
+        "KNX_MSGCNT": "91",
+        "KNX_RAWMSG": "B1711w756700",
+        "KNX_TIME": "2016-03-03 23:42:15",
+        "LASTGROUP": "7567",
+        "LASTInputDev": "KNX",
+        "MSGCNT": "91",
+        "NAME": "EIB_7567",
+        "NR": "624",
+        "RAWSTATE": "off",
+        "STATE": "0 %",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"0 %", "Time":"2016-03-03 23:42:15" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Dimmer Schlafzimmer",
+        "eventMap": "/on g2:AN/off g2:AUS/value:slider,0,1,100 g1",
+        "genericDeviceType": "dimmer",
+        "model": "percent",
+        "room": "LoftOG",
+        "webCmd": "AN::AUS::value"
+      }
+    }  ],
+  "totalResultsReturned":4
+}

@@ -1,0 +1,12 @@
+{
+  "result": [
+    {
+      "name": "Max Mustermann",
+      "strasse": "LeopoldstraBe 12",
+      "plz": "80339",
+      "ort": "München",
+      "email": "max.mustermann@yahoo.de",
+      "telefon": "004917663345088"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<div class="row  text-center padiimagns">
+    <div class="col-xs-offset-2 col-sm-offset-1 ">
+        <div class=" col-xs-10 col-sm-11 hidden-lg hidden-md">
+            <ul class="list-inline logo-list ">
+                <li ng-repeat="item in navButton">
+                    <a ng-click="buttonClick(item)" class="touch-moveable">
+                        <div class="hoversizesm ">
+                            <img class="img-responsive img-center" ng-src="{{item.imagemini}}"
+                                 alt=" {{item.title}}">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

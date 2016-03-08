@@ -1,0 +1,124 @@
+{
+  "Arg":"room=Bad",
+  "Results": [
+    {
+      "Name":"Strom_Bad",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "15/3/15",
+        "GROUP": "f30f",
+        "NAME": "Strom_Bad",
+        "NR": "179",
+        "STATE": "on",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"on", "Time":"2015-11-07 12:07:59" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Steckdose Bad",
+        "genericDeviceType": "switch",
+        "model": "dpt1",
+        "room": "Bad"
+      }
+    },
+    {
+      "Name":"Strom_Bad_Spiegel",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "15/3/16",
+        "GROUP": "f310",
+        "NAME": "Strom_Bad_Spiegel",
+        "NR": "333",
+        "STATE": "on",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"on", "Time":"2015-11-07 20:10:56" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Steckdose Bad Spiegel",
+        "genericDeviceType": "switch",
+        "model": "dpt1",
+        "room": "Bad"
+      }
+    },
+    {
+      "Name":"WC.Licht_Dusche",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "15/3/5",
+        "GROUP": "f305",
+        "KNX_MSGCNT": "1",
+        "KNX_RAWMSG": "B3003wf30500",
+        "KNX_TIME": "2016-01-10 19:27:16",
+        "LASTGROUP": "f305",
+        "LASTInputDev": "KNX",
+        "MSGCNT": "1",
+        "NAME": "WC.Licht_Dusche",
+        "NR": "173",
+        "RAWSTATE": "off",
+        "STATE": "off",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"off", "Time":"2016-01-10 19:27:16" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Licht Bad Dusche",
+        "genericDeviceType": "light",
+        "model": "dpt1",
+        "room": "Bad"
+      }
+    },
+    {
+      "Name":"WC_Licht",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "15/3/3",
+        "GROUP": "f303",
+        "KNX_MSGCNT": "1",
+        "KNX_RAWMSG": "B3003wf30300",
+        "KNX_TIME": "2016-01-10 19:29:08",
+        "LASTGROUP": "f303",
+        "LASTInputDev": "KNX",
+        "MSGCNT": "1",
+        "NAME": "WC_Licht",
+        "NR": "209",
+        "RAWSTATE": "off",
+        "STATE": "off",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"off", "Time":"2016-01-10 19:29:08" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Licht Bad",
+        "genericDeviceType": "light",
+        "model": "dpt1",
+        "room": "Bad"
+      }
+    },
+    {
+      "Name":"WC_Licht_Spiegel",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "15/3/4",
+        "GROUP": "f304",
+        "NAME": "WC_Licht_Spiegel",
+        "NR": "212",
+        "STATE": "off",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"off", "Time":"2016-01-10 18:05:41" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Licht Bad Spiegel",
+        "genericDeviceType": "light",
+        "model": "dpt1",
+        "room": "Bad"
+      }
+    }  ],
+  "totalResultsReturned":5
+}

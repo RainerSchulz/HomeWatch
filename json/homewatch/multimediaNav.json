@@ -1,0 +1,10 @@
+{
+  "resultNav": [
+    {
+      "title": "Multimedia",
+      "image": "images/heizung_1.png",
+      "show": "true",
+      "buttonClick": "/klimatisierung"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "result": [
+    {
+      "alias": "Sicherheit",
+      "image": "images/guiico154.png",
+      "show": "true",
+      "buttonClick": "/secure"
+    }
+
+  ]
+}

@@ -1,0 +1,126 @@
+.camera {
+    width: 30vw;
+    height: 35vh;
+    margin-top: 19px;
+}
+
+object {
+    position: relative;
+    float: left;
+    display: block;
+    width: 400px;
+    height: 300px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+object::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: 'no camera';
+    background: transparent;
+    display: block;
+    color: white;;
+}
+
+.col-sm-4_cam {
+    width: 28%;
+    float: left;
+    margin: 0 2.5%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+.light {
+
+}
+
+.switch {
+
+}
+
+.push {
+
+}
+
+.volume {
+
+}
+
+.actor {
+
+}
+
+.sensor {
+
+}
+
+.aircon {
+
+}
+
+.dimmer {
+
+}
+
+.favoriten {
+
+}
+
+.site {
+
+}
+
+.contact {
+
+}
+
+.thermostat {
+
+}
+
+.default {
+
+}
+
+.charts {
+
+}
+
+a.touch-moveable {
+    margin-right: 1.6%;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+
+a.touch-moveable.pull-right.hidden-xs.visible-sm.visible-md.visible-lg, .glyphicon {
+    margin-top: 0;
+}
+
+.fav_cam {
+    position: absolute;
+    top: 0;
+    left: -15%;
+    top: 12px;
+}
+
+.fav_light {
+    z-index: 9 !important;
+}
+
+.col-xs-1_light {
+    margin-left: 25%;
+}

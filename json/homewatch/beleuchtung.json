@@ -1,0 +1,83 @@
+{
+  "result": [
+    {
+      "alias": "Zentral EG",
+      "image": "images/light-on.png",
+      "show": "true",
+      "id": "Licht_1",
+      "genericDeviceType": "switch"
+
+    },
+    {
+      "alias": "Zentral OG",
+      "image": "images/light-off.png",
+      "show": "true",
+      "id": "Licht_2",
+      "genericDeviceType": "light"
+
+    },
+    {
+      "alias": "Wandlampen",
+      "image": "images/light-on.png",
+      "show": "true",
+      "id": "Licht_3",
+      "genericDeviceType": "switch"
+
+    },
+    {
+      "alias": "Wohnzimmer",
+      "image": "images/light-off.png",
+      "show": "true",
+      "id": "Licht_4",
+      "genericDeviceType": "volume",
+      "isFavorit": "false"
+
+    },
+    {
+      "alias": "Esszimmer",
+      "image": "images/light-off.png",
+      "show": "true",
+      "id": "Licht_5",
+      "genericDeviceType": "switch",
+      "isFavorit": "true"
+
+    },
+    {
+      "alias": "Billiard",
+      "image": "images/light-on.png",
+      "show": "true",
+      "id": "Licht_6",
+      "genericDeviceType": "light",
+      "isFavorit": "false"
+
+    },
+    {
+      "alias": "Küche Decke",
+      "image": "images/light-on.png",
+      "show": "true",
+      "id": "Licht_7",
+      "genericDeviceType": "switch",
+      "isFavorit": "true"
+
+    },
+    {
+      "alias": "Küche Spüle",
+      "image": "images/light-on.png",
+      "show": "true",
+      "id": "Licht_8",
+      "genericDeviceType": "switch",
+      "isFavorit": "false"
+
+    },
+    {
+      "alias": "Küche Wand",
+      "image": "images/light-on.png",
+      "show": "true",
+      "id": "Licht_9",
+      "genericDeviceType": "switch",
+      "isFavorit": "false"
+
+    }
+
+  ]
+}

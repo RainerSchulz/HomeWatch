@@ -1,0 +1,187 @@
+/*##### Handy-Querformat #####*/
+
+@media screen and (min-width: 568px) and (max-width: 736px) {
+
+    .logo {
+        margin-top: 3em;
+        margin-left: 10%;
+        margin-right: auto;
+        text-align: center;
+        width: 75%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .col-xs-1 { /* Onlinestatus unten rechts */
+        top: -3em;
+        right: 0;
+    }
+
+    .row {
+        margin-right: -2.7%;
+    }
+
+    .top100_home {
+        margin-top: 4.5em;
+    }
+
+    .col.col-xs-7_logon {
+        width: 96%;
+        margin-left: 10.3%;
+    }
+
+    .col-xs-4 {
+        width: 20%; /* Anordnung Icons */
+        height: 7em;
+    }
+
+    .col-xs-4_cam {
+        width: 60%;
+        float: left;
+    }
+
+    #fragment-1 {
+        width: 110%;
+        margin-left: 10%;
+        margin-top: 2em;
+    }
+
+    #fragment-1 .img-responsive {
+        max-width: 100%;
+    }
+
+    .cell {
+        margin: 0.5em 0 2em 15% !important;
+    }
+
+    .col-xs-4_untere-reihe {
+        float: left;
+        width: 20%;
+        margin-left: 10%;
+        margin-top: 0;
+    }
+
+    .col-xs-10 {
+        width: 100%; /* Umgebende Box Icons */
+        margin: 0;
+    }
+
+    .col-xs-7 {
+        width: 120%;
+        margin-right: 70%;
+    }
+
+    .col-xs-6 {
+        width: 30% !important;
+        margin-left: 13%;
+    }
+
+    .col-xs-10_handy {
+        width: 100%;
+    }
+
+    .col-xs-4.col-sm-4.col-md-4.col-lg-4.text-center.ng-scope {
+        width: 76%;
+        margin-bottom: 9.5em;
+        margin-left: 20%;
+    }
+
+    .col-xs-4_handy {
+        width: 10%; /* Anordnung Icons unten */
+        display: inline-flex;
+        margin: 0.3em 0 0 0;
+    }
+
+    .col-xs-12 {
+        width: 100% !important;
+    }
+
+    .col.col-xs-12.text-center { /* AGB */
+        margin-left: 1.5%;
+    }
+
+    .buttonLogo {
+        margin-left: 95%;
+    }
+
+    a.touch-moveable.pull-right.hidden-xs.visible-sm.visible-md.visible-lg, .glyphicon {
+        margin-top: -1.3em;
+        display: block;
+    }
+
+    .col-xs-3.col-sm-2.col-md-2.col-lg-2.margin {
+        margin: 0;
+    }
+
+    h3.colorhedlig.colorhedligiphne {
+        font-size: 1.4em;
+        color: #333;
+        margin-right: 0;
+        margin-top: 0;
+    }
+
+    h4 {
+        font-size: 11px;
+        margin-top: 0.2em;
+    }
+
+    .h4home {
+        font-size: 12px;
+        margin-top: 0.5em;
+        text-align: center;
+    }
+
+    hr {
+        margin: -1em 0 !important;
+    }
+
+    .top100 {
+        margin-top: 3em;
+    }
+
+    .col.col-xs-2.hidden-xs {
+        display: block !important;
+        height: 15vh;
+        width: 100%;
+        margin-top: 0;
+        margin-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    .img-responsive {
+        max-width: 60%;
+    }
+
+    .col-xs-12.ng-scope .img-responsive {
+        max-width: 10%;
+        margin-top: 0.7em;
+        display: inline;
+        float: left;
+    }
+
+    .col-xs-4_light.col-sm-4_light.col-md-4_light.col-lg-4_light.text-center {
+        margin-top: 2em;
+    }
+
+    .col-xs-4_light .cell {
+        margin: 0.5em 0 2em -2% !important;
+        font-size: 11px;
+    }
+
+    .fav_cam {
+        position: absolute;
+        top: 5em;
+        left: 0%;
+    }
+
+    .fav_light {
+        position: absolute;
+        top: 3em;
+        left: 100%;
+    }
+}

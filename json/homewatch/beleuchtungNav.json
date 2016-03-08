@@ -1,0 +1,22 @@
+{
+  "resultNav": [
+    {
+      "title": "Wohnzimmer",
+      "image": "images/home_main.png",
+      "show": "true",
+      "buttonClick": "/Wohnzimmer"
+    },
+    {
+      "title": "Schlafzimmer",
+      "image": "images/einkaufswagen.png",
+      "show": "true",
+      "buttonClick": "/Schlafzimmer"
+    },
+    {
+      "title": "Kinderzimmer",
+      "image": "images/tool_main.png",
+      "show": "true",
+      "buttonClick": "/Kinderzimmer"
+    }
+  ]
+}

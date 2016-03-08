@@ -1,0 +1,12 @@
+{
+  "result": [
+    {
+      "alias": "Favoriten",
+      "image": "images/grundriss.png",
+      "show": "true",
+      "buttonClick": "/kamera"
+
+    }
+
+  ]
+}

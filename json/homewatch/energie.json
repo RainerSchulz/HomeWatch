@@ -1,0 +1,11 @@
+{
+  "result": [
+    {
+      "alias": "Energie",
+      "image": "images/energie.png",
+      "show": "true",
+      "buttonClick": "/kamera"
+
+    }
+    ]
+    }

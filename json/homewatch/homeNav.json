@@ -1,0 +1,44 @@
+{
+  "resultNav": [
+    {
+      "alias": "Liegenschaften",
+      "image": "images/home_main.png",
+      "show": "true",
+      "location": "/Liegenschaften",
+      "url": "",
+      "target": "_blank"
+    },
+    {
+      "alias": "Shop",
+      "image": "images/einkaufswagen.png",
+      "show": "true",
+      "location": "/Shop",
+      "url": "http://homewatch-smarthome.de/shop/",
+      "target": "_blank"
+    },
+    {
+      "alias": "Digitaler Hausmeister",
+      "image": "images/tool_main.png",
+      "show": "true",
+      "location": "/Digitaler",
+      "url": "http://homewatch-smarthome.de/services/#digital",
+      "target": "_blank"
+    },
+    {
+      "alias": "Assessing",
+      "image": "images/pen_main.png",
+      "show": "true",
+      "location": "/Assessing",
+      "url": "http://homewatch-smarthomede/assessing",
+      "target": "_blank"
+    },
+    {
+      "alias": "Secure",
+      "image": "images/hand.png",
+      "show": "true",
+      "location": "/Secure",
+      "url": "http://homewatch-smarthome.de/services/#secure",
+      "target": "_blank"
+    }
+  ]
+}

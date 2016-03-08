@@ -1,0 +1,35 @@
+{
+  "result": [
+    {
+      "alias": "Digitaler Hausmeister",
+      "image": "images/casa.png",
+      "id": "10",
+      "show": "true",
+      "location": "/Digitaler",
+      "url": "http://scottyng.intra.camdata.de/prod/check_mk/view.py?view_name=host&host=homeWatch-srv1.camdata.de&_username=homewatch&_secret=homewatch2015",
+      "target": "_blank",
+      "fhemweb_url": ""
+    },
+    {
+      "alias": "Demowand",
+      "image": "images/guiico.png",
+      "id": "11",
+      "show": "true",
+      "location": "/home",
+      "url": "",
+      "target": "",
+      "fhemweb_url": "http:///login.homewatch-smarthome.de:8130/fhem"
+    },
+    {
+      "alias": "Verwaltung",
+      "image": "images/guiico13.png",
+      "id": "12",
+      "show": "true",
+      "location": "/Verwaltung",
+      "url": "",
+      "target": "",
+      "fhemweb_url": ""
+    }
+  ]
+}
+

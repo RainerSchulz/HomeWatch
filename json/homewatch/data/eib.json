@@ -1,0 +1,1015 @@
+{
+  "Arg":"room=EIB",
+  "Results": [
+    {
+      "Name":"FileLog_EIB_000a",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/EIB_000a-%Y.log EIB_000a",
+        "NAME": "FileLog_EIB_000a",
+        "NR": "381",
+        "NTFY_ORDER": "50-FileLog_EIB_000a",
+        "REGEXP": "EIB_000a",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/EIB_000a-2016.log",
+        "logfile": "./log/EIB_000a-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_EIB_f316",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/EIB_f316-%Y.log EIB_f316",
+        "NAME": "FileLog_EIB_f316",
+        "NOTIFYDEV": "EIB_f316",
+        "NR": "376",
+        "NTFY_ORDER": "50-FileLog_EIB_f316",
+        "REGEXP": "EIB_f316",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/EIB_f316-2016.log",
+        "logfile": "./log/EIB_f316-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_EIB_f329",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/EIB_f329-%Y.log EIB_f329",
+        "NAME": "FileLog_EIB_f329",
+        "NOTIFYDEV": "EIB_f329",
+        "NR": "383",
+        "NTFY_ORDER": "50-FileLog_EIB_f329",
+        "REGEXP": "EIB_f329",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/EIB_f329-2016.log",
+        "logfile": "./log/EIB_f329-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_EIB_f32a",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/EIB_f32a-%Y.log EIB_f32a",
+        "NAME": "FileLog_EIB_f32a",
+        "NOTIFYDEV": "EIB_f32a",
+        "NR": "385",
+        "NTFY_ORDER": "50-FileLog_EIB_f32a",
+        "REGEXP": "EIB_f32a",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/EIB_f32a-2016.log",
+        "logfile": "./log/EIB_f32a-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Eingang_Tor",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Eingang_Tor-%Y.log Eingang_Tor",
+        "NAME": "FileLog_Eingang_Tor",
+        "NOTIFYDEV": "Eingang_Tor",
+        "NR": "361",
+        "NTFY_ORDER": "50-FileLog_Eingang_Tor",
+        "REGEXP": "Eingang_Tor",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Eingang_Tor-2016.log",
+        "logfile": "./log/Eingang_Tor-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Klimaanlage",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Klimaanlage-%Y.log Klimaanlage",
+        "NAME": "FileLog_Klimaanlage",
+        "NOTIFYDEV": "Klimaanlage",
+        "NR": "168",
+        "NTFY_ORDER": "50-FileLog_Klimaanlage",
+        "REGEXP": "Klimaanlage",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Klimaanlage-2016.log",
+        "logfile": "./log/Klimaanlage-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Fische",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Fische-%Y.log Licht_Fische",
+        "NAME": "FileLog_Licht_Fische",
+        "NOTIFYDEV": "Licht_Fische",
+        "NR": "329",
+        "NTFY_ORDER": "50-FileLog_Licht_Fische",
+        "REGEXP": "Licht_Fische",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Fische-2016.log",
+        "logfile": "./log/Licht_Fische-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Gaeste_WC",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Gaeste_WC-%Y.log Licht_Gaeste_WC",
+        "NAME": "FileLog_Licht_Gaeste_WC",
+        "NOTIFYDEV": "Licht_Gaeste_WC",
+        "NR": "307",
+        "NTFY_ORDER": "50-FileLog_Licht_Gaeste_WC",
+        "REGEXP": "Licht_Gaeste_WC",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Gaeste_WC-2016.log",
+        "logfile": "./log/Licht_Gaeste_WC-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Kueche",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Kueche-%Y.log Licht_Kueche",
+        "NAME": "FileLog_Licht_Kueche",
+        "NOTIFYDEV": "Licht_Kueche",
+        "NR": "186",
+        "NTFY_ORDER": "50-FileLog_Licht_Kueche",
+        "REGEXP": "Licht_Kueche",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Kueche-2016.log",
+        "logfile": "./log/Licht_Kueche-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Nord",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Nord-%Y.log Licht_Nord",
+        "NAME": "FileLog_Licht_Nord",
+        "NOTIFYDEV": "Licht_Nord",
+        "NR": "204",
+        "NTFY_ORDER": "50-FileLog_Licht_Nord",
+        "REGEXP": "Licht_Nord",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Nord-2016.log",
+        "logfile": "./log/Licht_Nord-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Ost",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Ost-%Y.log Licht_Ost",
+        "NAME": "FileLog_Licht_Ost",
+        "NOTIFYDEV": "Licht_Ost",
+        "NR": "195",
+        "NTFY_ORDER": "50-FileLog_Licht_Ost",
+        "REGEXP": "Licht_Ost",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Ost-2016.log",
+        "logfile": "./log/Licht_Ost-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Pool",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Pool-%Y.log Licht_Pool",
+        "NAME": "FileLog_Licht_Pool",
+        "NOTIFYDEV": "Licht_Pool",
+        "NR": "352",
+        "NTFY_ORDER": "50-FileLog_Licht_Pool",
+        "REGEXP": "Licht_Pool",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Pool-2016.log",
+        "logfile": "./log/Licht_Pool-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Pool_links",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Pool_links-%Y.log Licht_Pool_links",
+        "NAME": "FileLog_Licht_Pool_links",
+        "NOTIFYDEV": "Licht_Pool_links",
+        "NR": "355",
+        "NTFY_ORDER": "50-FileLog_Licht_Pool_links",
+        "REGEXP": "Licht_Pool_links",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Pool_links-2016.log",
+        "logfile": "./log/Licht_Pool_links-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Pool_rechts",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Pool_rechts-%Y.log Licht_Pool_rechts",
+        "NAME": "FileLog_Licht_Pool_rechts",
+        "NOTIFYDEV": "Licht_Pool_rechts",
+        "NR": "358",
+        "NTFY_ORDER": "50-FileLog_Licht_Pool_rechts",
+        "REGEXP": "Licht_Pool_rechts",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Pool_rechts-2016.log",
+        "logfile": "./log/Licht_Pool_rechts-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Poolhaus",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Poolhaus-%Y.log Licht_Poolhaus",
+        "NAME": "FileLog_Licht_Poolhaus",
+        "NOTIFYDEV": "Licht_Poolhaus",
+        "NR": "349",
+        "NTFY_ORDER": "50-FileLog_Licht_Poolhaus",
+        "REGEXP": "Licht_Poolhaus",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Poolhaus-2016.log",
+        "logfile": "./log/Licht_Poolhaus-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_RZ",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_RZEIB_f201-%Y.log Licht_RZ",
+        "NAME": "FileLog_Licht_RZ",
+        "NOTIFYDEV": "Licht_RZ",
+        "NR": "189",
+        "NTFY_ORDER": "50-FileLog_Licht_RZ",
+        "REGEXP": "Licht_RZ",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_RZEIB_f201-2016.log",
+        "logfile": "./log/Licht_RZEIB_f201-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Schrank",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Schrank-%Y.log Licht_Schrank",
+        "NAME": "FileLog_Licht_Schrank",
+        "NOTIFYDEV": "Licht_Schrank",
+        "NR": "201",
+        "NTFY_ORDER": "50-FileLog_Licht_Schrank",
+        "REGEXP": "Licht_Schrank",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Schrank-2016.log",
+        "logfile": "./log/Licht_Schrank-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Sitzgruppe",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Sitzgruppe-%Y.log Licht_Sitzgruppe",
+        "NAME": "FileLog_Licht_Sitzgruppe",
+        "NOTIFYDEV": "Licht_Sitzgruppe",
+        "NR": "183",
+        "NTFY_ORDER": "50-FileLog_Licht_Sitzgruppe",
+        "REGEXP": "Licht_Sitzgruppe",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Sitzgruppe-2016.log",
+        "logfile": "./log/Licht_Sitzgruppe-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Strahler_Eingang",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Strahler_Eingang-%Y.log Licht_Strahler_Eingang",
+        "NAME": "FileLog_Licht_Strahler_Eingang",
+        "NOTIFYDEV": "Licht_Strahler_Eingang",
+        "NR": "344",
+        "NTFY_ORDER": "50-FileLog_Licht_Strahler_Eingang",
+        "REGEXP": "Licht_Strahler_Eingang",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Strahler_Eingang-2016.log",
+        "logfile": "./log/Licht_Strahler_Eingang-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_Terasse",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_Terasse-%Y.log Licht_Terasse",
+        "NAME": "FileLog_Licht_Terasse",
+        "NOTIFYDEV": "Licht_Terasse",
+        "NR": "310",
+        "NTFY_ORDER": "50-FileLog_Licht_Terasse",
+        "REGEXP": "Licht_Terasse",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_Terasse-2016.log",
+        "logfile": "./log/Licht_Terasse-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Licht_West",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Licht_West-%Y.log Licht_West",
+        "NAME": "FileLog_Licht_West",
+        "NOTIFYDEV": "Licht_West",
+        "NR": "198",
+        "NTFY_ORDER": "50-FileLog_Licht_West",
+        "REGEXP": "Licht_West",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Licht_West-2016.log",
+        "logfile": "./log/Licht_West-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Luefter_RZ",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Luefter_RZ-%Y.log Luefter_RZ",
+        "NAME": "FileLog_Luefter_RZ",
+        "NOTIFYDEV": "Luefter_RZ",
+        "NR": "364",
+        "NTFY_ORDER": "50-FileLog_Luefter_RZ",
+        "REGEXP": "Luefter_RZ",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Luefter_RZ-2016.log",
+        "logfile": "./log/Luefter_RZ-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Poolhaus_Kamera",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Poolhaus_Kamera-%Y.log Poolhaus_Kamera",
+        "NAME": "FileLog_Poolhaus_Kamera",
+        "NOTIFYDEV": "Poolhaus_Kamera",
+        "NR": "313",
+        "NTFY_ORDER": "50-FileLog_Poolhaus_Kamera",
+        "REGEXP": "Poolhaus_Kamera",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Poolhaus_Kamera-2016.log",
+        "logfile": "./log/Poolhaus_Kamera-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Pumpe_Fische",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Pumpe_Fische-%Y.log Pumpe_Fische",
+        "NAME": "FileLog_Pumpe_Fische",
+        "NOTIFYDEV": "Pumpe_Fische",
+        "NR": "332",
+        "NTFY_ORDER": "50-FileLog_Pumpe_Fische",
+        "REGEXP": "Pumpe_Fische",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Pumpe_Fische-2016.log",
+        "logfile": "./log/Pumpe_Fische-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Pumpe_Mensch",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Pumpe_Mensch-%Y.log Pumpe_Mensch",
+        "NAME": "FileLog_Pumpe_Mensch",
+        "NOTIFYDEV": "Pumpe_Mensch",
+        "NR": "325",
+        "NTFY_ORDER": "50-FileLog_Pumpe_Mensch",
+        "REGEXP": "Pumpe_Mensch",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Pumpe_Mensch-2016.log",
+        "logfile": "./log/Pumpe_Mensch-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_SalaThai.Ventilator",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/SalaThai_Ventilator-%Y.log SalaThai_Ventilator",
+        "NAME": "FileLog_SalaThai.Ventilator",
+        "NOTIFYDEV": "SalaThai_Ventilator",
+        "NR": "207",
+        "NTFY_ORDER": "50-FileLog_SalaThai.Ventilator",
+        "REGEXP": "SalaThai_Ventilator",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/SalaThai_Ventilator-2016.log",
+        "logfile": "./log/SalaThai_Ventilator-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_SalaThai_Kamera",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/SalaThai_Kamera-%Y.log SalaThai_Kamera",
+        "NAME": "FileLog_SalaThai_Kamera",
+        "NOTIFYDEV": "SalaThai_Kamera",
+        "NR": "216",
+        "NTFY_ORDER": "50-FileLog_SalaThai_Kamera",
+        "REGEXP": "SalaThai_Kamera",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/SalaThai_Kamera-2016.log",
+        "logfile": "./log/SalaThai_Kamera-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_SalaThai_LichtEingang",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/SalaThai_LichtEingang-%Y.log SalaThai_LichtEingang",
+        "NAME": "FileLog_SalaThai_LichtEingang",
+        "NOTIFYDEV": "SalaThai_LichtEingang",
+        "NR": "219",
+        "NTFY_ORDER": "50-FileLog_SalaThai_LichtEingang",
+        "REGEXP": "SalaThai_LichtEingang",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/SalaThai_LichtEingang-2016.log",
+        "logfile": "./log/SalaThai_LichtEingang-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Bad",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Bad-%Y.log Strom_Bad",
+        "NAME": "FileLog_Strom_Bad",
+        "NOTIFYDEV": "Strom_Bad",
+        "NR": "180",
+        "NTFY_ORDER": "50-FileLog_Strom_Bad",
+        "REGEXP": "Strom_Bad",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Bad-2016.log",
+        "logfile": "./log/Strom_Bad-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Bad_Spiegel",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Bad_Spiegel-%Y.log Strom_Bad_Spiegel",
+        "NAME": "FileLog_Strom_Bad_Spiegel",
+        "NOTIFYDEV": "Strom_Bad_Spiegel",
+        "NR": "334",
+        "NTFY_ORDER": "50-FileLog_Strom_Bad_Spiegel",
+        "REGEXP": "Strom_Bad_Spiegel",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Bad_Spiegel-2016.log",
+        "logfile": "./log/Strom_Bad_Spiegel-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Bett_links",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Bett_links-%Y.log Strom_Bett_links",
+        "NAME": "FileLog_Strom_Bett_links",
+        "NOTIFYDEV": "Strom_Bett_links",
+        "NR": "338",
+        "NTFY_ORDER": "50-FileLog_Strom_Bett_links",
+        "REGEXP": "Strom_Bett_links",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Bett_links-2016.log",
+        "logfile": "./log/Strom_Bett_links-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Bett_rechts",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Bett_rechts-%Y.log Strom_Bett_rechts",
+        "NAME": "FileLog_Strom_Bett_rechts",
+        "NOTIFYDEV": "Strom_Bett_rechts",
+        "NR": "340",
+        "NTFY_ORDER": "50-FileLog_Strom_Bett_rechts",
+        "REGEXP": "Strom_Bett_rechts",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Bett_rechts-2016.log",
+        "logfile": "./log/Strom_Bett_rechts-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Gaeste_WC",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Gaeste_WC-%Y.log Strom_Gaeste_WC",
+        "NAME": "FileLog_Strom_Gaeste_WC",
+        "NOTIFYDEV": "Strom_Gaeste_WC",
+        "NR": "304",
+        "NTFY_ORDER": "50-FileLog_Strom_Gaeste_WC",
+        "REGEXP": "Strom_Gaeste_WC",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Gaeste_WC-2016.log",
+        "logfile": "./log/Strom_Gaeste_WC-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Kueche_links",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Kueche_links-%Y.log Strom_Kueche_links",
+        "NAME": "FileLog_Strom_Kueche_links",
+        "NOTIFYDEV": "Strom_Kueche_links",
+        "NR": "316",
+        "NTFY_ORDER": "50-FileLog_Strom_Kueche_links",
+        "REGEXP": "Strom_Kueche_links",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Kueche_links-2016.log",
+        "logfile": "./log/Strom_Kueche_links-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Kueche_mitte",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Kueche_mitte-%Y.log Strom_Kueche_mitte",
+        "NAME": "FileLog_Strom_Kueche_mitte",
+        "NOTIFYDEV": "Strom_Kueche_mitte",
+        "NR": "319",
+        "NTFY_ORDER": "50-FileLog_Strom_Kueche_mitte",
+        "REGEXP": "Strom_Kueche_mitte",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Kueche_mitte-2016.log",
+        "logfile": "./log/Strom_Kueche_mitte-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Kueche_rechts",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Kueche_rechts-%Y.log Strom_Kueche_rechts",
+        "NAME": "FileLog_Strom_Kueche_rechts",
+        "NOTIFYDEV": "Strom_Kueche_rechts",
+        "NR": "322",
+        "NTFY_ORDER": "50-FileLog_Strom_Kueche_rechts",
+        "REGEXP": "Strom_Kueche_rechts",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Kueche_rechts-2016.log",
+        "logfile": "./log/Strom_Kueche_rechts-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_SalaThai",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_SalaThai-%Y.log Strom_SalaThai",
+        "NAME": "FileLog_Strom_SalaThai",
+        "NOTIFYDEV": "Strom_SalaThai",
+        "NR": "301",
+        "NTFY_ORDER": "50-FileLog_Strom_SalaThai",
+        "REGEXP": "Strom_SalaThai",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_SalaThai-2016.log",
+        "logfile": "./log/Strom_SalaThai-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_SalaThai_USV",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_SalaThai_USV-%Y.log Strom_SalaThai_USV",
+        "NAME": "FileLog_Strom_SalaThai_USV",
+        "NOTIFYDEV": "Strom_SalaThai_USV",
+        "NR": "298",
+        "NTFY_ORDER": "50-FileLog_Strom_SalaThai_USV",
+        "REGEXP": "Strom_SalaThai_USV",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_SalaThai_USV-2016.log",
+        "logfile": "./log/Strom_SalaThai_USV-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Schlafzimmer",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Schlafzimmer-%Y.log Strom_Schlafzimmer",
+        "NAME": "FileLog_Strom_Schlafzimmer",
+        "NOTIFYDEV": "Strom_Schlafzimmer",
+        "NR": "336",
+        "NTFY_ORDER": "50-FileLog_Strom_Schlafzimmer",
+        "REGEXP": "Strom_Schlafzimmer",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Schlafzimmer-2016.log",
+        "logfile": "./log/Strom_Schlafzimmer-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_Schminkspiegel",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_Schminkspiegel-%Y.log Strom_Schminkspiegel",
+        "NAME": "FileLog_Strom_Schminkspiegel",
+        "NOTIFYDEV": "Strom_Schminkspiegel",
+        "NR": "177",
+        "NTFY_ORDER": "50-FileLog_Strom_Schminkspiegel",
+        "REGEXP": "Strom_Schminkspiegel",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_Schminkspiegel-2016.log",
+        "logfile": "./log/Strom_Schminkspiegel-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_Strom_aussen",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Strom_aussen-%Y.log Strom_aussen",
+        "NAME": "FileLog_Strom_aussen",
+        "NOTIFYDEV": "Strom_aussen",
+        "NR": "192",
+        "NTFY_ORDER": "50-FileLog_Strom_aussen",
+        "REGEXP": "Strom_aussen",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Strom_aussen-2016.log",
+        "logfile": "./log/Strom_aussen-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_TuerSensor_01",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/TuerSensor_01-%Y.log TuerSensor_01",
+        "NAME": "FileLog_TuerSensor_01",
+        "NOTIFYDEV": "TuerSensor_01",
+        "NR": "293",
+        "NTFY_ORDER": "50-FileLog_TuerSensor_01",
+        "REGEXP": "TuerSensor_01",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/TuerSensor_01-2016.log",
+        "logfile": "./log/TuerSensor_01-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_WC.Licht_Dusche",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/WC.Licht_Dusche-%Y.log WC.Licht_Dusche",
+        "NAME": "FileLog_WC.Licht_Dusche",
+        "NOTIFYDEV": "WC.Licht_Dusche",
+        "NR": "174",
+        "NTFY_ORDER": "50-FileLog_WC.Licht_Dusche",
+        "REGEXP": "WC.Licht_Dusche",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/WC.Licht_Dusche-2016.log",
+        "logfile": "./log/WC.Licht_Dusche-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_WC_Licht",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht_Spiegel,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/WC_Licht-%Y.log WC_Licht",
+        "NAME": "FileLog_WC_Licht",
+        "NOTIFYDEV": "WC_Licht",
+        "NR": "210",
+        "NTFY_ORDER": "50-FileLog_WC_Licht",
+        "REGEXP": "WC_Licht",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/WC_Licht-2016.log",
+        "logfile": "./log/WC_Licht-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"FileLog_WC_Licht_Spiegel",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,Logfile,Wasserfall_FischeFileLog addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/WC.Licht_Spiegel-%Y.log WC_Licht_Spiegel",
+        "NAME": "FileLog_WC_Licht_Spiegel",
+        "NOTIFYDEV": "WC_Licht_Spiegel",
+        "NR": "213",
+        "NTFY_ORDER": "50-FileLog_WC_Licht_Spiegel",
+        "REGEXP": "WC_Licht_Spiegel",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/WC.Licht_Spiegel-2016.log",
+        "logfile": "./log/WC.Licht_Spiegel-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    },
+    {
+      "Name":"Wasserfall_FischeFileLog",
+      "PossibleSets":"absorb:FileLog_Dimmer_01,FileLog_EIB_000a,FileLog_EIB_f316,FileLog_EIB_f329,FileLog_EIB_f32a,FileLog_Eingang_Tor,FileLog_HM_30C5BD,FileLog_HM_30C757,FileLog_HM_387149,FileLog_HM_3D0CE9,FileLog_Handsender_01,FileLog_Hutschiene_01,FileLog_Klimaanlage,FileLog_Leistung_01,FileLog_Licht_Fische,FileLog_Licht_Gaeste_WC,FileLog_Licht_Kueche,FileLog_Licht_Nord,FileLog_Licht_Ost,FileLog_Licht_Pool,FileLog_Licht_Pool_links,FileLog_Licht_Pool_rechts,FileLog_Licht_Poolhaus,FileLog_Licht_RZ,FileLog_Licht_Schrank,FileLog_Licht_Sitzgruppe,FileLog_Licht_Strahler_Eingang,FileLog_Licht_Terasse,FileLog_Licht_West,FileLog_Luefter_RZ,FileLog_Poolhaus.Kamera,FileLog_Poolhaus_Kamera,FileLog_Pumpe_Fische,FileLog_Pumpe_Mensch,FileLog_Rauchmelder_Bungalow,FileLog_Rauchmelder_Poolhaus,FileLog_Rauchmelder_Salathai,FileLog_SalaThai.Ventilator,FileLog_SalaThai_Kamera,FileLog_SalaThai_LichtEingang,FileLog_Scene_zentral,FileLog_Sirene,FileLog_Strom_Bad,FileLog_Strom_Bad_Spiegel,FileLog_Strom_Bett_links,FileLog_Strom_Bett_rechts,FileLog_Strom_Gaeste_WC,FileLog_Strom_Kueche_links,FileLog_Strom_Kueche_mitte,FileLog_Strom_Kueche_rechts,FileLog_Strom_SalaThai,FileLog_Strom_SalaThai_USV,FileLog_Strom_Schlafzimmer,FileLog_Strom_Schminkspiegel,FileLog_Strom_aussen,FileLog_TuerSensor_01,FileLog_WC.Licht_Dusche,FileLog_WC_Licht,FileLog_WC_Licht_Spiegel,Logfile addRegexpPart removeRegexpPart reopen",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings disable:0,1 disabledForIntervals logtype reformatFn nrarchive archivedir archivecmd addStateEvent:0,1 archiveCompress alarmDevice alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch,outlet,light,blind,speaker,thermostat,ignore,lock,window,contact genericDeviceType:switch,outlet,light,blind,speaker,thermostat icon sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "./log/Wasserfall_Fische-%Y.log Wasserfall_FisChe",
+        "NAME": "Wasserfall_FischeFileLog",
+        "NR": "171",
+        "NTFY_ORDER": "50-Wasserfall_FischeFileLog",
+        "REGEXP": "Wasserfall_FisChe",
+        "STATE": "active",
+        "TYPE": "FileLog",
+        "currentlogfile": "./log/Wasserfall_Fische-2016.log",
+        "logfile": "./log/Wasserfall_Fische-%Y.log"
+      },
+      "Readings": {    },
+      "Attributes": {
+        "logtype": "text",
+        "room": "EIB"
+      }
+    }  ],
+  "totalResultsReturned":46
+}

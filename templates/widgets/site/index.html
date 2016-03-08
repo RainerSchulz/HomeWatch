@@ -1,0 +1,15 @@
+<div class="text-center site">
+
+    <div class="col col-xs-12">
+        <div class="img-responsive center-block" style="width: 40%;">
+            <a ng-click="click(model)" class="touch-moveable">
+                <img class="img-responsive center-block" ng-src="images/guiico5.png" alt="">
+            </a>
+        </div>
+        <div class="row">
+            <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{model.Attributes.alias}}</span>
+            <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
+        </div>
+    </div>
+
+</div>

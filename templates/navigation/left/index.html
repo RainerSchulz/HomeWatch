@@ -1,0 +1,14 @@
+<div class="col col-xs-10_handy navigation-left">
+    <div class="col-xs-4_handy">
+        <a ng-href="/Liegenschaften" class="touch-moveable">
+            <img style="max-height: 120px" class="img-responsive img-center" ng-src="images/home_main.png"
+                 title="Liegenschaften">
+        </a>
+    </div>
+    <div class="col-xs-4_handy" ng-repeat="item in navButton">
+        <a ng-click="buttonClick(item)" class="touch-moveable">
+            <img class="img-responsive img-center" ng-class="item.Attributes.icon"
+                 title="{{item.Attributes.alias}}">
+        </a>
+    </div>
+</div>

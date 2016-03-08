@@ -1,0 +1,12 @@
+{
+  "result": [
+    {
+      "alias": "Wellness",
+      "image": "images/welness.png",
+      "show": "true",
+      "buttonClick": "/kamera",
+      "genericDeviceType": "switch"
+
+    }
+  ]
+}

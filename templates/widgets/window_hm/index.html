@@ -1,0 +1,19 @@
+<div class="text-center window">
+
+    <div class="col col-xs-12">
+        <div class="img-responsive center-block">
+            <div data-type="symbol"
+                 data-device="{{model.Name}}"
+                 data-get-off="((?!Wert1).)*"
+                 data-get-on="Wert1"
+                 class="cell fa-3x"
+                 data-icon="fa fa-stack-1x">
+            </div>
+            <div class="row">
+                <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{model.Attributes.alias}}</span>
+                <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
+            </div>
+        </div>
+    </div>
+
+</div>

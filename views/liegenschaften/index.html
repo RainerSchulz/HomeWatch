@@ -1,0 +1,40 @@
+<section class="text-center" ng-init="init()">
+    <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
+    <div class="clearfix"></div>
+    <!-- Liegenschaften -->
+    <div class="row top100">
+        <div class="col col-xs-12">
+            <div class="col col-xs-6"
+                 ng-repeat="item in liegenschaftenButton">
+                <a ng-click="click(item)" class="touch-moveable">
+                    <figure ng-show="item.show=='true'">
+                        <img class="img-responsive img-center" ng-src="{{item.image}}" alt="">
+                        <figcaption>
+                            <h4 class="{{item.icon}}">{{item.strasse}},</br> {{item.ort}} </h4>
+                        </figcaption>
+                    </figure>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr>
+    </div>
+    <!-- Hausmeister -->
+    <div class="row top50">
+        <div class="col col-xs-12">
+            <div class=" col-xs-4_untere-reihe"
+                 ng-repeat="item in standardButton">
+                <a ng-click="defaultClick(item)" class="touch-moveable">
+                    <figure ng-show="item.show=='true'">
+                        <img class="img-responsive img-center" ng-src="{{item.image}}" alt="">
+                        <figcaption>
+                            <h4 class="icon-list"> {{item.alias}} </h4>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

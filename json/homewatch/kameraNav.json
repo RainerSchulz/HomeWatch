@@ -1,0 +1,10 @@
+{
+  "resultNav": [
+    {
+      "title": "Archiv",
+      "image": "images/kamera.png",
+      "show": "true",
+      "buttonClick": "/archiv"
+    }
+  ]
+}

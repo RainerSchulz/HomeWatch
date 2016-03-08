@@ -1,0 +1,14 @@
+<figure class="camera">
+    <a ng-click="openModalImage(model.Internals.DC_SNAPURL, model.Readings.PRESETS, model.Name)">
+        <img class="img-responsive img-center"
+             onerror="this.src='images/noimage.png'"
+             ng-src="{{model.Internals.DC_SNAPURL}}"
+             id="{{model.name}}" alt="{{model.Name}}">
+    </a>
+    <figcaption>
+        <div class="row">
+            <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{model.Attributes.alias}}</span>
+            <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
+        </div>
+    </figcaption>
+</figure>

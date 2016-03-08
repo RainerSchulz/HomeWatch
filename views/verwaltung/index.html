@@ -1,0 +1,25 @@
+<div ng-init="init()">
+    <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
+    <div class="clearfix"></div>
+
+    <div class="top100_home">
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="col col-xs-2 hidden-xs">
+                    <div ng-if="navButton.length > 0">
+                        <div cnd-navigations-left ng-nav-button="{{navButton}}"></div>
+                    </div>
+                </div>
+                <div class="col col-xs-10">
+                    <div class=" col-xs-4" ng-repeat="item in result">
+                        <a ng-click="defaultClick(item)" class="touch-moveable">
+                            <img class="img-responsive center-block" ng-src="{{item.image}}"
+                                 alt="">
+                            <h4 class="h4home"> {{item.alias}} </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

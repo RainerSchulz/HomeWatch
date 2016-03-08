@@ -1,0 +1,46 @@
+{
+  "result": [
+    {
+      "alias": "Shop",
+      "image": "images/guiico15.png",
+      "show": "true",
+      "url": "http://homewatch-smarthome.de/shop/",
+      "target": "_blank"
+    },
+    {
+      "alias": "Support",
+      "image": "images/guiico12.png",
+      "show": "true",
+      "url": "http://homewatch-smarthome.de/support/",
+      "target": "_blank"
+    },
+    {
+      "alias": "Hausmeister",
+      "image": "images/guiico14.png",
+      "show": "true",
+      "url": "http://homewatch-smarthome.de/sensor-hausmeister/",
+      "target": "_blank"
+    },
+    {
+      "alias": "Meine Daten",
+      "image": "images/guiico18.png",
+      "show": "true",
+      "url": "http://homewatch-smarthome.de/my-account/",
+      "target": "_blank"
+    },
+    {
+      "alias": "Clubmitgliedschaft",
+      "image": "images/guiico17.png",
+      "show": "true",
+      "url": "http://homewatch-smarthome.de/services/#clubmitgliedschaft",
+      "target": "_blank"
+    },
+    {
+      "alias": "Secure",
+      "image": "images/sicherheit.png",
+      "show": "true",
+      "url": "http://homewatch-smarthome.de/services/#secure",
+      "target": "_blank"
+    }
+  ]
+}

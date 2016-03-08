@@ -1,0 +1,22 @@
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav text-center main-menu">
+        <li class="margenladoiz">
+            <span>
+                <img style="height:120px" class="img-responsive img-center" ng-src="{{headerImage}}" alt="">
+            </span>
+        </li>
+        <li>
+            <a class=" touch-moveable hidden-lg visible-md  visible-xs visible-sm"
+               href="javascript:window.history.back();">
+                <div class="arrow1">
+                    <img class="img-responsive img-center" ng-src="images/arrow.png" alt="">
+                </div>
+            </a>
+        </li>
+        <li ng-repeat="item in navButton">
+            <a ng-click="buttonNavClick(item.buttonClick)" class="touch-moveable">
+                <h2 class="colorhg colorhgip">{{item.Attributes.alias}}</h2>
+            </a>
+        </li>
+    </ul>
+</div>

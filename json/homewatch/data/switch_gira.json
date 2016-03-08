@@ -1,0 +1,103 @@
+{
+  "Arg":"genericDeviceType=switch_gira",
+  "Results": [
+    {
+      "Name":"EIB_5417",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "5/4/23",
+        "GROUP": "5417",
+        "NAME": "EIB_5417",
+        "NR": "871",
+        "STATE": "off",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"off", "Time":"2015-12-08 16:47:07" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Strom Büro 1.OG Bodentank vorn",
+        "genericDeviceType": "switch_gira",
+        "model": "dpt1",
+        "room": "CDMittelhaus"
+      }
+    },
+    {
+      "Name":"EIB_541f",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "5/4/31",
+        "GROUP": "541f",
+        "KNX_MSGCNT": "371",
+        "KNX_RAWMSG": "B1510w541f00",
+        "KNX_TIME": "2016-03-04 05:22:47",
+        "LASTGROUP": "541f",
+        "LASTInputDev": "KNX",
+        "MSGCNT": "371",
+        "NAME": "EIB_541f",
+        "NR": "366",
+        "RAWSTATE": "off",
+        "STATE": "off",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"off", "Time":"2016-03-04 05:22:47" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Heizung Büro 1.OG schalten",
+        "genericDeviceType": "switch_gira",
+        "model": "dpt1",
+        "room": "CDMittelhaus"
+      }
+    },
+    {
+      "Name":"EIB_712a",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "7/1/42",
+        "GROUP": "712a",
+        "NAME": "EIB_712a",
+        "NR": "953",
+        "STATE": "on",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"on", "Time":"2016-01-26 11:30:20" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Strom Dachfenster rechts",
+        "genericDeviceType": "switch_gira",
+        "model": "dpt1",
+        "room": "LoftEG"
+      }
+    },
+    {
+      "Name":"EIB_763e",
+      "PossibleSets":"off on on-for-timer on-till raw string value",
+      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings IODev do_not_notify:1,0 ignore:0,1 dummy:1,0 showtime:1,0 EIBreadingX:1,0 EIBreadingSender:1,0 EIBanswerReading:1,0 event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:voltage-mV,pressuresensor,date,percent,dpt10_no_seconds,power,powerdensity,dpt6.001,dpt1,percent255,current-mA2,dpt5,dpt12,dpt11,timeperiod-min,brightness,dpt6,dpt10,speedsensor,dpt9,dpt5.Slider,speedsensor-km/h,time,tempsensor,rainsensor,dpt5.003,lightsensor,time1sensor,dpt14,time2sensor,timeperiod-ms,dpt5.004,angle,current-mA,dpt7,humiditysensor,dpt16,airqualitysensor,length-mm,dpt6.010,timeperiod-h alarmDevice:Actor,Sensor alarmSettings background cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,switch_gira,outlet,light,blind_gira,blind_hm,speaker,thermostat,thermostat_gira,lock,window_gira,contact,camera,heating,aircon,dimmer,site,light_gira,dimmer_gira,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+      "Internals": {
+        "DEF": "7/6/62",
+        "GROUP": "763e",
+        "KNX_MSGCNT": "1",
+        "KNX_RAWMSG": "B15ddw763e01",
+        "KNX_TIME": "2016-03-03 15:25:39",
+        "LASTGROUP": "763e",
+        "LASTInputDev": "KNX",
+        "MSGCNT": "1",
+        "NAME": "EIB_763e",
+        "NR": "939",
+        "RAWSTATE": "on",
+        "STATE": "on",
+        "TYPE": "EIB"
+      },
+      "Readings": {      "state": { "Value":"on", "Time":"2016-03-03 15:25:39" }    },
+      "Attributes": {
+        "IODev": "KNX",
+        "alias": "Strom Pool Abfluss",
+        "genericDeviceType": "switch_gira",
+        "model": "dpt1",
+        "room": "LoftOG"
+      }
+    }  ],
+  "totalResultsReturned":4
+}

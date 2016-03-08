@@ -1,0 +1,11 @@
+{
+  "result": [
+    {
+      "alias": "Kamera 1",
+      "image": "images/kamera.png",
+      "show": "true",
+      "buttonClick": "/kamera1"
+    }
+
+  ]
+}

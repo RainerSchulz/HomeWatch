@@ -1,0 +1,12 @@
+<div>
+
+
+    <object id="{{model.Name}}" class="camera" data="{{model.Internals.DC_SNAPURL}}" type="image/jpg">
+
+    </object>
+    <div class="row">
+                <span ng-if="model.Attributes.alias != null" data-type="label"
+                      class="cell">{{model.Attributes.alias}}</span>
+        <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
+    </div>
+</div>
