@@ -5,12 +5,12 @@
     <div class="row top100">
         <div class="col col-xs-12">
             <div class="col col-xs-6"
-                 ng-repeat="item in liegenschaftenButton">
+                 ng-repeat="item in results">
                 <a ng-click="click(item)" class="touch-moveable">
-                    <figure ng-show="item.show=='true'">
-                        <img class="img-responsive img-center" ng-src="{{item.image}}" alt="">
+                    <figure>
+                        <img class="img-responsive img-center" ng-src="images/guiico5.png" alt="">
                         <figcaption>
-                            <h4 class="{{item.icon}}">{{item.strasse}},</br> {{item.ort}} </h4>
+                            <h4 class="icon-list ligenletraiphone">{{item.Attributes.alias}}</h4>
                         </figcaption>
                     </figure>
                 </a>

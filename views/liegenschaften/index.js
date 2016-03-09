@@ -5,7 +5,7 @@
 
 (function () {
     'use strict';
-    function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, Jsonervice, connection, MetaService) {
+    function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, Jsonervice, connection, MetaService, HomeService) {
         $log.debug('LiegenschaftenController startet');
         var self = this;
 
@@ -13,7 +13,7 @@
         $scope.header = 'Liegenschaften';
         $scope.location = '/Liegenschaften';
 
-        $scope.LiegenschaftenButton = [];
+        $scope.results = [];
         $scope.standardButton = [];
 
         // set Page Title
@@ -21,16 +21,16 @@
 
         $scope.init = function () {
             GetStandard($scope, $http);
-            GetJsonFile($scope, $http);
+            GetSites($scope, $http);
         };
 
         $scope.click = function (item) {
             $rootScope.id = item.id;
 
             // set Page MetaData
-            Page.setMetaData("fhemweb_url", item.fhemweb_url);
+            Page.setMetaData("fhemweb_url", item.Internals.LINK);
 
-            var path = $scope.location + '/' + item.id + '/home/';
+            var path = $scope.location + '/' + item.Name + '/home/';
             $location.path(path);
         };
 
@@ -76,7 +76,7 @@
 
                     var data = Jsonervice.data();
 
-                    $scope.liegenschaftenButton = data.Liegenschaften; // response data
+                    $scope.results = data.Liegenschaften; // response data
 
                 })
                 .catch(function (callback) {
@@ -93,8 +93,8 @@
             HomeService.getHome(value, type).then(function () {
                     $log.debug(type + ' : ' + value);
                     var data = HomeService.data();
-                    $scope.result = data.Results;
-                    $log.debug('$scope.result.length: ' + $scope.result.length);
+                    $scope.results = data.Results;
+                    $log.debug('$scope.result: ' + $scope.result);
 
                 })
                 .catch(function (callback) {
@@ -102,7 +102,7 @@
 
                     Jsonervice.getJson(value).then(function () {
                             var data = Jsonervice.data();
-                            $scope.result = data.Results; // response data
+                            $scope.results = data.Results; // response data
                         })
                         .catch(function (callback) {
                             $log.debug(callback);
@@ -115,7 +115,7 @@
 
     }
 
-    LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'connection', 'MetaService'];
+    LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'connection', 'MetaService', 'HomeService'];
 
 
     angular.module('myApp')
