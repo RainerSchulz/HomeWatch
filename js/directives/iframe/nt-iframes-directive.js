@@ -1,22 +1,24 @@
 /**
- * Created by B026789 on 16.12.2015.
+ * Created by RSC on 16.01.2016.
  */
 angular.module('myApp')
-    .directive('myIframe', function () {
-        var linkFn = function (scope, element, attrs) {
-            element.find('iframe').bind('load', function (event) {
-                event.target.contentWindow.scrollTo(0, 400);
-            });
-        };
-        return {
-            restrict: 'EA',
+    .directive('cndiFrame', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/iframe/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
             scope: {
-                src: '@src',
-                height: '@height',
-                width: '@width',
-                scrolling: '@scrolling'
+                ngKind: "@"
             },
-            templateUrl: '<iframe class="frame" height="{{height}}" width="{{width}}" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="{{scrolling}}" src="{{src}}"></iframe>',
-            link: linkFn
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
         };
+
+        return directiveDefinitionObject;
     });
