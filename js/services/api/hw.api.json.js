@@ -48,5 +48,6 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, globalSetti
     Jsonervice.data = function () {
         return data;
     };
+
     return Jsonervice;
 });

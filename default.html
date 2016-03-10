@@ -156,9 +156,25 @@
                         <!--  widget  1 -->
                         <div ng-repeat="items in result">
                             <div ng-repeat="item in items">
-                                
-                                <div cnd-widgets-fields ng-kind="{{item}}"></div>
-                                
+
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+
+
+                                    <div data-type="volume"
+                                         data-device='{{item.Name}}'
+                                         data-min='0' data-max='100'
+                                         data-tickstep='4'
+                                         data-get='pct'
+                                         data-set='pct'
+                                         class="cell small dim-tick myCanvas3 iphone5_widget dimm_column"
+                                         id="{{item.Name}}" >
+                                    </div>
+                                    <div class="row">
+                                        <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{item.Attributes.alias}}</span>
+                                        <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{item.Name}}</span>
+                                    </div>
+
+                                </div>
 
                             </div>
                         </div>
@@ -168,7 +184,7 @@
                     <div class="row row-spc1">
                         <!-- headline -->
                         <!--  widget  4 -->
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="display:none;">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 "style="display:none;">
                             <div data-type="volume" data-device='EIB_7168' data-min='0' data-max='100' data-tickstep='4'
                                  data-get='state' data-set='value'
                                  class="cell small dim-tick myCanvas3 iphone5_widget dimm_column " id="myelement4">

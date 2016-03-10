@@ -221,8 +221,8 @@ function initPage() {
 	DEBUG && console.log('Plugin dir: '+dir);
 
     var url = window.location.pathname;
-    filename = url.substring(url.lastIndexOf('/')+1);
-    DEBUG && console.log('Filename: '+filename);
+    //filename = url.substring(url.lastIndexOf('/')+1);
+    DEBUG && console.log('Filename: '+url);
 
     fhem_dir = $("meta[name='fhemweb_url']").attr("content") || "/fhem/";
     DEBUG && console.log('FHEM dir: '+fhem_dir);

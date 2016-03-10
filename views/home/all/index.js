@@ -3,8 +3,8 @@
  */
 (function () {
     'use strict';
-    function HomeAllController($scope, $location, $rootScope, $http, $log, $routeParams, Page, HomeService, FavoritenService, Jsonervice) {
-        $log.debug('HomeAllController startet')
+    function HomeAllController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, FavoritenService, Jsonervice, RoomService) {
+        $log.debug('HomeAllController startet');
         var self = this;
         $scope.header = $routeParams.name;
         $scope.location = '/Liegenschaften';
@@ -16,10 +16,10 @@
 
         $scope.init = function () {
             $log.debug('HomeAll fhemweb_url: ' + $rootScope.MetaDatafhemweb_url);
-            $scope.navButton = [];
+            $scope.rooms = [];
             $scope.navRightButton = [];
             $scope.result = [];
-            GetNav($scope, $http);
+
             GetNavRight($scope, $http);
             GetFhemJsonFile($scope, $http);
         };
@@ -30,16 +30,12 @@
         };
 
         // Navigation Left
-        function GetNav($scope, $http) {
-            Jsonervice.getJson($routeParams.name + 'Nav').then(function () {
-                    var data = Jsonervice.data();
-                    $scope.navButton = data.resultNav; // response data
-                    $log.debug($scope.navButton);
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
+        function GetNavLeft($scope, result) {
+            $log.debug('start NavLeft getRooms');
+            $scope.headerImage = $rootScope.headerImage;
 
-                });
+            $scope.rooms = RoomService.getRooms(result);
+            $log.debug($scope.rooms);
         }
 
         // Navigation Right
@@ -59,15 +55,23 @@
 
         // Widget Content
         function GetFhemJsonFile($scope, $http) {
+            // list of all promises
+            var promises = [];
+
             var values = $rootScope.name.split(',');
             angular.forEach(values, function (value) {
+
+                // create a $q deferred promise
+                var deferred = $q.defer();
 
                 HomeService.getHome(value, $rootScope.type).then(function () {
                         $log.debug('HomeAll: ' + $rootScope.type + ' : ' + value);
                         var data = HomeService.data();
                         $scope.result.push(data.Results);
-                        $log.debug('$scope.result.length 2:' + $scope.result.length);
 
+
+                        // promise successfully resolved
+                        deferred.resolve(data);
                     })
                     .catch(function (callback) {
                         $log.debug(callback);
@@ -76,7 +80,7 @@
                                 $log.debug('getHomeByIdJson: ' + value);
                                 var data = HomeService.data();
                                 $scope.result.push(data.Results);
-                                $log.debug('$scope.result.length 2:' + $scope.result.length);
+
 
                             })
                             .catch(function (callback) {
@@ -84,13 +88,27 @@
                             });
 
                     });
-
+                // add to the list of promises
+                promises.push(deferred.promise);
             });
+
+            // execute all the promises and do something with the results
+            $q.all(promises).then(
+                function (results) {
+                    $log.debug('$scope.result.length 2:' + $scope.result.length);
+
+                    GetNavLeft($scope, $scope.result);
+
+                },
+                // error
+                function (response) {
+                }
+            );
         }
 
     }
 
-    HomeAllController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'HomeService', 'FavoritenService', 'Jsonervice'];
+    HomeAllController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'FavoritenService', 'Jsonervice', 'RoomService'];
 
 
     angular.module('myApp')

@@ -55,7 +55,23 @@
     <div ng-view=""></div>
 </section>
 
-
+<div class="row row-spc1">
+    <!-- headline -->
+    <!--  widget  4 -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 "style="display:none;">
+        <div data-type="volume" data-device='EIB_7168' data-min='0' data-max='100' data-tickstep='4'
+             data-get='state' data-set='value'
+             class="cell small dim-tick myCanvas3 iphone5_widget dimm_column " id="myelement4">
+        </div>
+        <div class="col-xs-12">
+            <div data-type="label" class="p_vol_b">Wohnzimmer</div>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center" style="display:none;">
+        <div data-type="switch" data-device="EIB_705b" class="fa-stack fa-3x margtopF"></div>
+        <div data-type="label" class="p_focu_b ">Zentral EG</div>
+    </div>
+</div>
 <footer class="navbar navbar-fixed-bottom">
     <div class="col col-xs-1 pull-right">
         <div ng-show="onlineStatus" class="circle-green"></div>

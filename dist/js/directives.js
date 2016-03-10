@@ -9,6 +9,51 @@
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
+    .directive('myIframe', function () {
+        var linkFn = function (scope, element, attrs) {
+            element.find('iframe').bind('load', function (event) {
+                event.target.contentWindow.scrollTo(0, 400);
+            });
+        };
+        return {
+            restrict: 'EA',
+            scope: {
+                src: '@src',
+                height: '@height',
+                width: '@width',
+                scrolling: '@scrolling'
+            },
+            templateUrl: '<iframe class="frame" height="{{height}}" width="{{width}}" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="{{scrolling}}" src="{{src}}"></iframe>',
+            link: linkFn
+        };
+    });
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
+
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
+                };
+
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+;
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
     .directive('cndNavigationsLeft', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left/index.html',
@@ -71,7 +116,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsLeftHome', function factory($log, $location, $window) {
+    .directive('cndNavigationsLeftHome', function factory($log, $location, $window, RoomService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left_home/index.html',
             replace: true,
@@ -86,17 +131,14 @@ angular.module('myApp')
 
             link: function ($scope, element, attrs) {
                 $scope.navButton = JSON.parse($scope.ngNavButton);
+                $scope.rooms = RoomService.getRooms($scope.navButton);
+                $log.debug($scope.rooms);
+
                 $scope.headerImage = $scope.ngHeaderImage;
-                $log.debug('Start left home nav: ' +$scope.headerImage);
+                $log.debug('Start left home nav: ' + $scope.headerImage);
+                $log.debug($scope.navButton);
                 $scope.buttonClick = function (item) {
-                    if (item.target != '') {
-                        $log.debug('Url: ' + item.url);
-                        // $window.location.href = item.url;
-                        $window.open(item.url, item.target)
-                    } else {
-                        $log.debug('Location: ' + item.location);
-                        $location.path(item.location);
-                    }
+
 
                 }
             }
@@ -164,51 +206,6 @@ angular.module('myApp')
     })
 
 ;
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
-
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-;
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('myIframe', function () {
-        var linkFn = function (scope, element, attrs) {
-            element.find('iframe').bind('load', function (event) {
-                event.target.contentWindow.scrollTo(0, 400);
-            });
-        };
-        return {
-            restrict: 'EA',
-            scope: {
-                src: '@src',
-                height: '@height',
-                width: '@width',
-                scrolling: '@scrolling'
-            },
-            templateUrl: '<iframe class="frame" height="{{height}}" width="{{width}}" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="{{scrolling}}" src="{{src}}"></iframe>',
-            link: linkFn
-        };
-    });
 /**
  * Created by B026789 on 18.12.2015.
  */
@@ -329,30 +326,6 @@ angular.module('myApp')
                     '</div>'
                 };
             }]);
-}());
-/**
- * Created by B026789 on 18.12.2015.
- */
-(function () {
-    "use strict";
-
-    var dirTooltip = angular.module('tooltip', [])
-        .directive('tooltip', function factory($log) {
-            return {
-                restrict: 'A',
-
-                link: function (scope, element, attrs) {
-
-                    $(element).hover(function () {
-                        // on mouseenter
-                        $(element).tooltip('show');
-                    }, function () {
-                        // on mouseleave
-                        $(element).tooltip('hide');
-                    });
-                }
-            };
-        });
 }());
 /**
  * Created by RSC on 16.01.2016.
@@ -1024,3 +997,27 @@ angular.module('myApp')
     })
 
 ;
+/**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
+    var dirTooltip = angular.module('tooltip', [])
+        .directive('tooltip', function factory($log) {
+            return {
+                restrict: 'A',
+
+                link: function (scope, element, attrs) {
+
+                    $(element).hover(function () {
+                        // on mouseenter
+                        $(element).tooltip('show');
+                    }, function () {
+                        // on mouseleave
+                        $(element).tooltip('hide');
+                    });
+                }
+            };
+        });
+}());

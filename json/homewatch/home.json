@@ -60,8 +60,8 @@
       "headerImage": "images/energie_1.png",
       "show": "true",
       "buttonClick": "/Energie",
-      "name": "energy",
-      "type": "room"
+      "name": "switch_hm,switch_gira,energy_hm,energy_gira",
+      "type": "genericDeviceType"
     },
     {
       "alias": "Multimedia",

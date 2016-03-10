@@ -32,6 +32,50 @@
 
 (function () {
     'use strict';
+    function ClubmitgliedschaftController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
+        $log.debug('ClubmitgliedschaftController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'Clubmitgliedschaft';
+        $scope.location = '/';
+
+        // set Page Title
+        Page.setTitle($scope.header);
+
+        $scope.init = function () {
+            GetNav($scope, $http);
+        };
+
+        function GetNav($scope, $http) {
+            Jsonervice.getJson('clubmitgliedschaftNav').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.navButton = data.resultNav; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        };
+    }
+
+    ClubmitgliedschaftController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
+
+
+    angular.module('myApp')
+        .controller('ClubmitgliedschaftController', ClubmitgliedschaftController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
     function AssessingController($scope, $location, $rootScope, $http, $log, Page) {
         $log.debug('AssessingController startet');
         var self = this;
@@ -74,50 +118,6 @@
 
     angular.module('myApp')
         .controller('DigitalerController', DigitalerController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
-    function ClubmitgliedschaftController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
-        $log.debug('ClubmitgliedschaftController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'Clubmitgliedschaft';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-
-        $scope.init = function () {
-            GetNav($scope, $http);
-        };
-
-        function GetNav($scope, $http) {
-            Jsonervice.getJson('clubmitgliedschaftNav').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.navButton = data.resultNav; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-    }
-
-    ClubmitgliedschaftController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
-
-
-    angular.module('myApp')
-        .controller('ClubmitgliedschaftController', ClubmitgliedschaftController);
 }());
 /**
  * Created by Rainer on 09.01.2016.
@@ -170,6 +170,129 @@
 
     angular.module('myApp')
         .controller('ImpressumController', ImpressumController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
+    function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, Jsonervice, connection, MetaService, HomeService) {
+        $log.debug('LiegenschaftenController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'Liegenschaften';
+        $scope.location = '/Liegenschaften';
+
+        $scope.results = [];
+        $scope.standardButton = [];
+
+        // set Page Title
+        Page.setTitle($scope.header);
+
+        $scope.init = function () {
+            GetStandard($scope, $http);
+            GetSites($scope, $http);
+        };
+
+        $scope.click = function (item) {
+            $rootScope.id = item.id;
+
+            // set Page MetaData
+            Page.setMetaData("fhemweb_url", item.Internals.LINK);
+
+            var path = $scope.location + '/' + item.Name + '/home/';
+            $location.path(path);
+        };
+
+        $scope.defaultClick = function (item) {
+            var gotoLocation = $scope.location + '/' + item.id + '/home/';
+
+            if (item.fhemweb_url != '') {            
+                // set Page MetaData
+                Page.setMetaData("fhemweb_url", item.fhemweb_url);
+                $log.debug('Liegenschaften fhemweb_url: ' + $rootScope.MetaDatafhemweb_url);
+
+                // goto location
+                $log.debug('Location: ' + gotoLocation);
+                $location.path(gotoLocation);
+            }
+            else if (item.target != '') {
+                $log.debug('Url: ' + item.url);
+                // $window.location.href = item.url;
+                $window.open(item.url, item.target)
+            } else {
+                $log.debug('Location: ' + item.location);
+                $location.path(item.location);
+            }
+        };
+
+        function GetStandard($scope, $http) {
+
+            Jsonervice.getJson('liegenschaftenDefault').then(function () {
+
+                    var data = Jsonervice.data();
+                    $scope.standardButton = data.result; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        }
+
+        function GetJsonFile($scope, $http) {
+            Jsonervice.getJson('Liegenschaften').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.results = data.Liegenschaften; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        }
+
+        function GetSites($scope, $http) {
+
+            var value = 'site';
+            var type = 'genericDeviceType';
+            HomeService.getHome(value, type).then(function () {
+                    $log.debug(type + ' : ' + value);
+                    var data = HomeService.data();
+                    $scope.results = data.Results;
+                    $log.debug('$scope.result: ' + $scope.result);
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                    Jsonervice.getJson(value).then(function () {
+                            var data = Jsonervice.data();
+                            $scope.results = data.Results; // response data
+                        })
+                        .catch(function (callback) {
+                            $log.debug(callback);
+                        });
+
+                });
+
+
+        }
+
+    }
+
+    LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'connection', 'MetaService', 'HomeService'];
+
+
+    angular.module('myApp')
+        .controller('LiegenschaftenController', LiegenschaftenController);
 }());
 /**
  * Created by B026789 on 03.12.2015.
@@ -393,78 +516,27 @@
 
 (function () {
     'use strict';
-    function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, Jsonervice, connection, MetaService, HomeService) {
-        $log.debug('LiegenschaftenController startet');
+    function SecureController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
+        $log.debug('SecureController startet');
         var self = this;
 
 // create a message to display in our view
-        $scope.header = 'Liegenschaften';
-        $scope.location = '/Liegenschaften';
-
-        $scope.results = [];
-        $scope.standardButton = [];
+        $scope.header = 'Secure';
+        $scope.location = '/';
 
         // set Page Title
         Page.setTitle($scope.header);
 
         $scope.init = function () {
-            GetStandard($scope, $http);
-            GetSites($scope, $http);
+            GetNav($scope, $http);
         };
 
-        $scope.click = function (item) {
-            $rootScope.id = item.id;
-
-            // set Page MetaData
-            Page.setMetaData("fhemweb_url", item.Internals.LINK);
-
-            var path = $scope.location + '/' + item.Name + '/home/';
-            $location.path(path);
-        };
-
-        $scope.defaultClick = function (item) {
-            var gotoLocation = $scope.location + '/' + item.id + '/home/';
-
-            if (item.fhemweb_url != '') {            
-                // set Page MetaData
-                Page.setMetaData("fhemweb_url", item.fhemweb_url);
-                $log.debug('Liegenschaften fhemweb_url: ' + $rootScope.MetaDatafhemweb_url);
-
-                // goto location
-                $log.debug('Location: ' + gotoLocation);
-                $location.path(gotoLocation);
-            }
-            else if (item.target != '') {
-                $log.debug('Url: ' + item.url);
-                // $window.location.href = item.url;
-                $window.open(item.url, item.target)
-            } else {
-                $log.debug('Location: ' + item.location);
-                $location.path(item.location);
-            }
-        };
-
-        function GetStandard($scope, $http) {
-
-            Jsonervice.getJson('liegenschaftenDefault').then(function () {
-
-                    var data = Jsonervice.data();
-                    $scope.standardButton = data.result; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        }
-
-        function GetJsonFile($scope, $http) {
-            Jsonervice.getJson('Liegenschaften').then(function () {
+        function GetNav($scope, $http) {
+            Jsonervice.getJson('secureNav').then(function () {
 
                     var data = Jsonervice.data();
 
-                    $scope.results = data.Liegenschaften; // response data
+                    $scope.navButton = data.resultNav; // response data
 
                 })
                 .catch(function (callback) {
@@ -472,42 +544,39 @@
 
                 });
 
-        }
-
-        function GetSites($scope, $http) {
-
-            var value = 'site';
-            var type = 'genericDeviceType';
-            HomeService.getHome(value, type).then(function () {
-                    $log.debug(type + ' : ' + value);
-                    var data = HomeService.data();
-                    $scope.results = data.Results;
-                    $log.debug('$scope.result: ' + $scope.result);
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                    Jsonervice.getJson(value).then(function () {
-                            var data = Jsonervice.data();
-                            $scope.results = data.Results; // response data
-                        })
-                        .catch(function (callback) {
-                            $log.debug(callback);
-                        });
-
-                });
-
-
-        }
-
+        };
     }
 
-    LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'connection', 'MetaService', 'HomeService'];
+    SecureController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
 
 
     angular.module('myApp')
-        .controller('LiegenschaftenController', LiegenschaftenController);
+        .controller('SecureController', SecureController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
+    function ShopController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('ShopController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'Shop';
+        $scope.location = '/';
+
+        // set Page Title
+        Page.setTitle($scope.header);
+    }
+
+    ShopController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+
+
+    angular.module('myApp')
+        .controller('ShopController', ShopController);
 }());
 /**
  * Created by B026789 on 03.12.2015.
@@ -676,79 +745,10 @@
 /**
  * Created by Rainer on 09.01.2016.
  */
-
-
 (function () {
     'use strict';
-    function ShopController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('ShopController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'Shop';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-    }
-
-    ShopController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
-
-
-    angular.module('myApp')
-        .controller('ShopController', ShopController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
-    function SecureController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
-        $log.debug('SecureController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'Secure';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-
-        $scope.init = function () {
-            GetNav($scope, $http);
-        };
-
-        function GetNav($scope, $http) {
-            Jsonervice.getJson('secureNav').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.navButton = data.resultNav; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-    }
-
-    SecureController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
-
-
-    angular.module('myApp')
-        .controller('SecureController', SecureController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-(function () {
-    'use strict';
-    function HomeAllController($scope, $location, $rootScope, $http, $log, $routeParams, Page, HomeService, FavoritenService, Jsonervice) {
-        $log.debug('HomeAllController startet')
+    function HomeAllController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, FavoritenService, Jsonervice, RoomService) {
+        $log.debug('HomeAllController startet');
         var self = this;
         $scope.header = $routeParams.name;
         $scope.location = '/Liegenschaften';
@@ -760,10 +760,10 @@
 
         $scope.init = function () {
             $log.debug('HomeAll fhemweb_url: ' + $rootScope.MetaDatafhemweb_url);
-            $scope.navButton = [];
+            $scope.rooms = [];
             $scope.navRightButton = [];
             $scope.result = [];
-            GetNav($scope, $http);
+
             GetNavRight($scope, $http);
             GetFhemJsonFile($scope, $http);
         };
@@ -774,16 +774,12 @@
         };
 
         // Navigation Left
-        function GetNav($scope, $http) {
-            Jsonervice.getJson($routeParams.name + 'Nav').then(function () {
-                    var data = Jsonervice.data();
-                    $scope.navButton = data.resultNav; // response data
-                    $log.debug($scope.navButton);
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
+        function GetNavLeft($scope, result) {
+            $log.debug('start NavLeft getRooms');
+            $scope.headerImage = $rootScope.headerImage;
 
-                });
+            $scope.rooms = RoomService.getRooms(result);
+            $log.debug($scope.rooms);
         }
 
         // Navigation Right
@@ -803,15 +799,23 @@
 
         // Widget Content
         function GetFhemJsonFile($scope, $http) {
+            // list of all promises
+            var promises = [];
+
             var values = $rootScope.name.split(',');
             angular.forEach(values, function (value) {
+
+                // create a $q deferred promise
+                var deferred = $q.defer();
 
                 HomeService.getHome(value, $rootScope.type).then(function () {
                         $log.debug('HomeAll: ' + $rootScope.type + ' : ' + value);
                         var data = HomeService.data();
                         $scope.result.push(data.Results);
-                        $log.debug('$scope.result.length 2:' + $scope.result.length);
 
+
+                        // promise successfully resolved
+                        deferred.resolve(data);
                     })
                     .catch(function (callback) {
                         $log.debug(callback);
@@ -820,7 +824,7 @@
                                 $log.debug('getHomeByIdJson: ' + value);
                                 var data = HomeService.data();
                                 $scope.result.push(data.Results);
-                                $log.debug('$scope.result.length 2:' + $scope.result.length);
+
 
                             })
                             .catch(function (callback) {
@@ -828,13 +832,27 @@
                             });
 
                     });
-
+                // add to the list of promises
+                promises.push(deferred.promise);
             });
+
+            // execute all the promises and do something with the results
+            $q.all(promises).then(
+                function (results) {
+                    $log.debug('$scope.result.length 2:' + $scope.result.length);
+
+                    GetNavLeft($scope, $scope.result);
+
+                },
+                // error
+                function (response) {
+                }
+            );
         }
 
     }
 
-    HomeAllController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'HomeService', 'FavoritenService', 'Jsonervice'];
+    HomeAllController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'FavoritenService', 'Jsonervice', 'RoomService'];
 
 
     angular.module('myApp')

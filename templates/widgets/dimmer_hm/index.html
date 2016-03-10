@@ -1,13 +1,12 @@
 <div class="dimmer">
     <div data-type="volume"
          data-device='{{model.Name}}'
-         data-min='0'
-         data-max='100'
+         data-min='0' data-max='100'
          data-tickstep='4'
-         data-get='state'
-         data-set='value'
-         class="cell small"
-         id="{{model.Name}}">
+         data-get='pct'
+         data-set='pct'
+         class="cell small dim-tick myCanvas3 iphone5_widget"
+         id="{{model.Name}}" >
     </div>
     <div class="row">
         <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{model.Attributes.alias}}</span>

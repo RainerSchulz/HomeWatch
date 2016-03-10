@@ -64,7 +64,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsLeftHome', function factory($log, $location, $window) {
+    .directive('cndNavigationsLeftHome', function factory($log, $location, $window, RoomService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left_home/index.html',
             replace: true,
@@ -79,17 +79,14 @@ angular.module('myApp')
 
             link: function ($scope, element, attrs) {
                 $scope.navButton = JSON.parse($scope.ngNavButton);
+                $scope.rooms = RoomService.getRooms($scope.navButton);
+                $log.debug($scope.rooms);
+
                 $scope.headerImage = $scope.ngHeaderImage;
-                $log.debug('Start left home nav: ' +$scope.headerImage);
+                $log.debug('Start left home nav: ' + $scope.headerImage);
+                $log.debug($scope.navButton);
                 $scope.buttonClick = function (item) {
-                    if (item.target != '') {
-                        $log.debug('Url: ' + item.url);
-                        // $window.location.href = item.url;
-                        $window.open(item.url, item.target)
-                    } else {
-                        $log.debug('Location: ' + item.location);
-                        $location.path(item.location);
-                    }
+
 
                 }
             }
