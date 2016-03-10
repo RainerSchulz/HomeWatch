@@ -97,7 +97,7 @@
                 function (results) {
                     $log.debug('$scope.result.length 2:' + $scope.result.length);
 
-                    GetNavLeft($scope, $scope.result);
+                    //GetNavLeft($scope, $scope.result);
 
                 },
                 // error

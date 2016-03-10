@@ -1,12 +1,14 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav text-center main-menu">
-        <li class="margenladoiz">
-            <span>
-                <img style="height:120px" class="img-responsive img-center" ng-src="{{headerImage}}" alt="">
-            </span>
+    <li class="margenladoiz">
+            <a ng-href="#/Home" class=" touch-moveable text-center margtopF margtopFi ">
+                <span> 
+                    <img style="height:110px" class="imgminim2" src="{{headerImage}}" title="Home">
+                </span>
+            </a>
         </li>
         <li>
-            <a class=" touch-moveable hidden-lg visible-md  visible-xs visible-sm"
+            <a class=" touch-moveable hidden-lg visible-md visible-xs visible-sm"
                href="javascript:window.history.back();">
                 <div class="arrow1">
                     <img class="img-responsive img-center" ng-src="images/arrow.png" alt="">
@@ -14,8 +16,13 @@
             </a>
         </li>
         <li ng-repeat="item in rooms">
-            <a ng-click="buttonNavClick(item.buttonClick)" class="touch-moveable">
+            <a ng-click="buttonNavClick(item.room)" class="touch-moveable">
                 <h2 class="colorhg colorhgip">{{item.room}}</h2>
+            </a>
+        </li>
+        <li>
+            <a class=" touch-moveable  margtopF margtopFi">
+                <span class="nav_left touch-moveable"></span>
             </a>
         </li>
     </ul>

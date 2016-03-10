@@ -64,7 +64,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsLeftHome', function factory($log, $location, $window, RoomService) {
+    .directive('cndNavigationsLeftHome'', ['$compile', function factory($compile,$log, $location, $window, RoomService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left_home/index.html',
             replace: true,
@@ -93,7 +93,7 @@ angular.module('myApp')
         };
 
         return directiveDefinitionObject;
-    })
+    }])
     .directive('cndNavigationsRightTop', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/right/index_top.html',

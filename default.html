@@ -155,26 +155,65 @@
                         <!-- headline -->
                         <!--  widget  1 -->
                         <div ng-repeat="items in result">
-                            <div ng-repeat="item in items">
+                            <div ng-repeat="item in items" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                                    <section ng-switch="item.Attributes.genericDeviceType">
+                                        <!-- Widgets Switch -->
+                                        <section ng-switch-when="switch_hm">
+                                            <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
+                                                <div class="col col-xs-1_light pull-left">
+                                                    <div class="fav_swi" cnd-widgets-favoriten ng-kind="{{item}}"></div>
+                                                </div>
+                                                <div cnd-widgets-switch-hm
+                                                     ng-kind="{{item}}">
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section ng-switch-when="switch_gira">
+                                            <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
+                                                <div class="col col-xs-1_light pull-left">
+                                                    <div class="fav_swi" cnd-widgets-favoriten ng-kind="{{item}}"></div>
+                                                </div>
+                                                <div cnd-widgets-switch-gira
+                                                     ng-kind="{{item}}">
+                                                </div>
+                                            </div>
+                                        </section>
 
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                                        <!-- Widgets dimmer -->
+                                        <section ng-switch-when="dimmer_hm">
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                                                <div class="col col-xs-1 pull-left">
+                                                    <div class="fav_vol" cnd-widgets-favoriten ng-kind="{{item}}"></div>
+                                                </div>
+                                                <div cnd-widgets-dimmer-hm
+                                                     ng-kind="{{item}}">
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section ng-switch-when="dimmer_gira">
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                                                <div class="col col-xs-1 pull-left">
+                                                    <div class="fav_vol" cnd-widgets-favoriten ng-kind="{{item}}"></div>
+                                                </div>
+                                                <div cnd-widgets-dimmer-gira
+                                                     ng-kind="{{item}}">
+                                                </div>
+                                            </div>
+                                        </section>
+                                       
+                                       <!-- Widgets Default -->
+                                        <section ng-switch-default=>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                                                <div class="col col-xs-1 pull-left">
+                                                    <div class="fav_default" cnd-widgets-favoriten ng-kind="{{item}}"></div>
+                                                </div>
+                                                <div cnd-widgets-default
+                                                     ng-kind="{{item}}">
+                                                </div>
+                                            </div>
+                                        </section>
 
-
-                                    <div data-type="volume"
-                                         data-device='{{item.Name}}'
-                                         data-min='0' data-max='100'
-                                         data-tickstep='4'
-                                         data-get='pct'
-                                         data-set='pct'
-                                         class="cell small dim-tick myCanvas3 iphone5_widget dimm_column"
-                                         id="{{item.Name}}" >
-                                    </div>
-                                    <div class="row">
-                                        <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{item.Attributes.alias}}</span>
-                                        <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{item.Name}}</span>
-                                    </div>
-
-                                </div>
+                                    </section>
 
                             </div>
                         </div>

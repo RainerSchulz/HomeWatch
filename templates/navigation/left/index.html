@@ -14,14 +14,13 @@
         <li ng-repeat="item in navButton">
             <a ng-href="{{item.Internals.LINK}}"
                class="touch-moveable margtopF margtopFi">
-            <span>
-                <img style="height:100px; width: 100px;"
-                     ng-class="item.Attributes.icon"
-                     class="imgminim img-center"
-                     content="{{item.Attributes.alias}}">
-            </span>
+                <span>
+                    <img ng-if="item.Attributes.icon == 'shop'" ng-src="images/einkaufswagen.png" class="imgminim imgmiipnedown" alt="">
+                    <img ng-if="item.Attributes.icon == 'digitaler'" ng-src="images/tool_main.png" class="imgminim imgmiipnedown"  alt="">
+                    <img ng-if="item.Attributes.icon == 'assessing'" ng-src="images/pen_main.png" class="imgminim imgmiipnedown"  alt="">
+                    <img ng-if="item.Attributes.icon == 'secure'" ng-src="images/hand.png" class="imgminim imgmiipnedown"  alt="">
+                </span>
             </a>
         </li>
-
     </ul>
 </div>

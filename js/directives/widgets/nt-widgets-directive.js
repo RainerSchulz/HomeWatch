@@ -2,27 +2,6 @@
  * Created by RSC on 16.01.2016.
  */
 angular.module('myApp')
-    .directive('cndWidgetsFields', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/fields/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-
     .directive('cndWidgetsSwitchGira', function factory($log) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/switch_gira/index.html',

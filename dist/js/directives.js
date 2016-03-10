@@ -9,51 +9,6 @@
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
-    .directive('myIframe', function () {
-        var linkFn = function (scope, element, attrs) {
-            element.find('iframe').bind('load', function (event) {
-                event.target.contentWindow.scrollTo(0, 400);
-            });
-        };
-        return {
-            restrict: 'EA',
-            scope: {
-                src: '@src',
-                height: '@height',
-                width: '@width',
-                scrolling: '@scrolling'
-            },
-            templateUrl: '<iframe class="frame" height="{{height}}" width="{{width}}" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="{{scrolling}}" src="{{src}}"></iframe>',
-            link: linkFn
-        };
-    });
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
-
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-;
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
     .directive('cndNavigationsLeft', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left/index.html',
@@ -116,7 +71,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsLeftHome', function factory($log, $location, $window, RoomService) {
+    .directive('cndNavigationsLeftHome'', ['$compile', function factory($compile,$log, $location, $window, RoomService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left_home/index.html',
             replace: true,
@@ -145,7 +100,7 @@ angular.module('myApp')
         };
 
         return directiveDefinitionObject;
-    })
+    }])
     .directive('cndNavigationsRightTop', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/right/index_top.html',
@@ -206,6 +161,51 @@ angular.module('myApp')
     })
 
 ;
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
+
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
+                };
+
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+;
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('myIframe', function () {
+        var linkFn = function (scope, element, attrs) {
+            element.find('iframe').bind('load', function (event) {
+                event.target.contentWindow.scrollTo(0, 400);
+            });
+        };
+        return {
+            restrict: 'EA',
+            scope: {
+                src: '@src',
+                height: '@height',
+                width: '@width',
+                scrolling: '@scrolling'
+            },
+            templateUrl: '<iframe class="frame" height="{{height}}" width="{{width}}" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="{{scrolling}}" src="{{src}}"></iframe>',
+            link: linkFn
+        };
+    });
 /**
  * Created by B026789 on 18.12.2015.
  */
@@ -328,30 +328,33 @@ angular.module('myApp')
             }]);
 }());
 /**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
+    var dirTooltip = angular.module('tooltip', [])
+        .directive('tooltip', function factory($log) {
+            return {
+                restrict: 'A',
+
+                link: function (scope, element, attrs) {
+
+                    $(element).hover(function () {
+                        // on mouseenter
+                        $(element).tooltip('show');
+                    }, function () {
+                        // on mouseleave
+                        $(element).tooltip('hide');
+                    });
+                }
+            };
+        });
+}());
+/**
  * Created by RSC on 16.01.2016.
  */
 angular.module('myApp')
-    .directive('cndWidgetsFields', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/fields/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-
     .directive('cndWidgetsSwitchGira', function factory($log) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/switch_gira/index.html',
@@ -998,26 +1001,50 @@ angular.module('myApp')
 
 ;
 /**
- * Created by B026789 on 18.12.2015.
+ * Created by RSC on 16.01.2016.
  */
-(function () {
-    "use strict";
+angular.module('myApp')
+    .directive('cndWidgetsFields', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/fields/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
 
-    var dirTooltip = angular.module('tooltip', [])
-        .directive('tooltip', function factory($log) {
-            return {
-                restrict: 'A',
+            scope: {
+                ngKind: "@"
+            },
 
-                link: function (scope, element, attrs) {
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
+        };
 
-                    $(element).hover(function () {
-                        // on mouseenter
-                        $(element).tooltip('show');
-                    }, function () {
-                        // on mouseleave
-                        $(element).tooltip('hide');
-                    });
-                }
-            };
-        });
-}());
+        return directiveDefinitionObject;
+    });
+/**
+ * Created by RSC on 16.01.2016.
+ */
+angular.module('myApp')
+    .directive('cndiFrame', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/iframe/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    });
