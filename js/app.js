@@ -123,6 +123,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
         });
     }])
     .run(function ($window, $rootScope) {
+
         $rootScope.onLine = navigator.onLine;
         $window.addEventListener("offLine", function () {
             $rootScope.$apply(function () {

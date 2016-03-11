@@ -304,6 +304,12 @@ ul.main-menu > li {
     /* margin-bottom: 4em; */
 }
 
+.hoversizesm {
+
+    width: 130% !important;
+    margin-left: -24px;
+}
+
 select {
     font-size: 9pt;
     letter-spacing: 0.07em;

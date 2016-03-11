@@ -1,11 +1,22 @@
-<div>
-    <ul class="text-center">
-        <li ng-repeat="item in navButton">
-            <a ng-click="buttonClick(item)" class="touch-moveable">
-                <span><img class="hoversize img-responsive img-center" ng-src="{{item.image}}"
-                           alt=" {{item.title}}">
-                </span>
-            </a>
-        </li>
-    </ul>
+<div class="row  text-center padiimagns">
+    <div class="col-xs-offset-2 col-sm-offset-1 ">
+        <div class=" col-xs-10 col-sm-11 hidden-lg hidden-md   ">
+            <ul class="list-inline logo-list ">
+                <li ng-repeat="item in navButton">
+                    <a ng-href="{{item.Internals.LINK}}" class="touch-moveable">
+                        <div class="hoversizesm ">
+                            <img ng-if="item.Attributes.icon == 'shop'" ng-src="images/mini_einkaufswagen.png"
+                                 class="img-responsive img-center" alt="{{item.Attributes.alias}}">
+                            <img ng-if="item.Attributes.icon == 'hausmeister'" ng-src="images/mini_tool.png"
+                                 class="img-responsive img-center" alt="{{item.Attributes.alias}}">
+                            <img ng-if="item.Attributes.icon == 'assessing'" ng-src="images/mini_pen.png"
+                                 class="img-responsive img-center" alt="{{item.Attributes.alias}}">
+                            <img ng-if="item.Attributes.icon == 'secure'" ng-src="images/mini_hand.png"
+                                 class="img-responsive img-center" alt="{{item.Attributes.alias}}">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

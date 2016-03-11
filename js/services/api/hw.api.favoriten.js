@@ -11,23 +11,28 @@ myApp.service('FavoritenService', function ($http, notification, $log, $q, HomeS
             tbFavoriten = [];
         return {
 
-            addFavorite: function (favorit) {
-                if (favorit.Attributes.like == 'yes') {
-                    HomeService.setFavorit(favorit.Name, 'no');
+            addFavorite: function (name, like) {
+                var favorit = {
+                    Name: name,
+                    Like: like
+                };
+                $log.debug(favorit);
+                if (like == 'yes') {
+                    HomeService.setFavorit(name, 'no');
                     $log.debug("Favorit gelöscht");
                     tbFavoriten.splice(selected_index, 1);
                     localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
-                    favorit.Attributes.like = 'yes';
+                    like = 'yes';
                 }
                 else {
-                    HomeService.setFavorit(favorit.Name, 'yes');
+                    HomeService.setFavorit(name, 'yes');
                     tbFavoriten.push(favorit);
                     localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
                     $log.debug("Favorit gespeichert");
-                    favorit.Attributes.like = 'no';
+                    like = 'no';
                 }
 
-                $log.debug(favorit);
+
             }
 
         }

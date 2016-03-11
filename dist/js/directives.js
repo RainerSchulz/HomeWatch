@@ -6,6 +6,53 @@
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
 /**
+ * Created by RSC on 16.01.2016.
+ */
+angular.module('myApp')
+    .directive('cndiFrame', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/iframe/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    });
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
+
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
+                };
+
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+;
+/**
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
@@ -40,6 +87,36 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
+    .directive('cndNavigationsLeftHome', function factory($compile, $log, $location, $window, RoomService) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/navigation/left_home/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            rooms: {},
+
+            scope: {
+                ngRooms: "@",
+                ngHeaderImage: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.rooms = JSON.parse($scope.ngRooms);
+                //$scope.rooms = RoomService.getRooms($scope.rooms);
+                $log.debug($scope.rooms);
+
+                $scope.headerImage = $scope.ngHeaderImage;
+                $log.debug('Start left home nav: ' + $scope.headerImage);
+                $log.debug($scope.rooms);
+                $scope.buttonClick = function (item) {
+                    alert('cndNavigationsLeftHome');
+
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
     .directive('cndNavigationsRight', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/right/index.html',
@@ -54,15 +131,16 @@ angular.module('myApp')
 
             link: function ($scope, element, attrs) {
                 $scope.navButton = JSON.parse($scope.ngNavButton);
-
+                $log.debug($scope.navButto);
+                $log.debug('Start NavigationsRight');
                 $scope.buttonClick = function (item) {
-                    if (item.target != '') {
-                        $log.debug('Url: ' + item.url);
+                    if (item.Internals.LINK != '') {
+                        $log.debug('Url: ' + item.Internals.LINK);
                         // $window.location.href = item.url;
-                        $window.open(item.url, item.target)
+                        $window.open(item.Internals.LINK, item.target)
                     } else {
-                        $log.debug('Location: ' + item.location);
-                        $location.path(item.location);
+                        $log.debug('Location: ' + item.Attributes.icon);
+                        $location.path(item.Attributes.icon);
                     }
 
                 }
@@ -71,36 +149,6 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsLeftHome'', ['$compile', function factory($compile,$log, $location, $window, RoomService) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/navigation/left_home/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            navButton: {},
-
-            scope: {
-                ngNavButton: "@",
-                ngHeaderImage: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.navButton = JSON.parse($scope.ngNavButton);
-                $scope.rooms = RoomService.getRooms($scope.navButton);
-                $log.debug($scope.rooms);
-
-                $scope.headerImage = $scope.ngHeaderImage;
-                $log.debug('Start left home nav: ' + $scope.headerImage);
-                $log.debug($scope.navButton);
-                $scope.buttonClick = function (item) {
-
-
-                }
-            }
-        };
-
-        return directiveDefinitionObject;
-    }])
     .directive('cndNavigationsRightTop', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/right/index_top.html',
@@ -161,51 +209,6 @@ angular.module('myApp')
     })
 
 ;
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
-
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-;
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('myIframe', function () {
-        var linkFn = function (scope, element, attrs) {
-            element.find('iframe').bind('load', function (event) {
-                event.target.contentWindow.scrollTo(0, 400);
-            });
-        };
-        return {
-            restrict: 'EA',
-            scope: {
-                src: '@src',
-                height: '@height',
-                width: '@width',
-                scrolling: '@scrolling'
-            },
-            templateUrl: '<iframe class="frame" height="{{height}}" width="{{width}}" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="{{scrolling}}" src="{{src}}"></iframe>',
-            link: linkFn
-        };
-    });
 /**
  * Created by B026789 on 18.12.2015.
  */
@@ -351,6 +354,30 @@ angular.module('myApp')
             };
         });
 }());
+/**
+ * Created by RSC on 16.01.2016.
+ */
+angular.module('myApp')
+    .directive('cndWidgetsFields', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/fields/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    });
 /**
  * Created by RSC on 16.01.2016.
  */
@@ -744,7 +771,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndWidgetsCamera', function factory($log, Lightbox) {
+    .directive('cndWidgetsCamera', function factory($log, Lightbox, HomeService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/camera/index.html',
             replace: true,
@@ -774,13 +801,17 @@ angular.module('myApp')
                         });
 
                     });
+                    Lightbox.imageName = imageName;
                     Lightbox.value = '';
-                    Lightbox.presets = values;
+                    Lightbox.presets = $scope.items;
 
                     $log.debug($scope.items);
                     $log.debug(imageSrc);
-                    Lightbox.SetPreset = function (name, preset) {
-                        alert(preset);
+                    Lightbox.SetPreset = function (preset) {
+
+                        $log.debug('Start set presets ' + preset);
+                        $log.debug(imageName);
+                        HomeService.setPreset(imageName, preset);
 
                     };
                     Lightbox.openModal($scope.images, 0);
@@ -942,16 +973,25 @@ angular.module('myApp')
             model: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngLike: "@"
             },
 
             link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+                $scope.name = $scope.ngName;
 
-                $scope.setFavorite = function (favorit) {
-                    $log.debug('like = ' + favorit.Attributes.like);
-                    FavoritenService.addFavorite(favorit);
+                if (angular.isUndefined($scope.ngLike) || $scope.ngLike == '') {
+                    $scope.like = 'no';
+                }
+                else {
+                    $scope.like = $scope.ngLike;
+                }
+                $log.debug($scope.name + ' - ' + $scope.like);
+
+                $scope.setFavorite = function (name, like) {
+                    $log.debug('like = ' + like);
+                    FavoritenService.addFavorite(name, like);
+                    $scope.like = like == 'yes' ? 'no' : 'yes';
                 };
             }
         };
@@ -1000,51 +1040,3 @@ angular.module('myApp')
     })
 
 ;
-/**
- * Created by RSC on 16.01.2016.
- */
-angular.module('myApp')
-    .directive('cndWidgetsFields', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/fields/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    });
-/**
- * Created by RSC on 16.01.2016.
- */
-angular.module('myApp')
-    .directive('cndiFrame', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/iframe/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    });

@@ -33,7 +33,7 @@
         function GetNavLeft($scope, result) {
             $log.debug('start NavLeft getRooms');
             $scope.headerImage = $rootScope.headerImage;
-
+            $log.debug($scope.headerImage);
             $scope.rooms = RoomService.getRooms(result);
             $log.debug($scope.rooms);
         }
@@ -41,17 +41,32 @@
         // Navigation Right
         function GetNavRight($scope, $http) {
             $scope.headerImage = $rootScope.headerImage;
-            Jsonervice.getJson('navigationRight').then(function () {
-                    var data = Jsonervice.data();
-                    $scope.navRightButton = data.resultNavRight; // response data
-                    $log.debug($scope.navRightButton);
+
+            var value = 'sidebar_right';
+            var type = 'room';
+            HomeService.getHome(value, type).then(function () {
+                    $log.debug(type + ' : ' + value);
+                    var data = HomeService.data();
+                    $scope.navRight = data.Results;
+                    $log.debug('$scope.navRight.length: ' + $scope.navRight.length);
 
                 })
                 .catch(function (callback) {
                     $log.debug(callback);
 
+                    Jsonervice.getJson('sidebar_right').then(function () {
+                            var data = Jsonervice.data();
+                            $scope.navRight = data.Results; // response data
+                        })
+                        .catch(function (callback) {
+                            $log.debug(callback);
+                        });
+
                 });
+
+
         }
+
 
         // Widget Content
         function GetFhemJsonFile($scope, $http) {
@@ -97,7 +112,7 @@
                 function (results) {
                     $log.debug('$scope.result.length 2:' + $scope.result.length);
 
-                    //GetNavLeft($scope, $scope.result);
+                    GetNavLeft($scope, $scope.result);
 
                 },
                 // error

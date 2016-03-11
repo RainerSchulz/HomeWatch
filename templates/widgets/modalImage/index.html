@@ -5,15 +5,20 @@
             <div class="clearfix"></div>
         </div>
         <div>
+
             <select style="width: 200px; color: #0b3e6f; background-color: white;"
-                    ng-model="Lightbox.value"
-                    ng-options="c for c in Lightbox.presets">
+                    ng-change="Lightbox.SetPreset(value)"
+                    ng-model="value">
+                <option ng-repeat="item in Lightbox.presets"
+                        value="{{item.preset}}">{{item.preset}}
+                </option>
             </select>
+
         </div>
         <div class="modal-body">
             <!-- image -->
             <div class="lightbox-image-container">
-                <img lightbox-src="{{Lightbox.imageUrl}}" class="img-responsive img-center">
+                <img lightbox-src="{{Lightbox.imageUrl}}" ng-bind="Lightbox.imageName" class="img-responsive img-center">
             </div>
         </div>
     </div>

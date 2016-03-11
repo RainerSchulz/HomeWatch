@@ -391,7 +391,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndWidgetsCamera', function factory($log, Lightbox) {
+    .directive('cndWidgetsCamera', function factory($log, Lightbox, HomeService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/camera/index.html',
             replace: true,
@@ -421,13 +421,17 @@ angular.module('myApp')
                         });
 
                     });
+                    Lightbox.imageName = imageName;
                     Lightbox.value = '';
-                    Lightbox.presets = values;
+                    Lightbox.presets = $scope.items;
 
                     $log.debug($scope.items);
                     $log.debug(imageSrc);
-                    Lightbox.SetPreset = function (name, preset) {
-                        alert(preset);
+                    Lightbox.SetPreset = function (preset) {
+
+                        $log.debug('Start set presets ' + preset);
+                        $log.debug(imageName);
+                        HomeService.setPreset(imageName, preset);
 
                     };
                     Lightbox.openModal($scope.images, 0);
@@ -589,16 +593,25 @@ angular.module('myApp')
             model: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngLike: "@"
             },
 
             link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+                $scope.name = $scope.ngName;
 
-                $scope.setFavorite = function (favorit) {
-                    $log.debug('like = ' + favorit.Attributes.like);
-                    FavoritenService.addFavorite(favorit);
+                if (angular.isUndefined($scope.ngLike) || $scope.ngLike == '') {
+                    $scope.like = 'no';
+                }
+                else {
+                    $scope.like = $scope.ngLike;
+                }
+                $log.debug($scope.name + ' - ' + $scope.like);
+
+                $scope.setFavorite = function (name, like) {
+                    $log.debug('like = ' + like);
+                    FavoritenService.addFavorite(name, like);
+                    $scope.like = like == 'yes' ? 'no' : 'yes';
                 };
             }
         };

@@ -129,9 +129,9 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
 
     };
 
-    HomeService.setPreset = function (name, type) {
+    HomeService.setPreset = function (name, preset) {
         //set Cam_Demowand preset alarm
-        var url = $rootScope.MetaDatafhemweb_url  + '?cmd=attr%20set%20' +  name + '%20preset%20' + type + globalSettings.param;
+        var url = $rootScope.MetaDatafhemweb_url  + '?cmd=attr%20set%20' +  name + '%20preset%20' + preset + globalSettings.param;
         $log.debug(url);
         return $http({
             method: 'GET',

@@ -114,7 +114,8 @@ a.touch-moveable.pull-right.hidden-xs.visible-sm.visible-md.visible-lg, .glyphic
     position: absolute;
     top: 0;
     left: -15%;
-    top: 12px;
+    top: 15px;
+    z-index: 1;
 }
 
 .fav_light {
