@@ -14,11 +14,12 @@
         <li ng-repeat="item in navButton">
             <a ng-href="{{item.Internals.LINK}}"
                class="touch-moveable margtopF margtopFi">
-                <span>
-                    <img ng-if="item.Attributes.icon == 'shop'" ng-src="images/einkaufswagen.png" class="img-responsive img-center" alt="">
-                    <img ng-if="item.Attributes.icon == 'hausmeister'" ng-src="images/tool_main.png" class="img-responsive img-center"  alt="">
-                    <img ng-if="item.Attributes.icon == 'assessing'" ng-src="images/pen_main.png" class="img-responsive img-center"  alt="">
-                    <img ng-if="item.Attributes.icon == 'secure'" ng-src="images/hand.png" class="img-responsive img-center"  alt="">
+                <span ng-switch="item.Attributes.icon">
+                    <img ng-switch-when="shop" ng-src="images/einkaufswagen.png" class="img-responsive img-center" alt="">
+                    <img ng-switch-when="hausmeister" ng-src="images/tool_main.png" class="img-responsive img-center"  alt="">
+                    <img ng-switch-when="assessing" ng-src="images/pen_main.png" class="img-responsive img-center"  alt="">
+                    <img ng-switch-when="ssecure" ng-src="images/hand.png" class="img-responsive img-center"  alt="">
+                    <img ng-switch-default ng-src="images/hand.png" class="img-responsive img-center"  alt="">
                 </span>
             </a>
         </li>

@@ -13,6 +13,7 @@
     "html5-boilerplate": "~5.2.0",
     "angular-bootstrap-lightbox": "^0.10.0",
     "angular-animate": "*",
+    "angular-cookies": "*",
     "angular-bootstrap": "*",
     "angular-circular-slider": "*",
     "angular-resource": "*",

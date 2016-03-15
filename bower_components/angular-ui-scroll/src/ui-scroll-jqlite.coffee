@@ -74,7 +74,7 @@ angular.module('ui.scroll.jqlite', ['ui.scroll'])
 
 				# Start with offset property
 				[base, dirA, dirB] = {
-				width:  [elem.offsetWidth, 'left', 'Right']
+				width:  [elem.offsetWidth, 'Left', 'Right']
 				height: [elem.offsetHeight, 'Top', 'Bottom']
 				}[measure]
 
@@ -110,7 +110,7 @@ angular.module('ui.scroll.jqlite', ['ui.scroll'])
 					}[measure]
 				else
 
-					#// Fall back to computed then uncomputed styles if necessary
+					#// Fall back to computed then uncomputed css if necessary
 					computedStyle = getStyle( elem )
 					result = computedStyle[ direction ]
 					if ( result < 0 || result == null )

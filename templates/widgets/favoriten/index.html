@@ -1,6 +1,7 @@
-<div>
-    <a ng-click="setFavorite(name,like)" title="{{FavoritTitle}}">
-        <i ng-if="like != null && like == 'no'" class="fa fa-heart-o fa-2x"></i>
-        <i ng-if="like != null && like == 'yes'" class="fa fa-heart fa-2x"></i>
+
+<div ng-switch="isFavorit">
+    <a ng-click="setFavorite(name,isFavorit)" ng-model="isFavorit"  title="{{::FavoritTitle}}">
+        <i ng-switch-when="no" class="fa fa-heart-o fa-2x"></i>
+        <i ng-switch-when="yes" class="fa fa-heart fa-2x"></i>
     </a>
 </div>

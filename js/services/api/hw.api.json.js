@@ -2,11 +2,10 @@
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('Jsonervice', function ($http, notification, $log, $q, globalSettings, CacheService, connection) {
+myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheService, connection) {
     var data = [];
     var deffered = $q.defer();
     var Jsonervice = {};
-    var urlcmd = globalSettings.url + globalSettings.port + globalSettings.cmd;
     var originUrl = connection.originUrl;
 
     Jsonervice.getJson = function (name) {

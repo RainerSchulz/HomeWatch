@@ -74,8 +74,9 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
 
     HomeService.getHome = function (name, type) {
 
-        var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd +  type + '=' + name + globalSettings.param;
+        var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd + type + '=' + name + globalSettings.param;
         $log.debug('getHome url: ' + url);
+        $log.debug('name: ' + name + ' type: ' + type);
         return $http({
             method: 'GET',
 
@@ -84,7 +85,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
                 data = d;
                 deffered.resolve();
 
-                $log.debug("HomeService by Home");
+                $log.debug("Success HomeService.getHome");
             })
             .error(function (err, status, headers, config) {
                 connection.internet = "false";
@@ -103,7 +104,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
 
     HomeService.setFavorit = function (name, type) {
 
-        var url = $rootScope.MetaDatafhemweb_url  + '?cmd=attr%20' +  name + '%20like%20' + type + globalSettings.param;
+        var url = $rootScope.MetaDatafhemweb_url + '?cmd=attr%20' + name + '%20like%20' + type + globalSettings.param;
         $log.debug(url);
         return $http({
             method: 'GET',
@@ -131,7 +132,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
 
     HomeService.setPreset = function (name, preset) {
         //set Cam_Demowand preset alarm
-        var url = $rootScope.MetaDatafhemweb_url  + '?cmd=attr%20set%20' +  name + '%20preset%20' + preset + globalSettings.param;
+        var url = $rootScope.MetaDatafhemweb_url + '?cmd=%20set%20' + name + '%20preset%20' + preset + globalSettings.param;
         $log.debug(url);
         return $http({
             method: 'GET',
@@ -140,7 +141,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
                 data = d;
                 deffered.resolve();
 
-                $log.debug("HomeService by Home");
+                $log.debug("HomeService Camera set preset OK");
             })
             .error(function (err, status, headers, config) {
                 connection.internet = "false";
@@ -158,16 +159,15 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
     };
 
     HomeService.getHomeByIdJson = function (name) {
-        $log.debug('connection.internet: ' + connection.internet);
+        var url = 'json/homewatch/data/' + name + '.json';
+        $log.debug('HomeService by Json: ' + url);
         return $http({
             method: 'GET',
             cache: true,
-            url: 'json/homewatch/data/' + name + '.json'
+            url: url
         }).success(function (d) {
                 data = d;
                 deffered.resolve();
-
-                $log.debug("HomeService by Json");
                 $log.debug(data);
             })
             .error(function (err, status, headers, config) {

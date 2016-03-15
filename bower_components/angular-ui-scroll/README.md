@@ -47,7 +47,7 @@ File ui-scroll-jqlite.coffee houses implementations of the above methods and als
 'ui.scroll.jqlite' and this name should also be included in the dependency list of the main module. The implementation currently supports missing methods
 only as necessary for the directive. It is tested on IE8 and up as well as on the Chrome 28 and Firefox 20.
 
-This module is only necessary if you plan to use ui-scroll without jQuery. If jQuery implementation is present it will not override them.
+This module is only necessary if you plan to use ui-scroll without jQuery. If full jQuery is loaded, uiScroll will use the jQuery implementatin of the above methods, the ui.scroll.jqlite implementation of them will be ignored.
 If you plan to use ui-scroll over jQuery feel free to skip ui-scroll-jqlite.
 
 ###Usage
@@ -92,37 +92,21 @@ The datasource object implements methods and properties to be used by the direct
 
 * Method `get`
 
+        get(descriptor, success)
+     or
+
         get(index, count, success)
 
     #### Description
     this is a mandatory method used by the directive to retrieve the data.
 #### Parameters
+    * **descriptor** is an object defining the portion of the dataset requested. The object will have 3 properties. Two of them named  `index` and `count`. They have the same meaning as in the alternative signature when the parameters passed explicitly (see below). The third one will be named either `append` if the items will be appended to the last item in the buffer, or `prepend` if they are to be prepended to the first item in the buffer. The value of the property in either case will be the item the new items will be appended/prepended to. This is useful if it is easier to identify the items to be added based on the previously requested items rather than on the index. Keep in mind that in certain use cases (i.e. on initial load) the value of the append/prepend property can be undefined.
     * **index** indicates the first data row requested
     * **count** indicates number of data rows requested
-    * **success** function to call when the data are retrieved. The implementation of the service has to call this function when the data
-        are retrieved and pass it an array of the items retrieved. If no items are retrieved, an empty array has to be passed.
+    * **success** function to call when the data are retrieved. The implementation of the datsource has to call this function when the data are retrieved and pass it an array of the items retrieved. If no items are retrieved, an empty array has to be passed.
 
 **Important:** Make sure to respect the `index` and `count` parameters of the request. The array passed to the success method should have
 exactly `count` elements unless it hit eof/bof
-
-* Method `loading`
-
-        loading(value)
-
-    #### Description
-    this is an optional method. If supplied this function will be called with a value indicating whether there is data loading request pending
-
-**Deprecated:** Method `loading` is deprecated - use `is-loading` attribute instead
-
-
-* Method `revision`
-
-        revision()
-
-    #### Description
-    this is an optional method. If supplied the scroller will $watch its value and will refresh the content if the value has changed
-
-**Deprecated:** Method `revision` is deprecated - use `reload()` method on the adapter instead
 
 ###Adapter
 The adapter object is an internal object created for every instance of the scroller. Properties and methods of the adapter can be used to manipulate and assess the scroller the adapter was created for. Adapter based API replaces old (undocumented) event based API introduced earlier for this purpose. The event based API is now deprecated and no longer supported.
@@ -139,9 +123,14 @@ Adapater object implements the following methods
 * Method `reload` 
 
         reload()
+     or
+
+        reload(startIndex)
 
    #### Description
-    calling this method reinitializes and reloads the scroller content. This method is introduced as a replacement for the revision method of the datasource, which is now deprecated.
+    Calling this method reinitializes and reloads the scroller content. `startIndex` is an integer indicating what item index the scroller will use to start the load process. Calling `reload()` is equivalent to calling `reload(1)`.
+    
+    **important: `startIndex` should fall within underlying datset boundaries** The scroller will request two batches of items one starting from the `startIndex` and another one preceding the first one (starting from `startIndex - bufferSize`). If both requests come back empty, the scroller will consider the dataset to be empty and will place no further data requests. 
     
 * Method `applyUpdates` 
 
@@ -203,7 +192,6 @@ marked with uiScrollViewport directive, the browser window object will be used a
 </ANY>
 ```
 
-
 ###Examples
 
 Examples ([look here](https://github.com/angular-ui/ui-scroll/tree/master/demo/examples)) consist of several pages (.html files) showing various ways to use the ui-scroll directive. Each page relays on its own datasource service (called `datasource`) defined in the coffescript file with the same name and .coffee extension.
@@ -215,8 +203,13 @@ See [index.html](http://rawgithub.com/angular-ui/ui-scroll/master/demo/index.htm
 
 ###History
 
+###v1.3.3
+* Implemented new version of gatasource.get(descriptor, success) method. See the documentation.
+* Implemented new version of reload(startIndex) method in the Adapter. See the documentation.
+* Changed the logic of scroll bar adjustment (minIndex, maxIndex).
+
 ###v1.3.2
-* Implemented logic for adjustBuffer triggering during invisible items became visible.
+* Implemented the logic for adjustBuffer triggering during invisible items became visible.
 
 ###v1.3.1
 * Changed the logic of viewport scroll/padding recalculation (to solve the problem [#8](https://github.com/angular-ui/ui-scroll/issues/8)).

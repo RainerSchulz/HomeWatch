@@ -159,6 +159,10 @@ h3.colorhedlig.colorhedligiphne {
     height: 13em;
 }
 
+.modal-body {
+    padding: 5px;
+}
+
 .modalImage .image-wrapper {
     text-align: center;
 }

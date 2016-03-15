@@ -7,13 +7,13 @@
             <div class="row  text-center padiimagns">
                 <div class="col-xs-offset-2 col-sm-offset-1 ">
                     <div class=" col-xs-10 col-sm-11 hidden-lg hidden-md">
-                        <div cnd-navigations-right-top ng-nav-button="{{navRightButton}}"></div>
+                        <div cnd-navigations-right-top ng-nav-right-top="{{navRight}}"></div>
                     </div>
                 </div>
 
                 <!-- Navigation-Left -->
                 <div class="hidden-xs hidden-sm col-md-2 col-g-2  navigation-left">
-                        <div cnd-navigations-left-home ng-header-image="{{headerImage}}" ng-rooms="{{rooms}}">
+                        <div cnd-navigations-rooms ng-header-image="{{headerImage}}" ng-rooms="{{rooms}}">
                         </div>
                 </div>
 
@@ -24,72 +24,6 @@
                             <div ng-repeat="item in items">
                                 
                                 <section ng-switch="item.Attributes.genericDeviceType">
-                                    <!-- Widgets Switch -->
-                                    <section ng-switch-when="switch_hm">
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_swi" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-switch-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="switch_gira">
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_swi" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-switch-gira
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets dimmer -->
-                                    <section ng-switch-when="dimmer_hm">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_vol" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-dimmer-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="dimmer_gira">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_vol" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-dimmer-gira
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets blind -->
-                                    <section ng-switch-when="blind_hm">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_vol" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-blind-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="blind_gira">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_vol" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-blind-gira
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
                                     <!-- Widgets Camera -->
                                     <section ng-switch-when="camera">
                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -103,282 +37,23 @@
                                             </article>
                                         </div>
                                     </section>
-
-                                    <!-- Widgets light -->
-                                    <section ng-switch-when="light_hm">
+                                    <!-- Widgets default for all -->
+                                    <section ng-switch-default>
                                         <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
                                             <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_light" cnd-widgets-favoriten
-                                                     ng-kind="{{item}}">
-                                                </div>
+                                                <div class="fav_swi" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
                                             </div>
-                                            <div cnd-widgets-light-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="light_gira">
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_light" cnd-widgets-favoriten
-                                                     ng-kind="{{item}}">
-                                                </div>
-                                            </div>
-                                            <div cnd-widgets-light-gira
-                                                 ng-kind="{{item}}">
+                                            <div cnd-widgets-all
+                                                 ng-name="{{item.Name}}"
+                                                 ng-generic-devive-type="{{item.Attributes.genericDeviceType}}"
+                                                 ng-attributes="{{item.Attributes}}"
+                                                 ng-internals="{{item.Internals}}"
+                                                 >
                                             </div>
                                         </div>
                                     </section>
-
-                                    <!-- Widgets heating -->
-                                    <section ng-switch-when="heating_hm">
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_light" cnd-widgets-favoriten
-                                                     ng-kind="{{item}}">
-                                                </div>
-                                            </div>
-                                            <div cnd-widgets-heating-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="heating_gira">
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_light" cnd-widgets-favoriten
-                                                     ng-kind="{{item}}">
-                                                </div>
-                                            </div>
-                                            <div cnd-widgets-heating-gira
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets motion -->
-                                    <section ng-switch-when="motion_hm">
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_light" cnd-widgets-favoriten
-                                                     ng-kind="{{item}}">
-                                                </div>
-                                            </div>
-                                            <div cnd-widgets-motion-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="motion_gira">
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_light" cnd-widgets-favoriten
-                                                     ng-kind="{{item}}">
-                                                </div>
-                                            </div>
-                                            <div cnd-widgets-motion-gira
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Window -->
-                                    <section ng-switch-when="window_hm">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_con" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-window-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="window_gira">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_con" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-window-gira
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Smoke -->
-                                    <section ng-switch-when="smoke_hm">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_con" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-smoke-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="smoke_gira">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_con" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-smoke-gira
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Water -->
-                                    <section ng-switch-when="water_hm">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_con" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-water-hm
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <section ng-switch-when="water_gira">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_con" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-water-gira
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets energy -->
-                                    <section ng-switch-when="energy_hm">
-                                        <div class="col-xs-4.col-sm-4.col-md-4.col-lg-4.text-center.ng-scope">
-                                            <article class="col col-xs-12">
-                                                <div class="col col-xs-1_light pull-left">
-                                                    <div class="fav_therm" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                                </div>
-                                                <div cnd-widgets-energy-hm
-                                                     ng-kind="{{item}}">
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Thermostat -->
-                                    <section ng-switch-when="thermostat">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                                            <article class="col col-xs-12">
-                                                <div class="col col-xs-1_light pull-left">
-                                                    <div class="fav_therm" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                                </div>
-                                                <div cnd-widgets-thermostat
-                                                     ng-kind="{{item}}">
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Volume -->
-                                    <section ng-switch-when="volume">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_vol" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-volume
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Aircon -->
-                                    <section ng-switch-when="aircon">
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_air" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-aircon
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Push -->
-                                    <section ng-switch-when="push">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_push" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-push
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Site -->
-                                    <section ng-switch-when="site">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_site" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-site
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Widgets Contact -->
-                                    <section ng-switch-when="contact">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <div class="col col-xs-1 pull-left">
-                                                <div class="fav_con" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-contact
-                                                 ng-kind="{{item}}">
-                                            </div>
-                                        </div>
-                                    </section>
-
-
-
-                                    <!-- Widgets Default -->
-                                    <section ng-switch-default=>
-                                        <section ng-switch="item.Attributes.alarmDevice">
-                                            <!-- Widgets Sensor -->
-                                            <section ng-switch-when="Sensor">
-                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                                    <div class="col col-xs-1 pull-left">
-                                                        <div class="fav_default" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                                    </div>
-                                                    <div cnd-widgets-sensor
-                                                         ng-kind="{{item}}">
-                                                    </div>
-                                                </div>
-                                            </section>
-                                            <!-- Widgets Actor -->
-                                            <section ng-switch-when="Actor">
-                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                                    <div class="col col-xs-1 pull-left">
-                                                        <div class="fav_default" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                                    </div>
-                                                    <div cnd-widgets-actor
-                                                         ng-kind="{{item}}">
-                                                    </div>
-                                                </div>
-                                            </section>
-                                            <!-- Widgets Default -->
-                                            <section ng-switch-default=>
-                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                                    <div class="col col-xs-1 pull-left">
-                                                        <div class="fav_default" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                                    </div>
-                                                    <div cnd-widgets-default
-                                                         ng-kind="{{item}}">
-                                                    </div>
-                                                </div>
-                                            </section>
-
-                                        </section>
-                                    </section>
-
                                 </section>
+
                             </div>
                         </div>
                     </div>
@@ -386,7 +61,7 @@
 
                 <!-- Navigation-Right -->
                 <div class="hidden-xs hidden-sm col-md-2 col-g-2 sidebardere1 navigation-right">
-                    <div cnd-navigations-right ng-nav-button="{{navRight}}"></div>
+                    <div cnd-navigations-right ng-nav-right="{{navRight}}"></div>
                 </div>
 
             </div>

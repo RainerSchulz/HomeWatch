@@ -123,7 +123,6 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
         });
     }])
     .run(function ($window, $rootScope) {
-
         $rootScope.onLine = navigator.onLine;
         $window.addEventListener("offLine", function () {
             $rootScope.$apply(function () {
@@ -142,8 +141,6 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
 myApp.value('user', {
     staffId: 1,
     fullName: "Rainer Schulz",
-    connection: "http://login.th.homewatch-smarthome.de:8070/them?cmd=jsonlist2%20room=Kamera&XHR=1",
-    locale: "de-DE"
 });
 myApp.value('connection', {
     internet: true,

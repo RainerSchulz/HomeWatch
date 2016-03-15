@@ -14,6 +14,13 @@ angular.module('myApp')
                 ngNavButton: "@"
             },
 
+            /* ,compile: function compile(tElement, tAttrs, transclude){
+
+             return ($scope, element, attrs){
+
+             };
+             }*/
+
             link: function ($scope, element, attrs) {
                 $scope.navButton = JSON.parse($scope.ngNavButton);
                 $log.debug('Start NavigationsLeft');
@@ -33,7 +40,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsLeftHome', function factory($compile, $log, $location, $window, RoomService) {
+    .directive('cndNavigationsRooms', function factory($compile, $log, $location, $window, RoomService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left_home/index.html',
             replace: true,
@@ -63,29 +70,32 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsRight', function factory($log, $location, $window) {
+    .directive('cndNavigationsRight', function factory($log, $rootScope, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/right/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
-            navButton: {},
+            navRight: {},
 
             scope: {
-                ngNavButton: "@"
+                ngNavRight: "@"
             },
 
             link: function ($scope, element, attrs) {
-                $scope.navButton = JSON.parse($scope.ngNavButton);
-                $log.debug($scope.navButto);
-                $log.debug('Start NavigationsRight');
+                if ($scope.ngNavRight != '') {
+                    $log.debug('Start NavigationsRight');
+                    $scope.navRight = JSON.parse($scope.ngNavRight);
+                }
+
                 $scope.buttonClick = function (item) {
+                    $rootScope.Link = item.Internals.LINK;
+                    $log.debug('Url: ' + item.Internals.LINK);
+                    $log.debug('Location: ' + item.Attributes.icon);
                     if (item.Internals.LINK != '') {
-                        $log.debug('Url: ' + item.Internals.LINK);
                         // $window.location.href = item.url;
-                        $window.open(item.Internals.LINK, item.target)
+                        $window.open(item.Internals.LINK)
                     } else {
-                        $log.debug('Location: ' + item.Attributes.icon);
                         $location.path(item.Attributes.icon);
                     }
 
@@ -101,14 +111,16 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            navButton: {},
+            navRightTop: {},
 
             scope: {
-                ngNavButton: "@"
+                ngNavRightTop: "@"
             },
 
             link: function ($scope, element, attrs) {
-                $scope.navButton = JSON.parse($scope.ngNavButton);
+                if ($scope.ngNavRightTop != '') {
+                    $scope.navRightTop = JSON.parse($scope.ngNavRightTop);
+                }
 
                 $scope.buttonClick = function (item) {
                     if (item.target != '') {

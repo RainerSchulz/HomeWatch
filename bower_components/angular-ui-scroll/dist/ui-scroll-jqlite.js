@@ -1,7 +1,7 @@
 /*!
  * angular-ui-scroll
  * https://github.com/angular-ui/ui-scroll.git
- * Version: 1.3.2 -- 2015-09-03T15:39:10.862Z
+ * Version: 1.3.3 -- 2016-03-02T14:02:47.867Z
  * License: MIT
  */
  
@@ -100,7 +100,7 @@ angular.module('ui.scroll.jqlite', ['ui.scroll']).service('jqLiteExtras', [
             };
           }
           ref = {
-            width: [elem.offsetWidth, 'left', 'Right'],
+            width: [elem.offsetWidth, 'Left', 'Right'],
             height: [elem.offsetHeight, 'Top', 'Bottom']
           }[measure], base = ref[0], dirA = ref[1], dirB = ref[2];
           computedStyle = getStyle(elem);

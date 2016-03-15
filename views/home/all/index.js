@@ -30,7 +30,7 @@
         };
 
         // Navigation Left
-        function GetNavLeft($scope, result) {
+        function GetRoomsLeft($scope, result) {
             $log.debug('start NavLeft getRooms');
             $scope.headerImage = $rootScope.headerImage;
             $log.debug($scope.headerImage);
@@ -44,19 +44,22 @@
 
             var value = 'sidebar_right';
             var type = 'room';
+            $log.debug('start NavRight: ' + value);
             HomeService.getHome(value, type).then(function () {
-                    $log.debug(type + ' : ' + value);
+                    $log.debug('Success getHome: ' + type + ' : ' + value);
+
                     var data = HomeService.data();
                     $scope.navRight = data.Results;
-                    $log.debug('$scope.navRight.length: ' + $scope.navRight.length);
+                    $log.debug('$scope.navRight.length by getHome: ' + $scope.navRight.length);
 
                 })
                 .catch(function (callback) {
                     $log.debug(callback);
 
-                    Jsonervice.getJson('sidebar_right').then(function () {
-                            var data = Jsonervice.data();
-                            $scope.navRight = data.Results; // response data
+                    Jsonervice.getJson('data/sidebar_right').then(function () {
+                            var data = Jsonervice.Results();
+                            $scope.navRight = data;
+                            $log.debug('$scope.navRight.length by getJson: ' + $scope.navRight.length);
                         })
                         .catch(function (callback) {
                             $log.debug(callback);
@@ -80,13 +83,16 @@
                 var deferred = $q.defer();
 
                 HomeService.getHome(value, $rootScope.type).then(function () {
-                        $log.debug('HomeAll: ' + $rootScope.type + ' : ' + value);
                         var data = HomeService.data();
-                        $scope.result.push(data.Results);
 
+                        if (data.Results.length > 0) {
+                            $log.debug('HomeAll add Widgets: ' + $rootScope.type + ' : ' + value);
+                            $log.debug('data.Results.length: ' + data.Results.length);
+                            $scope.result.push(data.Results);
+                            // promise successfully resolved
+                            deferred.resolve(data);
+                        }
 
-                        // promise successfully resolved
-                        deferred.resolve(data);
                     })
                     .catch(function (callback) {
                         $log.debug(callback);
@@ -110,13 +116,14 @@
             // execute all the promises and do something with the results
             $q.all(promises).then(
                 function (results) {
-                    $log.debug('$scope.result.length 2:' + $scope.result.length);
+                    $log.debug('Success promises results.length :' + results.length);
 
-                    GetNavLeft($scope, $scope.result);
+                    GetRoomsLeft($scope, $scope.result);
 
                 },
                 // error
                 function (response) {
+                    $log.debug('Failed: ' + response);
                 }
             );
         }

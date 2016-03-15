@@ -61,7 +61,7 @@
                 .catch(function (callback) {
                     $log.debug(callback);
 
-                    Jsonervice.getJson('navigationLeft').then(function () {
+                    Jsonervice.getJson('data/sidebar_left').then(function () {
                             var data = Jsonervice.data();
                             $scope.navLeft = data.resultNav; // response data
                         })
@@ -88,9 +88,7 @@
 
                 });
 
-        };
-
-
+        }
     }
 
     HomeController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice', 'HomeService'];

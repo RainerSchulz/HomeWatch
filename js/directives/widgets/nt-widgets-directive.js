@@ -391,14 +391,14 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndWidgetsCamera', function factory($log, Lightbox, HomeService) {
+    .directive('cndWidgetsCamera', function factory($log, Lightbox, HomeService, $timeout) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/camera/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
             model: {},
-
+            imageUrl: '',
             scope: {
                 ngKind: "@"
             },
@@ -412,6 +412,7 @@ angular.module('myApp')
                             'url': imageSrc
                         }
                     ];
+                    $scope.imageUrl = imageSrc;
                     $scope.items = [];
                     var values = presets.Value.split(',');
                     angular.forEach(values, function (value) {
@@ -426,14 +427,33 @@ angular.module('myApp')
                     Lightbox.presets = $scope.items;
 
                     $log.debug($scope.items);
-                    $log.debug(imageSrc);
+
+                    // Preset setzen
                     Lightbox.SetPreset = function (preset) {
 
-                        $log.debug('Start set presets ' + preset);
-                        $log.debug(imageName);
+                        $log.debug('Start set presets ' + preset + ' image: ' + imageName);
                         HomeService.setPreset(imageName, preset);
 
+                        $timeout(function () {
+                            Lightbox.imageUrl = $scope.imageUrl;
+                            $log.debug('start timeout imageUrl: ' + Lightbox.imageUrl);
+                            $scope.images = [
+                                {
+                                    'url': $scope.imageUrl
+                                }
+                            ];
+                            $scope.$apply();
+
+                        }, 3000);
+
                     };
+                    Lightbox.reload = function (imgUrl) {
+
+                        $log.debug('reload ' + imgUrl);
+                        Lightbox.imageUrl = imgUrl;
+
+                    };
+
                     Lightbox.openModal($scope.images, 0);
 
                 };
@@ -578,41 +598,6 @@ angular.module('myApp')
             link: function ($scope, element, attrs) {
                 $scope.model = JSON.parse($scope.ngKind);
                 //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-
-    .directive('cndWidgetsFavoriten', function factory($log, FavoritenService) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/favoriten/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngName: "@",
-                ngLike: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.name = $scope.ngName;
-
-                if (angular.isUndefined($scope.ngLike) || $scope.ngLike == '') {
-                    $scope.like = 'no';
-                }
-                else {
-                    $scope.like = $scope.ngLike;
-                }
-                $log.debug($scope.name + ' - ' + $scope.like);
-
-                $scope.setFavorite = function (name, like) {
-                    $log.debug('like = ' + like);
-                    FavoritenService.addFavorite(name, like);
-                    $scope.like = like == 'yes' ? 'no' : 'yes';
-                };
             }
         };
 
