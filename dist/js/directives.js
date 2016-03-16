@@ -2,7 +2,7 @@
  * Created by B026789 on 15.12.2015.
  */
 (function () {
-    'use strict';
+    'use strict'
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
 /**
@@ -29,6 +29,29 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     });
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
+
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
+                };
+
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+;
 /**
  * Created by B026789 on 16.12.2015.
  */
@@ -71,7 +94,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsRooms', function factory($compile, $log, $location, $window, RoomService) {
+    .directive('cndNavigationsRooms', function factory($compile, $log, $location, $window, RoomService, $rootScope) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left_home/index.html',
             replace: true,
@@ -92,8 +115,9 @@ angular.module('myApp')
                 $scope.headerImage = $scope.ngHeaderImage;
                 $log.debug('Start left home nav: ' + $scope.headerImage);
                 $log.debug($scope.rooms);
-                $scope.buttonClick = function (item) {
-                    alert('cndNavigationsLeftHome');
+                $scope.buttonClick = function (room) {
+                    alert('cndNavigationsLeftHome: ' + room);
+                    $rootScope.currentRoom = room;
 
                 }
             }
@@ -320,29 +344,6 @@ angular.module('myApp')
             }]);
 }());
 /**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
-
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-;
-/**
  * Created by B026789 on 18.12.2015.
  */
 (function () {
@@ -399,58 +400,6 @@ angular.module('myApp')
                     FavoritenService.addFavorite(name, isFavorit);
                     $scope.isFavorit = isFavorit == 'yes' ? 'no' : 'yes';
                 };
-            }
-        };
-
-        return directiveDefinitionObject;
-    });
-/**
- * Created by RSC on 16.01.2016.
- */
-angular.module('myApp')
-    .directive('cndWidgetsFields', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/fields/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsAll', function factory($log) {
-        var directiveDefinitionObject = {
-
-            templateUrl: 'templates/widgets/default/index.html',
-            replace: true,
-            transclude: true,
-
-            restrict: 'EA',
-            attributes: {},
-            internals: {},
-
-            scope: {
-                ngName: "@",
-                ngGenericDeviveType: "@",
-                ngAttributes: "@",
-                ngInternals: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.attributes = JSON.parse($scope.ngAttributes);
-                $scope.internals = JSON.parse($scope.ngInternals);
-                $scope.templateUrl= 'templates/widgets/'+ $scope.attributes.genericDeviceType + '/index.html';
-                $log.debug($scope.templateUrl);
             }
         };
 
@@ -1103,3 +1052,55 @@ angular.module('myApp')
     })
 
 ;
+/**
+ * Created by RSC on 16.01.2016.
+ */
+angular.module('myApp')
+    .directive('cndWidgetsFields', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/fields/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsAll', function factory($log) {
+        var directiveDefinitionObject = {
+
+            templateUrl: 'templates/widgets/all/index.html',
+            replace: true,
+            transclude: true,
+
+            restrict: 'EA',
+            attributes: {},
+            internals: {},
+
+            scope: {
+                ngName: "@",
+                ngGenericDeviveType: "@",
+                ngAttributes: "@",
+                ngInternals: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.attributes = JSON.parse($scope.ngAttributes);
+                $scope.internals = JSON.parse($scope.ngInternals);
+                $scope.templateUrl= 'templates/widgets/'+ $scope.attributes.genericDeviceType + '/index.html';
+                $log.debug($scope.templateUrl);
+            }
+        };
+
+        return directiveDefinitionObject;
+    });

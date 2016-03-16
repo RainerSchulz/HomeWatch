@@ -1,9 +1,16 @@
 .camera {
-    width: 30vw;
-    height: 35vh;
+    width: 40vw !important;
+    height: 35vh !important;
     margin-top: 19px;
 }
 
+.iframe12 {
+    width: 40vw !important;
+    height: 35vh !important;
+    /* margin-left: -148px; */
+    /* margin-top: 19px; */
+}
+    
 object {
     position: relative;
     float: left;

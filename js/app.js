@@ -1,17 +1,15 @@
 /**
  * Created by rsc on 18.01.2016.
  */
-var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToast', 'ngTouch', 'ngAnimate', 'ui.router', 'ngSanitize', 'notification', 'tooltip', 'bootstrapLightbox'])
+var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToast', 'ngTouch', 'ngAnimate','ngCookies' , 'ui.router', 'ngSanitize', 'notification', 'tooltip', 'bootstrapLightbox'])
     .constant('globalSettings', {
-        //url: http://login.th.homewatch-smarthome.de:8070/fhem?cmd=jsonlist2%20room=HomeWatch&XHR=1
-        //url: http://login.th.homewatch-smarthome.de:8070/fhem?cmd=jsonlist2%genericDeviceType=switch&XHR=1
         url: 'http://login.homewatch-smarthome.de',
-        localUrl: '',
         port: ":8130", //:8230
         cmd: "?cmd=jsonlist2%20",
         room: "room=", // Bungslow, Kamera, Alarm, Bad, Web, Rauchmelder usw.
         genericDeviceType: "genericDeviceType=", // switch_hm, light_hm, volume usw.
-        param: "&XHR=1"
+        param: "&XHR=1",
+        isDebug: true
     })
     // configure our routes
     .config(['$routeProvider', 'ngDialogProvider', function ($routeProvider, ngDialogProvider) {
@@ -144,14 +142,13 @@ myApp.value('user', {
 });
 myApp.value('connection', {
     internet: true,
-    url: "http://192.168.2.33:5000/webman/index.cgi",
-    local: "",
-    router: "",
-    onlineStatus: "",
+    onlineStatus: "URL_local",
     originUrl: "http://localhost:63342/",
     application: "/HomeWatch 2.0/",
-    applicationUrl: "",
-    fhemweb_url: "http://login.homewatch-smarthome.de:8130/fhem"
+    fhemweb_url: "http://login.homewatch-smarthome.de:8130/fhem",
+    URL_DC:"http://login.homewatch-smarthome.de:8139",
+    URL_dyndns: "http://rou-wan-002.camdata.de:8083",
+    URL_local: "http://10.221.251.126:8083"
 });
 
 

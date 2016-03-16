@@ -1,12 +1,68 @@
-<div>
+<div class="camera">
+ <div class="row text-center" style="margin-bottom: 0px;"> 
+    <div class=" col-md-offset-1 col-md-8"> 
+        <div class="row"> 
+            <!-- Kamera 1 links oben -->                                 
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
+                <div class="embed-responsive embed-responsive-4by3"> 
+                    <div id="fragment-1"> 
+                        <img class="iframe12" 
+                        	 ng-src="{{model.Internals.DC_SNAPURL}}"
+                        	 id="{{model.name}}" alt="Kamera nicht verfügbar" /> 
+                    </div>                                         
+                </div>                                     
+                <div class="center" data-pgc-edit data-pgc-repeat> 
+                    <button data-toggle="modal" class="boton_kame" data-target="#firstkamera1" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-fullscreen " style="  margin-right: 0px!important;font-size: 17px;"></span>
+                    </button>                                         
+                    <div data-type="circlemenu" class="cell circlemenu " data-direction="top-half" data-circle-radius="100" style="list-style: none; margin: 0px; padding: 0px; width: 40px;"> 
+                        <ul class="menu"> 
+                            <li> 
+                                <div class="small" data-type="symbol" id="room_wohnzimmer-1" data-on-background-color="#fff" data-off-background-color="#fff" data-on-color="#2a2a2a" data-off-color="#2a2a2a" data-background-icon="fa-circle"></div>                                                     
+                            </li>                                                 
+                            <li> 
+                                <div data-type="button" data-url-xhr="http://login.homewatch-smarthome.de:8232/cgi-bin/CGIProxy.fcgi?cmd=ptzGotoPresetPoint&name=standard&usr=Admin&pwd=1qayxsw23edc&" data-icon="fa-line-chart" data-off-background-color="#AF073A"></div>                                                     
+                                <div class="circlemenu_li" style="margin-top: -45px;color:#fff;">Standard</div>                                                     
+                            </li>                                                 
+                            <li> 
+                                <div data-type="button" data-url-xhr="http://login.homewatch-smarthome.de:8232/cgi-bin/CGIProxy.fcgi?cmd=ptzGotoPresetPoint&name=privat&usr=Admin&pwd=1qayxsw23edc&" data-icon="fa-line-chart" data-off-background-color="#AF073A"></div>                                                     
+                                <div class="circlemenu_li" style="margin-top: -45px;color:#fff;">Privat</div>                                                     
+                            </li>                                                 
+                            <li> 
+                                <div data-type="button" data-url-xhr="http://login.homewatch-smarthome.de:8232/cgi-bin/CGIProxy.fcgi?cmd=ptzGotoPresetPoint&name=alarm&usr=Admin&pwd=1qayxsw23edc&" data-icon="fa-line-chart" data-off-background-color="#AF073A"></div>                                                     
+                                <div class="circlemenu_li" style="margin-top: -45px;color:#fff;">Alarm</div>                                                     
+                            </li>                                                 
+                        </ul>                                             
+                    </div>                                         
+                </div>                                     
+            </div>                                 
+                   
+        </div>                             
+
+        <!-- end widget row -->                             
+    </div>                         
+    <!-- end widgets column -->                         
 
 
-    <object id="{{model.Name}}" class="camera" data="{{model.Internals.DC_SNAPURL}}" type="image/jpg">
-
-    </object>
-    <div class="row">
-                <span ng-if="model.Attributes.alias != null" data-type="label"
-                      class="cell">{{model.Attributes.alias}}</span>
-        <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
-    </div>
+ <div class="modal fade" id="{{model.name}}_1" tabindex="-1" role="dialog" aria-hidden="true"> 
+    <div class="modal-dialog"> 
+        <!-- IMAGES BIG FOR SEE IMAGES    -->         
+        <!-- Kamera 1 links oben line modal 1 -->         
+        <div class="col-xs-11 col-sm-12 col-md-12 col-lg-12"> 
+            <div class="col-xs-11 col-sm-12 col-md-12 col-lg-12 col-xs-offset-2 col-sm-offset-1 col-md-offset-1 col-lg-offset-6 topif"> 
+                <button type="button" class="close" data-dismiss="modal"> 
+                    <img src="images/close.png">
+                    <span class="sr-only">Close</span>
+                </button>                         
+                <!-- <h3 class="modal-title" id="lineModalLabel">Kamera 4</h3> -->                         
+            </div>                     
+            <div id="fragment-1-1"> 
+                <img class="iframe10" 
+                	 ng-src="{{model.Internals.DC_SNAPURL}}"
+             		 id="{{model.name}}" 
+             		 alt="{{model.Name}}">
+            </div>                     
+        </div>                 
+    </div>             
+</div>    
 </div>

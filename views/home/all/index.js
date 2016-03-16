@@ -8,6 +8,7 @@
         var self = this;
         $scope.header = $routeParams.name;
         $scope.location = '/Liegenschaften';
+        $rootScope.currentRoom = 'all';
         $log.debug($rootScope);
         $log.debug($routeParams);
 
@@ -22,6 +23,15 @@
 
             GetNavRight($scope, $http);
             GetFhemJsonFile($scope, $http);
+        };
+
+        $scope.myFilter = (roomName) => {
+          return (item) => {
+            if(rootName == 'all' || item.Attributes.room === roomName){
+               return true
+            }
+            return false
+          }
         };
 
         $scope.buttonNavClick = function (title) {

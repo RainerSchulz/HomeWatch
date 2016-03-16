@@ -335,3 +335,6 @@ select option {
 
 }
 
+.fa-stack{
+    display: block;
+}
