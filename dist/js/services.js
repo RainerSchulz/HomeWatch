@@ -6,166 +6,6 @@
     angular.module('myApp.ng.services', ['ngProgressLite']);
 }());
 /**
- * Created by Fabrice on 25.01.2016.
- */
-myApp.service('CacheService', function ($log, $http, $cacheFactory) {
-
-    var myCache = $cacheFactory("myServiceCache");
-    $log.log(myCache.info());
-
-    return {
-
-        jsonCache: function (id, responder, name) {
-
-            var params = {id: id};
-
-            var config = {
-                path: '/' + name,
-                cache: myCache,
-                method: 'GET',
-                params: params
-            };
-
-            $http(config)
-                .success(function (data, status, headers, config) {
-                    $log.log(myCache.info());
-
-                    if (responder && responder.result && typeof responder.result == "function")
-                        responder.result(data);
-                })
-                .error(function (data, status, headers, config) {
-                    if (responder && responder.fault && typeof responder.fault == "function")
-                        responder.fault(data, status, headers, config);
-
-
-                });
-        }
-    }
-});
-/**
- * Created by Rainer on 01.03.2016.
- */
-myApp.service('MetaService', function() {
-    var title = 'fhemweb_url';
-    var metaDescription = 'http:///login.homewatch-smarthome.de:8130/fhem';
-    var metaKeywords = 'fhemweb_url';
-    return {
-        set: function(newTitle, newMetaDescription, newKeywords) {
-            metaKeywords = newKeywords;
-            metaDescription = newMetaDescription;
-            title = newTitle;
-        },
-        metaTitle: function(){ return title; },
-        metaDescription: function() { return metaDescription; },
-        metaKeywords: function() { return metaKeywords; }
-    }
-});
-/**
- * Created by Fabrice on 26.01.2016.
- */
-myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $rootScope) {
-    var onlineStatus = {};
-
-    onlineStatus.onLine = $window.navigator.onLine;
-
-    onlineStatus.isOnline = function () {
-        return onlineStatus.onLine;
-    };
-
-    $window.addEventListener("online", function () {
-        onlineStatus.onLine = true;
-        $rootScope.$digest();
-    }, true);
-
-    $window.addEventListener("offline", function () {
-        onlineStatus.onLine = false;
-        $rootScope.$digest();
-    }, true);
-
-    return onlineStatus;
-}]);
-
-myApp.service('Internet', function ($http, connection) {
-    this.IsOk = function () {
-        return $http({
-            method: 'HEAD',
-            url: connection.url
-        })
-            .then(function (response) {
-                var status = response.status;
-                return status >= 200 && status < 300 || status === 304;
-            });
-    };
-
-});
-
-/*
- var OnOffService = angular.module('myApp', [],
- function ($httpProvider) {
-
- var interceptor = ['$rootScope', '$q', function ($rootScope, $q) {
-
- function success(response) {
- return response;
- }
-
- function error(response) {
- var status = response.status;
-
- if ((status >= 400) && (status < 500)) {
- $rootScope.broadcast("AuthError", status);
- return;
- }
-
- if ((status >= 500) && (status < 600)) {
- $rootScope.broadcast("ServerError", status);
- return;
- }
-
-
- return $q.reject(response);
-
- }
-
- return function (promise) {
- return promise.then(success, error);
- }
-
- }];
- $httpProvider.responseInterceptors.push(interceptor);
- })
- */
-
-/**
- * Created by B026789 on 12.01.2016.
- */
-var service = angular.module('app.service', [])
-    .service('DataService', function ($log, $http) {
-        return {
-            getWorkflow: function (id, responder) {
-                var config = {
-                    url: 'json/workflow.json',
-                    cache: true,
-                    method: 'GET'
-                };
-
-                $http(config)
-                    .success(function (data, status, headers, config) {
-                        if (responder && responder.result && typeof responder.result == "function")
-                            responder.result(data);
-
-                    })
-                    .error(function (data, status, headers, config) {
-                        if (responder && responder.fault && typeof responder.fault == "function")
-                            responder.fault(data, status, headers, config);
-
-                    })
-
-            }
-        }
-
-    }());
-/**
  * Created by RSC on 18.01.2016.
  */
 
@@ -456,6 +296,190 @@ myApp.service('FavoritenService', function ($http, notification, $log, $q, HomeS
 });
 
 /**
+ * Created by Fabrice on 25.01.2016.
+ */
+myApp.service('CacheService', function ($log, $http, $cacheFactory) {
+
+    var myCache = $cacheFactory("myServiceCache");
+    $log.log(myCache.info());
+
+    return {
+
+        jsonCache: function (id, responder, name) {
+
+            var params = {id: id};
+
+            var config = {
+                path: '/' + name,
+                cache: myCache,
+                method: 'GET',
+                params: params
+            };
+
+            $http(config)
+                .success(function (data, status, headers, config) {
+                    $log.log(myCache.info());
+
+                    if (responder && responder.result && typeof responder.result == "function")
+                        responder.result(data);
+                })
+                .error(function (data, status, headers, config) {
+                    if (responder && responder.fault && typeof responder.fault == "function")
+                        responder.fault(data, status, headers, config);
+
+
+                });
+        }
+    }
+});
+/**
+ * Created by Rainer on 01.03.2016.
+ */
+myApp.service('MetaService', function() {
+    var title = 'fhemweb_url';
+    var metaDescription = 'http:///login.homewatch-smarthome.de:8130/fhem';
+    var metaKeywords = 'fhemweb_url';
+    return {
+        set: function(newTitle, newMetaDescription, newKeywords) {
+            metaKeywords = newKeywords;
+            metaDescription = newMetaDescription;
+            title = newTitle;
+        },
+        metaTitle: function(){ return title; },
+        metaDescription: function() { return metaDescription; },
+        metaKeywords: function() { return metaKeywords; }
+    }
+});
+/**
+ * Created by Fabrice on 26.01.2016.
+ */
+myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $rootScope) {
+    var onlineStatus = {};
+
+    onlineStatus.onLine = $window.navigator.onLine;
+
+    onlineStatus.isOnline = function () {
+        return onlineStatus.onLine;
+    };
+
+    $window.addEventListener("online", function () {
+        onlineStatus.onLine = true;
+        $rootScope.$digest();
+    }, true);
+
+    $window.addEventListener("offline", function () {
+        onlineStatus.onLine = false;
+        $rootScope.$digest();
+    }, true);
+
+    return onlineStatus;
+}]);
+
+myApp.service('Internet', function ($http, connection) {
+    this.IsOk = function () {
+        return $http({
+            method: 'HEAD',
+            url: connection.url
+        })
+            .then(function (response) {
+                var status = response.status;
+                return status >= 200 && status < 300 || status === 304;
+            });
+    };
+
+});
+
+/*
+ var OnOffService = angular.module('myApp', [],
+ function ($httpProvider) {
+
+ var interceptor = ['$rootScope', '$q', function ($rootScope, $q) {
+
+ function success(response) {
+ return response;
+ }
+
+ function error(response) {
+ var status = response.status;
+
+ if ((status >= 400) && (status < 500)) {
+ $rootScope.broadcast("AuthError", status);
+ return;
+ }
+
+ if ((status >= 500) && (status < 600)) {
+ $rootScope.broadcast("ServerError", status);
+ return;
+ }
+
+
+ return $q.reject(response);
+
+ }
+
+ return function (promise) {
+ return promise.then(success, error);
+ }
+
+ }];
+ $httpProvider.responseInterceptors.push(interceptor);
+ })
+ */
+
+/**
+ * Created by B026789 on 12.01.2016.
+ */
+var service = angular.module('app.service', [])
+    .service('DataService', function ($log, $http) {
+        return {
+            getWorkflow: function (id, responder) {
+                var config = {
+                    url: 'json/workflow.json',
+                    cache: true,
+                    method: 'GET'
+                };
+
+                $http(config)
+                    .success(function (data, status, headers, config) {
+                        if (responder && responder.result && typeof responder.result == "function")
+                            responder.result(data);
+
+                    })
+                    .error(function (data, status, headers, config) {
+                        if (responder && responder.fault && typeof responder.fault == "function")
+                            responder.fault(data, status, headers, config);
+
+                    })
+
+            }
+        }
+
+    }());
+/**
+ * Created by B026789 on 13.01.2016.
+ */
+myApp.factory('UserService', function ($http, $q) {
+    var url = 'http://localhost:3839/api/lebenprivat/getlebenprivat/';
+    var deffered = $q.defer();
+    var data = [];
+    var UserService = {};
+
+    UserService.async = function (id, index) {
+        $http.get(url + id + '/' + index)
+            .success(function (d) {
+                data = d;
+                console.log(d);
+                deffered.resolve();
+            });
+        return deffered.promise;
+    };
+    UserService.data = function () {
+        return data;
+    };
+
+    return UserService;
+});
+/**
  * Created by B026789 on 14.12.2015.
  */
 /*
@@ -536,30 +560,6 @@ myApp.service('Page', function ($rootScope) {
 
 
     }
-});
-/**
- * Created by B026789 on 13.01.2016.
- */
-myApp.factory('UserService', function ($http, $q) {
-    var url = 'http://localhost:3839/api/lebenprivat/getlebenprivat/';
-    var deffered = $q.defer();
-    var data = [];
-    var UserService = {};
-
-    UserService.async = function (id, index) {
-        $http.get(url + id + '/' + index)
-            .success(function (d) {
-                data = d;
-                console.log(d);
-                deffered.resolve();
-            });
-        return deffered.promise;
-    };
-    UserService.data = function () {
-        return data;
-    };
-
-    return UserService;
 });
 /*
     MyApp.factory 'utils', [

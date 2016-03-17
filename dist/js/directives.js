@@ -2,7 +2,7 @@
  * Created by B026789 on 15.12.2015.
  */
 (function () {
-    'use strict';
+    'use strict'
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
 /**
@@ -28,6 +28,30 @@ angular.module('myApp')
         return directiveDefinitionObject;
     })
 ;
+/**
+ * Created by RSC on 16.01.2016.
+ */
+angular.module('myApp')
+    .directive('cndiFrame', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/iframe/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    });
 /**
  * Created by B026789 on 16.12.2015.
  */
@@ -200,30 +224,6 @@ angular.module('myApp')
 
 ;
 /**
- * Created by RSC on 16.01.2016.
- */
-angular.module('myApp')
-    .directive('cndiFrame', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/iframe/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    });
-/**
  * Created by B026789 on 18.12.2015.
  */
 (function(){
@@ -343,6 +343,30 @@ angular.module('myApp')
                     '</div>'
                 };
             }]);
+}());
+/**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
+    var dirTooltip = angular.module('tooltip', [])
+        .directive('tooltip', function factory($log) {
+            return {
+                restrict: 'A',
+
+                link: function (scope, element, attrs) {
+
+                    $(element).hover(function () {
+                        // on mouseenter
+                        $(element).tooltip('show');
+                    }, function () {
+                        // on mouseleave
+                        $(element).tooltip('hide');
+                    });
+                }
+            };
+        });
 }());
 /**
  * Created by RSC on 16.01.2016.
@@ -668,7 +692,7 @@ angular.module('myApp')
     })
     .directive('cndWidgetsMotionHm', function factory($log) {
         var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/motion_hm.json/index.html',
+            templateUrl: 'templates/widgets/motion_hm/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
@@ -1068,8 +1092,8 @@ angular.module('myApp')
             },
 
             link: function ($scope, element, attrs) {
-                $scope.attributes = JSON.parse($scope.ngAttributes);
-                $scope.presets = JSON.parse($scope.ngPresets);
+                $scope.Attributes = JSON.parse($scope.ngAttributes);
+                $scope.Presets = JSON.parse($scope.ngPresets);
 
 
                 $scope.openModalImage = function (imageSrc, presets, imageName) {
@@ -1264,27 +1288,3 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     });
-/**
- * Created by B026789 on 18.12.2015.
- */
-(function () {
-    "use strict";
-
-    var dirTooltip = angular.module('tooltip', [])
-        .directive('tooltip', function factory($log) {
-            return {
-                restrict: 'A',
-
-                link: function (scope, element, attrs) {
-
-                    $(element).hover(function () {
-                        // on mouseenter
-                        $(element).tooltip('show');
-                    }, function () {
-                        // on mouseleave
-                        $(element).tooltip('hide');
-                    });
-                }
-            };
-        });
-}());
