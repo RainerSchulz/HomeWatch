@@ -9,7 +9,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
         room: "room=", // Bungslow, Kamera, Alarm, Bad, Web, Rauchmelder usw.
         genericDeviceType: "genericDeviceType=", // switch_hm, light_hm, volume usw.
         param: "&XHR=1",
-        isDebug: true
+        isDebug: false
     })
     // configure our routes
     .config(['$routeProvider', 'ngDialogProvider', function ($routeProvider, ngDialogProvider) {

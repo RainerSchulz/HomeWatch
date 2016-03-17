@@ -154,7 +154,7 @@
                 function (results) {
                     $log.debug('Success promises results.length :' + results.length);
 
-                    GetRoomsLeft($scope, result);
+                    GetRoomsLeft($scope, results);
 
                 },
                 // error

@@ -5,23 +5,25 @@
 
 (function () {
     'use strict';
-    function DemowandController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('DemowandController startet');
+    function AgbController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('AgbController startet');
         var self = this;
 
 // create a message to display in our view
-        $scope.header = 'Demowand';
+        $scope.header = 'AGB';
         $scope.location = '/';
+
+        $scope.AgbButton = [];
 
         // set Page Title
         Page.setTitle($scope.header);
     }
 
-    DemowandController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+    AgbController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
 
 
     angular.module('myApp')
-        .controller('DemowandController', DemowandController);
+        .controller('AgbController', AgbController);
 }());
 /**
  * Created by Rainer on 09.01.2016.
@@ -58,7 +60,7 @@
 
                 });
 
-        };
+        }
     }
 
     ClubmitgliedschaftController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
@@ -99,25 +101,48 @@
 
 (function () {
     'use strict';
-    function AgbController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('AgbController startet');
+    function DemowandController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('DemowandController startet');
         var self = this;
 
 // create a message to display in our view
-        $scope.header = 'AGB';
+        $scope.header = 'Demowand';
         $scope.location = '/';
-
-        $scope.AgbButton = [];
 
         // set Page Title
         Page.setTitle($scope.header);
     }
 
-    AgbController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+    DemowandController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
 
 
     angular.module('myApp')
-        .controller('AgbController', AgbController);
+        .controller('DemowandController', DemowandController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
+    function DigitalerController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('DigitalerController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'Digitaler Hausmeister';
+        $scope.location = '/';
+
+        // set Page Title
+        Page.setTitle($scope.header);
+    }
+
+    DigitalerController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+
+
+    angular.module('myApp')
+        .controller('DigitalerController', DigitalerController);
 }());
 /**
  * Created by B026789 on 03.12.2015.
@@ -252,150 +277,6 @@
 
 (function () {
     'use strict';
-    function DigitalerController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('DigitalerController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'Digitaler Hausmeister';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-    }
-
-    DigitalerController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
-
-
-    angular.module('myApp')
-        .controller('DigitalerController', DigitalerController);
-}());
-/**
- * Created by B026789 on 03.12.2015.
- */
-(function () {
-    'use strict';
-    function LogonController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug( 'LogonController gestartet!');
-
-        var self = this;
-
-// create a message to display in our view
-        $scope.company = "CAMDATA";
-        $scope.showModal = false;
-
-        $scope.LogonButton = [];
-
-        // set Page Title
-        Page.setTitle("");
-
-        $scope.init = function () {
-            //LogonService.IsOnline
-            //GetJsonFile($scope, $http);
-        };
-
-        $scope.startLiegenschaften = function () {
-            var name = "/Liegenschaften";
-            $location.path(name);
-        };
-
-        function GetJsonFile($scope, $http) {
-            $http({
-                method: 'POST',
-                url: 'json/LogonButton.json'
-            }).success(function (data) {
-                    $scope.LogonButton = data.LogonButton; // response data
-                })
-                .error(function (data, status) {
-                    // log error
-                    console.log('error: ' + status);
-                });
-        }
-
-    }
-
-    LogonController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log','Page'];
-
-
-    angular.module('myApp')
-        .controller('LogonController', LogonController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
-    function SecureController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
-        $log.debug('SecureController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'Secure';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-
-        $scope.init = function () {
-            GetNav($scope, $http);
-        };
-
-        function GetNav($scope, $http) {
-            Jsonervice.getJson('secureNav').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.navButton = data.resultNav; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-    }
-
-    SecureController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
-
-
-    angular.module('myApp')
-        .controller('SecureController', SecureController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
-    function ShopController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('ShopController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'Shop';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-    }
-
-    ShopController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
-
-
-    angular.module('myApp')
-        .controller('ShopController', ShopController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
     function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, Jsonervice, connection, MetaService, HomeService) {
         $log.debug('LiegenschaftenController startet');
         var self = this;
@@ -513,6 +394,269 @@
         .controller('LiegenschaftenController', LiegenschaftenController);
 }());
 /**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
+    function MeineDatenController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
+        $log.debug('MeineDatenController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'MeineDaten';
+        $scope.location = '/';
+
+        // set Page Title
+        Page.setTitle($scope.header);
+
+        $scope.result = [];
+        $scope.navButton = [];
+
+        $scope.init = function () {
+            GetNav($scope, $http);
+            GetJsonFile($scope, $http);
+
+        };
+
+        function GetNav($scope, $http) {
+            Jsonervice.getJson('meineDatenNav').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.navButton = data.resultNav; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        }
+        function GetJsonFile($scope, $http) {
+            Jsonervice.getJson('meineDaten').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.result = data.result[0]; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        }
+    }
+
+    MeineDatenController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
+
+
+    angular.module('myApp')
+        .controller('MeineDatenController', MeineDatenController);
+}());
+/**
+ * Created by B026789 on 03.12.2015.
+ */
+(function () {
+    'use strict';
+    function LogonController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug( 'LogonController gestartet!');
+
+        var self = this;
+
+// create a message to display in our view
+        $scope.company = "CAMDATA";
+        $scope.showModal = false;
+
+        $scope.LogonButton = [];
+
+        // set Page Title
+        Page.setTitle("");
+
+        $scope.init = function () {
+            //LogonService.IsOnline
+            //GetJsonFile($scope, $http);
+        };
+
+        $scope.startLiegenschaften = function () {
+            var name = "/Liegenschaften";
+            $location.path(name);
+        };
+
+        function GetJsonFile($scope, $http) {
+            $http({
+                method: 'POST',
+                url: 'json/LogonButton.json'
+            }).success(function (data) {
+                    $scope.LogonButton = data.LogonButton; // response data
+                })
+                .error(function (data, status) {
+                    // log error
+                    console.log('error: ' + status);
+                });
+        }
+
+    }
+
+    LogonController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log','Page'];
+
+
+    angular.module('myApp')
+        .controller('LogonController', LogonController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
+    function SecureController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
+        $log.debug('SecureController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'Secure';
+        $scope.location = '/';
+
+        // set Page Title
+        Page.setTitle($scope.header);
+
+        $scope.init = function () {
+            GetNav($scope, $http);
+        };
+
+        function GetNav($scope, $http) {
+            Jsonervice.getJson('secureNav').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.navButton = data.resultNav; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        }
+    }
+
+    SecureController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
+
+
+    angular.module('myApp')
+        .controller('SecureController', SecureController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
+    function ShopController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('ShopController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'Shop';
+        $scope.location = '/';
+
+        // set Page Title
+        Page.setTitle($scope.header);
+    }
+
+    ShopController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+
+
+    angular.module('myApp')
+        .controller('ShopController', ShopController);
+}());
+/**
+ * Created by B026789 on 03.12.2015.
+ */
+(function () {
+    'use strict';
+    function VerwaltungController($scope, $location, $window, $rootScope, $http, $log, $routeParams, Page, Jsonervice) {
+        $log.debug('VerwaltungController startet');
+        $log.debug($routeParams);
+        $log.debug($rootScope);
+        var self = this;
+        $scope.header = 'Verwaltung';
+        $scope.location = '/Liegenschaften';
+
+        $scope.result = [];
+        $scope.navButton = [];
+
+        // set Page Title
+        Page.setTitle($scope.header);
+
+        $scope.init = function () {
+            GetNav($scope, $http);
+            GetJsonFile($scope, $http);
+        };
+
+        $scope.buttonClick = function (item) {
+            $log.debug('nav-click: ');
+            $log.debug(item);
+
+            $rootScope.alias = item.alias;
+            $rootScope.name = item.name;
+            $rootScope.type = item.type;
+            var path = $scope.location + '/' + $routeParams.id + '/home' + item.buttonClick;
+            $location.path(path);
+        };
+
+        $scope.defaultClick = function (item) {
+            $log.debug('Click: ' + item.url);
+            if (item.target != '') {
+               // $window.location.href = item.url;
+                $window.open(item.url, item.target)
+            } else {
+                $location.path(item.url);
+            }
+        };
+
+        function GetNav($scope, $http) {
+            Jsonervice.getJson('verwaltungNav').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.navButton = data.verwaltungNav; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        }
+        function GetJsonFile($scope, $http) {
+            Jsonervice.getJson('verwaltung').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.result = data.result; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        }
+    }
+
+    VerwaltungController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice'];
+
+
+    angular.module('myApp')
+        .controller('VerwaltungController', VerwaltungController);
+}());
+/**
  * Created by B026789 on 03.12.2015.
  */
 (function () {
@@ -590,70 +734,6 @@
     angular.module('myApp')
         .controller('UserController', UserController);
 
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
-    function MeineDatenController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
-        $log.debug('MeineDatenController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'MeineDaten';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-
-        $scope.result = [];
-        $scope.navButton = [];
-
-        $scope.init = function () {
-            GetNav($scope, $http);
-            GetJsonFile($scope, $http);
-
-        };
-
-        function GetNav($scope, $http) {
-            Jsonervice.getJson('meineDatenNav').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.navButton = data.resultNav; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-
-        function GetJsonFile($scope, $http) {
-            Jsonervice.getJson('meineDaten').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.result = data.result[0]; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-    }
-
-    MeineDatenController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
-
-
-    angular.module('myApp')
-        .controller('MeineDatenController', MeineDatenController);
 }());
 /**
  * Created by B026789 on 03.12.2015.
@@ -745,9 +825,7 @@
 
                 });
 
-        };
-
-
+        }
     }
 
     WidgetsController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice', 'WidgetsService'];
@@ -755,91 +833,6 @@
 
     angular.module('myApp')
         .controller('WidgetsController', WidgetsController);
-}());
-/**
- * Created by B026789 on 03.12.2015.
- */
-(function () {
-    'use strict';
-    function VerwaltungController($scope, $location, $window, $rootScope, $http, $log, $routeParams, Page, Jsonervice) {
-        $log.debug('VerwaltungController startet');
-        $log.debug($routeParams);
-        $log.debug($rootScope);
-        var self = this;
-        $scope.header = 'Verwaltung';
-        $scope.location = '/Liegenschaften';
-
-        $scope.result = [];
-        $scope.navButton = [];
-
-        // set Page Title
-        Page.setTitle($scope.header);
-
-        $scope.init = function () {
-            GetNav($scope, $http);
-            GetJsonFile($scope, $http);
-        };
-
-        $scope.buttonClick = function (item) {
-            $log.debug('nav-click: ');
-            $log.debug(item);
-
-            $rootScope.alias = item.alias;
-            $rootScope.name = item.name;
-            $rootScope.type = item.type;
-            var path = $scope.location + '/' + $routeParams.id + '/home' + item.buttonClick;
-            $location.path(path);
-        };
-
-        $scope.defaultClick = function (item) {
-            $log.debug('Click: ' + item.url);
-            if (item.target != '') {
-               // $window.location.href = item.url;
-                $window.open(item.url, item.target)
-            } else {
-                $location.path(item.url);
-            }
-        };
-
-        function GetNav($scope, $http) {
-            Jsonervice.getJson('verwaltungNav').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.navButton = data.verwaltungNav; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-
-
-        function GetJsonFile($scope, $http) {
-            Jsonervice.getJson('verwaltung').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.result = data.result; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-
-
-    }
-
-    VerwaltungController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice'];
-
-
-    angular.module('myApp')
-        .controller('VerwaltungController', VerwaltungController);
 }());
 /**
  * Created by Rainer on 09.01.2016.
@@ -997,7 +990,7 @@
                 function (results) {
                     $log.debug('Success promises results.length :' + results.length);
 
-                    GetRoomsLeft($scope, result);
+                    GetRoomsLeft($scope, results);
 
                 },
                 // error

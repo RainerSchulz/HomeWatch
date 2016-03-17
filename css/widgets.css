@@ -10,7 +10,7 @@
     /* margin-left: -148px; */
     /* margin-top: 19px; */
 }
-    
+
 object {
     position: relative;
     float: left;
@@ -82,10 +82,6 @@ img {
 
 }
 
-.favoriten {
-
-}
-
 .site {
 
 }
@@ -127,6 +123,15 @@ a.touch-moveable.pull-right.hidden-xs.visible-sm.visible-md.visible-lg, .glyphic
 
 .fav_light {
     z-index: 9 !important;
+}
+
+.favoriten {
+
+}
+
+.fav_vol {
+    margin-left: 30px;
+    margin-top: 15px;
 }
 
 .col-xs-1_light {
