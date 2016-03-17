@@ -84,8 +84,9 @@ angular.module('myApp')
             },
 
             link: function ($scope, element, attrs) {
+                $log.debug('Start NavigationsRight');
                 if ($scope.ngNavRight != '') {
-                    $log.debug('Start NavigationsRight');
+
                     $scope.navRight = JSON.parse($scope.ngNavRight);
                 }
 

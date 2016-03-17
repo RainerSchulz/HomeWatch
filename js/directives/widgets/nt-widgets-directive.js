@@ -14,9 +14,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -34,9 +38,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -55,9 +63,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -74,10 +86,15 @@ angular.module('myApp')
             scope: {
                 ngKind: "@"
             },
-
             link: function ($scope, element, attrs) {
                 $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+                initWidget(element, $scope.model.Name);
+                /*pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }*/
             }
         };
 
@@ -96,9 +113,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -116,9 +137,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -137,9 +162,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -157,9 +186,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -178,9 +211,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -197,10 +234,13 @@ angular.module('myApp')
             scope: {
                 ngKind: "@"
             },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -219,9 +259,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -239,9 +283,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -260,9 +308,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -280,9 +332,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -301,9 +357,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -321,9 +381,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -342,9 +406,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -362,9 +430,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -383,80 +455,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsCamera', function factory($log, Lightbox, HomeService, $timeout) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/camera/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-            imageUrl: '',
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-
-                $scope.openModalImage = function (imageSrc, presets, imageName) {
-                    $scope.images = [
-                        {
-                            'url': imageSrc
-                        }
-                    ];
-                    $scope.imageUrl = imageSrc;
-                    $scope.items = [];
-                    var values = presets.Value.split(',');
-                    angular.forEach(values, function (value) {
-                        $scope.items.push({
-                            preset: value,
-                            name: imageName
-                        });
-
-                    });
-                    Lightbox.imageName = imageName;
-                    Lightbox.value = '';
-                    Lightbox.presets = $scope.items;
-
-                    $log.debug($scope.items);
-
-                    // Preset setzen
-                    Lightbox.SetPreset = function (preset) {
-
-                        $log.debug('Start set presets ' + preset + ' image: ' + imageName);
-                        HomeService.setPreset(imageName, preset);
-
-                        $timeout(function () {
-                            Lightbox.imageUrl = $scope.imageUrl;
-                            $log.debug('start timeout imageUrl: ' + Lightbox.imageUrl);
-                            $scope.images = [
-                                {
-                                    'url': $scope.imageUrl
-                                }
-                            ];
-                            $scope.$apply();
-
-                        }, 3000);
-
-                    };
-                    Lightbox.reload = function (imgUrl) {
-
-                        $log.debug('reload ' + imgUrl);
-                        Lightbox.imageUrl = imgUrl;
-
-                    };
-
-                    Lightbox.openModal($scope.images, 0);
-
-                };
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -475,9 +480,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -495,9 +504,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -515,9 +528,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -535,9 +552,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -555,9 +576,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -575,9 +600,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -595,14 +624,43 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
         return directiveDefinitionObject;
     })
+    .directive('cndWidgetsSymbol', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/symbol/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+
     .directive('cndWidgetsSite', function factory($log) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/site/index.html',

@@ -2,32 +2,9 @@
  * Created by B026789 on 15.12.2015.
  */
 (function () {
-    'use strict';
+    'use strict'
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
-
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-;
 /**
  * Created by RSC on 16.01.2016.
  */
@@ -138,8 +115,9 @@ angular.module('myApp')
             },
 
             link: function ($scope, element, attrs) {
+                $log.debug('Start NavigationsRight');
                 if ($scope.ngNavRight != '') {
-                    $log.debug('Start NavigationsRight');
+
                     $scope.navRight = JSON.parse($scope.ngNavRight);
                 }
 
@@ -221,6 +199,29 @@ angular.module('myApp')
         return directiveDefinitionObject;
     })
 
+;
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
+
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
+                };
+
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
 ;
 /**
  * Created by B026789 on 18.12.2015.
@@ -342,6 +343,30 @@ angular.module('myApp')
                     '</div>'
                 };
             }]);
+}());
+/**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
+    var dirTooltip = angular.module('tooltip', [])
+        .directive('tooltip', function factory($log) {
+            return {
+                restrict: 'A',
+
+                link: function (scope, element, attrs) {
+
+                    $(element).hover(function () {
+                        // on mouseenter
+                        $(element).tooltip('show');
+                    }, function () {
+                        // on mouseleave
+                        $(element).tooltip('hide');
+                    });
+                }
+            };
+        });
 }());
 /**
  * Created by RSC on 16.01.2016.
@@ -1058,6 +1083,69 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
+            attributes: {},
+            imageUrl: '',
+            scope: {
+                ngName: "@",
+                ngAttributes: "@",
+                ngPresets: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.attributes = JSON.parse($scope.ngAttributes);
+                $scope.presets = JSON.parse($scope.ngPresets);
+
+
+                $scope.openModalImage = function (imageSrc, presets, imageName) {
+                    $scope.images = [
+                        {
+                            'url': imageSrc
+                        }
+                    ];
+                    $scope.imageUrl = imageSrc;
+                    $scope.items = [];
+                    var values = presets.Value.split(',');
+                    angular.forEach(values, function (value) {
+                        $scope.items.push({
+                            preset: value,
+                            name: imageName
+                        });
+
+                    });
+                    Lightbox.imageName = imageName;
+                    Lightbox.value = '';
+                    Lightbox.presets = $scope.items;
+
+                    $log.debug($scope.items);
+
+                    // Preset setzen
+                    Lightbox.SetPreset = function (preset) {
+
+                        $log.debug('Start set presets ' + preset + ' image: ' + imageName);
+                        HomeService.setPreset(imageName, preset);
+
+                    };
+                    Lightbox.reload = function (imgUrl) {
+
+                        $log.debug('reload ' + imgUrl);
+                        Lightbox.imageUrl = imgUrl;
+
+                    };
+
+                    Lightbox.openModal($scope.images, 0);
+
+                };
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsCamera_alt', function factory($log, Lightbox, HomeService, $timeout) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/camera/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
             model: {},
             imageUrl: '',
             scope: {
@@ -1095,18 +1183,6 @@ angular.module('myApp')
                         $log.debug('Start set presets ' + preset + ' image: ' + imageName);
                         HomeService.setPreset(imageName, preset);
 
-                        $timeout(function () {
-                            Lightbox.imageUrl = $scope.imageUrl;
-                            $log.debug('start timeout imageUrl: ' + Lightbox.imageUrl);
-                            $scope.images = [
-                                {
-                                    'url': $scope.imageUrl
-                                }
-                            ];
-                            $scope.$apply();
-
-                        }, 3000);
-
                     };
                     Lightbox.reload = function (imgUrl) {
 
@@ -1143,9 +1219,9 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndWidgetsAll', function factory($log, $compile, $templateRequest) {
+    .directive('cndWidgetsAll', function factory($log, $compile) {
         var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/light_hm/index.html',
+
             restrict: 'E',
             replace: true,
             attributes: {},
@@ -1153,16 +1229,20 @@ angular.module('myApp')
 
             scope: {
                 ngName: "@",
-                ngGenericDeviveType: "@",
                 ngAttributes: "@",
                 ngInternals: "@"
             },
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.attributes = JSON.parse($scope.ngAttributes);
+                    $scope.internals = JSON.parse($scope.ngInternals);
+                    $scope.genericDeviceType = $scope.attributes.genericDeviceType;
+
+                    element.append($compile('<ng-include src="templates/widgets/' + $scope.ngGenericDeviveType + '/index.html"></ng-include>')(scope));
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -1208,27 +1288,3 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     });
-/**
- * Created by B026789 on 18.12.2015.
- */
-(function () {
-    "use strict";
-
-    var dirTooltip = angular.module('tooltip', [])
-        .directive('tooltip', function factory($log) {
-            return {
-                restrict: 'A',
-
-                link: function (scope, element, attrs) {
-
-                    $(element).hover(function () {
-                        // on mouseenter
-                        $(element).tooltip('show');
-                    }, function () {
-                        // on mouseleave
-                        $(element).tooltip('hide');
-                    });
-                }
-            };
-        });
-}());

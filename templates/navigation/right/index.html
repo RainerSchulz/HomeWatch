@@ -1,10 +1,11 @@
 <div class="row  text-center padiimagns">
     <div class="col-xs-offset-2 col-sm-offset-1 ">
-        <div class=" col-xs-10 col-sm-11 hidden-lg hidden-md   ">
+        <div class=" col-xs-10 col-sm-11">
             <ul class="list-inline logo-list ">
                 <li ng-repeat="item in navRight">
+                    ##{{item.Attributes.icon}}##
                     <a ng-href="{{item.Internals.LINK}}" class="touch-moveable">
-                        <div class="hoversizesm" ng-switch="item.Attributes.icon">>
+                        <div class="hoversizesm" ng-switch="item.Attributes.icon">
                             <img ng-switch-when="shop" ng-src="images/mini_einkaufswagen.png"
                                  class="img-responsive img-center" alt="{{item.Attributes.alias}}">
                             <img ng-switch-when="hausmeister" ng-src="images/mini_tool.png"
