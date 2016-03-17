@@ -1,0 +1,26 @@
+{
+  "Arg":"genericDeviceType=motion_hm",
+  "Results": [
+  {
+    "Name":"Bewegungsmelder_01",
+    "PossibleSets":"on:noArg off:noArg  ",
+    "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long readingList setList event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,energy_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon ,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
+    "Internals": {
+      "NAME": "Bewegungsmelder_01",
+      "NR": "158",
+      "STATE": "off",
+      "TYPE": "dummy"
+    },
+    "Readings": {      "state": { "Value":"off", "Time":"2016-03-17 22:41:29" }    },
+    "Attributes": {
+      "alarmDevice": "Sensor",
+      "alarmSettings": "|Bewegungsmelder_01:on|Bewegung 1 Ausgelöst|on",
+      "alias": "Bewegungsmelder",
+      "eventMap": "on off",
+      "genericDeviceType": "motion_hm",
+      "group": "TuerSensoren",
+      "room": "Bewegungsmelder"
+    }
+  }  ],
+  "totalResultsReturned":1
+}

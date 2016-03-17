@@ -6,30 +6,6 @@
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
 /**
- * Created by RSC on 16.01.2016.
- */
-angular.module('myApp')
-    .directive('cndiFrame', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/iframe/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    });
-/**
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
@@ -223,6 +199,30 @@ angular.module('myApp')
     })
 
 ;
+/**
+ * Created by RSC on 16.01.2016.
+ */
+angular.module('myApp')
+    .directive('cndiFrame', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/iframe/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    });
 /**
  * Created by B026789 on 18.12.2015.
  */
@@ -668,7 +668,7 @@ angular.module('myApp')
     })
     .directive('cndWidgetsMotionHm', function factory($log) {
         var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/motion_hm/index.html',
+            templateUrl: 'templates/widgets/motion_hm.json/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',

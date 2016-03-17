@@ -322,7 +322,7 @@ angular.module('myApp')
     })
     .directive('cndWidgetsMotionHm', function factory($log) {
         var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/motion_hm/index.html',
+            templateUrl: 'templates/widgets/motion_hm.json/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
