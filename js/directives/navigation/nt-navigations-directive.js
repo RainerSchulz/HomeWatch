@@ -109,7 +109,7 @@ angular.module('myApp')
     })
     .directive('cndNavigationsRightTop', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
-            templateUrl: 'templates/navigation/right/index.html',
+            templateUrl: 'templates/navigation/right/top/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
