@@ -40,27 +40,33 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndNavigationsRooms', function factory($compile, $log, $location, $window, RoomService, $rootScope) {
+    .directive('cndNavigationsRooms', function factory($compile, $log, $location, $window, RoomService, $rootScope, $q) {
         var directiveDefinitionObject = {
-            templateUrl: 'templates/navigation/left_home/index.html',
+            templateUrl: 'templates/navigation/left_rooms/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
             rooms: {},
 
             scope: {
-                ngRooms: "@",
                 ngHeaderImage: "@"
             },
 
             link: function ($scope, element, attrs) {
-                $scope.rooms = JSON.parse($scope.ngRooms);
-                //$scope.rooms = RoomService.getRooms($scope.rooms);
-                $log.debug($scope.rooms);
+
+                $q.all($rootScope.rooms).then(function(rooms) {
+                    $scope.rooms = rooms.promise;
+                    $log.debug($scope.rooms);
+                    },
+                    // error
+                    function (response) {
+                        $log.debug('Failed: ' + response);
+                    }
+                );
 
                 $scope.headerImage = $scope.ngHeaderImage;
                 $log.debug('Start left home nav: ' + $scope.headerImage);
-                $log.debug($scope.rooms);
+                //$log.debug($scope.rooms);
                 $scope.buttonClick = function (room) {
                     alert('cndNavigationsLeftHome: ' + room);
                     $rootScope.currentRoom = room;
