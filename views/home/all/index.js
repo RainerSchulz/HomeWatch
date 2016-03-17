@@ -27,7 +27,7 @@
 
         $scope.myFilter = (roomName) => {
           return (item) => {
-            if(rootName == 'all' || item.Attributes.room === roomName){
+            if(angular.isUndefined(rootName) || item.Attributes.room === roomName){
                return true
             }
             return false

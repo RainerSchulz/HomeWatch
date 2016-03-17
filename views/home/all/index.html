@@ -3,8 +3,8 @@
     <div class="clearfix"></div>
     <div class="row top100_home">
         <div class="col col-xs-12">
-            <!-- Navigation-Top(right) -->
             <div class="row  text-center padiimagns">
+                <!-- Navigation-Top(right) -->
                 <div class="col-xs-offset-2 col-sm-offset-1 ">
                     <div class=" col-xs-10 col-sm-11 hidden-lg hidden-md">
                         <div cnd-navigations-right-top ng-nav-right-top="{{navRight}}"></div>
@@ -13,48 +13,15 @@
 
                 <!-- Navigation-Left -->
                 <div class="hidden-xs hidden-sm col-md-2 col-g-2  navigation-left">
-                        <div cnd-navigations-rooms ng-header-image="{{headerImage}}" ng-rooms="{{rooms}}">
-                        </div>
+                    <div cnd-navigations-rooms ng-header-image="{{headerImage}}" ng-rooms="{{rooms}}">
+                    </div>
                 </div>
 
                 <!-- Widgets Row -->
                 <div class="col col-xs-8">
                     <div class="row">
                         <div ng-repeat="items in result">
-                            <div ng-repeat="item in items | filter:myFilter(currentRoom)">
-                                
-                                <section ng-switch="item.Attributes.genericDeviceType">
-                                    <!-- Widgets Camera -->
-                                    <section ng-switch-when="camera">
-                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                            <article class="col col-xs-12">
-                                                <div class="col col-xs-1 pull-left">
-                                                    <div class="fav_cam" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                                </div>
-                                                <div cnd-widgets-camera class="col col-xs-11"
-                                                     ng-kind="{{item}}">
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </section>
-                                    <!-- Widgets default for all -->
-                                    <section ng-switch-default>
-                                        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
-                                            <div class="col col-xs-1_light pull-left">
-                                                <div class="fav_swi" cnd-widgets-favoriten ng-name="{{item.Name}}" ng-like="{{item.Attributes.like}}"></div>
-                                            </div>
-                                            <div cnd-widgets-all
-                                                 ng-name="{{item.Name}}"
-                                                 ng-generic-devive-type="{{item.Attributes.genericDeviceType}}"
-                                                 ng-attributes="{{item.Attributes}}"
-                                                 ng-internals="{{item.Internals}}"
-                                                 >
-                                            </div>
-                                        </div>
-                                    </section>
-                                </section>
-
-                            </div>
+                            <div ng-repeat="item in items" cnd-widgets-fields ng-kind="{{item}}"></div>
                         </div>
                     </div>
                 </div>
@@ -68,3 +35,4 @@
         </div>
     </div>
 </div>
+

@@ -1,47 +1,15 @@
-<div>
-    <!-- Camera  -->    
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
-        <div class="embed-responsive embed-responsive-4by3"> 
-            <figure>
-                <a data-toggle="modal" 
-                    data-target="#{{model.Name}}" 
-                    class="boton_kame" 
-                    >
-                    <img class="img-responsive img-center camera"
-                         onerror="this.src='images/noimage.png'"
-                         ng-src="{{model.Internals.DC_SNAPURL}}"
-                         id="{{model.name}}" 
-                         alt="{{model.Name}}">
-                </a>
-                <figcaption>
-                    <div class="row">
-                        <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{model.Attributes.alias}}</span>
-                        <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
-                    </div>
-                </figcaption>
-            </figure>
+<figure class="camera">
+    <a ng-click="openModalImage(model.Internals.DC_SNAPURL, model.Readings.PRESETS, model.Name)">
+        <img class="img-responsive img-center"
+             onerror="this.src='images/noimage.png'"
+             ng-src="{{model.Internals.DC_SNAPURL}}"
+             id="{{model.name}}" alt="{{model.Name}}">
+    </a>
+    <figcaption>
+        <div class="row">
+            <span ng-if="model.Attributes.alias != null" data-type="label"
+                  class="cell">{{model.Attributes.alias}}</span>
+            <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
         </div>
-    </div>
-    <!-- IMAGES BIG FOR SEE IMAGES    -->         
-    <div class="modal fade" id="#{{model.name}}" tabindex="-1" role="dialog" aria-hidden="true"> 
-       <div class="modal-dialog"> 
-           <!-- IMAGES BIG FOR SEE IMAGES    -->         
-           <!-- Kamera 1 links oben line modal 1 -->         
-           <div class="col-xs-11 col-sm-12 col-md-12 col-lg-12"> 
-               <div class="col-xs-11 col-sm-12 col-md-12 col-lg-12 col-xs-offset-2 col-sm-offset-1 col-md-offset-1 col-lg-offset-6 topif"> 
-                   <button type="button" class="close" data-dismiss="modal"> 
-                       <img ng-src="images/close.png">
-                       <span class="sr-only">Close</span>
-                   </button>                         
-                   <!-- <h3 class="modal-title" id="lineModalLabel">Kamera 4</h3> -->                         
-               </div>                     
-               <div id="fragment-1-1"> 
-                   <img class="iframe10" 
-                        ng-src="{{model.Internals.DC_SNAPURL}}"
-                        id="{{model.Name}}_1" 
-                        alt="{{model.Name}}">
-               </div>                     
-            </div>                 
-        </div>             
-    </div>    
-</div>
+    </figcaption>
+</figure>

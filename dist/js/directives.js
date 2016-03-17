@@ -2,9 +2,32 @@
  * Created by B026789 on 15.12.2015.
  */
 (function () {
-    'use strict'
+    'use strict';
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
+
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
+                };
+
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+;
 /**
  * Created by RSC on 16.01.2016.
  */
@@ -29,29 +52,6 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     });
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
-
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-;
 /**
  * Created by B026789 on 16.12.2015.
  */
@@ -344,68 +344,6 @@ angular.module('myApp')
             }]);
 }());
 /**
- * Created by B026789 on 18.12.2015.
- */
-(function () {
-    "use strict";
-
-    var dirTooltip = angular.module('tooltip', [])
-        .directive('tooltip', function factory($log) {
-            return {
-                restrict: 'A',
-
-                link: function (scope, element, attrs) {
-
-                    $(element).hover(function () {
-                        // on mouseenter
-                        $(element).tooltip('show');
-                    }, function () {
-                        // on mouseleave
-                        $(element).tooltip('hide');
-                    });
-                }
-            };
-        });
-}());
-/**
- * Created by RSC on 11.03.2016.
- */
-angular.module('myApp')
-.directive('cndWidgetsFavoriten', function factory($log, FavoritenService) {
-
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/favoriten/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-
-            scope: {
-                ngName: "@",
-                ngLike: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.name = $scope.ngName;
-                
-                if (angular.isUndefined($scope.ngLike) || $scope.ngLike == '') {
-                    $scope.isFavorit = 'no';
-                }
-                else {
-                    $scope.isFavorit = $scope.ngLike;
-                }
-                $log.debug($scope.name + ' - ' + $scope.isFavorit);
-
-                $scope.setFavorite = function (name, isFavorit) {
-                    $log.debug('isFavorit = ' + isFavorit);
-                    FavoritenService.addFavorite(name, isFavorit);
-                    $scope.isFavorit = isFavorit == 'yes' ? 'no' : 'yes';
-                };
-            }
-        };
-
-        return directiveDefinitionObject;
-    });
-/**
  * Created by RSC on 16.01.2016.
  */
 angular.module('myApp')
@@ -421,9 +359,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -441,9 +383,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -462,9 +408,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -481,10 +431,15 @@ angular.module('myApp')
             scope: {
                 ngKind: "@"
             },
-
             link: function ($scope, element, attrs) {
                 $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+                initWidget(element, $scope.model.Name);
+                /*pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }*/
             }
         };
 
@@ -503,9 +458,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -523,9 +482,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -544,9 +507,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -564,9 +531,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -585,9 +556,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -604,10 +579,13 @@ angular.module('myApp')
             scope: {
                 ngKind: "@"
             },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -626,9 +604,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -646,9 +628,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -667,9 +653,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -687,9 +677,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -708,9 +702,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -728,9 +726,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -749,9 +751,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -769,9 +775,13 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
@@ -790,6 +800,224 @@ angular.module('myApp')
                 ngKind: "@"
             },
 
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+
+    .directive('cndWidgetsVolume', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/volume/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsContact', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/contact/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsSensor', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/sensor/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsActor', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/actor/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsThermostat', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/heating_hm/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsAircon', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/aircon/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsPush', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/push/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsSymbol', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/symbol/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+
+    .directive('cndWidgetsSite', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/site/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
             link: function ($scope, element, attrs) {
                 $scope.model = JSON.parse($scope.ngKind);
                 //$log.debug($scope.model);
@@ -798,6 +1026,32 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
+    .directive('cndWidgetsDefault', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/default/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                $log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+
+;
+/**
+ * Created by RSC on 16.01.2016.
+ */
+angular.module('myApp')
     .directive('cndWidgetsCamera', function factory($log, Lightbox, HomeService, $timeout) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/camera/index.html',
@@ -869,193 +1123,6 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-
-    .directive('cndWidgetsVolume', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/volume/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsContact', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/contact/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsSensor', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/sensor/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsActor', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/actor/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsThermostat', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/heating_hm/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsAircon', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/aircon/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsPush', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/push/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsSite', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/site/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-    .directive('cndWidgetsDefault', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/default/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                $log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-
-;
-/**
- * Created by RSC on 16.01.2016.
- */
-angular.module('myApp')
     .directive('cndWidgetsFields', function factory($log) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/fields/index.html',
@@ -1076,14 +1143,11 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndWidgetsAll', function factory($log) {
+    .directive('cndWidgetsAll', function factory($log, $compile, $templateRequest) {
         var directiveDefinitionObject = {
-
-            templateUrl: 'templates/widgets/all/index.html',
+            templateUrl: 'templates/widgets/light_hm/index.html',
+            restrict: 'E',
             replace: true,
-            transclude: true,
-
-            restrict: 'EA',
             attributes: {},
             internals: {},
 
@@ -1093,14 +1157,78 @@ angular.module('myApp')
                 ngAttributes: "@",
                 ngInternals: "@"
             },
-
-            link: function ($scope, element, attrs) {
-                $scope.attributes = JSON.parse($scope.ngAttributes);
-                $scope.internals = JSON.parse($scope.ngInternals);
-                $scope.templateUrl= 'templates/widgets/'+ $scope.attributes.genericDeviceType + '/index.html';
-                $log.debug($scope.templateUrl);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
             }
         };
 
         return directiveDefinitionObject;
     });
+
+/**
+ * Created by RSC on 11.03.2016.
+ */
+angular.module('myApp')
+.directive('cndWidgetsFavoriten', function factory($log, FavoritenService) {
+
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/favoriten/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+
+            scope: {
+                ngName: "@",
+                ngLike: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.name = $scope.ngName;
+                
+                if (angular.isUndefined($scope.ngLike) || $scope.ngLike == '') {
+                    $scope.isFavorit = 'no';
+                }
+                else {
+                    $scope.isFavorit = $scope.ngLike;
+                }
+                $log.debug($scope.name + ' - ' + $scope.isFavorit);
+
+                $scope.setFavorite = function (name, isFavorit) {
+                    $log.debug('isFavorit = ' + isFavorit);
+                    FavoritenService.addFavorite(name, isFavorit);
+                    $scope.isFavorit = isFavorit == 'yes' ? 'no' : 'yes';
+                };
+            }
+        };
+
+        return directiveDefinitionObject;
+    });
+/**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
+    var dirTooltip = angular.module('tooltip', [])
+        .directive('tooltip', function factory($log) {
+            return {
+                restrict: 'A',
+
+                link: function (scope, element, attrs) {
+
+                    $(element).hover(function () {
+                        // on mouseenter
+                        $(element).tooltip('show');
+                    }, function () {
+                        // on mouseleave
+                        $(element).tooltip('hide');
+                    });
+                }
+            };
+        });
+}());
