@@ -17,9 +17,11 @@
 
         $scope.init = function () {
             $log.debug('HomeAll fhemweb_url: ' + $rootScope.MetaDatafhemweb_url);
-            $scope.rooms = [];
+
             $scope.navRightButton = [];
             $scope.result = [];
+
+            $rootScope.rooms = $q.defer();
             GetFhemJsonFile($scope, $http);
 
             GetNavRight($scope, $http);
@@ -44,8 +46,8 @@
             $log.debug('start NavLeft getRooms');
             $scope.headerImage = $rootScope.headerImage;
             $log.debug($scope.headerImage);
-            $scope.rooms = RoomService.getRooms(result);
-            $log.debug($scope.rooms);
+
+            $rootScope.rooms.resolve(RoomService.getRooms(result));
         }
 
         // Navigation Right
