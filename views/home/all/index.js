@@ -5,7 +5,6 @@
     'use strict';
     function HomeAllController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, globalSettings, Jsonervice, RoomService) {
         $log.debug('HomeAllController startet');
-        var self = this;
         $scope.header = $routeParams.name;
         $scope.location = '/Liegenschaften';
         $rootScope.currentRoom = 'all';
@@ -17,9 +16,11 @@
 
         $scope.init = function () {
             $log.debug('HomeAll fhemweb_url: ' + $rootScope.MetaDatafhemweb_url);
-            $scope.rooms = [];
+
             $scope.navRightButton = [];
             $scope.result = [];
+
+            $rootScope.rooms = $q.defer();
             GetFhemJsonFile($scope, $http);
 
             GetNavRight($scope, $http);
@@ -44,12 +45,12 @@
             $log.debug('start NavLeft getRooms');
             $scope.headerImage = $rootScope.headerImage;
             $log.debug($scope.headerImage);
-            $scope.rooms = RoomService.getRooms(result);
-            $log.debug($scope.rooms);
+
+            $rootScope.rooms.resolve(RoomService.getRooms(result));
         }
 
         // Navigation Right
-        function GetNavRight($scope, $http) {
+        function GetNavRight($scope) {
             $scope.headerImage = $rootScope.headerImage;
 
 
@@ -95,7 +96,7 @@
 
 
         // Widget Content
-        function GetFhemJsonFile($scope, $http) {
+        function GetFhemJsonFile($scope) {
             // list of all promises
             var promises = [];
 
@@ -120,12 +121,13 @@
                     HomeService.getHome(value, $rootScope.type).then(function () {
                             var data = HomeService.data();
 
+                            // promise successfully resolved
+                            deferred.resolve(data);
+
                             if (data.Results.length > 0) {
                                 $log.debug('HomeAll add Widgets: ' + $rootScope.type + ' : ' + value);
                                 $log.debug('data.Results.length: ' + data.Results.length);
                                 $scope.result.push(data.Results);
-                                // promise successfully resolved
-                                deferred.resolve(data);
                             }
 
                         })
