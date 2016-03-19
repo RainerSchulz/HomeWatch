@@ -9,19 +9,17 @@ myApp.service('RoomService', function ($http, notification, $log) {
         let rooms = [];
         let room = '';
 
-        angular.forEach(jsondata, function (obj, ids) {
-            angular.forEach(obj.Results, function (obj, idx) {
+        angular.forEach(jsondata, function (obj) {
+            angular.forEach(obj.Results, function (obj) {
                 if (obj == 0 || angular.isUndefined(obj.Attributes.room)) {
                     $log.debug('room isUndefined');
                 }
                 else {
                     room = obj.Attributes.room;
-                    var index = rooms.indexOf({room: room});
+                    var index = rooms.indexOf(room);
                     $log.debug(index);
                     if (index == -1) {
-                        rooms.push({
-                            room: room
-                        });
+                        rooms.push(room);
 
                         $log.debug('room = ' + room);
                     }
