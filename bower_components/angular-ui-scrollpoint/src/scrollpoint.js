@@ -273,7 +273,7 @@ angular.module('ui.scrollpoint', []).directive('uiScrollpoint', ['$window', '$ti
                     }
                     // special handling for absolute edges when no relative edges hit
                     if(absEdges && !edgeHit){
-                        // in case there is more than one absolute edge, they all should pass to count a hit (allows for creating ranges where the scrollpoint is active)
+                        // in case there is more than one absolute edge, they widgets should pass to count a hit (allows for creating ranges where the scrollpoint is active)
                         var allPass = true;
                         offset = undefined;
                         for(scroll_edge in absEdgeHits){

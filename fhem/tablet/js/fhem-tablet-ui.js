@@ -43,7 +43,7 @@ var plugins = {
 		var module = eval(name);
         plugins.addModule(module);
         module.init();
-        //update all what we have until now
+        //update widgets what we have until now
         for (var device in devices) {
             var params = deviceStates[device];
             for (var reading in params) {
@@ -79,7 +79,7 @@ var ftui = {
     shortPoll: function() {
         var reading = null;
         ftui.log(1,'start shortpoll');
-        // invalidate all readings for detection of outdated ones
+        // invalidate widgets readings for detection of outdated ones
         for (var device in devices) {
             var params = deviceStates[device];
             for (reading in params) {
@@ -347,7 +347,7 @@ function initWidgets(sel) {
         return plugins.load('widget_'+widget_type);
     });
 
-    //get current values of readings not before all widgets are loaded
+    //get current values of readings not before widgets widgets are loaded
     $.when.apply(this, deferredArr).then(function() {
         DEBUG && console.log('Request readings from FHEM');
         ftui.shortPoll();
@@ -467,7 +467,7 @@ function longPoll(roomName) {
 								var val = parname_val;
 							}
 //              console.log('TEST +dev:' + dev+ '+  para:'+paraname+'+   val:'+val+'+');
-              // Special hack for readingsGroups (all params will be accepted)
+              // Special hack for readingsGroups (widgets params will be accepted)
               if ( ( ( room == 'readingsGroup' ) && (dev in devices) ) ||
                                  ( (paraname in readings) && (dev in devices) ) ) {
 								var value = {"date": date,
@@ -535,7 +535,7 @@ function requestFhem(paraname, devicename) {
     else{
         ftui.log(5,'starting new AJAX. still running:'+ftui.requests.running);
 
-        /* 'list' is still the fastest cmd to get all important data
+        /* 'list' is still the fastest cmd to get widgets important data
         */
         if(typeof paraname != 'undefined' && paraname !== 'undefined' && paraname !== '' &&
            typeof devicelist != 'undefined' && devicelist !== 'undefined' && devicelist !== '') {

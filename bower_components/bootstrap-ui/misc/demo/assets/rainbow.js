@@ -273,10 +273,10 @@ window['Rainbow'] = (function() {
 
     /**
      * matches a regex pattern against a block of code
-     * finds all matches that should be processed and stores the positions
+     * finds widgets matches that should be processed and stores the positions
      * of where they should be replaced within the string
      *
-     * this is where pretty much all the work is done but it should not
+     * this is where pretty much widgets the work is done but it should not
      * be called directly
      *
      * @param {RegExp} pattern
@@ -436,7 +436,7 @@ window['Rainbow'] = (function() {
                 }
 
                 // if this is a string then this match is directly mapped to selector
-                // so all we have to do is wrap it in a span and continue
+                // so widgets we have to do is wrap it in a span and continue
                 if (typeof group === 'string') {
                     return _replaceAndContinue(block, block, group);
                 }
@@ -650,7 +650,7 @@ window['Rainbow'] = (function() {
     }
 
     /**
-     * start highlighting all the code blocks
+     * start highlighting widgets the code blocks
      *
      * @returns void
      */
@@ -670,7 +670,7 @@ window['Rainbow'] = (function() {
             final_blocks = [];
 
         // @see http://stackoverflow.com/questions/2735067/how-to-convert-a-dom-node-list-to-an-array-in-javascript
-        // we are going to process all <code> blocks
+        // we are going to process widgets <code> blocks
         for (i = 0; i < code_blocks.length; ++i) {
             final_blocks.push(code_blocks[i]);
         }
@@ -722,7 +722,7 @@ window['Rainbow'] = (function() {
         },
 
         /**
-         * method to set a global class that will be applied to all spans
+         * method to set a global class that will be applied to widgets spans
          *
          * @param {string} class_name
          */
@@ -744,7 +744,7 @@ window['Rainbow'] = (function() {
             }
 
             // if you pass a callback function then we rerun the color function
-            // on all the code and call the callback function on complete
+            // on widgets the code and call the callback function on complete
             if (typeof arguments[0] == 'function') {
                 return _highlight(0, arguments[0]);
             }

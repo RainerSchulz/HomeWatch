@@ -97,7 +97,7 @@ jQuery.extend( {
 						max :
 						one ? index : 0;
 
-				// Loop through all the selected options
+				// Loop through widgets the selected options
 				for ( ; i < max; i++ ) {
 					option = options[ i ];
 

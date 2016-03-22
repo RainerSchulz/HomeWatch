@@ -1611,10 +1611,10 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * @ngdoc method
    * @name $httpBackend#flush
    * @description
-   * Flushes all pending requests using the trained responses.
+   * Flushes widgets pending requests using the trained responses.
    *
    * @param {number=} count Number of responses to flush (in the order they arrived). If undefined,
-   *   all pending requests will be flushed. If there are no pending requests when the flush method
+   *   widgets pending requests will be flushed. If there are no pending requests when the flush method
    *   is called an exception is thrown (as this typically a sign of programming error).
    */
   $httpBackend.flush = function(count, digest) {
@@ -1681,7 +1681,7 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * @ngdoc method
    * @name $httpBackend#resetExpectations
    * @description
-   * Resets all request expectations, but preserves all backend definitions. Typically, you would
+   * Resets widgets request expectations, but preserves widgets backend definitions. Typically, you would
    * call resetExpectations during a multiple-phase test when you want to reuse the same instance of
    * $httpBackend mock.
    */

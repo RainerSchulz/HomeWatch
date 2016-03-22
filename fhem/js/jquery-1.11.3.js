@@ -110,7 +110,7 @@ jQuery.fn = jQuery.prototype = {
 			// Return just the one element from the set
 			( num < 0 ? this[ num + this.length ] : this[ num ] ) :
 
-			// Return all the elements in a clean array
+			// Return widgets the elements in a clean array
 			slice.call( this );
 	},
 
@@ -312,7 +312,7 @@ jQuery.extend({
 		}
 
 		// Own properties are enumerated firstly, so to speed up,
-		// if last one is own, then all properties are own.
+		// if last one is own, then widgets properties are own.
 		for ( key in obj ) {}
 
 		return key === undefined || hasOwn.call( obj, key );
@@ -944,7 +944,7 @@ function assert( fn ) {
 }
 
 /**
- * Adds the same handler for all of the specified attrs
+ * Adds the same handler for widgets of the specified attrs
  * @param {String} attrs Pipe-separated list of attributes
  * @param {Function} handler The method that will be applied
  */
@@ -1078,7 +1078,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// IE will throw "permission denied" error when accessing "document" variable, see jQuery #13936
 	// IE6-8 do not support the defaultView property so parent will be undefined
 	if ( parent && parent !== parent.top ) {
-		// IE11 does not have attachEvent, so all must suffer
+		// IE11 does not have attachEvent, so widgets must suffer
 		if ( parent.addEventListener ) {
 			parent.addEventListener( "unload", unloadHandler, false );
 		} else if ( parent.attachEvent ) {
@@ -1202,7 +1202,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// qSa(:focus) reports false when true (Chrome 21)
 	// We allow this because of a bug in IE8/9 that throws an error
 	// whenever `document.activeElement` is accessed on an iframe
-	// So, we allow :focus to pass through QSA all the time to avoid the IE error
+	// So, we allow :focus to pass through QSA widgets the time to avoid the IE error
 	// See http://bugs.jquery.com/ticket/13378
 	rbuggyQSA = [];
 
@@ -2140,7 +2140,7 @@ function addCombinator( matcher, combinator, base ) {
 			}
 		} :
 
-		// Check against all ancestor/preceding elements
+		// Check against widgets ancestor/preceding elements
 		function( elem, context, xml ) {
 			var oldCache, outerCache,
 				newCache = [ dirruns, doneName ];
@@ -2413,7 +2413,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 
 				// Track unmatched elements for set filters
 				if ( bySet ) {
-					// They will have gone through all possible matchers
+					// They will have gone through widgets possible matchers
 					if ( (elem = !matcher && elem) ) {
 						matchedCount--;
 					}
@@ -3222,7 +3222,7 @@ jQuery.Callbacks = function( options ) {
 			has: function( fn ) {
 				return fn ? jQuery.inArray( fn, list ) > -1 : !!( list && list.length );
 			},
-			// Remove all callbacks from the list
+			// Remove widgets callbacks from the list
 			empty: function() {
 				list = [];
 				firingLength = 0;
@@ -3249,7 +3249,7 @@ jQuery.Callbacks = function( options ) {
 			locked: function() {
 				return !stack;
 			},
-			// Call all callbacks with the given context and arguments
+			// Call widgets callbacks with the given context and arguments
 			fireWith: function( context, args ) {
 				if ( list && ( !fired || stack ) ) {
 					args = args || [];
@@ -3262,7 +3262,7 @@ jQuery.Callbacks = function( options ) {
 				}
 				return this;
 			},
-			// Call all the callbacks with the given arguments
+			// Call widgets the callbacks with the given arguments
 			fire: function() {
 				self.fireWith( this, arguments );
 				return this;
@@ -3552,7 +3552,7 @@ jQuery.ready.promise = function( obj ) {
 							return setTimeout( doScrollCheck, 50 );
 						}
 
-						// detach all dom ready events
+						// detach widgets dom ready events
 						detach();
 
 						// and execute any waiting functions
@@ -3728,7 +3728,7 @@ function internalData( elem, name, data, pvt /* Internal Use Only */ ) {
 		id = isNode ? elem[ internalKey ] : elem[ internalKey ] && internalKey;
 
 	// Avoid doing any more work than we need to when trying to get data on an
-	// object that has no data at all
+	// object that has no data at widgets
 	if ( (!id || !cache[id] || (!pvt && !cache[id].data)) && data === undefined && typeof name === "string" ) {
 		return;
 	}
@@ -3880,7 +3880,7 @@ function internalRemoveData( elem, name, pvt ) {
 		/* jshint eqeqeq: true */
 		delete cache[ id ];
 
-	// When all else fails, null
+	// When widgets else fails, null
 	} else {
 		cache[ id ] = null;
 	}
@@ -3930,7 +3930,7 @@ jQuery.fn.extend({
 		// Special expections of .data basically thwart jQuery.access,
 		// so implement the relevant behavior ourselves
 
-		// Gets all values
+		// Gets widgets values
 		if ( key === undefined ) {
 			if ( this.length ) {
 				data = jQuery.data( elem );
@@ -4364,7 +4364,7 @@ jQuery.event = {
 			// Update special based on newly reset type
 			special = jQuery.event.special[ type ] || {};
 
-			// handleObj is passed to all event handlers
+			// handleObj is passed to widgets event handlers
 			handleObj = jQuery.extend({
 				type: type,
 				origType: origType,
@@ -4436,7 +4436,7 @@ jQuery.event = {
 			type = origType = tmp[1];
 			namespaces = ( tmp[2] || "" ).split( "." ).sort();
 
-			// Unbind all events (on this namespace, if provided) for the element
+			// Unbind widgets events (on this namespace, if provided) for the element
 			if ( !type ) {
 				for ( type in events ) {
 					jQuery.event.remove( elem, type + types[ t ], handler, selector, true );
@@ -5530,7 +5530,7 @@ jQuery.extend({
 			destElements = getAll( clone );
 			srcElements = getAll( elem );
 
-			// Fix all IE cloning issues
+			// Fix widgets IE cloning issues
 			for ( i = 0; (node = srcElements[i]) != null; ++i ) {
 				// Ensure that the destination node is not null; Fixes #9587
 				if ( destElements[i] ) {
@@ -5726,7 +5726,7 @@ jQuery.extend({
 
 						// IE does not allow us to delete expando properties from nodes,
 						// nor does it have a removeAttribute function on Document nodes;
-						// we must handle all of these cases
+						// we must handle widgets of these cases
 						if ( deleteExpando ) {
 							delete elem[ internalKey ];
 
@@ -6825,7 +6825,7 @@ if ( !support.opacity ) {
 					style.removeAttribute ) {
 
 				// Setting style.filter to null, "" & " " still leave "filter:" in the cssText
-				// if "filter:" is present at all, clearType is disabled, we want to avoid this
+				// if "filter:" is present at widgets, clearType is disabled, we want to avoid this
 				// style.removeAttribute is IE Only, but so apparently is this code path...
 				style.removeAttribute( "filter" );
 
@@ -7109,7 +7109,7 @@ function genFx( type, includeWidth ) {
 		attrs = { height: type },
 		i = 0;
 
-	// if we include width, step value is 1 to do all cssExpand values,
+	// if we include width, step value is 1 to do widgets cssExpand values,
 	// if we don't include width, step value is 2 to skip over Left and Right
 	includeWidth = includeWidth ? 1 : 0;
 	for ( ; i < 4 ; i += 2 - includeWidth ) {
@@ -7176,7 +7176,7 @@ function defaultPrefilter( elem, props, opts ) {
 	// height/width overflow pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 		// Make sure that nothing sneaks out
-		// Record all 3 overflow attributes because IE does not
+		// Record widgets 3 overflow attributes because IE does not
 		// change the overflow attribute when overflowX and
 		// overflowY are set to the same value
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
@@ -7368,7 +7368,7 @@ function Animation( elem, properties, options ) {
 			},
 			stop: function( gotoEnd ) {
 				var index = 0,
-					// if we are going to the end, we want to run all the tweens
+					// if we are going to the end, we want to run widgets the tweens
 					// otherwise we skip this part
 					length = gotoEnd ? animation.tweens.length : 0;
 				if ( stopped ) {
@@ -7835,7 +7835,7 @@ jQuery.extend({
 						max :
 						one ? index : 0;
 
-				// Loop through all the selected options
+				// Loop through widgets the selected options
 				for ( ; i < max; i++ ) {
 					option = options[ i ];
 
@@ -8386,7 +8386,7 @@ jQuery.fn.extend({
 				if ( cur ) {
 					j = 0;
 					while ( (clazz = classes[j++]) ) {
-						// Remove *all* instances
+						// Remove *widgets* instances
 						while ( cur.indexOf( " " + clazz + " " ) >= 0 ) {
 							cur = cur.replace( " " + clazz + " ", " " );
 						}
@@ -8990,7 +8990,7 @@ jQuery.extend({
 			completeDeferred = jQuery.Callbacks("once memory"),
 			// Status-dependent callbacks
 			statusCode = s.statusCode || {},
-			// Headers (they are sent all at once)
+			// Headers (they are sent widgets at once)
 			requestHeaders = {},
 			requestHeadersNames = {},
 			// The jqXHR state
@@ -9584,7 +9584,7 @@ jQuery.ajaxSettings.xhr = window.ActiveXObject !== undefined ?
 
 			createStandardXHR() || createActiveXHR();
 	} :
-	// For all other browsers, use the standard XMLHttpRequest object
+	// For widgets other browsers, use the standard XMLHttpRequest object
 	createStandardXHR;
 
 var xhrId = 0,
@@ -9808,7 +9808,7 @@ jQuery.ajaxTransport( "script", function(s) {
 
 				script.src = s.url;
 
-				// Attach handlers for all browsers
+				// Attach handlers for widgets browsers
 				script.onload = script.onreadystatechange = function( _, isAbort ) {
 
 					if ( isAbort || !script.readyState || /loaded|complete/.test( script.readyState ) ) {

@@ -1,0 +1,67 @@
+<div id="wrapper" ng-init="init()">
+
+    <!-- Navigation TOP START -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
+        </div>
+    </nav>
+    <!-- Navigation TOP END -->
+
+    <!-- Sidebar left rooms START -->
+    <div id="sidebar-wrapper" class="row-tds">
+        <div cnd-navigations-rooms ng-header-image="{{headerImage}}" ng-rooms="{{rooms}}">
+        </div>
+    </div>
+    <!-- Sidebar left rooms END -->
+
+    <!-- Page Content START -->
+    <div id="page-content-wrapper" class="row-e">
+        <div class="container-fluid">
+            <!-- Sidebar Top START -->
+            <div class="row  text-center padiimagns">
+                <div class="col-xs-offset-2 col-sm-offset-1 ">
+                    <div class="col-xs-10 col-sm-11 hidden-lg hidden-md">
+                        <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar Top END -->
+
+            <a class=" touch-moveable margtopF margtopFi">
+                <div class="nav_down touch-moveable"></div>
+            </a>
+
+            <div class="row text-center mar_be clas_center pad_Wid">
+                <!--  Widgets START -->
+                <div class=" col-md-offset-1 col-md-8">
+                    <div class="row row-spc1">
+                        <div ng-repeat="items in result" class="top30">
+                            <div ng-repeat="item in items" cnd-widgets-fields ng-kind="{{item}}"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Widgets END -->
+
+                <!-- Sidebar Right START -->
+                <div class="hidden-xs hidden-sm col-md-2 col-g-2 sidebardere1 ">
+                    <div cnd-navigations-right ng-nav-right="{{navRight}}"></div>
+                </div>
+                <!-- Sidebar Right END -->
+
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-ip">
+                    <div class="col-xs-offset-5 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+                        <footer>
+                            <div data-type="homestatus" data-device='HomeStatus' data-version='' class="toggle3"
+                                 style="display:none;"></div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <!--end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- Page Content END -->
+
+</div>

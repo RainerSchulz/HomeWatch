@@ -47,7 +47,7 @@
         container = angular.element(document.querySelector ? document.querySelector(options.container) : document.getElementsByTagName(options.container)[0]),
         dynamicPaths = [];
 
-      // Parse all directives
+      // Parse widgets directives
       angular.forEach($directives, function (directive, key) {
         if (directive.hasOwnProperty('css')) {
           $directives[key] = parse(directive.css);
@@ -109,7 +109,7 @@
       }
 
       /**
-       * Parse: returns array with full all object based on defaults
+       * Parse: returns array with full widgets object based on defaults
        **/
       function parse(obj) {
         if (!obj) {
@@ -295,7 +295,7 @@
           return $log.error('Get From Routes: No routes provided');
         }
         var result = [];
-        // Make array of all routes
+        // Make array of widgets routes
         angular.forEach(routes, function (route) {
           var css = $css.getFromRoute(route);
           if (css.length) {
@@ -374,7 +374,7 @@
           return $log.error('Get From States: No states provided');
         }
         var result = [];
-        // Make array of all routes
+        // Make array of widgets routes
         angular.forEach(states, function (state) {
           var css = $css.getFromState(state);
           if (angular.isArray(css)) {
@@ -392,18 +392,18 @@
        * Preload: preloads css via http request
        **/
       $css.preload = function (stylesheets, callback) {
-        // If no stylesheets provided, then preload all
+        // If no stylesheets provided, then preload widgets
         if (!stylesheets) {
           stylesheets = [];
-          // Add all stylesheets from custom directives to array
+          // Add widgets stylesheets from custom directives to array
           if ($directives.length) {
             Array.prototype.push.apply(stylesheets, $directives);
           }
-          // Add all stylesheets from ngRoute to array
+          // Add widgets stylesheets from ngRoute to array
           if ($injector.has('$route')) {
             Array.prototype.push.apply(stylesheets, $css.getFromRoutes($injector.get('$route').routes));
           }
-          // Add all stylesheets from UI Router to array
+          // Add widgets stylesheets from UI Router to array
           if ($injector.has('$state')) {
             Array.prototype.push.apply(stylesheets, $css.getFromStates($injector.get('$state').get()));
           }
@@ -516,17 +516,17 @@
       };
 
       /**
-       * Remove All: removes all style tags from the DOM
+       * Remove All: removes widgets style tags from the DOM
        **/
       $css.removeAll = function () {
-        // Remove all stylesheets from scope
+        // Remove widgets stylesheets from scope
         if ($rootScope && $rootScope.hasOwnProperty('stylesheets')) {
           $rootScope.stylesheets.length = 0;
         }
-        $log.debug('all stylesheets removed');
+        $log.debug('widgets stylesheets removed');
       };
 
-      // Preload all stylesheets
+      // Preload widgets stylesheets
       $css.preload();
 
       return $css;
@@ -559,7 +559,7 @@
   angularCSS.run(['$css', function ($css) { } ]);
 
   /**
-   * AngularJS hack - This way we can get and decorate all custom directives
+   * AngularJS hack - This way we can get and decorate widgets custom directives
    * in order to broadcast a custom $directiveAdd event
    **/
   var $directives = [];

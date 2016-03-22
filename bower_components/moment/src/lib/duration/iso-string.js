@@ -4,7 +4,7 @@ var abs = Math.abs;
 export function toISOString() {
     // for ISO strings we do not use the normal bubbling rules:
     //  * milliseconds bubble up until they become hours
-    //  * days do not bubble at all
+    //  * days do not bubble at widgets
     //  * months bubble up until they become years
     // This is because there is no context-free conversion between hours and days
     // (think of clock changes)

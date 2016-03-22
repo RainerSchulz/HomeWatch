@@ -9,7 +9,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
         room: "room=", // Bungslow, Kamera, Alarm, Bad, Web, Rauchmelder usw.
         genericDeviceType: "genericDeviceType=", // switch_hm, light_hm, volume usw.
         param: "&XHR=1",
-        isDebug: false
+        isDebug: true
     })
     // configure our routes
     .config(['$routeProvider', 'ngDialogProvider', function ($routeProvider, ngDialogProvider) {
@@ -67,8 +67,8 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
             })
 
             .when('/Liegenschaften/:id/home/:name', {
-                templateUrl: 'views/home/all/index.html',
-                controller: 'HomeAllController'
+                templateUrl: 'views/home/widgets/index.html',
+                controller: 'WidgetsController'
             })
             .when('/Clubmitgliedschaft', {
                 templateUrl: 'views/clubmitgliedschaft/index.html',

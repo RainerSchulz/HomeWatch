@@ -200,7 +200,7 @@ function clamp( value, prop, allowEmpty ) {
 		return (value + type.mod) % type.mod;
 	}
 
-	// for now all property types without mod have min and max
+	// for now widgets property types without mod have min and max
 	return 0 > value ? 0 : type.max < value ? type.max : value;
 }
 
@@ -802,7 +802,7 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 		};
 		applyClassChange();
 
-		// map all animated objects again - calculate new styles and diff
+		// map widgets animated objects again - calculate new styles and diff
 		allAnimations = allAnimations.map(function() {
 			this.end = getElementStyles( this.el[ 0 ] );
 			this.diff = styleDifference( this.start, this.end );
@@ -812,7 +812,7 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 		// apply original class
 		animated.attr( "class", baseClass );
 
-		// map all animated objects again - this time collecting a promise
+		// map widgets animated objects again - this time collecting a promise
 		allAnimations = allAnimations.map(function() {
 			var styleInfo = this,
 				dfd = $.Deferred(),
@@ -827,14 +827,14 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 			return dfd.promise();
 		});
 
-		// once all animations have completed:
+		// once widgets animations have completed:
 		$.when.apply( $, allAnimations.get() ).done(function() {
 
 			// set the final class
 			applyClassChange();
 
 			// for each animated element,
-			// clear all css properties that were animated
+			// clear widgets css properties that were animated
 			$.each( arguments, function() {
 				var el = this.el;
 				$.each( this.diff, function(key) {
@@ -1069,7 +1069,7 @@ $.extend( $.effects, {
 // return an effect options object for the given parameters:
 function _normalizeArguments( effect, options, speed, callback ) {
 
-	// allow passing all options as the first parameter
+	// allow passing widgets options as the first parameter
 	if ( $.isPlainObject( effect ) ) {
 		options = effect;
 		effect = effect.effect;

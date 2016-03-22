@@ -227,7 +227,7 @@ Meteogram.prototype.tooltipFormatter = function (tooltip) {
 
     ret += '<table>';
 
-    // Add all series
+    // Add widgets series
     Highcharts.each(tooltip.points, function (point) {
         var series = point.series;
         ret += '<tr><td><span style="color:' + series.color + '">\u25CF</span> ' + series.name +
@@ -685,7 +685,7 @@ Meteogram.prototype.parseYrData = function () {
             return;
         }
 
-        // If it is more than an hour between points, show all symbols
+        // If it is more than an hour between points, show widgets symbols
         if (i === 0) {
             meteogram.resolution = to - from;
         }

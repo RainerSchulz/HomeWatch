@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    function HomeController($scope, $location, $window, $rootScope, $http, $log, $routeParams, Page, Jsonervice, HomeService) {
+    function HomeController($scope, $location, $window, $rootScope, $http, $log, $routeParams, Page, Jsonervice, HomeService, globalSettings) {
         $log.debug('HomeController startet');
         $log.debug($routeParams);
         $log.debug($rootScope);
@@ -31,56 +31,57 @@
             $rootScope.alias = item.alias;
             $rootScope.name = item.name;
             $rootScope.type = item.type;
-            var path = $scope.location + '/' + $routeParams.id + '/home' + item.buttonClick;
+            var path = $scope.location + '/' + $routeParams.id + '/home/' + item.location;
             $location.path(path);
         };
 
-        $scope.defaultClick = function (item) {
-            if (item.target != '') {
-                $log.debug('Url: ' + item.url);
-                // $window.location.href = item.url;
-                $window.open(item.url, item.target)
-            } else {
-                $log.debug('Location: ' + item.location);
-                $location.path(item.location);
-            }
-        };
 
         // Left Navigation
         function GetNavLeft($scope, $http) {
 
             var value = 'sidebar_left';
             var type = 'room';
-            HomeService.getHome(value, type).then(function () {
-                    $log.debug(type + ' : ' + value);
-                    var data = HomeService.data();
-                    $scope.navLeft = data.Results;
-                    $log.debug('$scope.result.length: ' + $scope.navLeft.length);
 
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
+            // check if isDebug mode
+            if (globalSettings.isDebug) {
+                $log.debug('globalSettings.isDebug: ' + value);
+                Jsonervice.getJson('data/sidebar_left').then(function () {
+                        var data = Jsonervice.data();
+                        $scope.navLeft = data.Results; // response data
+                    })
+                    .catch(function (callback) {
+                        $log.debug(callback);
+                    });
+            }
+            else {
+                HomeService.getHome(value, type).then(function () {
+                        $log.debug(type + ' : ' + value);
+                        var data = HomeService.data();
+                        $scope.navLeft = data.Results;
+                        $log.debug('$scope.result.length: ' + $scope.navLeft.length);
 
-                    Jsonervice.getJson('data/sidebar_left').then(function () {
-                            var data = Jsonervice.data();
-                            $scope.navLeft = data.resultNav; // response data
-                        })
-                        .catch(function (callback) {
-                            $log.debug(callback);
-                        });
+                    })
+                    .catch(function (callback) {
+                        $log.debug(callback);
 
-                });
+                        Jsonervice.getJson('data/sidebar_left').then(function () {
+                                var data = Jsonervice.data();
+                                $scope.navLeft = data.Results; // response data
+                            })
+                            .catch(function (callback) {
+                                $log.debug(callback);
+                            });
 
+                    });
+            }
 
         }
 
 
         function GetJsonFile($scope, $http) {
             Jsonervice.getJson('home').then(function () {
-
                     var data = Jsonervice.data();
-
-                    $scope.home = data.home; // response data
+                    $scope.home = data.Results; // response data
 
                 })
                 .catch(function (callback) {
@@ -91,7 +92,7 @@
         }
     }
 
-    HomeController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice', 'HomeService'];
+    HomeController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice', 'HomeService', 'globalSettings'];
 
 
     angular.module('myApp')

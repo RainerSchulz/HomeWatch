@@ -1,13 +1,28 @@
 <section ng-switch="model.Attributes.genericDeviceType">
+    <!-- Widgets Camera -->
+    <section ng-switch-when="camera">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <article class="col col-xs-12">
+                <div class="col col-xs-1 pull-left">
+                    <div class="fav_cam" cnd-widgets-favoriten ng-name="{{model.Name}}"
+                         ng-like="{{model.Attributes.like}}">
+                    </div>
+                </div>
+                <div cnd-widgets-camera class="col col-xs-11" ng-kind="{{model}}">
+                </div>
+            </article>
+        </div>
+    </section>
+
     <!-- Widgets Switch -->
     <section ng-switch-when="switch_hm">
         <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1_light pull-left">
                 <div class="fav_swi" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-switch-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-switch-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -15,73 +30,58 @@
         <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1_light pull-left">
                 <div class="fav_swi" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-switch-gira
-                 ng-kind="{{model}}">
+            <div cnd-widgets-switch-gira ng-kind="{{model}}">
             </div>
         </div>
     </section>
 
     <!-- Widgets dimmer -->
     <section ng-switch-when="dimmer_hm">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_vol" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-dimmer-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-dimmer-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
     <section ng-switch-when="dimmer_gira">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_vol" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-dimmer-gira
-                 ng-kind="{{model}}">
+            <div cnd-widgets-dimmer-gira ng-kind="{{model}}">
             </div>
         </div>
     </section>
-
     <!-- Widgets blind -->
     <section ng-switch-when="blind_hm">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_vol" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-blind-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-blind-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
     <section ng-switch-when="blind_gira">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_vol" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
-            </div>
-            <div cnd-widgets-blind-gira
-                 ng-kind="{{model}}">
-            </div>
-        </div>
-    </section>
-
-    <!-- Widgets Camera -->
-    <section ng-switch-when="camera">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <article class="col col-xs-12">
-                <div class="col col-xs-1 pull-left">
-                    <div class="fav_cam" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                         ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
                 </div>
-                <div cnd-widgets-camera class="col col-xs-11" ng-kind="{{model}}">
-                </div>
-            </article>
+            </div>
+            <div cnd-widgets-blind-gira ng-kind="{{model}}">
+            </div>
         </div>
     </section>
 
@@ -93,8 +93,7 @@
                      ng-like="{{model.Attributes.like}}">
                 </div>
             </div>
-            <div cnd-widgets-light-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-light-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -105,8 +104,7 @@
                      ng-like="{{model.Attributes.like}}">
                 </div>
             </div>
-            <div cnd-widgets-light-gira
-                 ng-kind="{{model}}">
+            <div cnd-widgets-light-gira ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -117,8 +115,7 @@
                      ng-like="{{model.Attributes.like}}">
                 </div>
             </div>
-            <div cnd-widgets-light-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-light-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -130,8 +127,7 @@
                      ng-like="{{model.Attributes.like}}">
                 </div>
             </div>
-            <div cnd-widgets-heating-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-heating-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -142,8 +138,7 @@
                      ng-like="{{model.Attributes.like}}">
                 </div>
             </div>
-            <div cnd-widgets-heating-gira
-                 ng-kind="{{model}}">
+            <div cnd-widgets-heating-gira ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -156,8 +151,7 @@
                      ng-like="{{model.Attributes.like}}">
                 </div>
             </div>
-            <div cnd-widgets-motion-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-motion-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -168,95 +162,92 @@
                      ng-like="{{model.Attributes.like}}">
                 </div>
             </div>
-            <div cnd-widgets-motion-gira
-                 ng-kind="{{model}}">
+            <div cnd-widgets-motion-gira ng-kind="{{model}}">
             </div>
         </div>
     </section>
 
     <!-- Widgets Window -->
     <section ng-switch-when="window_hm">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-window-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-window-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
     <section ng-switch-when="window_gira">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-window-gira
-                 ng-kind="{{model}}">
+            <div cnd-widgets-window-gira ng-kind="{{model}}">
             </div>
         </div>
     </section>
 
     <!-- Widgets Smoke -->
     <section ng-switch-when="smoke_hm">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-smoke-hm
-                 ng-kind="{{model}}">
+            <div cnd-widgets-smoke-hm ng-kind="{{model}}">
             </div>
         </div>
     </section>
     <section ng-switch-when="smoke_gira">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-smoke-gira
-                 ng-kind="{{model}}">
+            <div cnd-widgets-smoke-gira ng-kind="{{model}}">
             </div>
         </div>
     </section>
 
     <!-- Widgets Water -->
     <section ng-switch-when="water_hm">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-            <div class="col col-xs-1 pull-left">
-                <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
-            </div>
-            <div cnd-widgets-water-hm
-                 ng-kind="{{model}}">
-            </div>
-        </div>
-    </section>
-    <section ng-switch-when="water_gira">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}"
                      ng-like="{{model.Attributes.like}}">
                 </div>
             </div>
-            <div cnd-widgets-water-gira
-                 ng-kind="{{model}}">
+            <div cnd-widgets-water-hm ng-kind="{{model}}">
+            </div>
+        </div>
+    </section>
+    <section ng-switch-when="water_gira">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
+            <div class="col col-xs-1 pull-left">
+                <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}" ng-like="{{model.Attributes.like}}">
+                </div>
+            </div>
+            <div cnd-widgets-water-gira ng-kind="{{model}}">
             </div>
         </div>
     </section>
 
     <!-- Widgets energy -->
     <section ng-switch-when="energy_hm">
-        <div class="col-xs-4.col-sm-4.col-md-4.col-lg-4.text-center.ng-scope">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <article class="col col-xs-12">
                 <div class="col col-xs-1_light pull-left">
                     <div class="fav_therm" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                         ng-like="{{model.Attributes.like}}"></div>
+                         ng-like="{{model.Attributes.like}}">
+                    </div>
                 </div>
-                <div cnd-widgets-energy-hm
-                     ng-kind="{{model}}">
+                <div cnd-widgets-energy-hm ng-kind="{{model}}">
                 </div>
             </article>
         </div>
@@ -264,14 +255,14 @@
 
     <!-- Widgets Thermostat -->
     <section ng-switch-when="thermostat">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <article class="col col-xs-12">
                 <div class="col col-xs-1_light pull-left">
                     <div class="fav_therm" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                         ng-like="{{model.Attributes.like}}"></div>
+                         ng-like="{{model.Attributes.like}}">
+                    </div>
                 </div>
-                <div cnd-widgets-thermostat
-                     ng-kind="{{model}}">
+                <div cnd-widgets-thermostat ng-kind="{{model}}">
                 </div>
             </article>
         </div>
@@ -279,13 +270,13 @@
 
     <!-- Widgets Volume -->
     <section ng-switch-when="volume">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_vol" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-volume
-                 ng-kind="{{model}}">
+            <div cnd-widgets-volume ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -295,49 +286,49 @@
         <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1_light pull-left">
                 <div class="fav_air" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-aircon
-                 ng-kind="{{model}}">
+            <div cnd-widgets-aircon ng-kind="{{model}}">
             </div>
         </div>
     </section>
 
     <!-- Widgets Push -->
     <section ng-switch-when="push">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_push" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-push
-                 ng-kind="{{model}}">
+            <div cnd-widgets-push ng-kind="{{model}}">
             </div>
         </div>
     </section>
 
     <!-- Widgets Site -->
     <section ng-switch-when="site">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_site" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-site
-                 ng-kind="{{model}}">
+            <div cnd-widgets-site ng-kind="{{model}}">
             </div>
         </div>
     </section>
 
     <!-- Widgets Contact -->
     <section ng-switch-when="contact">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
             <div class="col col-xs-1 pull-left">
                 <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                     ng-like="{{model.Attributes.like}}"></div>
+                     ng-like="{{model.Attributes.like}}">
+                </div>
             </div>
-            <div cnd-widgets-contact
-                 ng-kind="{{model}}">
+            <div cnd-widgets-contact ng-kind="{{model}}">
             </div>
         </div>
     </section>
@@ -348,42 +339,40 @@
         <section ng-switch="model.Attributes.alarmDevice">
             <!-- Widgets Sensor -->
             <section ng-switch-when="Sensor">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
                     <div class="col col-xs-1 pull-left">
                         <div class="fav_default" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                             ng-like="{{model.Attributes.like}}"></div>
+                             ng-like="{{model.Attributes.like}}">
+                        </div>
                     </div>
-                    <div cnd-widgets-sensor
-                         ng-kind="{{model}}">
+                    <div cnd-widgets-sensor ng-kind="{{model}}">
                     </div>
                 </div>
             </section>
             <!-- Widgets Actor -->
             <section ng-switch-when="Actor">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
                     <div class="col col-xs-1 pull-left">
                         <div class="fav_default" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                             ng-like="{{model.Attributes.like}}"></div>
+                             ng-like="{{model.Attributes.like}}">
+                        </div>
                     </div>
-                    <div cnd-widgets-actor
-                         ng-kind="{{model}}">
+                    <div cnd-widgets-actor ng-kind="{{model}}">
                     </div>
                 </div>
             </section>
             <!-- Widgets Default -->
             <section ng-switch-default=>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                <div class="col-xs-4_light col-sm-4_light col-md-4_light col-lg-4_light text-center center-block">
                     <div class="col col-xs-1 pull-left">
                         <div class="fav_default" cnd-widgets-favoriten ng-name="{{model.Name}}"
-                             ng-like="{{model.Attributes.like}}"></div>
+                             ng-like="{{model.Attributes.like}}">
+                        </div>
                     </div>
-                    <div cnd-widgets-default
-                         ng-kind="{{model}}">
+                    <div cnd-widgets-default ng-kind="{{model}}">
                     </div>
                 </div>
             </section>
-
         </section>
     </section>
-
 </section>

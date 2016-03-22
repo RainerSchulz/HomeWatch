@@ -83,7 +83,7 @@ return $.widget( "ui.selectmenu", {
 
 		// Create button
 		this.button = $( "<span>", {
-			"class": "ui-selectmenu-button ui-widget ui-state-default ui-corner-all",
+			"class": "ui-selectmenu-button ui-widget ui-state-default ui-corner-widgets",
 			tabindex: this.options.disabled ? -1 : 0,
 			id: this.ids.button,
 			role: "combobox",
@@ -172,7 +172,7 @@ return $.widget( "ui.selectmenu", {
 		// Adjust menu styles to dropdown
 		this.menu
 			.addClass( "ui-corner-bottom" )
-			.removeClass( "ui-corner-all" );
+			.removeClass( "ui-corner-widgets" );
 
 		// Don't close the menu on mouseleave
 		this.menuInstance._off( this.menu, "mouseleave" );
@@ -554,7 +554,7 @@ return $.widget( "ui.selectmenu", {
 	_toggleAttr: function() {
 		this.button
 			.toggleClass( "ui-corner-top", this.isOpen )
-			.toggleClass( "ui-corner-all", !this.isOpen )
+			.toggleClass( "ui-corner-widgets", !this.isOpen )
 			.attr( "aria-expanded", this.isOpen );
 		this.menuWrap.toggleClass( "ui-selectmenu-open", this.isOpen );
 		this.menu.attr( "aria-hidden", !this.isOpen );

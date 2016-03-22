@@ -205,10 +205,10 @@ function $Resolve(  $q,    $injector) {
    * (in this order of precedence)
    *
    * - any `locals` (if specified)
-   * - the resolved return values of all injectables
+   * - the resolved return values of widgets injectables
    * - any values inherited from a `parent` call to `$resolve` (if specified)
    *
-   * The promise will resolve after the `parent` promise (if any) and all promises 
+   * The promise will resolve after the `parent` promise (if any) and widgets promises 
    * returned by injectables have been resolved. If any invocable 
    * (or `$injector.invoke`) throws an exception, or if a promise returned by an 
    * invocable is rejected, the `$resolve` promise is immediately rejected with the 
@@ -227,7 +227,7 @@ function $Resolve(  $q,    $injector) {
    * (asynchronous) rejection of the `$resolve` promise rather than a (synchronous) 
    * exception.
    *
-   * Invocables are invoked eagerly as soon as all dependencies are available. 
+   * Invocables are invoked eagerly as soon as widgets dependencies are available. 
    * This is true even for dependencies inherited from a `parent` call to `$resolve`.
    *
    * As a special case, an invocable can be a string, in which case it is taken to 
@@ -241,7 +241,7 @@ function $Resolve(  $q,    $injector) {
    * @param {object} parent  a promise returned by another call to `$resolve`.
    * @param {object} self  the `this` for the invoked methods
    * @return {object} Promise for an object that contains the resolved return value
-   * of all invocables, as well as any inherited and local values.
+   * of widgets invocables, as well as any inherited and local values.
    */
   this.resolve = function (invocables, locals, parent, self) {
     return this.study(invocables)(locals, parent, self);

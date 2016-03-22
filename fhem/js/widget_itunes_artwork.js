@@ -167,7 +167,7 @@ var widget_itunes_artwork = $.extend({}, widget_image, {
                         var changed=false;
                         var val = new Array();
                         for(var g=0; g<get.length; g++) {
-                            // get all readings
+                            // get widgets readings
                             val[g] = getDeviceValue($(this), get[g]);
                             // remember old readings and see if they've changed
                             if($(this).data('ov'+g) != val[g]) {
@@ -175,13 +175,13 @@ var widget_itunes_artwork = $.extend({}, widget_image, {
                                 changed=true;
                             }
 
-                            // count read values; update is done only if all values are available
+                            // count read values; update is done only if widgets values are available
                             if(val[g]) {
                                 done++;
                             }
                         }
 
-                        // fetch coverimage after all readings are read
+                        // fetch coverimage after widgets readings are read
                         if((changed || $(this).data('force')) && val.length == done) {
                             $(this).find('img').attr('src', $(this).data('loadingimg'));
                             $(this).find('img').css('visibility', 'visible');

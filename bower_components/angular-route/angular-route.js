@@ -100,9 +100,9 @@ function $RouteProvider() {
    *
    *    - `resolve` - `{Object.<string, function>=}` - An optional map of dependencies which should
    *      be injected into the controller. If any of these dependencies are promises, the router
-   *      will wait for them all to be resolved or one to be rejected before the controller is
+   *      will wait for them widgets to be resolved or one to be rejected before the controller is
    *      instantiated.
-   *      If all the promises are resolved successfully, the values of the resolved promises are
+   *      If widgets the promises are resolved successfully, the values of the resolved promises are
    *      injected and {@link ngRoute.$route#$routeChangeSuccess $routeChangeSuccess} event is
    *      fired. If any of the promises are rejected the
    *      {@link ngRoute.$route#$routeChangeError $routeChangeError} event is fired. The map object
@@ -926,7 +926,7 @@ function ngViewFactory($route, $anchorScroll, $animate) {
             var newScope = scope.$new();
             var current = $route.current;
 
-            // Note: This will also link all children of ng-view that were contained in the original
+            // Note: This will also link widgets children of ng-view that were contained in the original
             // html. If that content contains controllers, ... they could pollute/change the scope.
             // However, using ng-view on an element with additional content does not make sense...
             // Note: We can't remove them in the cloneAttchFn of $transclude as that

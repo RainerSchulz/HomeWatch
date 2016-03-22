@@ -1,39 +1,37 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="row text-center">
-            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 ">
-                <div class="row">
-                    <div class="row-p">
-                        <div class=" col-xs-2 col-sm-2  col-md-2 col-lg-2 margin ">
-                            <a class="pull-left touch-moveable  hidden-xs hidden-xs  hidden-md visible-lg  "
-                               ng-click="goBack()">
-                                <div class="arrow">
-                                    <img ng-src="images/arrow.png" alt="">
-                                </div>
-                            </a>
-                            <a href="#menu-toggle"
-                               class="btn btn-default touch-moveable spmar hidden-lg visible-md visible-xs visible-sm "
-                               id="menu-toggle">
-                                <span> <i id="glyph" class="fa fa-indent fa-2x"></i></span></a>
+<div class="row text-center">
+    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 ">
+        <div class="row">
+            <div class="row-i">
+                <div class=" col-xs-3 col-sm-2  col-md-2 col-lg-2 margin ">
+                    <a href="javascript:window.history.back();"
+                       class="touch-moveable pull-left  hidden-lg hidden-md  visible-xs visible-sm ">
+                        <div class="arrow arrowiphne">
+                            <img ng-src="images/arrow.png" alt="">
                         </div>
-                        <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
-                            <h3 class="colorhed">{{header}}</h3>
+                    </a>
+                    <a class="touch-moveable pull-left  hidden-xs hidden-xs  visible-md visible-lg  "
+                       href="javascript:window.history.back();">
+                        <div class="arrow">
+                            <img ng-src="images/arrow.png" alt="">
                         </div>
-                        <a ng-href="#{{location}}" class=" touch-moveable pull-right hidden-lg hidden-md visible-xs">
-                            <div class="naver2 naverhome ">
-                                <span class="glyphicon glyphicon-align-justify" style="font-size:2em;">      </span>
-                            </div>
-                        </a>
-                        <!-- <a href="logout.php">Cerrar Sesión</a> -->
-                        <a class=" touch-moveable pull-right hidden-xs visible-sm  visible-md visible-lg "
-                           ng-href="#{{location}}">
-                            <div class="naver margin">
-                                <span class="glyphicon glyphicon-align-justify" style="font-size:2.2em;">      </span>
-                            </div>
-                        </a>
-                    </div>
+                    </a>
                 </div>
+                <div class=" col-xs-7 col-sm-8 col-md-8 col-lg-8 ">
+                    <h3 class="colorhedlig colorhedligiphne">{{header}}</h3>
+                </div>
+                <a ng-href="#{{location}}" class="touch-moveable pull-right hidden-lg hidden-md visible-xs">
+                    <div class="naver3">
+                        <span class="glyphicon glyphicon-align-justify" style="font-size:2em;">
+                        </span>
+                    </div>
+                </a>
+                <a class="touch-moveable pull-right hidden-xs visible-sm  visible-md visible-lg" ng-href="#{{location}}">
+                    <div class="naver">
+                        <span class="glyphicon glyphicon-align-justify" style="font-size:2.2em;">
+                        </span>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
-</nav>
+</div>

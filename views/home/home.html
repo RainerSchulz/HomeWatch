@@ -1,10 +1,20 @@
 <div id="wrapper" ng-init="init()">
-    <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
 
-    <!-- Navigation-Left -->
-    <div class="mar_h" cnd-navigations-left ng-nav-button="{{navLeft}}"></div>
+    <!-- Navigation TOP START -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
+        </div>
+    </nav>
+    <!-- Navigation TOP END -->
 
-    <!-- Widgets -->
+    <!-- Sidebar left START -->
+    <div id="sidebar-wrapper" class="wrapper ">
+        <div cnd-navigations-left ng-nav-button="{{navLeft}}"></div>
+    </div>
+    <!-- Sidebar left END -->
+
+    <!-- Page Content START -->
     <div id="page-content-wrapper" class="row-e">
         <a class=" touch-moveable margtopF margtopFi">
             <div class="nav_down touch-moveable"></div>
@@ -17,13 +27,13 @@
                         <h4 class="icon-list h4wid2 home_big"> {{item.alias}} </h4>
                     </a>
                 </div>
-
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-ip">
                     <div class="col-xs-offset-5 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
                         <footer>
                             <div class="sol_home">
                                 <div data-type="homestatus" data-device='HomeStatus' data-version='' class="toggle3"
-                                     style="display:none;"></div>
+                                     style="display:none;">
+                                </div>
                             </div>
                         </footer>
                     </div>
@@ -31,4 +41,6 @@
             </div>
         </div>
     </div>
+    <!-- Page Content END -->
+
 </div>

@@ -25,7 +25,7 @@
 }(function( $ ) {
 
 var lastActive,
-	baseClasses = "ui-button ui-widget ui-state-default ui-corner-all",
+	baseClasses = "ui-button ui-widget ui-state-default ui-corner-widgets",
 	typeClasses = "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
 	formResetHandler = function() {
 		var form = $( this );
@@ -384,7 +384,7 @@ $.widget( "ui.buttonset", {
 			.map(function() {
 				return $( this ).button( "widget" )[ 0 ];
 			})
-				.removeClass( "ui-corner-all ui-corner-left ui-corner-right" )
+				.removeClass( "ui-corner-widgets ui-corner-left ui-corner-right" )
 				.filter( ":first" )
 					.addClass( rtl ? "ui-corner-right" : "ui-corner-left" )
 				.end()

@@ -202,7 +202,7 @@ define(['ModernizrProto', 'Modernizr', 'hasOwnProp', 'setClasses'], function(Mod
     return Modernizr; // allow chaining.
   }
 
-  // After all the tests are run, add self to the Modernizr prototype
+  // After widgets the tests are run, add self to the Modernizr prototype
   Modernizr._q.push(function() {
     ModernizrProto.addTest = addTest;
   });

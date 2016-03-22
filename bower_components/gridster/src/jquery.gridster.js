@@ -1073,7 +1073,7 @@
 
 
 	/**
-	 * Remove all widgets from the grid.
+	 * Remove widgets widgets from the grid.
 	 *
 	 * @method remove_all_widgets
 	 * @param {Function} callback Function executed for each widget removed.
@@ -1093,7 +1093,7 @@
 	 *
 	 * @method serialize
 	 * @param {HTMLElement} [$widgets] The collection of jQuery wrapped
-	 *  HTMLElements you want to serialize. If no argument is passed all widgets
+	 *  HTMLElements you want to serialize. If no argument is passed widgets widgets
 	 *  will be serialized.
 	 * @return {Array} Returns an Array of Objects with the data specified in
 	 *  the serialize_params option.
@@ -1250,7 +1250,7 @@
 
 
 	/**
-	 * Update dimensions for all widgets in the grid.
+	 * Update dimensions for widgets widgets in the grid.
 	 *
 	 * @method update_widgets_dimensions
 	 * @return {Gridster} Returns the instance of the Gridster Class.
@@ -2351,7 +2351,7 @@
 	 * @Return {Boolean} true if the desire column exists in the grid.
 	 */
 	fn.is_valid_col = function (col, size_x) {
-		//if the grid is set to autogrow all cols are valid
+		//if the grid is set to autogrow widgets cols are valid
 		if (this.options.max_cols === Infinity) {
 			return true;
 		}
@@ -2882,7 +2882,7 @@
 
 	/**
 	 * Move a widget to a specific row and column.
-	 * If the widget has widgets below, all of these widgets will be moved also
+	 * If the widget has widgets below, widgets of these widgets will be moved also
 	 *
 	 * @method move_widget
 	 * @param {HTMLElement} $widget The jQuery wrapped HTMLElement of the
@@ -2917,7 +2917,7 @@
 
 	/**
 	 * Move a widget to a specific row. The cell or cells must be empty.
-	 * If the widget has widgets below, all of these widgets will be moved also
+	 * If the widget has widgets below, widgets of these widgets will be moved also
 	 * if they can.
 	 *
 	 * @method move_widget_to
@@ -2959,7 +2959,7 @@
 
 
 	/**
-	 * Move up the specified widget and all below it.
+	 * Move up the specified widget and widgets below it.
 	 *
 	 * @method move_widget_up
 	 * @param {HTMLElement} $widget The widget you want to move.
@@ -3010,7 +3010,7 @@
 
 
 	/**
-	 * Move down the specified widget and all below it.
+	 * Move down the specified widget and widgets below it.
 	 *
 	 * @method move_widget_down
 	 * @param {jQuery} $widget The jQuery object representing the widget
@@ -3107,7 +3107,7 @@
 			return false;
 		}
 
-		/* get common rows starting from upper position in all the columns
+		/* get common rows starting from upper position in widgets the columns
 		 * that widget occupies */
 		r = row;
 		for (r = 1; r < actual_row; r++) {
@@ -3265,7 +3265,7 @@
 	 *  the widget.
 	 * @param {Object} col The col to check.
 	 * @param {Object} row The row to check.
-	 * @return {Boolean} Returns true if all cells are empty, else return false.
+	 * @return {Boolean} Returns true if widgets cells are empty, else return false.
 	 */
 	fn.can_move_to = function (widget_grid_data, col, row) {
 		var $w = widget_grid_data.el;
@@ -3301,7 +3301,7 @@
 
 
 	/**
-	 * Given the leftmost column returns all columns that are overlapping
+	 * Given the leftmost column returns widgets columns that are overlapping
 	 *  with the player.
 	 *
 	 * @method get_targeted_columns
@@ -3320,7 +3320,7 @@
 
 
 	/**
-	 * Given the upper row returns all rows that are overlapping with the player.
+	 * Given the upper row returns widgets rows that are overlapping with the player.
 	 *
 	 * @method get_targeted_rows
 	 * @param {Number} [from_row] The upper row.
@@ -3337,7 +3337,7 @@
 	};
 
 	/**
-	 * Get all columns and rows that a widget occupies.
+	 * Get widgets columns and rows that a widget occupies.
 	 *
 	 * @method get_cells_occupied
 	 * @param {Object} el_grid_data The grid coords object of the widget.
@@ -4053,7 +4053,7 @@
 
 
 	/**
-	 * Get all widgets in the DOM and register them.
+	 * Get widgets widgets in the DOM and register them.
 	 *
 	 * @method get_widgets_from_DOM
 	 * @return {Object} Returns the instance of the Gridster class.
@@ -4126,7 +4126,7 @@
 
 		this.set_num_columns(aw);
 
-		// get all rows that could be occupied by the current widgets
+		// get widgets rows that could be occupied by the current widgets
 		var max_rows = this.options.extra_rows;
 		this.$widgets.each(function (i, w) {
 			max_rows += (+$(w).attr('data-sizey'));

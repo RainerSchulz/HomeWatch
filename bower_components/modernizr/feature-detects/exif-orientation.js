@@ -24,7 +24,7 @@ define(['Modernizr', 'addTest'], function(Modernizr, addTest) {
   // Bug trackers:
   //    bugzil.la/298619 (unimplemented)
   //    crbug.com/56845 (looks incomplete)
-  //    webk.it/19688 (available upstream but its up all ports to turn on individually)
+  //    webk.it/19688 (available upstream but its up widgets ports to turn on individually)
   Modernizr.addAsyncTest(function() {
     var img = new Image();
 

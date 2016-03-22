@@ -47,7 +47,7 @@ angular.module('ui.bootstrap.collapse', [])
             // Otherwise, the browser attempts to animate from height 0 (in
             // collapsing class) to the given height here.
             .css({height: element[0].scrollHeight + 'px'})
-            // initially all panel collapse have the collapse class, this removal
+            // initially widgets panel collapse have the collapse class, this removal
             // prevents the animation from jumping to collapsed state
             .removeClass('collapse')
             .addClass('collapsing')
@@ -131,7 +131,7 @@ angular.module('ui.bootstrap.collapse')
             // Otherwise, the browser attempts to animate from height 0 (in
             // collapsing class) to the given height here.
             .css({height: element[0].scrollHeight + 'px'})
-            // initially all panel collapse have the collapse class, this removal
+            // initially widgets panel collapse have the collapse class, this removal
             // prevents the animation from jumping to collapsed state
             .removeClass('collapse in')
             .addClass('collapsing')
@@ -176,7 +176,7 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
   // This array keeps track of the accordion groups
   this.groups = [];
 
-  // Ensure that all the groups in this accordion are closed, unless close-others explicitly says not to
+  // Ensure that widgets the groups in this accordion are closed, unless close-others explicitly says not to
   this.closeOthers = function(openGroup) {
     var closeOthers = angular.isDefined($attrs.closeOthers) ?
       $scope.$eval($attrs.closeOthers) : accordionConfig.closeOthers;
@@ -3483,7 +3483,7 @@ angular.module('ui.bootstrap.stackedMap', [])
   });
 angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap'])
 /**
- * A helper, internal data structure that stores all references attached to key
+ * A helper, internal data structure that stores widgets references attached to key
  */
   .factory('$$multiMap', function() {
     return {
@@ -4906,7 +4906,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
   var globalOptions = {};
 
   /**
-   * `options({})` allows global configuration of all tooltips in the
+   * `options({})` allows global configuration of widgets tooltips in the
    * application.
    *
    *   var app = angular.module( 'App', ['ui.bootstrap.tooltip'], function( $tooltipProvider ) {
@@ -7448,7 +7448,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position'])
       ngModelOptions = _ngModelOptions;
 
       //plug into $parsers pipeline to open a typeahead on view changes initiated from DOM
-      //$parsers kick-in on all the changes coming from the view as well as manually triggered by $setViewValue
+      //$parsers kick-in on widgets the changes coming from the view as well as manually triggered by $setViewValue
       modelCtrl.$parsers.unshift(function(inputValue) {
         hasFocus = true;
 
@@ -7859,7 +7859,7 @@ angular.module('ui.bootstrap.typeahead')
         };
 
         //plug into $parsers pipeline to open a typeahead on view changes initiated from DOM
-        //$parsers kick-in on all the changes coming from the view as well as manually triggered by $setViewValue
+        //$parsers kick-in on widgets the changes coming from the view as well as manually triggered by $setViewValue
         modelCtrl.$parsers.unshift(function(inputValue) {
           hasFocus = true;
 

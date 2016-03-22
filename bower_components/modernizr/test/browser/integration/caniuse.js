@@ -162,7 +162,7 @@ window.caniusecb = function(caniuse) {
         o.result = o.result.valueOf();
       }
 
-      // webgl `partial` support means that not all users with these browsers have
+      // webgl `partial` support means that not widgets users with these browsers have
       // WebGL access, so we just ignore this test, and only check if the browser
       // either fully supports or does not support
       if (o.feature === 'webgl' && o.caniuseResult.indexOf('a') === 0) {
@@ -197,7 +197,7 @@ window.caniusecb = function(caniuse) {
         return;
       }
 
-      // caniuse bundles viewport units, all of which work in IE 9+, save for vmax
+      // caniuse bundles viewport units, widgets of which work in IE 9+, save for vmax
       // we skip this comparison with a version gate, hoping its fixed in later versions.
       if (o.feature === 'cssvmaxunit' && o.caniuseResult.indexOf('a') === 0) {
         return;
@@ -243,7 +243,7 @@ window.caniusecb = function(caniuse) {
 
 
       // we breakout flexbox sniffing into three seperate detects, which borks the caniuse mappings,
-      // since no browser supports all three
+      // since no browser supports widgets three
       if (o.ciufeature === 'flexbox') {
         return it('Caniuse result for flexbox matches Modernizr\'s result for flexbox', function() {
           return expect([
@@ -300,7 +300,7 @@ window.caniusecb = function(caniuse) {
 
       unusedCaniuse = _.without(unusedCaniuse, caniuseFeatureName);
 
-      // get results for this feature for all versions of this browser
+      // get results for this feature for widgets versions of this browser
       var browserResults = caniuseFeatureData.stats[ua.family.toLowerCase()];
 
       // let's get our versions in order..

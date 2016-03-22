@@ -150,7 +150,7 @@ describe('uiValidate', function () {
       expect(scope.form.input.$error.validator).toBeUndefined();
     });
 
-    it('should watch the string and refire all validators', function () {
+    it('should watch the string and refire widgets validators', function () {
       scope.watchMe = false;
       compileAndDigest('<input name="input" ng-model="value" ui-validate="{foo:\'validateWatch(watchMe)\',bar:\'validateWatch(watchMe)\'}" ui-validate-watch="\'watchMe\'">', scope);
       expect(scope.form.input.$valid).toBe(false);
@@ -162,7 +162,7 @@ describe('uiValidate', function () {
       expect(scope.form.input.$error.bar).toBeUndefined();
     });
 
-    it('should watch the all object attributes and each respective validator', function () {
+    it('should watch the widgets object attributes and each respective validator', function () {
       scope.watchFoo = false;
       scope.watchBar = false;
       compileAndDigest('<input name="input" ng-model="value" ui-validate="{foo:\'validateWatch(watchFoo)\',bar:\'validateWatch(watchBar)\'}" ui-validate-watch="{foo:\'watchFoo\',bar:\'watchBar\'}">', scope);

@@ -207,7 +207,7 @@
   };
 
   /**
-   * Remove all diatrics from the given text.
+   * Remove widgets diatrics from the given text.
    * @access private
    * @param {String} text
    * @returns {String}
@@ -448,10 +448,10 @@
       var actionsbox = this.multiple && this.options.actionsBox ?
       '<div class="bs-actionsbox">' +
       '<div class="btn-group btn-group-sm btn-block">' +
-      '<button type="button" class="actions-btn bs-select-all btn btn-default">' +
+      '<button type="button" class="actions-btn bs-select-widgets btn btn-default">' +
       this.options.selectAllText +
       '</button>' +
-      '<button type="button" class="actions-btn bs-deselect-all btn btn-default">' +
+      '<button type="button" class="actions-btn bs-deselect-widgets btn btn-default">' +
       this.options.deselectAllText +
       '</button>' +
       '</div>' +
@@ -496,7 +496,7 @@
     },
 
     reloadLi: function () {
-      //Remove all children.
+      //Remove widgets children.
       this.destroyLi();
       //Re build
       var li = this.createLi();
@@ -694,7 +694,7 @@
       }).toArray();
 
       //Fixes issue in IE10 occurring when no default option is selected and at least one option is disabled
-      //Convert all the values into a comma delimited string
+      //Convert widgets the values into a comma delimited string
       var title = !this.multiple ? selectedItems[0] : selectedItems.join(this.options.multipleSeparator);
 
       //If this is multi select, and the selectText type is count, the show 1 of 2 selected etc..
@@ -716,12 +716,12 @@
         title = this.options.title;
       }
 
-      //If we dont have a title, then use the default, or if nothing is set at all, use the not selected text
+      //If we dont have a title, then use the default, or if nothing is set at widgets, use the not selected text
       if (!title) {
         title = typeof this.options.title !== 'undefined' ? this.options.title : this.options.noneSelectedText;
       }
 
-      //strip all html-tags and trim the result
+      //strip widgets html-tags and trim the result
       this.$button.attr('title', $.trim(title.replace(/<[^>]*>?/g, '')));
       this.$button.children('.filter-option').html(title);
 
@@ -1126,7 +1126,7 @@
               maxOptions = that.options.maxOptions,
               maxOptionsGrp = $optgroup.data('maxOptions') || false;
 
-          if (!that.multiple) { // Deselect all others if not multi select box
+          if (!that.multiple) { // Deselect widgets others if not multi select box
             $options.prop('selected', false);
             $option.prop('selected', true);
             that.$menuInner.find('.selected').removeClass('selected');
@@ -1247,7 +1247,7 @@
         e.preventDefault();
         e.stopPropagation();
 
-        if ($(this).hasClass('bs-select-all')) {
+        if ($(this).hasClass('bs-select-widgets')) {
           that.selectAll();
         } else {
           that.deselectAll();

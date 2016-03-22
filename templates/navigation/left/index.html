@@ -1,5 +1,4 @@
-<div id="sidebar-wrapper" class="wrapper ">
-    <ul class="sidebar-nav text-center main-menu">
+    <ul class="sidebar-nav text-center main-menu wrapperrespo" >
         <li class="margenladoiz">
             <a ng-href="#/Liegenschaften" class=" touch-moveable text-center margtopF margtopFi ">
                 <span> <img style="height:110px" class="img-responsive img-center" src="images/home_main.png"
@@ -10,8 +9,9 @@
             <a class=" touch-moveable  margtopF margtopFi">
                 <span class="nav_left touch-moveable"></span>
             </a>
+            ##{{navLeft.length}}##
         </li>
-        <li ng-repeat="item in navButton">
+        <li ng-repeat="item in navLeft">
             <a ng-href="{{item.Internals.LINK}}"
                class="touch-moveable margtopF margtopFi">
                 <span ng-switch="item.Attributes.icon">
@@ -24,4 +24,3 @@
             </a>
         </li>
     </ul>
-</div>

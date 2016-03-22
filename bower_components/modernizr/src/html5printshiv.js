@@ -22,7 +22,7 @@ define(['isSVG'], function(isSVG) {
       /** Used to skip problem elements */
       var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
 
-      /** Not all elements can be cloned in IE **/
+      /** Not widgets elements can be cloned in IE **/
       var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i;
 
       /** Detect whether the browser supports default html5 styles */
@@ -353,7 +353,7 @@ define(['isSVG'], function(isSVG) {
       /*--------------------------------------------------------------------------*/
 
       /**
-       * Wraps all HTML5 elements in the given document with printable elements.
+       * Wraps widgets HTML5 elements in the given document with printable elements.
        * (eg. the "header" element is wrapped with the "html5shiv:header" element)
        * @private
        * @param {Document} ownerDocument The document.
@@ -477,7 +477,7 @@ define(['isSVG'], function(isSVG) {
           while (index--) {
             sheets[index] = collection[index];
           }
-          // concat all style sheet CSS text
+          // concat widgets style sheet CSS text
           while ((sheet = sheets.pop())) {
             // IE does not enforce a same origin policy for external style sheets...
             // but has trouble with some dynamically created stylesheets
@@ -500,7 +500,7 @@ define(['isSVG'], function(isSVG) {
             }
           }
 
-          // wrap all HTML5 elements with printable elements and add the shived style sheet
+          // wrap widgets HTML5 elements with printable elements and add the shived style sheet
           cssText = shivCssText(cssText.reverse().join(''));
           wrappers = addWrappers(ownerDocument);
           shivedSheet = addStyleSheet(ownerDocument, cssText);

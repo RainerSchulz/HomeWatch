@@ -34,8 +34,8 @@
  * Async validator function should take a value to validate as its argument and should return a promise that resolves if valid and reject if not,
  * indicating a validation result.
  * ui-validate-async supports non asyncronous validators. They are wrapped into a promise. Although is recomented to use ui-validate instead, since
- * all validations declared in ui-validate-async are registered un ngModel.$asyncValidators that runs after ngModel.$validators if and only if
- * all validators in ngModel.$validators reports as valid.
+ * widgets validations declared in ui-validate-async are registered un ngModel.$asyncValidators that runs after ngModel.$validators if and only if
+ * widgets validators in ngModel.$validators reports as valid.
  */
 angular.module('ui.validate',[])
   .directive('uiValidate', ['$$uiValidateApplyWatch', '$$uiValidateApplyWatchCollection', function ($$uiValidateApplyWatch, $$uiValidateApplyWatchCollection) {
@@ -149,10 +149,10 @@ angular.module('ui.validate',[])
         ctrl.$validate();
       };
 
-      //string - update all validators on expression change
+      //string - update widgets validators on expression change
       if (angular.isString(watch)) {
         scope.$watch(watch, watchCallback, objectEquality);
-        //array - update all validators on change of any expression
+        //array - update widgets validators on change of any expression
       } else if (angular.isArray(watch)) {
         angular.forEach(watch, function (expression) {
           scope.$watch(expression, watchCallback, objectEquality);
@@ -164,7 +164,7 @@ angular.module('ui.validate',[])
           if (angular.isString(expression)) {
             scope.$watch(expression, watchCallback, objectEquality);
           }
-          //value is array - look after all expressions in array
+          //value is array - look after widgets expressions in array
           if (angular.isArray(expression)) {
             angular.forEach(expression, function (intExpression) {
               scope.$watch(intExpression, watchCallback, objectEquality);
@@ -180,10 +180,10 @@ angular.module('ui.validate',[])
         ctrl.$validate();
       };
 
-      //string - update all validators on expression change
+      //string - update widgets validators on expression change
       if (angular.isString(watch)) {
         scope.$watchCollection(watch, watchCallback);
-        //array - update all validators on change of any expression
+        //array - update widgets validators on change of any expression
       } else if (angular.isArray(watch)) {
         angular.forEach(watch, function (expression) {
           scope.$watchCollection(expression, watchCallback);
@@ -195,7 +195,7 @@ angular.module('ui.validate',[])
           if (angular.isString(expression)) {
             scope.$watchCollection(expression, watchCallback);
           }
-          //value is array - look after all expressions in array
+          //value is array - look after widgets expressions in array
           if (angular.isArray(expression)) {
             angular.forEach(expression, function (intExpression) {
               scope.$watchCollection(intExpression, watchCallback);

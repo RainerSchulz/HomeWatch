@@ -24,11 +24,11 @@ var widget_playstream = {
 			offColor: '#2A2A2A',
 			onColor: '#2A2A2A',
 			toggleOn: function( ) {
-                //stop all streams
+                //stop widgets streams
                 _playstream.elements.each(function(index,el) {
                     $(this).data('audio').pause();
                  });
-                 //switch_hm all paused buttons to OFF after 500ms
+                 //switch_hm widgets paused buttons to OFF after 500ms
                  setTimeout(function(){
                     _playstream.elements.each(function(index,el) {
                         if ($(this).data('audio').paused)

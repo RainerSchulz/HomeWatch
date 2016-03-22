@@ -1,6 +1,6 @@
 define(['tests', 'Modernizr', 'classes', 'is'], function(tests, Modernizr, classes, is) {
   /**
-   * Run through all tests and detect their support in the current UA.
+   * Run through widgets tests and detect their support in the current UA.
    *
    * @access private
    */
@@ -29,7 +29,7 @@ define(['tests', 'Modernizr', 'classes', 'is'], function(tests, Modernizr, class
           featureNames.push(feature.name.toLowerCase());
 
           if (feature.options && feature.options.aliases && feature.options.aliases.length) {
-            // Add all the aliases into the names list
+            // Add widgets the aliases into the names list
             for (aliasIdx = 0; aliasIdx < feature.options.aliases.length; aliasIdx++) {
               featureNames.push(feature.options.aliases[aliasIdx].toLowerCase());
             }

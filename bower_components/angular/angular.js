@@ -5057,12 +5057,12 @@ var $AnimateProvider = ['$provide', function($provide) {
    *
    * @description
    * Sets and/or returns the CSS class regular expression that is checked when performing
-   * an animation. Upon bootstrap the classNameFilter value is not set at all and will
+   * an animation. Upon bootstrap the classNameFilter value is not set at widgets and will
    * therefore enable $animate to attempt to perform an animation on any element that is triggered.
    * When setting the `classNameFilter` value, animations will only be performed on elements
    * that successfully match the filter expression. This in turn can boost performance
    * for low-powered devices as well as applications containing a lot of structural operations.
-   * @param {RegExp=} expression The className expression which will be checked against all animations
+   * @param {RegExp=} expression The className expression which will be checked against widgets animations
    * @return {RegExp} The current CSS className expression value. If null then there is no expression value
    */
   this.classNameFilter = function(expression) {
@@ -5153,10 +5153,10 @@ var $AnimateProvider = ['$provide', function($provide) {
        * can be used in three different ways depending on the arguments:
        *
        * ```js
-       * // remove all the animation event listeners listening for `enter`
+       * // remove widgets the animation event listeners listening for `enter`
        * $animate.off('enter');
        *
-       * // remove all the animation event listeners listening for `enter` on the given element and its children
+       * // remove widgets the animation event listeners listening for `enter` on the given element and its children
        * $animate.off('enter', container);
        *
        * // remove the event listener function provided by `listenerFn` that is set
@@ -6464,9 +6464,9 @@ function $TemplateCacheProvider() {
  * Compiler related stuff:
  *
  * - "linkFn" - linking fn of a single directive
- * - "nodeLinkFn" - function that aggregates all linking fns for a particular node
- * - "childLinkFn" -  function that aggregates all linking fns for child nodes of a particular node
- * - "compositeLinkFn" - function that aggregates all linking fns for a compilation root (nodeList)
+ * - "nodeLinkFn" - function that aggregates widgets linking fns for a particular node
+ * - "childLinkFn" -  function that aggregates widgets linking fns for child nodes of a particular node
+ * - "compositeLinkFn" - function that aggregates widgets linking fns for a compilation root (nodeList)
  */
 
 
@@ -7822,7 +7822,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     }
 
     /**
-     * Compile function matches each node in nodeList against the directives. Once all directives
+     * Compile function matches each node in nodeList against the directives. Once widgets directives
      * for a particular node are collected their compile functions are executed. The compile
      * functions return values - the linking functions - are combined into a composite linking
      * function, which is the a linking function for the node.
@@ -7834,7 +7834,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      *        the rootElement must be set the jqLite collection of the compile root. This is
      *        needed so that the jqLite collection items can be replaced with widgets.
      * @param {number=} maxPriority Max directive priority.
-     * @returns {Function} A composite linking function of all of the matched directives or null.
+     * @returns {Function} A composite linking function of widgets of the matched directives or null.
      */
     function compileNodes(nodeList, transcludeFn, $rootElement, maxPriority, ignoreDirective,
                             previousCompileContext) {
@@ -9496,7 +9496,7 @@ var $$ForceReflowProvider = function() {
   this.$get = ['$document', function($document) {
     return function(domNode) {
       //the line below will force the browser to perform a repaint so
-      //that all the animated elements within the animation frame will
+      //that widgets the animated elements within the animation frame will
       //be properly updated and drawn on screen. This is required to
       //ensure that the preparation animation is properly flushed so that
       //the active state picks up from there. DO NOT REMOVE THIS LINE.
@@ -9730,7 +9730,7 @@ function headersGetter(headers) {
 
 
 /**
- * Chain all given functions
+ * Chain widgets given functions
  *
  * This function is used for both request and response transforming
  *
@@ -9770,10 +9770,10 @@ function $HttpProvider() {
    * @name $httpProvider#defaults
    * @description
    *
-   * Object containing default values for all {@link ng.$http $http} requests.
+   * Object containing default values for widgets {@link ng.$http $http} requests.
    *
    * - **`defaults.cache`** - {Object} - an object built with {@link ng.$cacheFactory `$cacheFactory`}
-   * that will provide the cache for all requests who set their `cache` property to `true`.
+   * that will provide the cache for widgets requests who set their `cache` property to `true`.
    * If you set the `defaults.cache = false` then only requests that specify their own custom
    * cache object will be cached. See {@link $http#caching $http Caching} for more information.
    *
@@ -9783,7 +9783,7 @@ function $HttpProvider() {
    * - **`defaults.xsrfHeaderName`** - {string} - Name of HTTP header to populate with the
    * XSRF token. Defaults value is `'X-XSRF-TOKEN'`.
    *
-   * - **`defaults.headers`** - {Object} - Default headers for all $http requests.
+   * - **`defaults.headers`** - {Object} - Default headers for widgets $http requests.
    * Refer to {@link ng.$http#setting-http-headers $http} for documentation on
    * setting default headers.
    *     - **`defaults.headers.common`**
@@ -16496,7 +16496,7 @@ function $RootScopeProvider() {
               continue;
             }
             try {
-              //allow all listeners attached to the current scope to run
+              //allow widgets listeners attached to the current scope to run
               namedListeners[i].apply(null, listenerArgs);
             } catch (e) {
               $exceptionHandler(e);
@@ -16523,13 +16523,13 @@ function $RootScopeProvider() {
        * @kind function
        *
        * @description
-       * Dispatches an event `name` downwards to all child scopes (and their children) notifying the
+       * Dispatches an event `name` downwards to widgets child scopes (and their children) notifying the
        * registered {@link ng.$rootScope.Scope#$on} listeners.
        *
        * The event life cycle starts at the scope on which `$broadcast` was called. All
        * {@link ng.$rootScope.Scope#$on listeners} listening for `name` event on this scope get
-       * notified. Afterwards, the event propagates to all direct and indirect scopes of the current
-       * scope and calls all registered listeners along the way. The event cannot be canceled.
+       * notified. Afterwards, the event propagates to widgets direct and indirect scopes of the current
+       * scope and calls widgets registered listeners along the way. The event cannot be canceled.
        *
        * Any exception emitted from the {@link ng.$rootScope.Scope#$on listeners} will be passed
        * onto the {@link ng.$exceptionHandler $exceptionHandler} service.
@@ -20457,7 +20457,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * @name form.FormController#$rollbackViewValue
    *
    * @description
-   * Rollback all form controls pending updates to the `$modelValue`.
+   * Rollback widgets form controls pending updates to the `$modelValue`.
    *
    * Updates may be pending by a debounced event or because the input is waiting for a some future
    * event defined in `ng-model-options`. This method is typically needed by the reset button of
@@ -21332,7 +21332,7 @@ var inputType = {
       var input = element(by.model('example.value'));
 
       // currently protractor/webdriver does not support
-      // sending keys to all known HTML5 input controls
+      widgets
       // for various browsers (https://github.com/angular/protractor/issues/562).
       function setInput(val) {
         // set the value of the element and force validation.
@@ -21541,7 +21541,7 @@ var inputType = {
       var input = element(by.model('example.value'));
 
       // currently protractor/webdriver does not support
-      // sending keys to all known HTML5 input controls
+      widgets
       // for various browsers (https://github.com/angular/protractor/issues/562).
       function setInput(val) {
         // set the value of the element and force validation.
@@ -25742,11 +25742,11 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * and `$validators` pipelines. If there are no special {@link ngModelOptions} specified then the staged
    * value sent directly for processing, finally to be applied to `$modelValue` and then the
    * **expression** specified in the `ng-model` attribute. Lastly, all the registered change listeners,
-   * in the `$viewChangeListeners` list, are called.
+   * in the `$viewChangeListeners` list, are cawidgetsd.
    *
    * In case the {@link ng.directive:ngModelOptions ngModelOptions} directive is used with `updateOn`
    * and the `default` trigger is not listed, all those actions will remain pending until one of the
-   * `updateOn` events is triggered on the DOM element.
+   * `updateOn` events is triwidgetsred on the DOM element.
    * All these actions will be debounced if the {@link ng.directive:ngModelOptions ngModelOptions}
    * directive is used with a custom debounce for this particular event.
    * Note that a `$digest` is only triggered once the `updateOn` events are fired, or if `debounce`

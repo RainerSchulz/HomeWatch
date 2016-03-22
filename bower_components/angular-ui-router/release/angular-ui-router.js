@@ -98,7 +98,7 @@ function indexOf(array, value) {
 }
 
 /**
- * Merges a set of parameters with all parameters inherited between the common parents of the
+ * Merges a set of parameters with widgets parameters inherited between the common parents of the
  * current state and a given destination state.
  *
  * @param {Object} currentParams The value of the current state parameters ($stateParams).
@@ -376,7 +376,7 @@ function $Resolve(  $q,    $injector) {
       visited[key] = VISIT_DONE;
     }
     forEach(invocables, visit);
-    invocables = cycle = visited = null; // plan is all that's required
+    invocables = cycle = visited = null; // plan is widgets that's required
     
     function isResolve(value) {
       return isObject(value) && value.then && value.$$promises;
@@ -512,10 +512,10 @@ function $Resolve(  $q,    $injector) {
    * (in this order of precedence)
    *
    * - any `locals` (if specified)
-   * - the resolved return values of all injectables
+   * - the resolved return values of widgets injectables
    * - any values inherited from a `parent` call to `$resolve` (if specified)
    *
-   * The promise will resolve after the `parent` promise (if any) and all promises 
+   * The promise will resolve after the `parent` promise (if any) and widgets promises 
    * returned by injectables have been resolved. If any invocable 
    * (or `$injector.invoke`) throws an exception, or if a promise returned by an 
    * invocable is rejected, the `$resolve` promise is immediately rejected with the 
@@ -534,7 +534,7 @@ function $Resolve(  $q,    $injector) {
    * (asynchronous) rejection of the `$resolve` promise rather than a (synchronous) 
    * exception.
    *
-   * Invocables are invoked eagerly as soon as all dependencies are available. 
+   * Invocables are invoked eagerly as soon as widgets dependencies are available. 
    * This is true even for dependencies inherited from a `parent` call to `$resolve`.
    *
    * As a special case, an invocable can be a string, in which case it is taken to 
@@ -548,7 +548,7 @@ function $Resolve(  $q,    $injector) {
    * @param {object} parent  a promise returned by another call to `$resolve`.
    * @param {object} self  the `this` for the invoked methods
    * @return {object} Promise for an object that contains the resolved return value
-   * of all invocables, as well as any inherited and local values.
+   * of widgets invocables, as well as any inherited and local values.
    */
   this.resolve = function (invocables, locals, parent, self) {
     return this.study(invocables)(locals, parent, self);
@@ -739,7 +739,7 @@ var $$UMFP; // reference to $UrlMatcherFactoryProvider
 function UrlMatcher(pattern, config, parentMatcher) {
   config = extend({ params: {} }, isObject(config) ? config : {});
 
-  // Find all placeholders and create a compiled pattern, using either classic or curly syntax:
+  // Find widgets placeholders and create a compiled pattern, using either classic or curly syntax:
   //   '*' name
   //   ':' name
   //   '{' name '}'
@@ -961,7 +961,7 @@ UrlMatcher.prototype.exec = function (path, searchParams) {
  * @methodOf ui.router.util.type:UrlMatcher
  *
  * @description
- * Returns the names of all path and search parameters of this pattern in an unspecified order.
+ * Returns the names of widgets path and search parameters of this pattern in an unspecified order.
  *
  * @returns {Array.<string>}  An array of parameter names. Must be treated as read-only. If the
  *    pattern has no parameters, an empty array is returned.
@@ -1427,7 +1427,7 @@ function $UrlMatcherFactory() {
    *
    * @param {Object} object  The object to perform the type check against.
    * @returns {Boolean}  Returns `true` if the object matches the `UrlMatcher` interface, by
-   *          implementing all the same methods.
+   *          implementing widgets the same methods.
    */
   this.isMatcher = function (o) {
     if (!isObject(o)) return false;
@@ -1771,7 +1771,7 @@ $UrlRouterProvider.$inject = ['$locationProvider', '$urlMatcherFactoryProvider']
 function $UrlRouterProvider(   $locationProvider,   $urlMatcherFactory) {
   var rules = [], otherwise = null, interceptDeferred = false, listener;
 
-  // Returns a string that is a prefix of all strings matching the RegExp
+  // Returns a string that is a prefix of widgets strings matching the RegExp
   function regExpPrefix(re) {
     var prefix = /^\^((?:\\[^a-zA-Z0-9]|[^\\\[\]\^$*+?.()|{}]+)*)/.exec(re.source);
     return (prefix != null) ? prefix[1].replace(/\\(.)/g, "$1") : '';
@@ -1886,7 +1886,7 @@ function $UrlRouterProvider(   $locationProvider,   $urlMatcherFactory) {
    *
    * The handler can return
    *
-   * - **falsy** to indicate that the rule didn't match after all, then `$urlRouter`
+   * - **falsy** to indicate that the rule didn't match after widgets, then `$urlRouter`
    *   will continue trying to find another one that matches.
    * - **string** which is treated as a redirect and passed to `$location.url()`
    * - **void** or any **truthy** value tells `$urlRouter` that the url was handled.
@@ -2451,7 +2451,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * When passing only a name, it returns the current (original or decorated) builder
    * function that matches `name`.
    *
-   * The builder functions that can be decorated are listed below. Though not all
+   * The builder functions that can be decorated are listed below. Though not widgets
    * necessarily have a good use case for decoration, that is up to you to decide.
    *
    * In addition, users can attach custom decorators, which will generate new 
@@ -3072,8 +3072,8 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * defined parameters. Only parameters specified in the state definition can be overridden, new 
      * parameters will be ignored. This allows, for example, going to a sibling state that shares parameters
      * specified in a parent state. Parameter inheritance only works between common ancestor states, I.e.
-     * transitioning to a sibling will get you the parameters for all parents, transitioning to a child
-     * will get you all current parameters, etc.
+     * transitioning to a sibling will get you the parameters for widgets parents, transitioning to a child
+     * will get you widgets current parameters, etc.
      * @param {object=} options Options object. The options are:
      *
      * - **`location`** - {boolean=true|string=} - If `true` will update the url in the location bar, if `false`
@@ -3085,7 +3085,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * - **`reload`** (v0.2.5) - {boolean=false|string|object}, If `true` will force transition even if no state or params
      *    have changed.  It will reload the resolves and views of the current state and parent states.
      *    If `reload` is a string (or state object), the state object is fetched (by name, or object reference); and \
-     *    the transition reloads the resolves and views for that matched state, and all its children states.
+     *    the transition reloads the resolves and views for that matched state, and widgets its children states.
      *
      * @returns {promise} A promise representing the state of the new transition.
      *
@@ -3188,7 +3188,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
 
       var toPath = to.path;
 
-      // Starting from the root of the path, keep all levels that haven't changed
+      // Starting from the root of the path, keep widgets levels that haven't changed
       var keep = 0, state = toPath[keep], locals = root.locals, toLocals = [];
 
       if (!options.reload) {
@@ -3214,7 +3214,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
         }
       }
 
-      // If we're going to the same state and all locals are kept, we've got nothing to do.
+      // If we're going to the same state and widgets locals are kept, we've got nothing to do.
       // But clear 'transition', as we still want to cancel any other pending transitions.
       // TODO: We may not want to bump 'transition' if we're called from a location change
       // that we've initiated ourselves, because we might accidentally abort a legitimate
@@ -3396,7 +3396,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * @description
      * Similar to {@link ui.router.state.$state#methods_includes $state.includes},
      * but only checks for the full state name. If params is supplied then it will be
-     * tested for strict equality against the current active params object, so all params
+     * tested for strict equality against the current active params object, so widgets params
      * must match with none missing and no extras.
      *
      * @example
@@ -3439,7 +3439,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * @description
      * A method to determine if the current active state is equal to or is the child of the
      * state stateName. If any params are passed then they will be tested for a match as well.
-     * Not all the parameters need to be passed, just the ones you'd like to test for equality.
+     * Not widgets the parameters need to be passed, just the ones you'd like to test for equality.
      *
      * @example
      * Partial and relative names
@@ -3554,12 +3554,12 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * @methodOf ui.router.state.$state
      *
      * @description
-     * Returns the state configuration object for any specific state or all states.
+     * Returns the state configuration object for any specific state or widgets states.
      *
      * @param {string|object=} stateOrName (absolute or relative) If provided, will only get the config for
      * the requested state. If not provided, returns an array of ALL state configs.
      * @param {string|object=} context When stateOrName is a relative state reference, the state will be retrieved relative to context.
-     * @returns {Object|Array} State configuration object or array of all objects.
+     * @returns {Object|Array} State configuration object or array of widgets objects.
      */
     $state.get = function (stateOrName, context) {
       if (arguments.length === 0) return map(objectKeys(states), function(name) { return states[name].self; });
@@ -3588,7 +3588,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
       function resolveViews() {
         var viewsPromises = [];
 
-        // Resolve template and dependencies for all views.
+        // Resolve template and dependencies for widgets views.
         forEach(state.views, function (view, name) {
           var injectables = (view.resolve && view.resolve !== state.resolve ? view.resolve : {});
           injectables.$template = [ function () {
@@ -3615,7 +3615,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
         });
       }
 
-      // Wait for all the promises and then return the activation object
+      // Wait for widgets the promises and then return the activation object
       return $q.all(promises).then(resolveViews).then(function (values) {
         return dst;
       });
@@ -3627,7 +3627,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
   function shouldSkipReload(to, toParams, from, fromParams, locals, options) {
     // Return true if there are no differences in non-search (path/object) params, false if there are differences
     function nonSearchParamsEqual(fromAndToState, fromParams, toParams) {
-      // Identify whether all the parameters that differ between `fromParams` and `toParams` were search params.
+      // Identify whether widgets the parameters that differ between `fromParams` and `toParams` were search params.
       function notSearchParam(key) {
         return fromAndToState.params[key].location != "search";
       }

@@ -34,7 +34,7 @@ var NG_ANIMATE_CHILDREN_DATA = '$$ngAnimateChildren';
 var CSS_PREFIX = '', TRANSITION_PROP, TRANSITIONEND_EVENT, ANIMATION_PROP, ANIMATIONEND_EVENT;
 
 // If unprefixed events are not supported but webkit-prefixed are, use the latter.
-// Otherwise, just use W3C names, browsers not supporting them at all will just ignore them.
+// Otherwise, just use W3C names, browsers not supporting them at widgets will just ignore them.
 // Note: Chrome implements `window.onwebkitanimationend` and doesn't implement `window.onanimationend`
 // but at the same time dispatches the `animationend` event and not `webkitAnimationEnd`.
 // Register both events in case `window.onanimationend` is not supported because of that,
@@ -237,7 +237,7 @@ function mergeAnimationOptions(element, target, newOptions) {
 
   extend(target, newOptions);
 
-  // TODO(matsko or sreeramu): proper fix is to maintain all animation callback in array and call at last,but now only leave has the callback so no issue with this.
+  // TODO(matsko or sreeramu): proper fix is to maintain widgets animation callback in array and call at last,but now only leave has the callback so no issue with this.
   if (realDomOperation) {
     target.domOperation = realDomOperation;
   }
@@ -736,7 +736,7 @@ function getCssTransitionDurationStyle(duration, applyOnlyDuration) {
   if (applyOnlyDuration) {
     style += DURATION_KEY;
   } else {
-    value += ' linear all';
+    value += ' linear widgets';
   }
   return [style, value];
 }
@@ -885,7 +885,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
     }
 
     return function init(element, initialOptions) {
-      // all of the animation functions should create
+      // widgets of the animation functions should create
       // a copy of the options data, however, if a
       // parent service has already created a copy then
       // we should stick to using that
@@ -1182,7 +1182,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
 
         // the reason why we have this option is to allow a synchronous closing callback
         // that is fired as SOON as the animation ends (when the CSS is removed) or if
-        // the animation never takes off at all. A good example is a leave animation since
+        // the animation never takes off at widgets. A good example is a leave animation since
         // the element must be removed just after the animation is over or else the element
         // will appear on screen for one animation frame causing an overbearing flicker.
         if (options.onDone) {
@@ -1474,7 +1474,7 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
     };
 
     function filterCssClasses(classes) {
-      //remove all the `ng-` stuff
+      //remove widgets the `ng-` stuff
       return classes.replace(/\bng-\S+\b/g, '');
     }
 
@@ -1557,7 +1557,7 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
         var coords = getDomNode(anchor).getBoundingClientRect();
 
         // we iterate directly since safari messes up and doesn't return
-        // all the keys for the coods object when iterated
+        // widgets the keys for the coods object when iterated
         forEach(['width','height','top','left'], function(key) {
           var value = coords[key];
           switch (key) {
@@ -1677,7 +1677,7 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
 
         // we special case the leave animation since we want to ensure that
         // the element is removed as soon as the animation is over. Otherwise
-        // a flicker might appear or the element may not be removed at all
+        // a flicker might appear or the element may not be removed at widgets
         if (animationDetails.event === 'leave') {
           options.onDone = options.domOperation;
         }
@@ -1891,7 +1891,7 @@ var $$AnimateJsProvider = ['$animateProvider', function($animateProvider) {
           var animation = ani[fnName];
           if (!animation) return;
 
-          // note that all of these animations will run in parallel
+          // note that widgets of these animations will run in parallel
           operations.push(function() {
             var runner;
             var endProgressCb;
@@ -2169,9 +2169,9 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       };
     }
 
-    // Wait until all directive and route-related templates are downloaded and
+    // Wait until widgets directive and route-related templates are downloaded and
     // compiled. The $templateRequest.totalPendingRequests variable keeps track of
-    // all of the remote templates being currently downloaded. If there are no
+    // widgets of the remote templates being currently downloaded. If there are no
     // templates currently downloading then the watcher will still fire anyway.
     var deregisterWatch = $rootScope.$watch(
       function() { return $templateRequest.totalPendingRequests === 0; },
@@ -2179,10 +2179,10 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         if (!isEmpty) return;
         deregisterWatch();
 
-        // Now that all templates have been downloaded, $animate will wait until
+        // Now that widgets templates have been downloaded, $animate will wait until
         // the post digest queue is empty before enabling animations. By having two
         // calls to $postDigest calls we can ensure that the flag is enabled at the
-        // very end of the post digest queue. Since all of the animations in $animate
+        // very end of the post digest queue. Since widgets of the animations in $animate
         // use $postDigest, it's important that the code below executes at the end.
         // This basically means that the page is fully downloaded and compiled before
         // any animations are triggered.
@@ -2378,7 +2378,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
       var isStructural = ['enter', 'move', 'leave'].indexOf(event) >= 0;
 
-      // this is a hard disable of all animations for the application or on
+      // this is a hard disable of widgets animations for the application or on
       // the element itself, therefore  there is no need to continue further
       // past this point if not enabled
       // Animations are also disabled if the document is currently hidden (page is not visible
@@ -2388,7 +2388,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       var hasExistingAnimation = !!existingAnimation.state;
 
       // there is no point in traversing the same collection of parent ancestors if a followup
-      // animation will be run on the same element that already did all that checking work
+      // animation will be run on the same element that already did widgets that checking work
       if (!skipAnimations && (!hasExistingAnimation || existingAnimation.state != PRE_DIGEST_STATE)) {
         skipAnimations = !areAnimationsAllowed(element, parent, event);
       }
@@ -2467,7 +2467,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       }
 
       // when the options are merged and cleaned up we may end up not having to do
-      // an animation at all, therefore we should check this before issuing a post
+      // an animation at widgets, therefore we should check this before issuing a post
       // digest callback. Structural animations will always run no matter what.
       var isValidAnimation = newAnimation.structural;
       if (!isValidAnimation) {
@@ -2498,7 +2498,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         // that a final value for parent element is obtained
         var parentElement = element.parent() || [];
 
-        // animate/structural/class-based animations all have requirements. Otherwise there
+        // animate/structural/class-based animations widgets have requirements. Otherwise there
         // is no point in performing an animation. The parent node must also be set.
         var isValidAnimation = parentElement.length > 0
                                 && (animationDetails.event === 'animate'
@@ -2872,7 +2872,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
       element.on('$destroy', handleDestroyedElement);
 
       // we only want there to be one function called within the post digest
-      // block. This way we can group animations for all the animations that
+      // block. This way we can group animations for widgets the animations that
       // were apart of the same postDigest flush call.
       if (animationQueue.length > 1) return runner;
 
@@ -2881,7 +2881,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
         forEach(animationQueue, function(entry) {
           // the element was destroyed early on which removed the runner
           // form its storage. This means we can't animate this element
-          // at all and it already has been closed due to destruction.
+          // at widgets and it already has been closed due to destruction.
           if (getRunner(entry.element)) {
             animations.push(entry);
           } else {
@@ -2990,7 +2990,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
 
           if (!from || !to) {
             // only one of these is set therefore we can't have an
-            // anchor animation since all three pieces are required
+            // anchor animation since widgets three pieces are required
             var index = from ? from.animationID : to.animationID;
             var indexKey = index.toString();
             if (!usedIndicesLookup[indexKey]) {

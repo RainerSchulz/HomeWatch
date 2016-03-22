@@ -16,14 +16,19 @@ myApp.service('RoomService', function ($http, notification, $log) {
                 }
                 else {
                     room = obj.Attributes.room;
-                    var index = rooms.indexOf({room: room});
-                    $log.debug(index);
+                    var index = -1;
+                    for(var i = 0, len = rooms.length; i < len; i++) {
+                        if (rooms[i].room === room) {
+                            index = i;
+                            break;
+                        }
+                    }
+
                     if (index == -1) {
+                        $log.debug('indexOf room: ' + room + ' - ' + index);
                         rooms.push({
                             room: room
                         });
-
-                        $log.debug('room = ' + room);
                     }
                     else {
                         $log.debug('room is in array = ' + room);

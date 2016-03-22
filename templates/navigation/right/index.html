@@ -1,21 +1,19 @@
-<div class="hidden-xs hidden-sm col-md-2 col-g-2 sidebardere1 ">
-    <ul class="sidebar-nav5 text-center main-menu">
-        <li ng-repeat="item in navRight">
-
-            <a ng-href="{{item.Internals.LINK}}" class="touch-moveable">
-                <div class="hoversizesm" ng-switch="item.Attributes.icon">
-                    <img ng-switch-when="shop" ng-src="images/einkaufswagen1.png"
-                         class="img-responsive img-center hoversize" alt="{{item.Attributes.alias}}">
-                    <img ng-switch-when="hausmeister" ng-src="images/tool_main1.png"
-                         class="img-responsive img-center hoversize" alt="{{item.Attributes.alias}}">
-                    <img ng-switch-when="assessing" ng-src="images/pen_main1.png"
-                         class="img-responsive img-center hoversize" alt="{{item.Attributes.alias}}">
-                    <img ng-switch-when="ssecure" ng-src="images/hand1.png"
-                         class="img-responsive img-center hoversize" alt="{{item.Attributes.alias}}">
-                    <img ng-switch-default ng-src="images/hand1.png"
-                         class="img-responsive img-center hoversize" alt="{{item.Attributes.alias}}">
-                </div>
-            </a>
-        </li>
-    </ul>
-</div>
+<ul class="sidebar-nav5 text-center main-menu">
+    <!-- <div data-type="label" class="cell">##{{navRight.length}}##</div> -->
+    <li ng-repeat="item in navRight" class="margtopEIC touch-moveable">>
+        <a ng-href="#{{item.Internals.LINK}}" class="touch-moveable">
+            <span ng-switch="item.Attributes.icon">
+                <img ng-switch-when="shop" ng-src="images/einkaufswagen1.png"
+                     class="hoversize" alt="{{item.Attributes.alias}}">
+                <img ng-switch-when="hausmeister" ng-src="images/tool_main1.png"
+                     class="hoversize" alt="{{item.Attributes.alias}}">
+                <img ng-switch-when="assessing" ng-src="images/pen_main1.png"
+                     class="hoversize" alt="{{item.Attributes.alias}}">
+                <img ng-switch-when="ssecure" ng-src="images/hand1.png"
+                     class="hoversize" alt="{{item.Attributes.alias}}">
+                <img ng-switch-default ng-src="images/hand1.png"
+                     class="hoversize" alt="{{item.Attributes.alias}}">
+            </span>
+        </a>
+    </li>
+</ul>

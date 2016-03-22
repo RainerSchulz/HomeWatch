@@ -790,7 +790,7 @@ var widget_chart = {
 
 		(graph.attr('animstate')=='show')?graph.attr('animstate','hide'):graph.attr('animstate','show');
 	},
-	init_attr: function(elem) { // initialize all attributes called from widget init function
+	init_attr: function(elem) { // initialize widgets attributes called from widget init function
 		var data = elem.data();
 		elem.data('minvalue_sec', typeof elem.data('minvalue_sec') != 'undefined' ? elem.data('minvalue_sec')  : 10);
 		elem.data('maxvalue_sec', typeof elem.data('maxvalue_sec') != 'undefined' ? elem.data('maxvalue_sec')  : 30);
@@ -888,7 +888,7 @@ var widget_chart = {
 
 		});
 	},
-	refresh: function (elem,type,swoffset) { // main function for generation of all HTML code and dynamics for graph called whenever thigs change (e.g. data update, shift, scale, ...)
+	refresh: function (elem,type,swoffset) { // main function for generation of widgets HTML code and dynamics for graph called whenever thigs change (e.g. data update, shift, scale, ...)
 		(elem) ? theObj=elem : theObj=this;
 		var data = $(theObj).data();
 		(type=="roate") ? getData=false : getData=true;
@@ -1296,7 +1296,7 @@ var widget_chart = {
 			scale_sec = (max_sec-min_sec)/((max_prim - min_prim)/yticks);
 
 			// do scaling of y axis due to problems with strokes in vertical and horizontal direction if scaling is very different between x and y
-			// nonscaling-stroke does not work on all browsers
+			// nonscaling-stroke does not work on widgets browsers
 			data.diffY_prim = max_prim-min_prim;
 			data.min_prim = min_prim;
 			data.scaleY = xrange/(max_prim-min_prim)/data.graphArea.width*data.graphArea.height;
@@ -1304,7 +1304,7 @@ var widget_chart = {
 			data.min_save = 0;
 			data.max_save = (max_prim-min_prim)*data.scaleY;
 			// do scaling of y axis due to problems with strokes in vertical and horizontal direction if scaling is very different between x and y
-			// nonscaling-stroke does not work on all browsers
+			// nonscaling-stroke does not work on widgets browsers
 			data.diffY_sec = max_sec-min_sec;
 			data.min_sec = min_sec;
 			data.scaleY_sec = xrange/(max_sec-min_sec)/data.graphArea.width*data.graphArea.height;
@@ -2070,7 +2070,7 @@ var widget_chart = {
 
 		svg_old.remove(); // old chart is not needed any more
 
-		if (data.showlegend){ // we need to reconfigure the legend, as only now we have all information available
+		if (data.showlegend){ // we need to reconfigure the legend, as only now we have widgets information available
 			//need to correct x-position of legend texts after having displayed them
 			var existingLegends = svg_new.find('g.lentries').find('text.legend');
 			var maxwidth = 0;

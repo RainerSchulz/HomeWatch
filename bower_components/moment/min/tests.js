@@ -234,7 +234,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -590,7 +590,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -944,7 +944,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -1381,7 +1381,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({
                 w: 1
             }),
@@ -1760,7 +1760,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -2140,7 +2140,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -2551,7 +2551,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -2922,7 +2922,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -3277,7 +3277,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -3649,7 +3649,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -4028,7 +4028,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         moment.locale('br');
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
@@ -4365,7 +4365,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -4721,7 +4721,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -5157,7 +5157,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -5522,7 +5522,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -5879,7 +5879,7 @@
         }
     });
 
-    test('same all else', function (assert) {
+    test('same widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -6537,7 +6537,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -6888,7 +6888,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -7290,7 +7290,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -7648,7 +7648,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -8004,7 +8004,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -8360,7 +8360,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -8726,7 +8726,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -9083,7 +9083,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -9442,7 +9442,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -9821,7 +9821,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -10176,7 +10176,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -10524,7 +10524,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -10878,7 +10878,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -11546,7 +11546,7 @@
         }
     });
 
-    test('same all else', function (assert) {
+    test('same widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -11900,7 +11900,7 @@
         }
     });
 
-    test('same all else', function (assert) {
+    test('same widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -12255,7 +12255,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -12619,7 +12619,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -12944,7 +12944,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -13299,7 +13299,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -13715,7 +13715,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -14084,7 +14084,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -14509,7 +14509,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -14827,7 +14827,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -15201,7 +15201,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -15555,7 +15555,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -15873,7 +15873,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -16192,7 +16192,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -16575,7 +16575,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -16953,7 +16953,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({
                 w: 1
             }),
@@ -17352,7 +17352,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -17950,7 +17950,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -18326,7 +18326,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -18716,7 +18716,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -19089,7 +19089,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -19444,7 +19444,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -19815,7 +19815,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -20207,7 +20207,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -20583,7 +20583,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -21030,7 +21030,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({
                 w: 1
             }),
@@ -21394,7 +21394,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -21748,7 +21748,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -22131,7 +22131,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -22491,7 +22491,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -22890,7 +22890,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -23243,7 +23243,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -23594,7 +23594,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -23957,7 +23957,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -24421,7 +24421,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -24779,7 +24779,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -25146,7 +25146,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -25632,7 +25632,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -26003,7 +26003,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -26393,7 +26393,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -26783,7 +26783,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -27138,7 +27138,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -27494,7 +27494,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -27826,7 +27826,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -28180,7 +28180,7 @@
         }
     });
 
-    test('same all else', function (assert) {
+    test('same widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -28546,7 +28546,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -28902,7 +28902,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -29260,7 +29260,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -29613,7 +29613,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -29999,7 +29999,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -30355,7 +30355,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -30721,7 +30721,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -31064,7 +31064,7 @@
         assert.equal(42, 42, 'at least one assert');
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -31396,7 +31396,7 @@
         }
     });
 
-    test('calendar all else', function (assert) {
+    test('calendar widgets else', function (assert) {
         var weeksAgo = moment().subtract({w: 1}),
             weeksFromNow = moment().add({w: 1});
 
@@ -32307,7 +32307,7 @@
         assert.equal(moment('01-02-2000', ['MM/DD/YYYY', 'DD/MM/YYYY']).format('MM DD YYYY'), '01 02 2000', 'either can be a month, month first format');
         assert.equal(moment('02-01-2000', ['DD/MM/YYYY', 'MM/DD/YYYY']).format('MM DD YYYY'), '01 02 2000', 'either can be a month, day first format');
 
-        assert.equal(moment('11-02-10', ['MM/DD/YY', 'YY MM DD', 'DD-MM-YY']).format('MM DD YYYY'), '02 11 2010', 'all unparsed substrings have influence on format penalty');
+        assert.equal(moment('11-02-10', ['MM/DD/YY', 'YY MM DD', 'DD-MM-YY']).format('MM DD YYYY'), '02 11 2010', 'widgets unparsed substrings have influence on format penalty');
         assert.equal(moment('11-02-10', ['MM-DD-YY HH:mm', 'YY MM DD']).format('MM DD YYYY'), '02 10 2011', 'prefer formats without extra tokens');
         assert.equal(moment('11-02-10 junk', ['MM-DD-YY', 'YY.MM.DD junk']).format('MM DD YYYY'), '02 10 2011', 'prefer formats that dont result in extra characters');
         assert.equal(moment('11-22-10', ['YY-MM-DD', 'YY-DD-MM']).format('MM DD YYYY'), '10 22 2011', 'prefer valid results');
@@ -32785,7 +32785,7 @@
         //can parse other stuff too
         assert.equal(moment('1999-W37-4 3:30', 'GGGG-[W]WW-E HH:mm').format('YYYY MM DD HH:mm'), '1999 09 16 03:30', 'parsing weeks and hours');
 
-        // In safari, all years before 1300 are shifted back with one day.
+        // In safari, widgets years before 1300 are shifted back with one day.
         // http://stackoverflow.com/questions/20768975/safari-subtracts-1-day-from-dates-before-1300
         if (new Date('1300-01-01').getUTCFullYear() === 1300) {
             // Years less than 100
@@ -33209,7 +33209,7 @@
     });
 
     test('exact month diffs', function (assert) {
-        // generate all pairs of months and compute month diff, with fixed day
+        // generate widgets pairs of months and compute month diff, with fixed day
         // of month = 15.
 
         var m1, m2;
@@ -33527,7 +33527,7 @@
     });
 
     test('instantiation from ISO 8601 duration', function (assert) {
-        assert.equal(moment.duration('P1Y2M3DT4H5M6S').asSeconds(), moment.duration({y: 1, M: 2, d: 3, h: 4, m: 5, s: 6}).asSeconds(), 'all fields');
+        assert.equal(moment.duration('P1Y2M3DT4H5M6S').asSeconds(), moment.duration({y: 1, M: 2, d: 3, h: 4, m: 5, s: 6}).asSeconds(), 'widgets fields');
         assert.equal(moment.duration('P1M').asSeconds(), moment.duration({M: 1}).asSeconds(), 'single month field');
         assert.equal(moment.duration('PT1M').asSeconds(), moment.duration({m: 1}).asSeconds(), 'single minute field');
         assert.equal(moment.duration('P1MT2H').asSeconds(), moment.duration({M: 1, h: 2}).asSeconds(), 'random fields missing');
@@ -33537,23 +33537,23 @@
     });
 
     test('serialization to ISO 8601 duration strings', function (assert) {
-        assert.equal(moment.duration({y: 1, M: 2, d: 3, h: 4, m: 5, s: 6}).toISOString(), 'P1Y2M3DT4H5M6S', 'all fields');
+        assert.equal(moment.duration({y: 1, M: 2, d: 3, h: 4, m: 5, s: 6}).toISOString(), 'P1Y2M3DT4H5M6S', 'widgets fields');
         assert.equal(moment.duration({M: -1}).toISOString(), '-P1M', 'one month ago');
         assert.equal(moment.duration({m: -1}).toISOString(), '-PT1M', 'one minute ago');
         assert.equal(moment.duration({s: -0.5}).toISOString(), '-PT0.5S', 'one half second ago');
         assert.equal(moment.duration({y: -0.5, M: 1}).toISOString(), '-P5M', 'a month after half a year ago');
         assert.equal(moment.duration({}).toISOString(), 'P0D', 'zero duration');
-        assert.equal(moment.duration({M: 16, d:40, s: 86465}).toISOString(), 'P1Y4M40DT24H1M5S', 'all fields');
+        assert.equal(moment.duration({M: 16, d:40, s: 86465}).toISOString(), 'P1Y4M40DT24H1M5S', 'widgets fields');
     });
 
     test('toString acts as toISOString', function (assert) {
-        assert.equal(moment.duration({y: 1, M: 2, d: 3, h: 4, m: 5, s: 6}).toString(), 'P1Y2M3DT4H5M6S', 'all fields');
+        assert.equal(moment.duration({y: 1, M: 2, d: 3, h: 4, m: 5, s: 6}).toString(), 'P1Y2M3DT4H5M6S', 'widgets fields');
         assert.equal(moment.duration({M: -1}).toString(), '-P1M', 'one month ago');
         assert.equal(moment.duration({m: -1}).toString(), '-PT1M', 'one minute ago');
         assert.equal(moment.duration({s: -0.5}).toString(), '-PT0.5S', 'one half second ago');
         assert.equal(moment.duration({y: -0.5, M: 1}).toString(), '-P5M', 'a month after half a year ago');
         assert.equal(moment.duration({}).toString(), 'P0D', 'zero duration');
-        assert.equal(moment.duration({M: 16, d:40, s: 86465}).toString(), 'P1Y4M40DT24H1M5S', 'all fields');
+        assert.equal(moment.duration({M: 16, d:40, s: 86465}).toString(), 'P1Y4M40DT24H1M5S', 'widgets fields');
     });
 
     test('toIsoString deprecation', function (assert) {
@@ -36076,8 +36076,8 @@
 
     test('string + formats bad date', function (assert) {
         assert.equal(moment('2020-00-00', []).isValid(), false, 'invalid on empty array');
-        assert.equal(moment('2020-00-00', ['YYYY-MM-DD', 'DD-MM-YYYY']).isValid(), false, 'invalid on all in array');
-        assert.equal(moment('2020-00-00', ['DD-MM-YYYY', 'YYYY-MM-DD']).isValid(), false, 'invalid on all in array');
+        assert.equal(moment('2020-00-00', ['YYYY-MM-DD', 'DD-MM-YYYY']).isValid(), false, 'invalid on widgets in array');
+        assert.equal(moment('2020-00-00', ['DD-MM-YYYY', 'YYYY-MM-DD']).isValid(), false, 'invalid on widgets in array');
         assert.equal(moment('2020-01-01', ['YYYY-MM-DD', 'DD-MM-YYYY']).isValid(), true, 'valid on first');
         assert.equal(moment('2020-01-01', ['DD-MM-YYYY', 'YYYY-MM-DD']).isValid(), true, 'valid on last');
         assert.equal(moment('2020-01-01', ['YYYY-MM-DD', 'YYYY-DD-MM']).isValid(), true, 'valid on both');
@@ -36616,7 +36616,7 @@
         });
 
         assert.equal(moment([2012, 5, 6]).format('MMMM'), 'July', 'Override some of the configs');
-        assert.equal(moment([2012, 5, 6]).format('MMM'), 'Jun', 'But not all of them');
+        assert.equal(moment([2012, 5, 6]).format('MMM'), 'Jun', 'But not widgets of them');
     });
 
     test('library ensure inheritance LT L LL LLL LLLL', function (assert) {
@@ -38796,9 +38796,9 @@
             zoneD = moment(zoneA).utcOffset(690),
             other = moment(zoneA).add(35, 'm');
 
-        assert.equal(zoneA.from(other), zoneB.from(other), 'moment#from should be the same in all zones');
-        assert.equal(zoneA.from(other), zoneC.from(other), 'moment#from should be the same in all zones');
-        assert.equal(zoneA.from(other), zoneD.from(other), 'moment#from should be the same in all zones');
+        assert.equal(zoneA.from(other), zoneB.from(other), 'moment#from should be the same in widgets zones');
+        assert.equal(zoneA.from(other), zoneC.from(other), 'moment#from should be the same in widgets zones');
+        assert.equal(zoneA.from(other), zoneD.from(other), 'moment#from should be the same in widgets zones');
     });
 
     test('diff', function (assert) {
@@ -38808,17 +38808,17 @@
             zoneD = moment(zoneA).utcOffset(690),
             other = moment(zoneA).add(35, 'm');
 
-        assert.equal(zoneA.diff(other), zoneB.diff(other), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other), zoneC.diff(other), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other), zoneD.diff(other), 'moment#diff should be the same in all zones');
+        assert.equal(zoneA.diff(other), zoneB.diff(other), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other), zoneC.diff(other), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other), zoneD.diff(other), 'moment#diff should be the same in widgets zones');
 
-        assert.equal(zoneA.diff(other, 'minute', true), zoneB.diff(other, 'minute', true), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other, 'minute', true), zoneC.diff(other, 'minute', true), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other, 'minute', true), zoneD.diff(other, 'minute', true), 'moment#diff should be the same in all zones');
+        assert.equal(zoneA.diff(other, 'minute', true), zoneB.diff(other, 'minute', true), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other, 'minute', true), zoneC.diff(other, 'minute', true), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other, 'minute', true), zoneD.diff(other, 'minute', true), 'moment#diff should be the same in widgets zones');
 
-        assert.equal(zoneA.diff(other, 'hour', true), zoneB.diff(other, 'hour', true), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other, 'hour', true), zoneC.diff(other, 'hour', true), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other, 'hour', true), zoneD.diff(other, 'hour', true), 'moment#diff should be the same in all zones');
+        assert.equal(zoneA.diff(other, 'hour', true), zoneB.diff(other, 'hour', true), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other, 'hour', true), zoneC.diff(other, 'hour', true), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other, 'hour', true), zoneD.diff(other, 'hour', true), 'moment#diff should be the same in widgets zones');
     });
 
     test('unix offset and timestamp', function (assert) {
@@ -38827,13 +38827,13 @@
             zoneC = moment(zoneA).utcOffset(-360),
             zoneD = moment(zoneA).utcOffset(690);
 
-        assert.equal(zoneA.unix(), zoneB.unix(), 'moment#unix should be the same in all zones');
-        assert.equal(zoneA.unix(), zoneC.unix(), 'moment#unix should be the same in all zones');
-        assert.equal(zoneA.unix(), zoneD.unix(), 'moment#unix should be the same in all zones');
+        assert.equal(zoneA.unix(), zoneB.unix(), 'moment#unix should be the same in widgets zones');
+        assert.equal(zoneA.unix(), zoneC.unix(), 'moment#unix should be the same in widgets zones');
+        assert.equal(zoneA.unix(), zoneD.unix(), 'moment#unix should be the same in widgets zones');
 
-        assert.equal(+zoneA, +zoneB, 'moment#valueOf should be the same in all zones');
-        assert.equal(+zoneA, +zoneC, 'moment#valueOf should be the same in all zones');
-        assert.equal(+zoneA, +zoneD, 'moment#valueOf should be the same in all zones');
+        assert.equal(+zoneA, +zoneB, 'moment#valueOf should be the same in widgets zones');
+        assert.equal(+zoneA, +zoneC, 'moment#valueOf should be the same in widgets zones');
+        assert.equal(+zoneA, +zoneD, 'moment#valueOf should be the same in widgets zones');
     });
 
     test('cloning', function (assert) {
@@ -39287,7 +39287,7 @@
         assert.equal(moment([2009, 11, 28]).weekYear(), 2010);
     });
 
-    // Verifies that the week number, week day computation is correct for all dow, doy combinations
+    // Verifies that the week number, week day computation is correct for widgets dow, doy combinations
     test('week year roundtrip', function (assert) {
         var dow, doy, wd, m;
         for (dow = 0; dow < 7; ++dow) {
@@ -40269,9 +40269,9 @@
             zoneD = moment(zoneA).zone(-690),
             other = moment(zoneA).add(35, 'm');
 
-        assert.equal(zoneA.from(other), zoneB.from(other), 'moment#from should be the same in all zones');
-        assert.equal(zoneA.from(other), zoneC.from(other), 'moment#from should be the same in all zones');
-        assert.equal(zoneA.from(other), zoneD.from(other), 'moment#from should be the same in all zones');
+        assert.equal(zoneA.from(other), zoneB.from(other), 'moment#from should be the same in widgets zones');
+        assert.equal(zoneA.from(other), zoneC.from(other), 'moment#from should be the same in widgets zones');
+        assert.equal(zoneA.from(other), zoneD.from(other), 'moment#from should be the same in widgets zones');
     });
 
     test('diff', function (assert) {
@@ -40281,17 +40281,17 @@
             zoneD = moment(zoneA).zone(-690),
             other = moment(zoneA).add(35, 'm');
 
-        assert.equal(zoneA.diff(other), zoneB.diff(other), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other), zoneC.diff(other), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other), zoneD.diff(other), 'moment#diff should be the same in all zones');
+        assert.equal(zoneA.diff(other), zoneB.diff(other), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other), zoneC.diff(other), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other), zoneD.diff(other), 'moment#diff should be the same in widgets zones');
 
-        assert.equal(zoneA.diff(other, 'minute', true), zoneB.diff(other, 'minute', true), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other, 'minute', true), zoneC.diff(other, 'minute', true), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other, 'minute', true), zoneD.diff(other, 'minute', true), 'moment#diff should be the same in all zones');
+        assert.equal(zoneA.diff(other, 'minute', true), zoneB.diff(other, 'minute', true), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other, 'minute', true), zoneC.diff(other, 'minute', true), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other, 'minute', true), zoneD.diff(other, 'minute', true), 'moment#diff should be the same in widgets zones');
 
-        assert.equal(zoneA.diff(other, 'hour', true), zoneB.diff(other, 'hour', true), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other, 'hour', true), zoneC.diff(other, 'hour', true), 'moment#diff should be the same in all zones');
-        assert.equal(zoneA.diff(other, 'hour', true), zoneD.diff(other, 'hour', true), 'moment#diff should be the same in all zones');
+        assert.equal(zoneA.diff(other, 'hour', true), zoneB.diff(other, 'hour', true), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other, 'hour', true), zoneC.diff(other, 'hour', true), 'moment#diff should be the same in widgets zones');
+        assert.equal(zoneA.diff(other, 'hour', true), zoneD.diff(other, 'hour', true), 'moment#diff should be the same in widgets zones');
     });
 
     test('unix offset and timestamp', function (assert) {
@@ -40300,13 +40300,13 @@
             zoneC = moment(zoneA).zone(360),
             zoneD = moment(zoneA).zone(-690);
 
-        assert.equal(zoneA.unix(), zoneB.unix(), 'moment#unix should be the same in all zones');
-        assert.equal(zoneA.unix(), zoneC.unix(), 'moment#unix should be the same in all zones');
-        assert.equal(zoneA.unix(), zoneD.unix(), 'moment#unix should be the same in all zones');
+        assert.equal(zoneA.unix(), zoneB.unix(), 'moment#unix should be the same in widgets zones');
+        assert.equal(zoneA.unix(), zoneC.unix(), 'moment#unix should be the same in widgets zones');
+        assert.equal(zoneA.unix(), zoneD.unix(), 'moment#unix should be the same in widgets zones');
 
-        assert.equal(+zoneA, +zoneB, 'moment#valueOf should be the same in all zones');
-        assert.equal(+zoneA, +zoneC, 'moment#valueOf should be the same in all zones');
-        assert.equal(+zoneA, +zoneD, 'moment#valueOf should be the same in all zones');
+        assert.equal(+zoneA, +zoneB, 'moment#valueOf should be the same in widgets zones');
+        assert.equal(+zoneA, +zoneC, 'moment#valueOf should be the same in widgets zones');
+        assert.equal(+zoneA, +zoneD, 'moment#valueOf should be the same in widgets zones');
     });
 
     test('cloning', function (assert) {

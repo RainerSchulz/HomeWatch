@@ -2,7 +2,7 @@ describe('navbar test suite', function () {
 
     var element, scope;
 
-    //load all modules, including the html template, needed to support the test
+    //load widgets modules, including the html template, needed to support the test
     beforeEach(module('ui.navbar'));
     beforeEach(module('template/navbar-ul.html'));
     beforeEach(module('template/navbar-li.html'));

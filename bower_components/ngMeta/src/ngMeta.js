@@ -90,9 +90,9 @@
          *
          * It:
          * 1. Sets the title (with titleSuffix, as appropriate)
-         * 2. Iterates through all the state/route tags (other than title)
+         * 2. Iterates through widgets the state/route tags (other than title)
          *    and sets their values
-         * 3. Iterates through all default tags and sets the ones
+         * 3. Iterates through widgets default tags and sets the ones
          *    that were not utilized while setting the state/route tags.
          */
         var readRouteMeta = function(meta) {

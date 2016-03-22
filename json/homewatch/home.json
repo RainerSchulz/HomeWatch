@@ -1,11 +1,11 @@
 {
-  "home": [
+  "Results": [
     {
       "alias": "Kamera",
       "image": "images/kamera.png",
       "headerImage": "images/kamera_1.png",
       "show": "false",
-      "buttonClick": "/Kamera",
+      "location": "Kamera",
       "name": "camera",
       "type": "genericDeviceType"
     },
@@ -14,8 +14,8 @@
       "image": "images/beleuchtung.png",
       "headerImage": "images/headlight.png",
       "show": "true",
-      "buttonClick": "/Beleuchtung",
-      "name": "light_hm,dimmer_hm,light_gira,dimmer_gira,light,dimmer",
+      "location": "Beleuchtung",
+      "name": "light_hm,dimmer_hm,light_gira,dimmer_gira,light",
       "type": "genericDeviceType"
     },
     {
@@ -23,7 +23,7 @@
       "image": "images/heizung.png",
       "headerImage": "images/heizung_1.png",
       "show": "true",
-      "buttonClick": "/Klimatisierung",
+      "location": "Klimatisierung",
       "name": "heating_hm,heating_gira",
       "type": "genericDeviceType"
     },
@@ -32,7 +32,7 @@
       "image": "images/verschattung.png",
       "headerImage": "images/headlight.png",
       "show": "true",
-      "buttonClick": "/Verschattung",
+      "location": "Verschattung",
       "name": "blind_gira,blind_hm",
       "type": "genericDeviceType"
     },
@@ -41,7 +41,7 @@
       "image": "images/grundriss.png",
       "headerImage": "images/grundriss43.png",
       "show": "true",
-      "buttonClick": "/Favoriten",
+      "location": "Favoriten",
       "name": "yes",
       "type": "like"
     },
@@ -50,7 +50,7 @@
       "image": "images/sicherheit.png",
       "headerImage": "images/sicherheit_1.png",
       "show": "true",
-      "buttonClick": "/Sicherheit",
+      "location": "Sicherheit",
       "name": "window,window_hm,window_gira,water_hm,water_gira,smoke_hm,smoke_gira,motion_hm,motion_gira,dummy_sec",
       "type": "genericDeviceType"
     },
@@ -59,7 +59,7 @@
       "image": "images/energie.png",
       "headerImage": "images/energie_1.png",
       "show": "true",
-      "buttonClick": "/Energie",
+      "location": "Energie",
       "name": "switch_hm,switch_gira,energy_hm,energy_gira",
       "type": "genericDeviceType"
     },
@@ -68,7 +68,7 @@
       "image": "images/multimedia.png",
       "headerImage": "images/multimedia_1.png",
       "show": "true",
-      "buttonClick": "/Multimedia",
+      "location": "Multimedia",
       "name": "multimedia",
       "type": "room"
     },
@@ -77,7 +77,7 @@
       "image": "images/welness.png",
       "headerImage": "images/welness_1.png",
       "show": "true",
-      "buttonClick": "/Wellness",
+      "location": "Wellness",
       "name": "wellness",
       "type": "room"
     }

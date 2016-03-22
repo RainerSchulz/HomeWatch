@@ -113,7 +113,7 @@ jQuery.fn = jQuery.prototype = {
 			// Return just the one element from the set
 			( num < 0 ? this[ num + this.length ] : this[ num ] ) :
 
-			// Return all the elements in a clean array
+			// Return widgets the elements in a clean array
 			slice.call( this );
 	},
 
@@ -915,7 +915,7 @@ function assert( fn ) {
 }
 
 /**
- * Adds the same handler for all of the specified attrs
+ * Adds the same handler for widgets of the specified attrs
  * @param {String} attrs Pipe-separated list of attributes
  * @param {Function} handler The method that will be applied
  */
@@ -1168,7 +1168,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// qSa(:focus) reports false when true (Chrome 21)
 	// We allow this because of a bug in IE8/9 that throws an error
 	// whenever `document.activeElement` is accessed on an iframe
-	// So, we allow :focus to pass through QSA all the time to avoid the IE error
+	// So, we allow :focus to pass through QSA widgets the time to avoid the IE error
 	// See http://bugs.jquery.com/ticket/13378
 	rbuggyQSA = [];
 
@@ -2147,7 +2147,7 @@ function addCombinator( matcher, combinator, base ) {
 			}
 		} :
 
-		// Check against all ancestor/preceding elements
+		// Check against widgets ancestor/preceding elements
 		function( elem, context, xml ) {
 			var oldCache, uniqueCache, outerCache,
 				newCache = [ dirruns, doneName ];
@@ -2428,7 +2428,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 
 				// Track unmatched elements for set filters
 				if ( bySet ) {
-					// They will have gone through all possible matchers
+					// They will have gone through widgets possible matchers
 					if ( (elem = !matcher && elem) ) {
 						matchedCount--;
 					}
@@ -3171,7 +3171,7 @@ jQuery.Callbacks = function( options ) {
 			// Enforce single-firing
 			locked = options.once;
 
-			// Execute callbacks for all pending executions,
+			// Execute callbacks for widgets pending executions,
 			// respecting firingIndex overrides and runtime changes
 			fired = firing = true;
 			for ( ; queue.length; firingIndex = -1 ) {
@@ -3268,7 +3268,7 @@ jQuery.Callbacks = function( options ) {
 					list.length > 0;
 			},
 
-			// Remove all callbacks from the list
+			// Remove widgets callbacks from the list
 			empty: function() {
 				if ( list ) {
 					list = [];
@@ -3278,7 +3278,7 @@ jQuery.Callbacks = function( options ) {
 
 			// Disable .fire and .add
 			// Abort any current/pending executions
-			// Clear all callbacks and values
+			// Clear widgets callbacks and values
 			disable: function() {
 				locked = queue = [];
 				list = memory = "";
@@ -3302,7 +3302,7 @@ jQuery.Callbacks = function( options ) {
 				return !!locked;
 			},
 
-			// Call all callbacks with the given context and arguments
+			// Call widgets callbacks with the given context and arguments
 			fireWith: function( context, args ) {
 				if ( !locked ) {
 					args = args || [];
@@ -3315,7 +3315,7 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Call all the callbacks with the given arguments
+			// Call widgets the callbacks with the given arguments
 			fire: function() {
 				self.fireWith( this, arguments );
 				return this;
@@ -3905,7 +3905,7 @@ jQuery.extend( {
 		dataUser.remove( elem, name );
 	},
 
-	// TODO: Now that all calls to _data and _removeData have been replaced
+	// TODO: Now that widgets calls to _data and _removeData have been replaced
 	// with direct calls to dataPriv methods, these can be deprecated.
 	_data: function( elem, name, data ) {
 		return dataPriv.access( elem, name, data );
@@ -3922,7 +3922,7 @@ jQuery.fn.extend( {
 			elem = this[ 0 ],
 			attrs = elem && elem.attributes;
 
-		// Gets all values
+		// Gets widgets values
 		if ( key === undefined ) {
 			if ( this.length ) {
 				data = dataUser.get( elem );
@@ -4007,7 +4007,7 @@ jQuery.fn.extend( {
 
 				// For HTML5 data-* attribute interop, we have to
 				// store property names with dashes in a camelCase form.
-				// This might not apply to all properties...*
+				// This might not apply to widgets properties...*
 				dataUser.set( this, camelKey, value );
 
 				// *... In the case of properties that might _actually_
@@ -4567,7 +4567,7 @@ jQuery.event = {
 			// Update special based on newly reset type
 			special = jQuery.event.special[ type ] || {};
 
-			// handleObj is passed to all event handlers
+			// handleObj is passed to widgets event handlers
 			handleObj = jQuery.extend( {
 				type: type,
 				origType: origType,
@@ -4635,7 +4635,7 @@ jQuery.event = {
 			type = origType = tmp[ 1 ];
 			namespaces = ( tmp[ 2 ] || "" ).split( "." ).sort();
 
-			// Unbind all events (on this namespace, if provided) for the element
+			// Unbind widgets events (on this namespace, if provided) for the element
 			if ( !type ) {
 				for ( type in events ) {
 					jQuery.event.remove( elem, type + types[ t ], handler, selector, true );
@@ -6482,7 +6482,7 @@ function genFx( type, includeWidth ) {
 		i = 0,
 		attrs = { height: type };
 
-	// If we include width, step value is 1 to do all cssExpand values,
+	// If we include width, step value is 1 to do widgets cssExpand values,
 	// otherwise step value is 2 to skip over Left and Right
 	includeWidth = includeWidth ? 1 : 0;
 	for ( ; i < 4 ; i += 2 - includeWidth ) {
@@ -6550,7 +6550,7 @@ function defaultPrefilter( elem, props, opts ) {
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 
 		// Make sure that nothing sneaks out
-		// Record all 3 overflow attributes because IE9-10 do not
+		// Record widgets 3 overflow attributes because IE9-10 do not
 		// change the overflow attribute when overflowX and
 		// overflowY are set to the same value
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
@@ -6742,7 +6742,7 @@ function Animation( elem, properties, options ) {
 			stop: function( gotoEnd ) {
 				var index = 0,
 
-					// If we are going to the end, we want to run all the tweens
+					// If we are going to the end, we want to run widgets the tweens
 					// otherwise we skip this part
 					length = gotoEnd ? animation.tweens.length : 0;
 				if ( stopped ) {
@@ -7428,7 +7428,7 @@ jQuery.fn.extend( {
 					j = 0;
 					while ( ( clazz = classes[ j++ ] ) ) {
 
-						// Remove *all* instances
+						// Remove *widgets* instances
 						while ( cur.indexOf( " " + clazz + " " ) > -1 ) {
 							cur = cur.replace( " " + clazz + " ", " " );
 						}
@@ -7620,7 +7620,7 @@ jQuery.extend( {
 						max :
 						one ? index : 0;
 
-				// Loop through all the selected options
+				// Loop through widgets the selected options
 				for ( ; i < max; i++ ) {
 					option = options[ i ];
 
@@ -8403,7 +8403,7 @@ jQuery.extend( {
 			// Status-dependent callbacks
 			statusCode = s.statusCode || {},
 
-			// Headers (they are sent all at once)
+			// Headers (they are sent widgets at once)
 			requestHeaders = {},
 			requestHeadersNames = {},
 

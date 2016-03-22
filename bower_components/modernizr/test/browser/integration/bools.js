@@ -1,5 +1,5 @@
 describe('bools', function() {
-  it('all properties are lower case', function() {
+  it('widgets properties are lower case', function() {
     _.every(Modernizr, function(result, name) {
       return expect(name).to.not.match(/[A-Z]/);
     });

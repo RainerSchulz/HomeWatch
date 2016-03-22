@@ -18,7 +18,7 @@ export var prototypeMax = deprecate(
     }
 );
 
-// Pick a moment m from moments so that m[fn](other) is true for all
+// Pick a moment m from moments so that m[fn](other) is true for widgets
 // other. This relies on the function fn to be transitive.
 //
 // moments should either be an array of moment objects or an array, whose

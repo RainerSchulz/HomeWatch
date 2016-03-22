@@ -146,89 +146,11 @@
     background: none;
 }
 
-@media (min-width: 1350px) {
-    #wrapper {
-        padding-left: 250px;
-    }
-
-    #wrapper.toggled {
-        padding-left: 250px;
-    }
-
-    #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
-}
-
-@media (min-width: 100px) {
-    #wrapper2 {
-        padding-left: 250px;
-    }
-
-    #wrapper.toggled {
-        padding-left: 194px;
-    }
-
-    #sidebar-wrapper1 {
-        width: 250px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper1 {
-        width: 250px;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-        right: -1px;
-    }
-}
-
-@media (max-width: 520px) {
-
-    .wrapper1 {
-        width: 170px !important;
-
-    }
-
-    #wrapper2 {
-        padding-left: 178px;
-    }
-
-    .sidebar-nav1 {
-        position: absolute;
-        top: 0;
-        width: 230px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-}
-
 .margin {
 
     margin-top: 15px;
 }
+
 .spmar {
     margin-top: -18px;
 }
@@ -239,56 +161,12 @@
 
 }
 
-@media only screen and (min-width: 280px) and (max-width: 1240px) {
-
-    .spcing2 {
-
-        margin-right: -60px !important;
-        margin-left: 37px !important;
-    }
-
-    .spcing3 {
-
-        margin-right: -15px !important;
-        margin-left: -10px;
-    }
-
-}
-
-@media only screen and (min-width: 538px) and (max-width: 719px) {
-
-    .spcing11 {
-
-        margin-right: -35px !important;
-        margin-left: -10px;
-    }
-
-}
-
-@media only screen and (min-width: 280px) and (max-width: 450px) {
-
-    .maginS {
-
-        margin-left: -10px;
-
-    }
-
-    .spcing11 {
-
-        margin-right: 5px !important;
-        margin-left: -10px;
-    }
-
-}
-
 .spcing2 {
 
     margin-left: -5px;
 }
 
-@media only screen and (min-width: 280px) and (max-width: 715px) {
 
-}
 
 
 

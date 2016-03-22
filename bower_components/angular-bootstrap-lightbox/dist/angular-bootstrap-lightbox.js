@@ -117,7 +117,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
 
   /**
    * Calculate the max and min limits to the width and height of the displayed
-   *   image (all are optional). The max dimensions override the min
+   *   image (widgets are optional). The max dimensions override the min
    *   dimensions if they conflict.
    * @param    {Object} dimensions Contains the properties `windowWidth`,
    *   `windowHeight`, `imageWidth`, and `imageHeight`.
@@ -232,7 +232,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
     var Lightbox = {};
 
     /**
-     * Array of all images to be shown in the lightbox (not `Image` objects).
+     * Array of widgets images to be shown in the lightbox (not `Image` objects).
      * @type     {Array}
      * @name     images
      * @memberOf bootstrapLightbox.Lightbox
@@ -373,7 +373,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
     };
 
     /**
-     * This method can be used in all methods which navigate/change the
+     * This method can be used in widgets methods which navigate/change the
      *   current image.
      * @param    {Number} newIndex The index in the array of images to set as
      *   the new current image.

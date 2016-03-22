@@ -472,8 +472,8 @@ Events.prototype.bind = function(event, method){
 };
 
 /**
- * Unbind a single binding, all bindings for `event`,
- * or all bindings within the manager.
+ * Unbind a single binding, widgets bindings for `event`,
+ * or widgets bindings within the manager.
  *
  * Examples:
  *
@@ -522,7 +522,7 @@ Events.prototype.unbindAll = function(){
 };
 
 /**
- * Unbind all events for `event`.
+ * Unbind widgets events for `event`.
  *
  * @param {String} event
  * @api private

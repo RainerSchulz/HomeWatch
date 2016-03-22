@@ -505,7 +505,7 @@ var utils = require('cordova/utils'),
  *
  * onDOMContentLoaded*         Internal event that is received when the web page is loaded and parsed.
  * onNativeReady*              Internal event that indicates the Cordova native side is ready.
- * onCordovaReady*             Internal event fired when all Cordova JavaScript objects have been created.
+ * onCordovaReady*             Internal event fired when widgets Cordova JavaScript objects have been created.
  * onCordovaInfoReady*         Internal event fired when device properties are available.
  * onCordovaConnectionReady*   Internal event fired when the connection property has been set.
  * onDeviceReady*              User event fired to indicate that Cordova is ready
@@ -553,7 +553,7 @@ var Channel = function(type, sticky) {
 },
     channel = {
         /**
-         * Calls the provided function only after all of the channels specified
+         * Calls the provided function only after widgets of the channels specified
          * have been fired. All channels must be sticky channels.
          */
         join: function(h, c) {
@@ -670,7 +670,7 @@ Channel.prototype.unsubscribe = function(f) {
 };
 
 /**
- * Calls all functions subscribed to this channel.
+ * Calls widgets functions subscribed to this channel.
  */
 Channel.prototype.fire = function(e) {
     var fail = false,
@@ -706,7 +706,7 @@ channel.createSticky('onDOMContentLoaded');
 // Event to indicate the Cordova native side is ready.
 channel.createSticky('onNativeReady');
 
-// Event to indicate that all Cordova JavaScript objects have been created
+// Event to indicate that widgets Cordova JavaScript objects have been created
 // and it's time to run plugin constructors.
 channel.createSticky('onCordovaReady');
 
@@ -1023,7 +1023,7 @@ var cordova = require('cordova'),
         // For LOAD_URL to be viable, it would need to have a work-around for
         // the bug where the soft-keyboard gets dismissed when a message is sent.
         LOAD_URL: 1,
-        // For the ONLINE_EVENT to be viable, it would need to intercept all event
+        // For the ONLINE_EVENT to be viable, it would need to intercept widgets event
         // listeners (both through addEventListener and window.ononline) as well
         // as set the navigator property itself.
         ONLINE_EVENT: 2,
@@ -1237,7 +1237,7 @@ module.exports = {
 
         // First patch WebSQL if necessary
         if (typeof window.openDatabase == 'undefined') {
-            // Not defined, create an openDatabase function for all to use!
+            // Not defined, create an openDatabase function for widgets to use!
             window.openDatabase = storage.openDatabase;
         } else {
             // Defined, but some Android devices will throw a SECURITY_ERR -
@@ -1272,7 +1272,7 @@ module.exports = {
             window.localStorage = new storage.CupcakeLocalStorage();
         }
 
-        // Let native code know we are all done on the JS side.
+        // Let native code know we are widgets done on the JS side.
         // Native code will then un-hide the WebView.
         channel.join(function() {
             exec(null, null, "App", "show", []);
@@ -1470,7 +1470,7 @@ module.exports = {
   MediaType:{
     PICTURE: 0,          // allow selection of still pictures only. DEFAULT. Will return format specified via DestinationType
     VIDEO: 1,            // allow selection of video only, ONLY RETURNS URL
-    ALLMEDIA : 2         // allow selection from all media types
+    ALLMEDIA : 2         // allow selection from widgets media types
   },
   PictureSourceType:{
     PHOTOLIBRARY : 0,    // Choose image from picture library (same as SAVEDPHOTOALBUM for Android)
@@ -1514,7 +1514,7 @@ module.exports = CameraPopoverOptions;
 define("cordova/plugin/CaptureAudioOptions", function(require, exports, module) {
 
 /**
- * Encapsulates all audio capture operation configuration options.
+ * Encapsulates widgets audio capture operation configuration options.
  */
 var CaptureAudioOptions = function(){
     // Upper limit of sound clips user can record. Value must be equal or greater than 1.
@@ -1533,7 +1533,7 @@ module.exports = CaptureAudioOptions;
 define("cordova/plugin/CaptureError", function(require, exports, module) {
 
 /**
- * The CaptureError interface encapsulates all errors in the Capture API.
+ * The CaptureError interface encapsulates widgets errors in the Capture API.
  */
 var CaptureError = function(c) {
    this.code = c || null;
@@ -1558,7 +1558,7 @@ module.exports = CaptureError;
 define("cordova/plugin/CaptureImageOptions", function(require, exports, module) {
 
 /**
- * Encapsulates all image capture operation configuration options.
+ * Encapsulates widgets image capture operation configuration options.
  */
 var CaptureImageOptions = function(){
     // Upper limit of images user can take. Value must be equal or greater than 1.
@@ -1575,7 +1575,7 @@ module.exports = CaptureImageOptions;
 define("cordova/plugin/CaptureVideoOptions", function(require, exports, module) {
 
 /**
- * Encapsulates all video capture operation configuration options.
+ * Encapsulates widgets video capture operation configuration options.
  */
 var CaptureVideoOptions = function(){
     // Upper limit of videos user can record. Value must be equal or greater than 1.
@@ -2104,7 +2104,7 @@ DirectoryEntry.prototype.getDirectory = function(path, options, successCallback,
 };
 
 /**
- * Deletes a directory and all of it's contents
+ * Deletes a directory and widgets of it's contents
  *
  * @param {Function} successCallback is called with no parameters
  * @param {Function} errorCallback is called with a FileError
@@ -2848,7 +2848,7 @@ var FileTransfer = function() {
 * @param successCallback (Function}  Callback to be invoked when upload has completed
 * @param errorCallback {Function}    Callback to be invoked upon error
 * @param options {FileUploadOptions} Optional parameters such as file name and mimetype
-* @param trustAllHosts {Boolean} Optional trust all hosts (e.g. for self-signed certs), defaults to false
+* @param trustAllHosts {Boolean} Optional trust widgets hosts (e.g. for self-signed certs), defaults to false
 */
 FileTransfer.prototype.upload = function(filePath, server, successCallback, errorCallback, options, trustAllHosts) {
     // sanity parameter checking
@@ -2900,7 +2900,7 @@ FileTransfer.prototype.upload = function(filePath, server, successCallback, erro
  * @param target {String}         Full path of the file on the device
  * @param successCallback (Function}  Callback to be invoked when upload has completed
  * @param errorCallback {Function}    Callback to be invoked upon error
- * @param trustAllHosts {Boolean} Optional trust all hosts (e.g. for self-signed certs), defaults to false
+ * @param trustAllHosts {Boolean} Optional trust widgets hosts (e.g. for self-signed certs), defaults to false
  */
 FileTransfer.prototype.download = function(source, target, successCallback, errorCallback, trustAllHosts) {
     // sanity parameter checking
@@ -4230,7 +4230,7 @@ function completeQuery(id, data) {
             var tx = query.tx;
 
             // If transaction hasn't failed
-            // Note: We ignore all query results if previous query
+            // Note: We ignore widgets query results if previous query
             //       in the same transaction failed.
             if (tx && tx.queryList[id]) {
 
@@ -4271,7 +4271,7 @@ function failQuery(reason, id) {
             var tx = query.tx;
 
             // If transaction hasn't failed
-            // Note: We ignore all query results if previous query
+            // Note: We ignore widgets query results if previous query
             //       in the same transaction failed.
             if (tx && tx.queryList[id]) {
                 tx.queryList = {};
@@ -4343,7 +4343,7 @@ var DroidDB_Tx = function() {
 
 /**
  * Mark query in transaction as complete.
- * If all queries are complete, call the user's transaction success callback.
+ * If widgets queries are complete, call the user's transaction success callback.
  *
  * @param id                Query id
  */
@@ -5425,7 +5425,7 @@ dateToString:function(date, successCB, failureCB, options) {
 *            Object.minute {Number}: The minute from (0 - 59)
 *            Object.second {Number}: The second from (0 - 59)
 *            Object.millisecond {Number}: The milliseconds (from 0 - 999),
-*                                        not available on all platforms
+*                                        not available on widgets platforms
 *
 * @error GlobalizationError.PARSING_ERROR
 *
@@ -6412,7 +6412,7 @@ window.cordova = require('cordova');
         _self = {
             boot: function () {
                 /**
-                 * Create all cordova objects once page has fully loaded and native side is ready.
+                 * Create widgets cordova objects once page has fully loaded and native side is ready.
                  */
                 channel.join(function() {
                     var builder = require('cordova/builder'),
@@ -6431,10 +6431,10 @@ window.cordova = require('cordova');
                     // Call the platform-specific initialization
                     platform.initialize();
 
-                    // Fire event to notify that all objects are created
+                    // Fire event to notify that widgets objects are created
                     channel.onCordovaReady.fire();
 
-                    // Fire onDeviceReady event once all constructors have run and
+                    // Fire onDeviceReady event once widgets constructors have run and
                     // cordova info has been received from native side.
                     channel.join(function() {
                         require('cordova').fireDocumentEvent('deviceready');

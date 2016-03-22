@@ -107,12 +107,21 @@ a:hover {
     margin: 1em 0;
 }
 
-h3.colorhedlig.colorhedligiphne {
-    margin-top: 0.1em;
+.colorhedlig {
+    color: #29377f;
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 23px;
 }
 
-.glyphicon {
-    color: rgb(173, 2, 41);
+h3.colorhedlig.colorhedligiphne {
+    margin-top: 0.9em;
+}
+
+.naver {
+    margin-top: 20px;
+    margin-right: 20px;
+    color: #AF0539;
 }
 
 .col-md-6_lie { /* Obere Reihe Liegenschaften */
@@ -183,7 +192,8 @@ h3.colorhedlig.colorhedligiphne {
 }
 
 .sidebardere1 {
-    margin-top: 75px;
+    margin-top: 50px;
+    margin-left: 60px;
 }
 
 img.hoversize:hover {
@@ -229,14 +239,6 @@ img.hoversize {
 
 }
 
-.row-p {
-    height: 5em;
-}
-
-.row-e {
-    margin-top: 4px !important;
-}
-
 ul.main-menu > li {
     margin: -5px 0px 15px 0;
 }
@@ -253,7 +255,7 @@ ul.main-menu > li {
 
 .margenladoiz {
 
-    margin-top: 45px !important;
+    margin-top: 50px !important;
 }
 
 .imgmiipne {
@@ -282,6 +284,24 @@ ul.main-menu > li {
     margin-bottom: 20px;
 }
 
+.row-p {
+    height: 5em;
+}
+
+.row-e {
+    margin-top: 4px !important;
+}
+
+.rowkam {
+
+    margin-bottom: 70px !important;
+    margin-left: -25px;
+}
+
+.row-tds {
+
+}
+
 .padiimagns {
     margin-left: -30px;
     margin-bottom: 40px !important;
@@ -303,15 +323,81 @@ ul.main-menu > li {
     margin-top: 50px;
 }
 
+.margtopF {
+
+    margin-bottom: 32px !important
+}
+
+.margtopEIC {
+
+    margin-bottom: 2.7em !important;
+}
+
+.margtopJL {
+
+    margin-bottom: 1em !important;
+}
+
+.margtopD {
+
+    margin-bottom: 15px !important;
+}
+
+.margtopV {
+
+    margin-bottom: -40px !important;
+}
+
 .margeI {
-    margin-bottom: 3.5em;
-    /* margin-bottom: 4em; */
+    margin-bottom: 1.5em;
+}
+
+.margeI2 {
+    margin-bottom: 3em;
 }
 
 .hoversizesm {
 
     width: 130% !important;
     margin-left: -24px;
+}
+
+.hoversize > img {
+
+    margin-left: -24px;
+
+}
+
+.hoversize > img:active {
+
+    background-color: transparent;
+    position: relative;
+    border-radius: 20px;
+
+}
+
+img.hoversize:hover {
+
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 60px;
+
+}
+
+img.hoversize {
+
+    margin-bottom: 30px !important;
+
+}
+
+a > .hoversizesm :hover {
+
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 60px;
+
+}
+
+.hoversize:active {
+
 }
 
 select {
@@ -335,10 +421,10 @@ select option {
 
 }
 
-.fa-stack{
+.fa-stack {
     display: block;
 }
 
-.top30{
+.top30 {
     margin-top: 3em;
 }
