@@ -701,5 +701,25 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
+    .directive('cndWidgetsDummy_sec', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/dummy_sec/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                $log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
 
 ;

@@ -11,6 +11,10 @@
     /* margin-top: 19px; */
 }
 
+.cell {
+    color: white;
+}
+
 object {
     position: relative;
     float: left;
@@ -141,3 +145,8 @@ a.touch-moveable.pull-right.hidden-xs.visible-sm.visible-md.visible-lg, .glyphic
 .col-xs-1_light {
     margin-left: 25%;
 }
+
+.left25 {
+    left: 25%
+}
+

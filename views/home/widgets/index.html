@@ -32,11 +32,11 @@
                 <div class="nav_down touch-moveable"></div>
             </a>
 
-            <div class="row text-center mar_be clas_center pad_Wid">
+            <div class="row text-center mar_be center-block">
                 <!--  Widgets START -->
                 <div class=" col-md-offset-1 col-md-8">
                     <div class="row row-spc1">
-                        <div ng-repeat="items in result" class="top30">
+                        <div ng-repeat="items in result" class="">
                             <div ng-repeat="item in items" cnd-widgets-fields ng-kind="{{item}}"></div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                 <!--  Widgets END -->
 
                 <!-- Sidebar Right START -->
-                <div class="hidden-xs hidden-sm col-md-2 col-g-2 sidebardere1 ">
+                <div class="hidden-xs hidden-sm col-md-2 col-lg-2 sidebardere1 pull-right">
                     <div cnd-navigations-right ng-nav-right="{{navRight}}"></div>
                 </div>
                 <!-- Sidebar Right END -->

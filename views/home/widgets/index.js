@@ -1,5 +1,5 @@
 /**
- * Created by Rainer on 09.01.2016.
+ * Created by Rainer on 09.02.2016.
  */
 (function () {
     'use strict';
@@ -15,6 +15,7 @@
         // set Page Title
         Page.setTitle($scope.header);
 
+        // Init
         $scope.init = function () {
             $log.debug('HomeAll fhemweb_url: ' + $rootScope.MetaDatafhemweb_url);
 
@@ -56,7 +57,6 @@
         function GetNavRight($scope) {
             $scope.headerImage = $rootScope.headerImage;
 
-
             if (globalSettings.isDebug) {
                 Jsonervice.getJson('data/sidebar_right').then(function () {
                         var data = Jsonervice.data();
@@ -78,7 +78,6 @@
                         $log.debug('Success getHome: ' + type + ' : ' + value);
 
                         var data = HomeService.data();
-                        //$scope.navRight = data.Results;
                         $rootScope.navRight.resolve(HomeService.data().Results);
                         $rootScope.navRightTop.resolve(HomeService.data().Results);
                         //$log.debug('$scope.navRight.length by getHome: ' + $scope.navRight.length);

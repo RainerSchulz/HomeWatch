@@ -25,6 +25,10 @@ body {
     overflow: auto;
 }
 
+footer {
+    width: 100%;
+}
+
 .banner {
     background-image: url("../images/logos/banner.png");
     background-size: cover;
@@ -123,7 +127,10 @@ h3.colorhedlig.colorhedligiphne {
     margin-right: 20px;
     color: #AF0539;
 }
-
+.p_focu_b {
+    margin-top: 20px;
+    text-align: center;
+}
 .col-md-6_lie { /* Obere Reihe Liegenschaften */
     width: 50%;
 }

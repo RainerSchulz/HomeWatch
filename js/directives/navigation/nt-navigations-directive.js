@@ -8,21 +8,14 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            navButton: {},
+            sidebar_left: {},
 
             scope: {
                 ngNavButton: "@"
             },
 
-            /* ,compile: function compile(tElement, tAttrs, transclude){
-
-             return ($scope, element, attrs){
-
-             };
-             }*/
-
             link: function ($scope, element, attrs) {
-                $scope.navButton = JSON.parse($scope.ngNavButton);
+                $scope.sidebar_left = JSON.parse($scope.ngNavButton);
                 $log.debug('Start NavigationsLeft');
                 $scope.buttonClick = function (item) {
                     if (item.Internals.LINK != '') {

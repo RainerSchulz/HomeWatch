@@ -9,59 +9,6 @@
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheService, connection) {
-    var data = [];
-    var deffered = $q.defer();
-    var Jsonervice = {};
-    var originUrl = connection.originUrl;
-
-    Jsonervice.getJson = function (name) {
-
-        var url = 'json/homewatch/' + name + '.json';
-
-        return $http({
-            method: 'GET',
-            cache: true,
-            url: url
-        }).success(function (d) {
-                data = d;
-                deffered.resolve();
-
-                $log.debug("Jsonervice by Json " + name);
-                $log.debug(data);
-            })
-            .error(function (err, status, headers, config) {
-
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == 404) {
-                    url = originUrl + url;
-                    $log.debug(url);
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-
-
-            });
-
-
-    };
-
-    Jsonervice.data = function () {
-        return data;
-    };
-
-    return Jsonervice;
-});
-
-/**
- * Created by RSC on 18.01.2016.
- */
-
 myApp.service('HomeService', function ($http, notification, $log, $q, globalSettings, CacheService, connection, $rootScope) {
     var data = [];
     var deffered = $q.defer();
@@ -296,84 +243,146 @@ myApp.service('FavoritenService', function ($http, notification, $log, $q, HomeS
 });
 
 /**
- * Created by B026789 on 14.12.2015.
+ * Created by RSC on 18.01.2016.
  */
-/*
-(function () {
-    'use strict';
-    angular.module('myApp.ng.services').provider('notification', {
-        defaultMessages: {},
-        setDefaultMesaages: function (message) {
-            this.defaultMessages = message;
-        },
 
-        $get: [function () {
-            var messages = this.defaultMessages;
+myApp.service('CookiesService', function ($http, notification, $log, $q, HomeService, $cookies) {
+    {
+        var selected_index = -1;
+        var tbFavoriten = localStorage.getItem("tbFavoriten");
+        tbFavoriten = JSON.parse(tbFavoriten);
+        if (tbFavoriten == null) {
+            tbFavoriten = [];
+        }
 
-            function show(type, title, body) {
-                if (type == 'error') {
-                    toastr.error(body, title);
-                } else if (type == 'warning') {
-                    toastr.warning(body, title);
-                } else if (type == 'success') {
-                    toastr.success(body, title);
-                } else {
-                    toastr.info(body, title);
+        return {
+
+            addFavorite: function (name, like) {
+                var favorit = {
+                    Name: name,
+                    Like: like
+                };
+                $log.debug(favorit);
+                if (like == 'yes') {
+                    HomeService.setFavorit(name, 'no');
+                    $log.debug("Favorit gelöscht");
+                    tbFavoriten.splice(selected_index, 1);
+                    localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
+                    like = 'yes';
                 }
+                else {
+                    HomeService.setFavorit(name, 'yes');
+                    tbFavoriten.push(favorit);
+                    localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
+                    $log.debug("Favorit gespeichert");
+                    like = 'no';
+                }
+
+
             }
 
-            return {
-                show: function(type, title, body){
-                    show(type, title, body);
-                },
-                showError: function(type, title, body){
-                    show('error', title, body);
-                },
-                showWarning: function(type, title, body){
-                    show('warning', title, body);
-                },
-                showSuccess: function(type, title, body){
-                    show('success', title, body);
-                },
-                showSaveSuccess: function(type, title, body){
-                    show('success', messages.saveSucess || 'Speicherung erfolgreich', body);
-                },
-                showDeleteSuccess: function(type, title, body){
-                    show('success', messages.deleteSucess || 'Löschen erfolgreich', body);
-                },
-                showDefaultError: function(body){
-                    show('success', messages.defaultError || 'Ein Feher ist aufgetreten', body);
-                }
-            };
-        }]
-    });
+        }
+    }
+});
 
-}());
-    */
 /**
- * Created by B026789 on 13.01.2016.
+ * Created by RSC on 18.01.2016.
  */
-myApp.factory('UserService', function ($http, $q) {
-    var url = 'http://localhost:3839/api/lebenprivat/getlebenprivat/';
-    var deffered = $q.defer();
-    var data = [];
-    var UserService = {};
 
-    UserService.async = function (id, index) {
-        $http.get(url + id + '/' + index)
-            .success(function (d) {
+myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheService, connection) {
+    var data = [];
+    var deffered = $q.defer();
+    var Jsonervice = {};
+    var originUrl = connection.originUrl;
+
+    Jsonervice.getJson = function (name) {
+
+        var url = 'json/homewatch/' + name + '.json';
+
+        return $http({
+            method: 'GET',
+            cache: true,
+            url: url
+        }).success(function (d) {
                 data = d;
-                console.log(d);
                 deffered.resolve();
+
+                $log.debug("Jsonervice by Json " + name);
+                $log.debug(data);
+            })
+            .error(function (err, status, headers, config) {
+
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == 404) {
+                    url = originUrl + url;
+                    $log.debug(url);
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+
+
             });
-        return deffered.promise;
+
+
     };
-    UserService.data = function () {
+
+    Jsonervice.getJsonById = function (name, id) {
+
+        var url = 'json/homewatch/' + name + '.json';
+
+        return $http({
+            method: 'GET',
+            cache: true,
+            url: url
+        }).success(function (d) {
+                var res = d;
+
+                var len = res.Results.length;
+                for (var i = 0; i < len; i++) {
+                    if (res.Results[i].location == id) {
+                        data = res.Results[i];
+                        deffered.resolve();
+                        break;
+                    }
+                }
+
+
+                $log.debug("Jsonervice by getJsonById " + id);
+                $log.debug(data);
+            })
+            .error(function (err, status, headers, config) {
+
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == 404) {
+                    url = originUrl + url;
+                    $log.debug(url);
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+
+
+            });
+
+
+    };
+
+    Jsonervice.data = function () {
         return data;
     };
 
-    return UserService;
+    return Jsonervice;
 });
+
 /**
  * Created by Fabrice on 25.01.2016.
  */
@@ -535,6 +544,85 @@ var service = angular.module('app.service', [])
 
     }());
 /**
+ * Created by B026789 on 13.01.2016.
+ */
+myApp.factory('UserService', function ($http, $q) {
+    var url = 'http://localhost:3839/api/lebenprivat/getlebenprivat/';
+    var deffered = $q.defer();
+    var data = [];
+    var UserService = {};
+
+    UserService.async = function (id, index) {
+        $http.get(url + id + '/' + index)
+            .success(function (d) {
+                data = d;
+                console.log(d);
+                deffered.resolve();
+            });
+        return deffered.promise;
+    };
+    UserService.data = function () {
+        return data;
+    };
+
+    return UserService;
+});
+/**
+ * Created by B026789 on 14.12.2015.
+ */
+/*
+(function () {
+    'use strict';
+    angular.module('myApp.ng.services').provider('notification', {
+        defaultMessages: {},
+        setDefaultMesaages: function (message) {
+            this.defaultMessages = message;
+        },
+
+        $get: [function () {
+            var messages = this.defaultMessages;
+
+            function show(type, title, body) {
+                if (type == 'error') {
+                    toastr.error(body, title);
+                } else if (type == 'warning') {
+                    toastr.warning(body, title);
+                } else if (type == 'success') {
+                    toastr.success(body, title);
+                } else {
+                    toastr.info(body, title);
+                }
+            }
+
+            return {
+                show: function(type, title, body){
+                    show(type, title, body);
+                },
+                showError: function(type, title, body){
+                    show('error', title, body);
+                },
+                showWarning: function(type, title, body){
+                    show('warning', title, body);
+                },
+                showSuccess: function(type, title, body){
+                    show('success', title, body);
+                },
+                showSaveSuccess: function(type, title, body){
+                    show('success', messages.saveSucess || 'Speicherung erfolgreich', body);
+                },
+                showDeleteSuccess: function(type, title, body){
+                    show('success', messages.deleteSucess || 'Löschen erfolgreich', body);
+                },
+                showDefaultError: function(body){
+                    show('success', messages.defaultError || 'Ein Feher ist aufgetreten', body);
+                }
+            };
+        }]
+    });
+
+}());
+    */
+/**
  * Created by B026789 on 12.01.2016.
  */
 myApp.service('Page', function ($rootScope) {
@@ -561,38 +649,3 @@ myApp.service('Page', function ($rootScope) {
 
     }
 });
-/*
-    MyApp.factory 'utils', [
-    ()->
-        factory =
-            getItem: (item)->
-                data = window.localStorage.getItem("app_local_data")
-                if (!data)
-                    data = {}
-                    return ""
-                else
-                    data = JSON.parse(data)
-                    return data[item]
-            setItem: (key, value)->
-                data = window.localStorage.getItem("app_local_data")
-                if (!data)
-                    data = {}
-                    data[key] = value
-                else
-                    data = JSON.parse(data)
-                    data[key] = value
-                window.localStorage.setItem("app_local_data", JSON.stringify(data))
-                return true
-            removeItem: (key)->
-                data = window.localStorage.getItem("app_local_data")
-                if (!data)
-                    data = {}
-                else
-                    data = JSON.parse(data)
-                    delete data[key]
-                window.localStorage.setItem("app_local_data", JSON.stringify(data))
-                return true
-            logout: ->
-                  window.localStorage.removeItem("app_local_data")
-
-    */
