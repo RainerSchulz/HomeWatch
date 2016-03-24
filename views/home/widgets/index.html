@@ -1,16 +1,15 @@
 <div id="wrapper" ng-init="init()">
 
     <!-- Navigation TOP START -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
-        </div>
-    </nav>
+
+    <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
+
     <!-- Navigation TOP END -->
 
     <!-- Sidebar left rooms START -->
     <div id="sidebar-wrapper" class="row-tds">
-        <div cnd-navigations-rooms ng-header-image="{{headerImage}}" ng-rooms="{{rooms}}">
+        <div cnd-navigations-rooms ng-header-image="{{headerImage}}" ng-rooms="{{rooms}}"
+             ng-click="buttonNavClick(item)">
         </div>
     </div>
     <!-- Sidebar left rooms END -->

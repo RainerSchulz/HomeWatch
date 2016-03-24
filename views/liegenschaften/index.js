@@ -2,10 +2,9 @@
  * Created by Rainer on 09.01.2016.
  */
 
-
 (function () {
     'use strict';
-    function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, Jsonervice, globalSettings, MetaService, HomeService) {
+    function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, Jsonervice, connection, MetaService, HomeService) {
         $log.debug('LiegenschaftenController startet');
         var self = this;
 
@@ -92,8 +91,8 @@
             var type = 'genericDeviceType';
 
             // check if isDebug mode
-            if (globalSettings.isDebug) {
-                $log.debug('globalSettings.isDebug: ' + value);
+            if (connection.isDebug) {
+                $log.debug('connection.isDebug: ' + value);
                 // check if isDebug mode
                 Jsonervice.getJson('data/' + value).then(function () {
 
@@ -130,7 +129,7 @@
 
     }
 
-    LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'globalSettings', 'MetaService', 'HomeService'];
+    LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'connection', 'MetaService', 'HomeService'];
 
 
     angular.module('myApp')

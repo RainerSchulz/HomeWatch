@@ -8,8 +8,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
         cmd: "?cmd=jsonlist2%20",
         room: "room=", // Bungslow, Kamera, Alarm, Bad, Web, Rauchmelder usw.
         genericDeviceType: "genericDeviceType=", // switch_hm, light_hm, volume usw.
-        param: "&XHR=1",
-        isDebug: true
+        param: "&XHR=1"
     })
     // configure our routes
     .config(['$routeProvider', 'ngDialogProvider', function ($routeProvider, ngDialogProvider) {
@@ -70,6 +69,12 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
                 templateUrl: 'views/home/widgets/index.html',
                 controller: 'WidgetsController'
             })
+
+            .when('/Liegenschaften/:id/home/:name/:room', {
+                templateUrl: 'views/home/widgets/room/index.html',
+                controller: 'RoomController'
+            })
+
             .when('/Clubmitgliedschaft', {
                 templateUrl: 'views/clubmitgliedschaft/index.html',
                 controller: 'ClubmitgliedschaftController'
@@ -145,10 +150,11 @@ myApp.value('connection', {
     onlineStatus: "URL_local",
     originUrl: "http://localhost:63342/",
     application: "/HomeWatch 2.0/",
-    fhemweb_url: "http://login.homewatch-smarthome.de:8130/fhem",
+    fhemweb_url: "http://demowand:demowand@www.login.homewatch-smarthome.de:8130/fhem",
     URL_DC:"http://login.homewatch-smarthome.de:8139",
     URL_dyndns: "http://rou-wan-002.camdata.de:8083",
-    URL_local: "http://10.221.251.126:8083"
+    URL_local: "http://10.221.251.126:8083",
+    isDebug: true
 });
 
 

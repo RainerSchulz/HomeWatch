@@ -19,12 +19,13 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
         }).success(function (d) {
                 data = d;
                 deffered.resolve();
-
+                connection.isDebug = true;
                 $log.debug("HomeService by room");
                 $log.debug(data);
             })
             .error(function (err, status, headers, config) {
                 connection.internet = "false";
+                connection.isDebug = false;
                 // log error
                 if (status == 500) {
                     $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);

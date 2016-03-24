@@ -47,9 +47,9 @@ angular.module('myApp')
 
             link: function ($scope, element, attrs) {
 
-                $q.all($rootScope.rooms).then(function(rooms) {
-                    $scope.rooms = rooms.promise;
-                    $log.debug($scope.rooms);
+                $q.all($rootScope.rooms).then(function (rooms) {
+                        $scope.rooms = rooms.promise;
+                        $log.debug($scope.rooms);
                     },
                     // error
                     function (response) {
@@ -60,8 +60,8 @@ angular.module('myApp')
                 $scope.headerImage = $scope.ngHeaderImage;
                 $log.debug('Start left home nav: ' + $scope.headerImage);
                 //$log.debug($scope.rooms);
-                $scope.buttonClick = function (room) {
-                    alert('cndNavigationsLeftHome: ' + room);
+                $scope.buttonNavClick = function (room) {
+                    $log.debug(room);
                     $rootScope.currentRoom = room;
 
                 }

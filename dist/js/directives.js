@@ -6,6 +6,29 @@
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
 /**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
+
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
+                };
+
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+;
+/**
  * Created by RSC on 16.01.2016.
  */
 angular.module('myApp')
@@ -33,50 +56,20 @@ angular.module('myApp')
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
-
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-;
-/**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
     .directive('cndNavigationsLeft', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
-            navButton: {},
+            sidebar_left: {},
 
             scope: {
                 ngNavButton: "@"
             },
 
-            /* ,compile: function compile(tElement, tAttrs, transclude){
-
-             return ($scope, element, attrs){
-
-             };
-             }*/
-
             link: function ($scope, element, attrs) {
-                $scope.navButton = JSON.parse($scope.ngNavButton);
+                $scope.sidebar_left = JSON.parse($scope.ngNavButton);
                 $log.debug('Start NavigationsLeft');
                 $scope.buttonClick = function (item) {
                     if (item.Internals.LINK != '') {
@@ -108,9 +101,9 @@ angular.module('myApp')
 
             link: function ($scope, element, attrs) {
 
-                $q.all($rootScope.rooms).then(function(rooms) {
-                    $scope.rooms = rooms.promise;
-                    $log.debug($scope.rooms);
+                $q.all($rootScope.rooms).then(function (rooms) {
+                        $scope.rooms = rooms.promise;
+                        $log.debug($scope.rooms);
                     },
                     // error
                     function (response) {
@@ -121,8 +114,8 @@ angular.module('myApp')
                 $scope.headerImage = $scope.ngHeaderImage;
                 $log.debug('Start left home nav: ' + $scope.headerImage);
                 //$log.debug($scope.rooms);
-                $scope.buttonClick = function (room) {
-                    alert('cndNavigationsLeftHome: ' + room);
+                $scope.buttonNavClick = function (room) {
+                    $log.debug(room);
                     $rootScope.currentRoom = room;
 
                 }

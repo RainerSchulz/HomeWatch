@@ -3151,7 +3151,7 @@ margin-bottom: 4em;*/
     footer {
         position: fixed;
         bottom: 0;
-        width: 25% !important;
+        width: 25%;
     }
 
     .login_form {
@@ -4879,7 +4879,7 @@ margin-bottom: 4em;*/
 
         position: absolute !important;
         bottom: -100px !important;
-        width: 55% !important;
+        width: 55%;
     }
 
     .nav_down {

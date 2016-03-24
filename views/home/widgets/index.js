@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    function WidgetsController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, globalSettings, Jsonervice, RoomService) {
+    function WidgetsController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, connection, Jsonervice, RoomService) {
         $log.debug('WidgetsController startet');
 
         $scope.header = $routeParams.name;
@@ -41,8 +41,10 @@
             }
         };
 
-        $scope.buttonNavClick = function (title) {
-            var path = '/home/' + $rootScope.id + '/' + $rootScope.name + title;
+        $scope.buttonNavClick = function (room) {
+            $log.debug($rootScope.currentRoom.room);
+            var path = $location.$$path + '/' + $rootScope.currentRoom.room;
+            $log.debug(path);
             $location.path(path);
         };
 
@@ -57,7 +59,7 @@
         function GetNavRight($scope) {
             $scope.headerImage = $rootScope.headerImage;
 
-            if (globalSettings.isDebug) {
+            if (connection.isDebug) {
                 Jsonervice.getJson('data/sidebar_right').then(function () {
                         var data = Jsonervice.data();
 
@@ -106,7 +108,7 @@
 
                 // create a $q deferred promise
                 var deferred = $q.defer();
-                if (globalSettings.isDebug) {
+                if (connection.isDebug) {
                     HomeService.getHomeByIdJson(value).then(function () {
                             $log.debug('getHomeByIdJson: ' + value);
                             var data = HomeService.data();
@@ -203,7 +205,7 @@
 
     }
 
-    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'globalSettings', 'Jsonervice', 'RoomService'];
+    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'connection', 'Jsonervice', 'RoomService'];
 
 
     angular.module('myApp')
