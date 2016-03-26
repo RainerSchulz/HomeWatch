@@ -43,6 +43,7 @@ angular.module('myApp')
                             'url': imageSrc
                         }
                     ];
+                    $scope.imageUrl = imageSrc;
                     $scope.items = [];
                     var values = presets.Value.split(',');
                     angular.forEach(values, function (value) {
@@ -52,15 +53,26 @@ angular.module('myApp')
                         });
 
                     });
+                    Lightbox.imageName = imageName;
                     Lightbox.value = '';
-                    Lightbox.presets = values;
+                    Lightbox.presets = $scope.items;
 
                     $log.debug($scope.items);
-                    $log.debug(imageSrc);
-                    Lightbox.SetPreset = function (name, preset) {
-                        alert(preset);
+
+                    // Preset setzen
+                    Lightbox.SetPreset = function (preset) {
+
+                        $log.debug('Start set presets ' + preset + ' image: ' + imageName);
+                        HomeService.setPreset(imageName, preset);
 
                     };
+                    Lightbox.reload = function (imgUrl) {
+
+                        $log.debug('reload ' + imgUrl);
+                        Lightbox.imageUrl = imgUrl;
+
+                    };
+
                     Lightbox.openModal($scope.images, 0);
 
                 };

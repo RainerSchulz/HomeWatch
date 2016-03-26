@@ -246,6 +246,29 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
+    .directive('cndWidgetsLight', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/light/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.model = JSON.parse($scope.ngKind);
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.model.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
     // heating
     .directive('cndWidgetsHeatingGira', function factory($log) {
         var directiveDefinitionObject = {
@@ -701,7 +724,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndWidgetsDummy_sec', function factory($log) {
+    .directive('cndWidgetsDummySec', function factory($log) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/dummy_sec/index.html',
             replace: true,

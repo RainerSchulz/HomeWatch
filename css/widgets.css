@@ -123,9 +123,7 @@ a.touch-moveable.pull-right.hidden-xs.visible-sm.visible-md.visible-lg, .glyphic
 
 .fav_cam {
     position: absolute;
-    top: 0;
     left: -15%;
-    top: 15px;
     z-index: 1;
 }
 
@@ -142,6 +140,10 @@ a.touch-moveable.pull-right.hidden-xs.visible-sm.visible-md.visible-lg, .glyphic
     margin-top: 15px;
 }
 
+.fav_dimm {
+    margin-left: 20px;
+}
+
 .col-xs-1_light {
     margin-left: 25%;
 }
@@ -150,3 +152,12 @@ a.touch-moveable.pull-right.hidden-xs.visible-sm.visible-md.visible-lg, .glyphic
     left: 25%
 }
 
+.top20 {
+    margin-top: -20px
+}
+.top5 {
+    margin-top: -5px
+}
+.bottom15 {
+    margin-bottom: 15px;
+}

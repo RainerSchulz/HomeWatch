@@ -3,8 +3,6 @@
  */
 'use strict';
 myApp.service('RoomService', function ($http, notification, $log) {
-
-
     this.getRooms = function (jsondata) {
         let rooms = [];
         let room = '';
@@ -12,7 +10,7 @@ myApp.service('RoomService', function ($http, notification, $log) {
         angular.forEach(jsondata, function (obj, ids) {
             angular.forEach(obj.Results, function (obj, idx) {
                 if (obj == 0 || angular.isUndefined(obj.Attributes.room)) {
-                    $log.debug('room isUndefined');
+                    $log.debug('RoomService.getRooms: room isUndefined');
                 }
                 else {
                     room = obj.Attributes.room;
@@ -25,7 +23,6 @@ myApp.service('RoomService', function ($http, notification, $log) {
                     }
 
                     if (index == -1) {
-                        $log.debug('indexOf room: ' + room + ' - ' + index);
                         rooms.push({
                             room: room
                         });
@@ -40,4 +37,112 @@ myApp.service('RoomService', function ($http, notification, $log) {
 
         return rooms;
     };
+});
+/**
+ * Created by RSC on 24.03.2016.
+ */
+'use strict';
+myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, connection, Jsonervice, HomeService) {
+    this.getHomeWidgets = function (homeLocation) {
+        let widgets = [];
+        var name = '';
+        var type = '';
+
+        // no values
+        if (angular.isUndefined(homeLocation) || homeLocation == '') {
+            $log.debug('HomeWidgetsService.getWidgets: home isUndefined');
+            return;
+        }
+
+        // get values from home.json
+        // "homeLocation": "Beleuchtung",
+        // "name": "light_hm,dimmer_hm,light_gira,dimmer_gira,light",
+        // "type": "genericDeviceType"
+        Jsonervice.getJsonById('home', homeLocation).then(function () {
+                var data = Jsonervice.data();
+                name = data.name;
+                type = data.type;
+
+                // get all Widgets
+                var res = getWidgets(name, type);
+            })
+            .catch(function (callback) {
+                $log.debug(callback);
+            });
+
+        // get all Widgets
+        return widgets;
+
+        function getWidgets(name, type) {
+            var result = [];
+
+            // no values
+            if (angular.isUndefined(name) || name == '') {
+                $log.debug('HomeWidgetsService.getWidgets: name isUndefined');
+                return;
+            }
+
+            // get all values from Service
+            // "name": "light_hm,dimmer_hm,light_gira,dimmer_gira,light",
+            // "type": "genericDeviceType"
+            var values = name.split(',');
+
+            angular.forEach(values, function (value) {
+
+                // get from Service
+                let data = $q.defer();
+
+                // check if isDebug mode
+                if (connection.isDebug) {
+                    data.resolve(getJson(value));
+                } else {
+                    data.resolve(getHome(value, type));
+                }
+
+
+            });
+
+            return result;
+        }
+
+        // get data from service
+        function getHome(value, type) {
+
+            HomeService.getHome(value, type).then(function () {
+                    connection.isDebug = false;
+
+                    $log.debug('getHome: ' + value + ' - ' + type);
+                    var data =  HomeService.data();
+                    // check if widget has values
+                    if (data.Results.length > 0) {
+                        $log.debug('data.Results.length: ' + data.Results.length);
+                        widgets.push(data.Results);
+                    }
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+                    // get from json-file
+                    return getJson(value);
+                });
+        }
+
+        // get data from json-file
+        function getJson(value) {
+            HomeService.getHomeByIdJson(value).then(function () {
+                    connection.isDebug = true;
+
+                    $log.debug('getHomeByIdJson: ' + value);
+                    var data =  HomeService.data();
+                    // check if widget has values
+                    if (data.Results.length > 0) {
+                        $log.debug('data.Results.length: ' + data.Results.length);
+                        widgets.push(data.Results);
+                    }
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+                });
+        }
+    };
+
 });

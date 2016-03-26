@@ -59,12 +59,30 @@ angular.module('myApp')
 
                 $scope.headerImage = $scope.ngHeaderImage;
                 $log.debug('Start left home nav: ' + $scope.headerImage);
-                //$log.debug($scope.rooms);
                 $scope.buttonNavClick = function (room) {
                     $log.debug(room);
                     $rootScope.currentRoom = room;
+                    $scope.isActive = 'active';
+                    //jcu
+                    $rootScope.filterRoom = [room.room];
+                };
 
-                }
+                $scope.buttonNavDisplayAllClick = function () {
+                    //jcu
+                    $rootScope.filterRoom = [];
+                    $rootScope.currentRoom = [];
+                };
+
+                $scope.isActiveTab = function (room) {
+                    //alert(room);
+                    if (angular.isUndefined($rootScope.currentRoom.room)) {
+                        return false;
+                    }
+
+                    var res = room == $rootScope.currentRoom.room;
+
+                    return res;
+                };
             }
         };
 

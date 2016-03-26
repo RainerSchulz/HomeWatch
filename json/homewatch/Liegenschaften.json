@@ -23,7 +23,7 @@
       "fhemweb_url":"http://login.th.homewatch-smarthome.de:8070/fhem"
     },
     {
-      "alias": "Denowand",
+      "alias": "Demowand",
       "strasse": "Eingang",
       "ort": "Büro",
       "icon": "icon-list ligenletraiphone",
@@ -31,7 +31,7 @@
       "show": "false",
       "buttonClick": "/home",
       "id": "3",
-      "fhemweb_url":"http://login.homewatch-smarthome.de:8130/fhem"
+      "fhemweb_url":"http://login.homewatch-smarthome.de:8139/fhem"
     }
 
   ]

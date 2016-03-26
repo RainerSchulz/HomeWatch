@@ -6,166 +6,6 @@
     angular.module('myApp.ng.services', ['ngProgressLite']);
 }());
 /**
- * Created by Fabrice on 25.01.2016.
- */
-myApp.service('CacheService', function ($log, $http, $cacheFactory) {
-
-    var myCache = $cacheFactory("myServiceCache");
-    $log.log(myCache.info());
-
-    return {
-
-        jsonCache: function (id, responder, name) {
-
-            var params = {id: id};
-
-            var config = {
-                path: '/' + name,
-                cache: myCache,
-                method: 'GET',
-                params: params
-            };
-
-            $http(config)
-                .success(function (data, status, headers, config) {
-                    $log.log(myCache.info());
-
-                    if (responder && responder.result && typeof responder.result == "function")
-                        responder.result(data);
-                })
-                .error(function (data, status, headers, config) {
-                    if (responder && responder.fault && typeof responder.fault == "function")
-                        responder.fault(data, status, headers, config);
-
-
-                });
-        }
-    }
-});
-/**
- * Created by Rainer on 01.03.2016.
- */
-myApp.service('MetaService', function() {
-    var title = 'fhemweb_url';
-    var metaDescription = 'http:///login.homewatch-smarthome.de:8130/fhem';
-    var metaKeywords = 'fhemweb_url';
-    return {
-        set: function(newTitle, newMetaDescription, newKeywords) {
-            metaKeywords = newKeywords;
-            metaDescription = newMetaDescription;
-            title = newTitle;
-        },
-        metaTitle: function(){ return title; },
-        metaDescription: function() { return metaDescription; },
-        metaKeywords: function() { return metaKeywords; }
-    }
-});
-/**
- * Created by Fabrice on 26.01.2016.
- */
-myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $rootScope) {
-    var onlineStatus = {};
-
-    onlineStatus.onLine = $window.navigator.onLine;
-
-    onlineStatus.isOnline = function () {
-        return onlineStatus.onLine;
-    };
-
-    $window.addEventListener("online", function () {
-        onlineStatus.onLine = true;
-        $rootScope.$digest();
-    }, true);
-
-    $window.addEventListener("offline", function () {
-        onlineStatus.onLine = false;
-        $rootScope.$digest();
-    }, true);
-
-    return onlineStatus;
-}]);
-
-myApp.service('Internet', function ($http, connection) {
-    this.IsOk = function () {
-        return $http({
-            method: 'HEAD',
-            url: connection.url
-        })
-            .then(function (response) {
-                var status = response.status;
-                return status >= 200 && status < 300 || status === 304;
-            });
-    };
-
-});
-
-/*
- var OnOffService = angular.module('myApp', [],
- function ($httpProvider) {
-
- var interceptor = ['$rootScope', '$q', function ($rootScope, $q) {
-
- function success(response) {
- return response;
- }
-
- function error(response) {
- var status = response.status;
-
- if ((status >= 400) && (status < 500)) {
- $rootScope.broadcast("AuthError", status);
- return;
- }
-
- if ((status >= 500) && (status < 600)) {
- $rootScope.broadcast("ServerError", status);
- return;
- }
-
-
- return $q.reject(response);
-
- }
-
- return function (promise) {
- return promise.then(success, error);
- }
-
- }];
- $httpProvider.responseInterceptors.push(interceptor);
- })
- */
-
-/**
- * Created by B026789 on 12.01.2016.
- */
-var service = angular.module('app.service', [])
-    .service('DataService', function ($log, $http) {
-        return {
-            getWorkflow: function (id, responder) {
-                var config = {
-                    url: 'json/workflow.json',
-                    cache: true,
-                    method: 'GET'
-                };
-
-                $http(config)
-                    .success(function (data, status, headers, config) {
-                        if (responder && responder.result && typeof responder.result == "function")
-                            responder.result(data);
-
-                    })
-                    .error(function (data, status, headers, config) {
-                        if (responder && responder.fault && typeof responder.fault == "function")
-                            responder.fault(data, status, headers, config);
-
-                    })
-
-            }
-        }
-
-    }());
-/**
  * Created by RSC on 18.01.2016.
  */
 
@@ -291,8 +131,6 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
 
 
             });
-
-
     };
 
     Jsonervice.getJsonById = function (name, id) {
@@ -301,10 +139,8 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
 
         return $http({
             method: 'GET',
-            cache: true,
             url: url
-        }).success(function (d) {
-                var res = d;
+        }).success(function (res) {
 
                 var len = res.Results.length;
                 for (var i = 0; i < len; i++) {
@@ -314,7 +150,6 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
                         break;
                     }
                 }
-
 
                 $log.debug("Jsonervice by getJsonById " + id);
                 $log.debug(data);
@@ -336,8 +171,6 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
 
 
             });
-
-
     };
 
     Jsonervice.data = function () {
@@ -403,9 +236,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
             url: url
         }).success(function (d) {
                 data = d;
-
-
-                $log.debug("HomeService by advice");
             })
             .error(function (err, status, headers, config) {
                 connection.internet = "false";
@@ -463,7 +293,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
                 data = d;
                 deffered.resolve();
 
-                $log.debug("HomeService by Home");
             })
             .error(function (err, status, headers, config) {
                 connection.internet = "false";
@@ -510,7 +339,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
 
     HomeService.getHomeByIdJson = function (name) {
         var url = 'json/homewatch/data/' + name + '.json';
-        $log.debug('HomeService by Json: ' + url);
         return $http({
             method: 'GET',
             cache: true,
@@ -518,7 +346,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
         }).success(function (d) {
                 data = d;
                 deffered.resolve();
-                $log.debug(data);
             })
             .error(function (err, status, headers, config) {
 
@@ -599,6 +426,166 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
 
 }());
     */
+/**
+ * Created by Fabrice on 25.01.2016.
+ */
+myApp.service('CacheService', function ($log, $http, $cacheFactory) {
+
+    var myCache = $cacheFactory("myServiceCache");
+    $log.log(myCache.info());
+
+    return {
+
+        jsonCache: function (id, responder, name) {
+
+            var params = {id: id};
+
+            var config = {
+                path: '/' + name,
+                cache: myCache,
+                method: 'GET',
+                params: params
+            };
+
+            $http(config)
+                .success(function (data, status, headers, config) {
+                    $log.log(myCache.info());
+
+                    if (responder && responder.result && typeof responder.result == "function")
+                        responder.result(data);
+                })
+                .error(function (data, status, headers, config) {
+                    if (responder && responder.fault && typeof responder.fault == "function")
+                        responder.fault(data, status, headers, config);
+
+
+                });
+        }
+    }
+});
+/**
+ * Created by Fabrice on 26.01.2016.
+ */
+myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $rootScope) {
+    var onlineStatus = {};
+
+    onlineStatus.onLine = $window.navigator.onLine;
+
+    onlineStatus.isOnline = function () {
+        return onlineStatus.onLine;
+    };
+
+    $window.addEventListener("online", function () {
+        onlineStatus.onLine = true;
+        $rootScope.$digest();
+    }, true);
+
+    $window.addEventListener("offline", function () {
+        onlineStatus.onLine = false;
+        $rootScope.$digest();
+    }, true);
+
+    return onlineStatus;
+}]);
+
+myApp.service('Internet', function ($http, connection) {
+    this.IsOk = function () {
+        return $http({
+            method: 'HEAD',
+            url: connection.url
+        })
+            .then(function (response) {
+                var status = response.status;
+                return status >= 200 && status < 300 || status === 304;
+            });
+    };
+
+});
+
+/*
+ var OnOffService = angular.module('myApp', [],
+ function ($httpProvider) {
+
+ var interceptor = ['$rootScope', '$q', function ($rootScope, $q) {
+
+ function success(response) {
+ return response;
+ }
+
+ function error(response) {
+ var status = response.status;
+
+ if ((status >= 400) && (status < 500)) {
+ $rootScope.broadcast("AuthError", status);
+ return;
+ }
+
+ if ((status >= 500) && (status < 600)) {
+ $rootScope.broadcast("ServerError", status);
+ return;
+ }
+
+
+ return $q.reject(response);
+
+ }
+
+ return function (promise) {
+ return promise.then(success, error);
+ }
+
+ }];
+ $httpProvider.responseInterceptors.push(interceptor);
+ })
+ */
+
+/**
+ * Created by B026789 on 12.01.2016.
+ */
+var service = angular.module('app.service', [])
+    .service('DataService', function ($log, $http) {
+        return {
+            getWorkflow: function (id, responder) {
+                var config = {
+                    url: 'json/workflow.json',
+                    cache: true,
+                    method: 'GET'
+                };
+
+                $http(config)
+                    .success(function (data, status, headers, config) {
+                        if (responder && responder.result && typeof responder.result == "function")
+                            responder.result(data);
+
+                    })
+                    .error(function (data, status, headers, config) {
+                        if (responder && responder.fault && typeof responder.fault == "function")
+                            responder.fault(data, status, headers, config);
+
+                    })
+
+            }
+        }
+
+    }());
+/**
+ * Created by Rainer on 01.03.2016.
+ */
+myApp.service('MetaService', function() {
+    var title = 'fhemweb_url';
+    var metaDescription = 'http:///login.homewatch-smarthome.de:8139/fhem';
+    var metaKeywords = 'fhemweb_url';
+    return {
+        set: function(newTitle, newMetaDescription, newKeywords) {
+            metaKeywords = newKeywords;
+            metaDescription = newMetaDescription;
+            title = newTitle;
+        },
+        metaTitle: function(){ return title; },
+        metaDescription: function() { return metaDescription; },
+        metaKeywords: function() { return metaKeywords; }
+    }
+});
 /**
  * Created by B026789 on 12.01.2016.
  */

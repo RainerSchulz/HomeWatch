@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    function WidgetsController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, connection, Jsonervice, RoomService) {
+    function WidgetsController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, connection, HomeWidgetsService, Jsonervice, RoomService) {
         $log.debug('WidgetsController startet');
 
         $scope.header = $routeParams.name;
@@ -23,32 +23,26 @@
             $rootScope.home = $q.defer();
             $rootScope.navRightTop = $q.defer();
             $rootScope.rooms = $q.defer();
+            $rootScope.filterRoom = [];
 
             $scope.result = [];
 
+            // get HomeWidgets
+            $rootScope.homeWidgets = $q.defer();
+            GetHomeWidgets($scope);
 
             GetFhemJsonFile($scope, $rootScope);
-
             GetNavRight($scope, $http);
         };
 
-        $scope.myFilter = (roomName) => {
-            return (item) => {
-                if (angular.isUndefined(rootName) || item.Attributes.room === roomName) {
-                    return true
-                }
-                return false
+        $scope.roomFilter = function (item) {
+            if ($scope.filterRoom.length == 0) {
+                return true;
             }
+            return $scope.filterRoom.indexOf(item.Attributes.room) > -1;
         };
 
-        $scope.buttonNavClick = function (room) {
-            $log.debug($rootScope.currentRoom.room);
-            var path = $location.$$path + '/' + $rootScope.currentRoom.room;
-            $log.debug(path);
-            $location.path(path);
-        };
-
-        // Navigation Left
+        // Navigation Left Rooms
         function GetRoomsLeft($scope, result) {
             $log.debug('start NavLeft getRooms');
             $scope.headerImage = $rootScope.headerImage;
@@ -102,6 +96,13 @@
 
         }
 
+        // Navigation Left
+        function GetHomeWidgets($scope) {
+            $log.debug('Start Get Home Widgets: ' + $routeParams.name);
+            $scope.homeWidgets.resolve(HomeWidgetsService.getHomeWidgets($routeParams.name));
+        }
+
+
         // Widget Content
         function homeWidgets(values, $scope, $rootScope, promises) {
             angular.forEach(values, function (value) {
@@ -110,15 +111,14 @@
                 var deferred = $q.defer();
                 if (connection.isDebug) {
                     HomeService.getHomeByIdJson(value).then(function () {
-                            $log.debug('getHomeByIdJson: ' + value);
                             var data = HomeService.data();
 
                             // promise successfully resolved
                             deferred.resolve(data);
 
                             if (data.Results.length > 0) {
-                                $log.debug('HomeAll add Widgets: ' + $rootScope.type + ' : ' + value);
-                                $log.debug('data.Results.length: ' + data.Results.length);
+                                $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - '  + data.Results.length);
+                                $log.debug(data.Results);
                                 $scope.result.push(data.Results);
                             }
 
@@ -135,8 +135,8 @@
                             deferred.resolve(data);
 
                             if (data.Results.length > 0) {
-                                $log.debug('HomeAll add Widgets: ' + $rootScope.type + ' : ' + value);
-                                $log.debug('data.Results.length: ' + data.Results.length);
+                                $log.debug('HomeAll getHome add Widgets: ' + $rootScope.type + ' : ' + value + ' - '  + data.Results.length);
+                                $log.debug(data.Results);
                                 $scope.result.push(data.Results);
                             }
 
@@ -146,9 +146,16 @@
 
                             HomeService.getHomeByIdJson(value).then(function () {
                                     $log.debug('getHomeByIdJson: ' + value);
+
                                     var data = HomeService.data();
-                                    $scope.result.push(data.Results);
+                                    // promise successfully resolved
                                     deferred.resolve(data);
+
+                                    if (data.Results.length > 0) {
+                                        $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - '  + data.Results.length);
+                                        $log.debug(data.Results);
+                                        $scope.result.push(data.Results);
+                                    }
 
                                 })
                                 .catch(function (callback) {
@@ -192,6 +199,7 @@
             $q.all(promises).then(
                 function (results) {
                     $log.debug('Success promises results.length :' + results.length);
+                    $log.debug(results);
 
                     GetRoomsLeft($scope, results);
 
@@ -205,7 +213,7 @@
 
     }
 
-    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'connection', 'Jsonervice', 'RoomService'];
+    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'connection', 'HomeWidgetsService', 'Jsonervice', 'RoomService'];
 
 
     angular.module('myApp')

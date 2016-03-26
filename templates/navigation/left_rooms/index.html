@@ -1,6 +1,6 @@
 <ul class="sidebar-nav wrapperrespo text-center main-menu">
     <li class="margenladoiz">
-        <a ng-href="#/home" class=" touch-moveable text-center margtopF margtopFi ">
+        <a href="javascript:window.history.back();" class=" touch-moveable text-center margtopF margtopFi ">
                 <span> 
                     <img style="height:110px" class="img-center" ng-src="{{headerImage}}" title="Home">
                 </span>
@@ -14,9 +14,14 @@
             </div>
         </a>
     </li>
+    <li>
+        <a ng-click="buttonNavDisplayAllClick()" class="touch-moveable">
+            <h2 class="colorhg colorhgip">All</h2>
+        </a>
+    </li>
     <li ng-repeat="item in rooms">
         <a ng-click="buttonNavClick(item)" class="touch-moveable">
-            <h2 class="colorhg colorhgip">{{item.room}}</h2>
+            <h2 ng-class="{active: isActiveTab(item.room)}" class="colorhg colorhgip center-block">{{item.room}}</h2>
         </a>
     </li>
 

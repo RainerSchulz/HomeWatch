@@ -54,9 +54,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
             url: url
         }).success(function (d) {
                 data = d;
-
-
-                $log.debug("HomeService by advice");
             })
             .error(function (err, status, headers, config) {
                 connection.internet = "false";
@@ -114,7 +111,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
                 data = d;
                 deffered.resolve();
 
-                $log.debug("HomeService by Home");
             })
             .error(function (err, status, headers, config) {
                 connection.internet = "false";
@@ -161,7 +157,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
 
     HomeService.getHomeByIdJson = function (name) {
         var url = 'json/homewatch/data/' + name + '.json';
-        $log.debug('HomeService by Json: ' + url);
         return $http({
             method: 'GET',
             cache: true,
@@ -169,7 +164,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, globalSett
         }).success(function (d) {
                 data = d;
                 deffered.resolve();
-                $log.debug(data);
             })
             .error(function (err, status, headers, config) {
 

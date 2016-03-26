@@ -40,8 +40,6 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
 
 
             });
-
-
     };
 
     Jsonervice.getJsonById = function (name, id) {
@@ -50,10 +48,8 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
 
         return $http({
             method: 'GET',
-            cache: true,
             url: url
-        }).success(function (d) {
-                var res = d;
+        }).success(function (res) {
 
                 var len = res.Results.length;
                 for (var i = 0; i < len; i++) {
@@ -63,7 +59,6 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
                         break;
                     }
                 }
-
 
                 $log.debug("Jsonervice by getJsonById " + id);
                 $log.debug(data);
@@ -85,8 +80,6 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
 
 
             });
-
-
     };
 
     Jsonervice.data = function () {

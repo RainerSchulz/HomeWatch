@@ -3,7 +3,7 @@
  */
 myApp.service('MetaService', function() {
     var title = 'fhemweb_url';
-    var metaDescription = 'http:///login.homewatch-smarthome.de:8130/fhem';
+    var metaDescription = 'http:///login.homewatch-smarthome.de:8139/fhem';
     var metaKeywords = 'fhemweb_url';
     return {
         set: function(newTitle, newMetaDescription, newKeywords) {
