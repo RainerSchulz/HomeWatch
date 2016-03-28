@@ -1,26 +1,26 @@
 {
-  "Arg":"genericDeviceType=site",
+  "Arg": "room=sidebar_preference",
   "Results": [
     {
-      "Name":"URL_site01",
-      "PossibleSets":"",
+      "Name": "URL_digital_v",
+      "PossibleSets": "",
       "PossibleAttrs": "verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long disable:0,1 disabledForIntervals htmlattr nodetaillink:1,0 alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,energy_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon ,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
       "Internals": {
-        "DEF": "link http://login.th.homewatch-smarthome.de:8079",
-        "LINK": "http://login.th.homewatch-smarthome.de:8079",
-        "NAME": "URL_site01",
-        "NR": "118",
+        "DEF": "link http://scottyng.intra.camdata.de/prod/check_mk/view.py?view_name=host&host=homewatch-srv1.camdata.de&_username=homewatch&_secret=homewatch2015",
+        "LINK": "http://scottyng.intra.camdata.de/prod/check_mk/view.py?view_name=host&host=homewatch-srv1.camdata.de&_username=homewatch&_secret=homewatch2015",
+        "NAME": "URL_digital_v",
+        "NR": "98",
         "STATE": "initialized",
         "TYPE": "weblink",
         "WLTYPE": "link"
       },
-      "Readings": {    },
+      "Readings": {},
       "Attributes": {
-        "alias": "Samui Musterhaus",
-        "genericDeviceType": "site",
-        "icon": "site_a",
-        "room": "homewatch"
+        "alias": "digitaler Hausmeister aktuelle Services",
+        "icon": "hausmeister",
+        "room": "sidebar_preference"
       }
-    }  ],
+    }
+  ],
   "totalResultsReturned": 1
 }

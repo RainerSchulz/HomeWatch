@@ -51,7 +51,7 @@
       "headerImage": "images/sicherheit_1.png",
       "show": "true",
       "location": "Sicherheit",
-      "name": "window,window_hm,window_gira,water_hm,water_gira,smoke_hm,smoke_gira,motion_hm,motion_gira,dummy_sec",
+      "name": "dummy_sec,window,window_hm,window_gira,water_hm,water_gira,smoke_hm,smoke_gira,motion_hm,motion_gira",
       "type": "genericDeviceType"
     },
     {

@@ -31,6 +31,6 @@
     "toastr": "*",
     "signalr": "*",
     "ui-navbar": "^0.4.3",
-    "ngMeta": "^0.3.3"
+    "ngMeta": "^0.3.7"
   }
 }

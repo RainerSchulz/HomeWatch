@@ -22,7 +22,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndWidgetsCamera', function factory($log, Lightbox) {
+    .directive('cndWidgetsCamera', function factory($log, Lightbox, HomeService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/camera/index.html',
             replace: true,

@@ -2,6 +2,37 @@
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
+    .directive('cndSidebar_Preference', function factory($log, $location, $window) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/navigation/preference/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            sidebar_preference: {},
+
+            scope: {
+                ngSidebarPreference: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.sidebar_preference = JSON.parse($scope.ngSidebarPreference);
+                $log.debug('Start Sidebar_Preference');
+                $scope.buttonClick = function (item) {
+                    if (item.Internals.LINK != '') {
+                        $log.debug('Url: ' + item.Internals.LINK);
+                        // $window.location.href = item.url;
+                        $window.open(item.Internals.LINK, item.target)
+                    } else {
+                        $log.debug('Location: ' + item.Attributes.icon);
+                        $location.path(item.Attributes.icon);
+                    }
+
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
     .directive('cndNavigationsLeft', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left/index.html',

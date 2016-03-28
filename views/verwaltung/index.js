@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    function VerwaltungController($scope, $location, $window, $rootScope, $http, $log, $routeParams, Page, Jsonervice) {
+    function VerwaltungController($scope, $location, $window, $rootScope, $q, $log, $routeParams, Page, HomeWidgetsService) {
         $log.debug('VerwaltungController startet');
         $log.debug($routeParams);
         $log.debug($rootScope);
@@ -11,15 +11,16 @@
         $scope.header = 'Verwaltung';
         $scope.location = '/Liegenschaften';
 
-        $scope.result = [];
-        $scope.navButton = [];
+        $rootScope.sidebar_left = $q.defer();
+        $rootScope.sidebar_preference = $q.defer();
+
 
         // set Page Title
         Page.setTitle($scope.header);
 
         $scope.init = function () {
-            GetNav($scope, $http);
-            GetJsonFile($scope, $http);
+            $rootScope.sidebar_left.resolve(HomeWidgetsService.getHomeSidebar('sidebar_left'));
+            $rootScope.sidebar_preference.resolve(HomeWidgetsService.getHomeSidebar('sidebar_preference'));
         };
 
         $scope.buttonClick = function (item) {
@@ -36,48 +37,15 @@
         $scope.defaultClick = function (item) {
             $log.debug('Click: ' + item.url);
             if (item.target != '') {
-               // $window.location.href = item.url;
+                // $window.location.href = item.url;
                 $window.open(item.url, item.target)
             } else {
                 $location.path(item.url);
             }
         };
-
-        function GetNav($scope, $http) {
-            Jsonervice.getJson('verwaltungNav').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.navButton = data.verwaltungNav; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-
-
-        function GetJsonFile($scope, $http) {
-            Jsonervice.getJson('verwaltung').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.result = data.result; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        };
-
-
     }
 
-    VerwaltungController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice'];
+    VerwaltungController.$inject = ['$scope', '$location', '$window', '$rootScope', '$q', '$log', '$routeParams', 'Page', 'HomeWidgetsService'];
 
 
     angular.module('myApp')

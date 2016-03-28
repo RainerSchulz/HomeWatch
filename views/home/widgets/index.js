@@ -23,9 +23,11 @@
             $rootScope.home = $q.defer();
             $rootScope.navRightTop = $q.defer();
             $rootScope.rooms = $q.defer();
+
             $rootScope.filterRoom = [];
 
             $scope.result = [];
+            $scope.headerImage = $rootScope.headerImage;
 
             // get HomeWidgets
             $rootScope.homeWidgets = $q.defer();
@@ -45,7 +47,7 @@
         // Navigation Left Rooms
         function GetRoomsLeft($scope, result) {
             $log.debug('start NavLeft getRooms');
-            $scope.headerImage = $rootScope.headerImage;
+
             $rootScope.rooms.resolve(RoomService.getRooms(result));
         }
 
@@ -130,7 +132,6 @@
                 else {
                     HomeService.getHome(value, $rootScope.type).then(function () {
                             var data = HomeService.data();
-
                             // promise successfully resolved
                             deferred.resolve(data);
 
@@ -179,6 +180,8 @@
                             $log.debug('No data.name value');
                         } else {
                             $rootScope.name = data.name;
+                            $rootScope.type = data.type;
+
                             var values = $rootScope.name.split(',');
                             homeWidgets(values, $scope, $rootScope, promises);
                         }

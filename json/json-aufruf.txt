@@ -27,6 +27,7 @@ HomwWatch
 http://login.th.homewatch-smarthome.de:8070/fhem?cmd=jsonlist2%20room=HomeWatch&XHR=1
 
 http://login.th.homewatch-smarthome.de:8070/fhem?cmd=jsonlist2%20genericDeviceType=switch&XHR=1
+http://login.homewatch-smarthome.de:8130/fhem?cmd=jsonlist2%20genericDeviceType=switch&XHR=1
 
 Favoriten
 http://login.th.homewatch-smarthome.de:8070/fhem?cmd=jsonlist2%20like=yes

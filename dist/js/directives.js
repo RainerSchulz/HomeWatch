@@ -30,29 +30,6 @@ angular.module('myApp')
         return directiveDefinitionObject;
     });
 /**
- * Created by B026789 on 16.12.2015.
- */
-angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
-
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-;
-/**
  * Created by B026789 on 18.12.2015.
  */
 (function(){
@@ -177,6 +154,60 @@ angular.module('myApp')
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
+
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
+                };
+
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+;
+/**
+ * Created by B026789 on 16.12.2015.
+ */
+angular.module('myApp')
+    .directive('cndSidebar_Preference', function factory($log, $location, $window) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/navigation/preference/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            sidebar_preference: {},
+
+            scope: {
+                ngSidebarPreference: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.sidebar_preference = JSON.parse($scope.ngSidebarPreference);
+                $log.debug('Start Sidebar_Preference');
+                $scope.buttonClick = function (item) {
+                    if (item.Internals.LINK != '') {
+                        $log.debug('Url: ' + item.Internals.LINK);
+                        // $window.location.href = item.url;
+                        $window.open(item.Internals.LINK, item.target)
+                    } else {
+                        $log.debug('Location: ' + item.Attributes.icon);
+                        $location.path(item.Attributes.icon);
+                    }
+
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
     .directive('cndNavigationsLeft', function factory($log, $location, $window) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/navigation/left/index.html',
@@ -361,6 +392,30 @@ angular.module('myApp')
     })
 
 ;
+/**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
+    var dirTooltip = angular.module('tooltip', [])
+        .directive('tooltip', function factory($log) {
+            return {
+                restrict: 'A',
+
+                link: function (scope, element, attrs) {
+
+                    $(element).hover(function () {
+                        // on mouseenter
+                        $(element).tooltip('show');
+                    }, function () {
+                        // on mouseleave
+                        $(element).tooltip('hide');
+                    });
+                }
+            };
+        });
+}());
 /**
  * Created by RSC on 16.01.2016.
  */
@@ -1133,7 +1188,7 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
-    .directive('cndWidgetsCamera', function factory($log, Lightbox) {
+    .directive('cndWidgetsCamera', function factory($log, Lightbox, HomeService) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/camera/index.html',
             replace: true,
@@ -1231,27 +1286,3 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     });
-/**
- * Created by B026789 on 18.12.2015.
- */
-(function () {
-    "use strict";
-
-    var dirTooltip = angular.module('tooltip', [])
-        .directive('tooltip', function factory($log) {
-            return {
-                restrict: 'A',
-
-                link: function (scope, element, attrs) {
-
-                    $(element).hover(function () {
-                        // on mouseenter
-                        $(element).tooltip('show');
-                    }, function () {
-                        // on mouseleave
-                        $(element).tooltip('hide');
-                    });
-                }
-            };
-        });
-}());

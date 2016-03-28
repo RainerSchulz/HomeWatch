@@ -184,16 +184,15 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('HomeService', function ($http, notification, $log, $q, globalSettings, CacheService, connection, $rootScope) {
+myApp.service('HomeService', function ($http, notification, $log, $q, globalSettings, CacheService, connection, $rootScope, Page) {
     var data = [];
     var deffered = $q.defer();
     var HomeService = {};
-    var urlcmd = $rootScope.MetaDatafhemweb_url + globalSettings.cmd;
+    var urlcmd = Page.getMetaData('fhemweb_url') + globalSettings.cmd;
 
     HomeService.getHomeByRoom = function (room) {
         var url = urlcmd + globalSettings.room + room + globalSettings.param;
         $log.debug(url);
-        $log.debug('connection.internet: ' + connection.internet);
         return $http({
             method: 'GET',
             cache: true,
@@ -589,25 +588,23 @@ myApp.service('MetaService', function() {
 /**
  * Created by B026789 on 12.01.2016.
  */
-myApp.service('Page', function ($rootScope) {
+myApp.service('Page', function ($rootScope, connection) {
     return {
         setTitle: function (title) {
-            $rootScope.title = title +  " - CAMDATA - HomeWatch 2.0";
+            $rootScope.title = title + " - CAMDATA - HomeWatch 2.0";
         },
         setHeader: function (header) {
             $rootScope.header = header;
         },
-      	setMetaData: function (name, content) {
+        setMetaData: function (name, content) {
             $rootScope.MetaDatafhemweb_url = content;
-
         },
-        getMetaData: function (name, content) {
-            $rootScope.MetaDataContent = content;
-
-            $scope.metadata = {
-		        'title': name,
-		        'description': content
-		    };
+        getMetaData: function (name) {
+            var metaData = $rootScope.MetaDataContent;
+            if (angular.isUndefined(metaData)) {
+                metaData = connection.fhemweb_url;
+            }
+            return metaData;
         }
 
 

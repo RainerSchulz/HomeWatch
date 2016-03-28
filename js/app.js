@@ -4,7 +4,7 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToast', 'ngTouch', 'ngAnimate','ngCookies' , 'ui.router', 'ngSanitize', 'notification', 'tooltip', 'bootstrapLightbox'])
     .constant('globalSettings', {
         url: 'http://login.homewatch-smarthome.de',
-        port: ":8139", //:8230
+        port: ":8130", //:8139
         cmd: "?cmd=jsonlist2%20",
         room: "room=", // Bungslow, Kamera, Alarm, Bad, Web, Rauchmelder usw.
         genericDeviceType: "genericDeviceType=", // switch_hm, light_hm, volume usw.
@@ -150,11 +150,11 @@ myApp.value('connection', {
     onlineStatus: "URL_local",
     originUrl: "http://localhost:63342/",
     application: "/HomeWatch 2.0/",
-    fhemweb_url: "http://demowand:demowand@www.login.homewatch-smarthome.de:8139/fhem",
+    fhemweb_url: "http://login.homewatch-smarthome.de:8130/fhem",
     URL_DC:"http://login.homewatch-smarthome.de:8139",
     URL_dyndns: "http://rou-wan-002.camdata.de:8083",
     URL_local: "http://10.221.251.126:8083",
-    isDebug: true
+    isDebug: false
 });
 
 

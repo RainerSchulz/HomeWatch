@@ -1,6 +1,6 @@
 {
   "name": "ngMeta",
-  "version": "0.3.3",
+  "version": "0.3.7",
   "authors": [
     "Vinay Gopinath <vinayg18@gmail.com>"
   ],
@@ -30,14 +30,14 @@
     "angular-mocks": "^1.2",
     "angular-route": "^1.2"
   },
-  "_release": "0.3.3",
+  "_release": "0.3.7",
   "_resolution": {
     "type": "version",
-    "tag": "v0.3.3",
-    "commit": "91e9fd01575e574a554fe53644402ffedb4864e0"
+    "tag": "v0.3.7",
+    "commit": "9344cb59bf625f7e17173cbfc10a4698e47516f6"
   },
   "_source": "git://github.com/vinaygopinath/ngMeta.git",
-  "_target": "^0.3.3",
+  "_target": "^0.3.7",
   "_originalSource": "ngMeta",
   "_direct": true
 }

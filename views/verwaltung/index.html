@@ -1,25 +1,24 @@
-<div ng-init="init()">
-    <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
-    <div class="clearfix"></div>
+<div id="wrapper" ng-init="init()">
 
-    <div class="top100_home">
-        <div class="row">
-            <div class="col col-xs-12">
-                <div class="col col-xs-2 hidden-xs">
-                    <div ng-if="navButton.length > 0">
-                        <div cnd-navigations-left ng-nav-button="{{navButton}}"></div>
-                    </div>
-                </div>
-                <div class="col col-xs-10">
-                    <div class=" col-xs-4" ng-repeat="item in result">
-                        <a ng-click="defaultClick(item)" class="touch-moveable">
-                            <img class="img-responsive center-block" ng-src="{{item.image}}"
-                                 alt="">
-                            <h4 class="h4home"> {{item.alias}} </h4>
-                        </a>
-                    </div>
-                </div>
+    <!-- Navigation TOP START -->
+    <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
+    <!-- Navigation TOP END -->
+
+    <!-- Sidebar left START -->
+    <div id="sidebar-wrapper" class="wrapper ">
+        <div cnd-navigations-left ng-nav-button="{{sidebar_left}}"></div>
+    </div>
+    <!-- Sidebar left END -->
+
+    <!-- Page Content START-->
+    <div id="page-content-wrapper" class="row-e">
+        <div class="container-fluid">
+            <div class="row  text-center verwaliphne" style="margin-top: 70px; ">
+                <h4 class="h4home">##{{sidebar_preference.length}}##</h4>
+                <div cnd-sidebar_-preference ng-sidebar-preference="{{sidebar_preference}}"></div>
             </div>
         </div>
     </div>
+    <!-- Page Content END -->
+
 </div>

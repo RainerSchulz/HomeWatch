@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    function HomeController($scope, $location, $q, $rootScope, $http, $log, $routeParams, Page, Jsonervice, HomeService, globalSettings) {
+    function HomeController($scope, $location, $q, $rootScope, $http, $log, $routeParams, Page, Jsonervice, HomeService, HomeWidgetsService) {
         $log.debug('HomeController startet');
 
         var self = this;
@@ -11,7 +11,7 @@
         $scope.location = '/Liegenschaften';
 
         $scope.home = [];
-        $scope.sidebar_left = [];
+        $rootScope.sidebar_left = $q.defer();
 
         // set Page Title
         Page.setTitle($scope.header);
@@ -19,10 +19,8 @@
         // Init
         $scope.init = function () {
 
-            //$rootScope.sidebar_left = $q.defer();
-
-            GetJsonFileName($scope, 'data/sidebar_left');
-            GetJsonFile($scope, $http);
+            $rootScope.sidebar_left.resolve(HomeWidgetsService.getHomeSidebar('sidebar_left'));
+            GetHomeContent($scope, $http);
         };
 
         $scope.buttonClick = function (item) {
@@ -38,22 +36,7 @@
             $location.path(path);
         };
 
-
-        function GetJsonFileName($scope, name) {
-
-            Jsonervice.getJson(name).then(function () {
-                    var data = Jsonervice.data();
-                    $scope.sidebar_left = data.Results; // response data
-                    $log.debug($scope.sidebar_left);
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        }
-
-        function GetJsonFile($scope, $http) {
+        function GetHomeContent($scope, $http) {
             Jsonervice.getJson('home').then(function () {
                     var data = Jsonervice.data();
                     $scope.home = data.Results; // response data
@@ -67,7 +50,7 @@
         }
     }
 
-    HomeController.$inject = ['$scope', '$location', '$q', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice', 'HomeService', 'globalSettings'];
+    HomeController.$inject = ['$scope', '$location', '$q', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice', 'HomeService', 'HomeWidgetsService'];
 
 
     angular.module('myApp')

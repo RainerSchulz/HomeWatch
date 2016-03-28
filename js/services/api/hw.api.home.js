@@ -2,16 +2,15 @@
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('HomeService', function ($http, notification, $log, $q, globalSettings, CacheService, connection, $rootScope) {
+myApp.service('HomeService', function ($http, notification, $log, $q, globalSettings, CacheService, connection, $rootScope, Page) {
     var data = [];
     var deffered = $q.defer();
     var HomeService = {};
-    var urlcmd = $rootScope.MetaDatafhemweb_url + globalSettings.cmd;
+    var urlcmd = Page.getMetaData('fhemweb_url') + globalSettings.cmd;
 
     HomeService.getHomeByRoom = function (room) {
         var url = urlcmd + globalSettings.room + room + globalSettings.param;
         $log.debug(url);
-        $log.debug('connection.internet: ' + connection.internet);
         return $http({
             method: 'GET',
             cache: true,

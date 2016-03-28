@@ -112,7 +112,7 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, con
                     connection.isDebug = false;
 
                     $log.debug('getHome: ' + value + ' - ' + type);
-                    var data =  HomeService.data();
+                    var data = HomeService.data();
                     // check if widget has values
                     if (data.Results.length > 0) {
                         $log.debug('data.Results.length: ' + data.Results.length);
@@ -132,7 +132,7 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, con
                     connection.isDebug = true;
 
                     $log.debug('getHomeByIdJson: ' + value);
-                    var data =  HomeService.data();
+                    var data = HomeService.data();
                     // check if widget has values
                     if (data.Results.length > 0) {
                         $log.debug('data.Results.length: ' + data.Results.length);
@@ -143,6 +143,50 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, con
                     $log.debug(callback);
                 });
         }
+    };
+
+    this.getHomeSidebar = function (sidebar) {
+        let results = [];
+
+        // no values
+        if (angular.isUndefined(sidebar) || sidebar == '') {
+            $log.debug('HomeWidgetsService.getHomeSidebar: sidebar isUndefined');
+            return;
+        }
+
+        // get values sidebar
+        // "sidebar": "siedebar_left",
+        HomeService.getHomeByRoom(sidebar).then(function () {
+                var data = Jsonervice.data();
+                if (data.length > 0) {
+                    $log.debug('getHomeByRoom: ' + sidebar + ' = ' + data.Results.length);
+                    $log.debug(data.Results);
+                    results = data.Results;
+                }
+
+            })
+            .catch(function (callback) {
+                $log.debug(callback);
+                getJson(sidebar);
+            });
+        // get data from json-file
+        function getJson(sidebar) {
+            HomeService.getHomeByIdJson(sidebar).then(function () {
+                    var data = HomeService.data();
+                    if (data.length > 0) {
+                        $log.debug('getHomeByIdJson: ' + sidebar + ' = ' + data.Results.length);
+                        $log.debug(data.Results);
+                        results = data.Results;
+                    }
+                })
+                .catch(function (callback) {
+                    $log.debug('Error ' + callback);
+                });
+        }
+
+        // get results
+        return results;
+
     };
 
 });

@@ -28,7 +28,7 @@
 
             // set Page MetaData
             Page.setMetaData("fhemweb_url", item.Internals.LINK);
-
+            $log.debug("LiegenschaftenController fhemweb_url:" + age.setMetaData('fhemweb_url'));
             var path = $scope.location + '/' + item.Name + '/home/';
             $location.path(path);
         };
@@ -89,10 +89,10 @@
 
             var value = 'site';
             var type = 'genericDeviceType';
+            $log.debug('connection.isDebug: ' + connection.isDebug);
 
             // check if isDebug mode
             if (connection.isDebug) {
-                $log.debug('connection.isDebug: ' + value);
                 // check if isDebug mode
                 Jsonervice.getJson('data/' + value).then(function () {
 
@@ -115,7 +115,7 @@
                     .catch(function (callback) {
                         $log.debug(callback);
 
-                        Jsonervice.getJson(value).then(function () {
+                        Jsonervice.getJson('data/' + value).then(function () {
                                 var data = Jsonervice.data();
                                 $scope.results = data.Results; // response data
                             })

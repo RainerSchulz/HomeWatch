@@ -1,0 +1,28 @@
+<div class=" col-xs-6 col-sm-6 col-md-4 col-lg-4 margeI" ng-repeat="item in sidebar_preference">
+    <a ng-click="defaultClick(item)" class="touch-moveable">
+                        <span ng-switch="item.Attributes.icon">
+                            <img ng-switch-when="shop" ng-src="images/guiico15.png"
+                                 class="img-responsive  center-block margtopMull margtopMull2 widthiphone"
+                                 alt="{{item.Attributes.alias}}">
+                            <img ng-switch-when="support" ng-src="images/guiico12.png"
+                                 class="img-responsive  center-block margtopMull margtopMull2 widthiphone"
+                                 alt="{{item.Attributes.alias}}">
+                            <img ng-switch-when="hausmeister" ng-src="images/guiico14.png"
+                                 class="img-responsive  center-block margtopMull margtopMull2 widthiphone"
+                                 alt="{{item.Attributes.alias}}">
+                            <img ng-switch-when="meine" ng-src="images/guiico18.png"
+                                 class="img-responsive  center-block margtopMull margtopMull2 widthiphone"
+                                 alt="{{item.Attributes.alias}}">
+                            <img ng-switch-when="clubmitgliedschaft" ng-src="images/guiico17.png"
+                                 class="img-responsive  center-block margtopMull margtopMull2 widthiphone"
+                                 alt="{{item.Attributes.alias}}">
+                            <img ng-switch-when="secure" ng-src="images/guiico16.png"
+                                 class="img-responsive  center-block margtopMull margtopMull2 widthiphone"
+                                 alt="{{item.Attributes.alias}}">
+                            <img ng-switch-default ng-src="images/hand.png"
+                                 class="img-responsive  center-block margtopMull margtopMull2 widthiphone"
+                                 alt="{{item.Attributes.alias}}">
+                        </span>
+        <h4 class="h4home"> {{item.Attributes.alias}} </h4>
+    </a>
+</div>
