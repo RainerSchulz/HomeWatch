@@ -30,9 +30,9 @@
                 CookiesService.setCookieJson('globals');
             }
 
-            var widget = FillAllDataService.loadWidgets('Beleuchtung');
+            var widget = FillAllDataService.loadWidgets('Sicherheit');
             if (widget) {
-                alert('passt');
+                alert('passt: ' + widget.length);
             }
             $location.path($scope.location);
         };

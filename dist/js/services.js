@@ -1,302 +1,7 @@
 /**
- * Created by Fabrice on 25.01.2016.
- */
-myApp.service('CacheService', function ($log, $http, $cacheFactory) {
-
-    var myCache = $cacheFactory("myServiceCache");
-    $log.log(myCache.info());
-
-    return {
-
-        jsonCache: function (id, responder, name) {
-
-            var params = {id: id};
-
-            var config = {
-                path: '/' + name,
-                cache: myCache,
-                method: 'GET',
-                params: params
-            };
-
-            $http(config)
-                .success(function (data, status, headers, config) {
-                    $log.log(myCache.info());
-
-                    if (responder && responder.result && typeof responder.result == "function")
-                        responder.result(data);
-                })
-                .error(function (data, status, headers, config) {
-                    if (responder && responder.fault && typeof responder.fault == "function")
-                        responder.fault(data, status, headers, config);
-
-
-                });
-        }
-    }
-});
-/**
- * Created by Fabrice on 26.01.2016.
- */
-myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $rootScope) {
-    var onlineStatus = {};
-
-    onlineStatus.onLine = $window.navigator.onLine;
-
-    onlineStatus.isOnline = function () {
-        return onlineStatus.onLine;
-    }
-
-    $window.addEventListener("online", function () {
-        onlineStatus.onLine = true;
-        $rootScope.$digest();
-    }, true);
-
-    $window.addEventListener("offline", function () {
-        onlineStatus.onLine = false;
-        $rootScope.$digest();
-    }, true);
-
-    return onlineStatus;
-}]);
-
-myApp.service('Internet', function ($http, connection) {
-    this.IsOk = function () {
-        return $http({
-            method: 'HEAD',
-            url: connection.url
-        })
-            .then(function (response) {
-                var status = response.status;
-                return status >= 200 && status < 300 || status === 304;
-            });
-    };
-
-});
-
-/*
- var OnOffService = angular.module('myApp', [],
- function ($httpProvider) {
-
- var interceptor = ['$rootScope', '$q', function ($rootScope, $q) {
-
- function success(response) {
- return response;
- }
-
- function error(response) {
- var status = response.status;
-
- if ((status >= 400) && (status < 500)) {
- $rootScope.broadcast("AuthError", status);
- return;
- }
-
- if ((status >= 500) && (status < 600)) {
- $rootScope.broadcast("ServerError", status);
- return;
- }
-
-
- return $q.reject(response);
-
- }
-
- return function (promise) {
- return promise.then(success, error);
- }
-
- }];
- $httpProvider.responseInterceptors.push(interceptor);
- })
- */
-
-/**
- * Created by Rainer on 01.03.2016.
- */
-myApp.service('MetaService', function() {
-    var title = 'fhemweb_url';
-    var metaDescription = 'http:///login.homewatch-smarthome.de:8139/fhem';
-    var metaKeywords = 'fhemweb_url';
-    return {
-        set: function(newTitle, newMetaDescription, newKeywords) {
-            metaKeywords = newKeywords;
-            metaDescription = newMetaDescription;
-            title = newTitle;
-        },
-        metaTitle: function(){ return title; },
-        metaDescription: function() { return metaDescription; },
-        metaKeywords: function() { return metaKeywords; }
-    }
-});
-
-/**
- * Created by RSC on 01.04.2016.
- */
-
-(function () {
-
-    'use strict';
-
-    var module = angular.module('angularModalService', []);
-
-    module.factory('ModalService', ['$animate', '$document', '$compile', '$controller', '$http', '$rootScope', '$q', '$templateRequest', '$timeout',
-        function ($animate, $document, $compile, $controller, $http, $rootScope, $q, $templateRequest, $timeout) {
-
-            //  Get the body of the document, we'll add the modal to this.
-            var body = angular.element($document[0].body);
-
-            function ModalService() {
-
-                var self = this;
-
-                //  Returns a promise which gets the template, either
-                //  from the template parameter or via a request to the
-                //  template url parameter.
-                var getTemplate = function (template, templateUrl) {
-                    var deferred = $q.defer();
-                    if (template) {
-                        deferred.resolve(template);
-                    } else if (templateUrl) {
-                        $templateRequest(templateUrl, true)
-                            .then(function (template) {
-                                deferred.resolve(template);
-                            }, function (error) {
-                                deferred.reject(error);
-                            });
-                    } else {
-                        deferred.reject("No template or templateUrl has been specified.");
-                    }
-                    return deferred.promise;
-                };
-
-                //  Adds an element to the DOM as the last child of its container
-                //  like append, but uses $animate to handle animations. Returns a
-                //  promise that is resolved once all animation is complete.
-                var appendChild = function (parent, child) {
-                    var children = parent.children();
-                    if (children.length > 0) {
-                        return $animate.enter(child, parent, children[children.length - 1]);
-                    }
-                    return $animate.enter(child, parent);
-                };
-
-                self.showModal = function (options) {
-
-                    //  Create a deferred we'll resolve when the modal is ready.
-                    var deferred = $q.defer();
-
-                    //  Validate the input parameters.
-                    var controllerName = options.controller;
-                    if (!controllerName) {
-                        deferred.reject("No controller has been specified.");
-                        return deferred.promise;
-                    }
-
-                    //  Get the actual html of the template.
-                    getTemplate(options.template, options.templateUrl)
-                        .then(function (template) {
-
-                            //  Create a new scope for the modal.
-                            var modalScope = (options.scope || $rootScope).$new();
-
-                            //  Create the inputs object to the controller - this will include
-                            //  the scope, as well as all inputs provided.
-                            //  We will also create a deferred that is resolved with a provided
-                            //  close function. The controller can then call 'close(result)'.
-                            //  The controller can also provide a delay for closing - this is
-                            //  helpful if there are closing animations which must finish first.
-                            var closeDeferred = $q.defer();
-                            var closedDeferred = $q.defer();
-                            var inputs = {
-                                $scope: modalScope,
-                                close: function (result, delay) {
-                                    if (delay === undefined || delay === null) delay = 0;
-                                    $timeout(function () {
-                                        //  Resolve the 'close' promise.
-                                        closeDeferred.resolve(result);
-
-                                        //  Let angular remove the element and wait for animations to finish.
-                                        $animate.leave(modalElement)
-                                            .then(function () {
-                                                //  Resolve the 'closed' promise.
-                                                closedDeferred.resolve(result);
-
-                                                //  We can now clean up the scope
-                                                modalScope.$destroy();
-
-                                                //  Unless we null out all of these objects we seem to suffer
-                                                //  from memory leaks, if anyone can explain why then I'd
-                                                //  be very interested to know.
-                                                inputs.close = null;
-                                                deferred = null;
-                                                closeDeferred = null;
-                                                modal = null;
-                                                inputs = null;
-                                                modalElement = null;
-                                                modalScope = null;
-                                            });
-                                    }, delay);
-                                }
-                            };
-
-                            //  If we have provided any inputs, pass them to the controller.
-                            if (options.inputs) angular.extend(inputs, options.inputs);
-
-                            //  Compile then link the template element, building the actual element.
-                            //  Set the $element on the inputs so that it can be injected if required.
-                            var linkFn = $compile(template);
-                            var modalElement = linkFn(modalScope);
-                            inputs.$element = modalElement;
-
-                            //  Create the controller, explicitly specifying the scope to use.
-                            var controllerObjBefore = modalScope[options.controllerAs];
-                            var modalController = $controller(options.controller, inputs, false, options.controllerAs);
-
-                            if (options.controllerAs && controllerObjBefore) {
-                                angular.extend(modalController, controllerObjBefore);
-                            }
-
-                            //  Finally, append the modal to the dom.
-                            if (options.appendElement) {
-                                // append to custom append element
-                                appendChild(options.appendElement, modalElement);
-                            } else {
-                                // append to body when no custom append element is specified
-                                appendChild(body, modalElement);
-                            }
-
-                            //  We now have a modal object...
-                            var modal = {
-                                controller: modalController,
-                                scope: modalScope,
-                                element: modalElement,
-                                close: closeDeferred.promise,
-                                closed: closedDeferred.promise
-                            };
-
-                            //  ...which is passed to the caller via the promise.
-                            deferred.resolve(modal);
-
-                        })
-                        .then(null, function (error) { // 'catch' doesn't work in IE8.
-                            deferred.reject(error);
-                        });
-
-                    return deferred.promise;
-                };
-
-            }
-
-            return new ModalService();
-        }]);
-
-}());
-
-/**
  * Created by Rainer on 03.04.2016.
  */
-myApp.factory("WidgetService", function ($http, $rootScope, $log, globalSettings) {
+myApp.factory("WidgetService", function ($http, $rootScope, $log, $q, globalSettings) {
     "use strict";
     var widgets = [];
     return {
@@ -304,76 +9,101 @@ myApp.factory("WidgetService", function ($http, $rootScope, $log, globalSettings
             var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd + type + '=' + name + globalSettings.param;
             $log.debug('WidgetService.getWidget url: ' + url);
             $log.debug('name: ' + name + ' type: ' + type);
-            $http.get(url).then(
-                function (response) {
-                    return response.data
-                },
-                function (error) {
-                    $log.debug(error);
-                }
-            );
-
+            return $http.get(url);
         }
     }
 
 });
+
 /**
  * Created by Rainer on 03.04.2016.
  */
-myApp.factory("FillAllDataService", function ($q, HomeService, CookiesService, WidgetService) {
+myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeService, CookiesService, WidgetService, globalSettings) {
     "use strict";
-    var data = [];
+
     var widget = {};
     return {
         loadWidgets: function (cookie) {
             widget = CookiesService.getCookie(cookie) || {};
-            if (!widget.alias) {
+            if (widget && widget.length && widget.length > 0) {
+                return widget;
+            }
+            else {
                 // get type and name from cookie global.home
                 var globals = CookiesService.getCookie('globals');
                 if (globals.home) {
                     var home = globals.home;
                     var type = '';
-                    var name = '';
+                    var names = '';
+                    // check alias name
                     for (var i = 0; i < home.length; i++) {
                         if (home[i].alias == cookie) {
                             type = home[i].type;
-                            name = home[i].name;
+                            names = home[i].name;
                             break;
                         }
                     }
+
+
                     // get widget
-                    widget = getWidget(name, type);
-                    if (widget) {
-                        CookiesService.setCookieName(cookie, widget);
-                        return widget;
-                    }
+                    let promises = [];
+
+                    var values = names.split(',');
+                    var results = [];
+                    angular.forEach(values, function (name) {
+                        var deffered  = $q.defer();
+                        var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd + type + '=' + name + globalSettings.param;
+                        $log.debug('WidgetService.getWidget url: ' + url);
+                        $log.debug('name: ' + name + ' type: ' + type);
+                        // get json list
+                        HomeService.getHome(name, type).then(function () {
+                            var data = HomeService.data();
+                            // promise successfully resolved
+                            deffered.resolve(data.Results);
+
+                            if (data.Results.length > 0) {
+                                $log.debug('WidgetService.getWidget add Widgets: ' + type + ' : ' + name + ' - ' + data.Results.length);
+                                $log.debug(data.Results);
+
+                            }
+
+                        });
+                        promises.push(deffered);
+
+                    });
+
+                    $q.all(promises).then(function (values) {
+                        CookiesService.setCookieName(cookie, values);
+                        return values;
+                    });
+
                 }
 
             }
 
-            return widget;
         },
-        getWidget: function homeWidgets(values, type) {
+        getWidget: function homeWidgets(names, type) {
             // create a $q deferred promise
-            var deferred = $q.defer();
+            let deferred = $q.defer();
             var results = [];
+            var values = names.split(',');
+
             angular.forEach(values, function (value) {
-                var data = WidgetService.getWidget(type, value);
-                // promise successfully resolved
-                deferred.resolve(data);
+                var promise = WidgetService.getWidget(type, value);
+                promise.then(
+                    function (response) {
+                        results.push(response.data.Results);
+                    },
+                    function (error) {
+                        $log.error('failure loading widgets', error);
+                    });
 
-                if (data.Results.length > 0) {
-                    $log.debug('FillAllDataService getWidget add Widgets: ' + type + ' : ' + value + ' - ' + data.Results.length);
-                    $log.debug(data.Results);
-                    results.push(data.Results);
-                }
-
-            })
+            });
+            return results;
         },
         // add Widget to cookie
         addWidgetToCookie: function (name, widget) {
-
-
+            CookiesService.setCookieName(name, widget);
         }
 
     }
@@ -792,31 +522,6 @@ myApp.service('CookiesService', function ($http, notification, $log, $q, HomeSer
 });
 
 /**
- * Created by B026789 on 12.01.2016.
- */
-myApp.service('Page', function ($rootScope, connection) {
-    return {
-        setTitle: function (title) {
-            $rootScope.title = title + " - CAMDATA - HomeWatch 2.0";
-        },
-        setHeader: function (header) {
-            $rootScope.header = header;
-        },
-        setMetaData: function (name, content) {
-            $rootScope.MetaDatafhemweb_url = content;
-        },
-        getMetaData: function (name) {
-            var metaData = $rootScope.MetaDataContent;
-            if (angular.isUndefined(metaData)) {
-                metaData = connection.fhemweb_url;
-            }
-            return metaData;
-        }
-
-
-    }
-});
-/**
  * Created by B026789 on 14.12.2015.
  */
 /*
@@ -871,6 +576,301 @@ myApp.service('Page', function ($rootScope, connection) {
 
 }());
     */
+/**
+ * Created by Fabrice on 25.01.2016.
+ */
+myApp.service('CacheService', function ($log, $http, $cacheFactory) {
+
+    var myCache = $cacheFactory("myServiceCache");
+    $log.log(myCache.info());
+
+    return {
+
+        jsonCache: function (id, responder, name) {
+
+            var params = {id: id};
+
+            var config = {
+                path: '/' + name,
+                cache: myCache,
+                method: 'GET',
+                params: params
+            };
+
+            $http(config)
+                .success(function (data, status, headers, config) {
+                    $log.log(myCache.info());
+
+                    if (responder && responder.result && typeof responder.result == "function")
+                        responder.result(data);
+                })
+                .error(function (data, status, headers, config) {
+                    if (responder && responder.fault && typeof responder.fault == "function")
+                        responder.fault(data, status, headers, config);
+
+
+                });
+        }
+    }
+});
+/**
+ * Created by Fabrice on 26.01.2016.
+ */
+myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $rootScope) {
+    var onlineStatus = {};
+
+    onlineStatus.onLine = $window.navigator.onLine;
+
+    onlineStatus.isOnline = function () {
+        return onlineStatus.onLine;
+    }
+
+    $window.addEventListener("online", function () {
+        onlineStatus.onLine = true;
+        $rootScope.$digest();
+    }, true);
+
+    $window.addEventListener("offline", function () {
+        onlineStatus.onLine = false;
+        $rootScope.$digest();
+    }, true);
+
+    return onlineStatus;
+}]);
+
+myApp.service('Internet', function ($http, connection) {
+    this.IsOk = function () {
+        return $http({
+            method: 'HEAD',
+            url: connection.url
+        })
+            .then(function (response) {
+                var status = response.status;
+                return status >= 200 && status < 300 || status === 304;
+            });
+    };
+
+});
+
+/*
+ var OnOffService = angular.module('myApp', [],
+ function ($httpProvider) {
+
+ var interceptor = ['$rootScope', '$q', function ($rootScope, $q) {
+
+ function success(response) {
+ return response;
+ }
+
+ function error(response) {
+ var status = response.status;
+
+ if ((status >= 400) && (status < 500)) {
+ $rootScope.broadcast("AuthError", status);
+ return;
+ }
+
+ if ((status >= 500) && (status < 600)) {
+ $rootScope.broadcast("ServerError", status);
+ return;
+ }
+
+
+ return $q.reject(response);
+
+ }
+
+ return function (promise) {
+ return promise.then(success, error);
+ }
+
+ }];
+ $httpProvider.responseInterceptors.push(interceptor);
+ })
+ */
+
+/**
+ * Created by Rainer on 01.03.2016.
+ */
+myApp.service('MetaService', function() {
+    var title = 'fhemweb_url';
+    var metaDescription = 'http:///login.homewatch-smarthome.de:8139/fhem';
+    var metaKeywords = 'fhemweb_url';
+    return {
+        set: function(newTitle, newMetaDescription, newKeywords) {
+            metaKeywords = newKeywords;
+            metaDescription = newMetaDescription;
+            title = newTitle;
+        },
+        metaTitle: function(){ return title; },
+        metaDescription: function() { return metaDescription; },
+        metaKeywords: function() { return metaKeywords; }
+    }
+});
+
+/**
+ * Created by RSC on 01.04.2016.
+ */
+
+(function () {
+
+    'use strict';
+
+    var module = angular.module('angularModalService', []);
+
+    module.factory('ModalService', ['$animate', '$document', '$compile', '$controller', '$http', '$rootScope', '$q', '$templateRequest', '$timeout',
+        function ($animate, $document, $compile, $controller, $http, $rootScope, $q, $templateRequest, $timeout) {
+
+            //  Get the body of the document, we'll add the modal to this.
+            var body = angular.element($document[0].body);
+
+            function ModalService() {
+
+                var self = this;
+
+                //  Returns a promise which gets the template, either
+                //  from the template parameter or via a request to the
+                //  template url parameter.
+                var getTemplate = function (template, templateUrl) {
+                    var deferred = $q.defer();
+                    if (template) {
+                        deferred.resolve(template);
+                    } else if (templateUrl) {
+                        $templateRequest(templateUrl, true)
+                            .then(function (template) {
+                                deferred.resolve(template);
+                            }, function (error) {
+                                deferred.reject(error);
+                            });
+                    } else {
+                        deferred.reject("No template or templateUrl has been specified.");
+                    }
+                    return deferred.promise;
+                };
+
+                //  Adds an element to the DOM as the last child of its container
+                //  like append, but uses $animate to handle animations. Returns a
+                //  promise that is resolved once all animation is complete.
+                var appendChild = function (parent, child) {
+                    var children = parent.children();
+                    if (children.length > 0) {
+                        return $animate.enter(child, parent, children[children.length - 1]);
+                    }
+                    return $animate.enter(child, parent);
+                };
+
+                self.showModal = function (options) {
+
+                    //  Create a deferred we'll resolve when the modal is ready.
+                    var deferred = $q.defer();
+
+                    //  Validate the input parameters.
+                    var controllerName = options.controller;
+                    if (!controllerName) {
+                        deferred.reject("No controller has been specified.");
+                        return deferred.promise;
+                    }
+
+                    //  Get the actual html of the template.
+                    getTemplate(options.template, options.templateUrl)
+                        .then(function (template) {
+
+                            //  Create a new scope for the modal.
+                            var modalScope = (options.scope || $rootScope).$new();
+
+                            //  Create the inputs object to the controller - this will include
+                            //  the scope, as well as all inputs provided.
+                            //  We will also create a deferred that is resolved with a provided
+                            //  close function. The controller can then call 'close(result)'.
+                            //  The controller can also provide a delay for closing - this is
+                            //  helpful if there are closing animations which must finish first.
+                            var closeDeferred = $q.defer();
+                            var closedDeferred = $q.defer();
+                            var inputs = {
+                                $scope: modalScope,
+                                close: function (result, delay) {
+                                    if (delay === undefined || delay === null) delay = 0;
+                                    $timeout(function () {
+                                        //  Resolve the 'close' promise.
+                                        closeDeferred.resolve(result);
+
+                                        //  Let angular remove the element and wait for animations to finish.
+                                        $animate.leave(modalElement)
+                                            .then(function () {
+                                                //  Resolve the 'closed' promise.
+                                                closedDeferred.resolve(result);
+
+                                                //  We can now clean up the scope
+                                                modalScope.$destroy();
+
+                                                //  Unless we null out all of these objects we seem to suffer
+                                                //  from memory leaks, if anyone can explain why then I'd
+                                                //  be very interested to know.
+                                                inputs.close = null;
+                                                deferred = null;
+                                                closeDeferred = null;
+                                                modal = null;
+                                                inputs = null;
+                                                modalElement = null;
+                                                modalScope = null;
+                                            });
+                                    }, delay);
+                                }
+                            };
+
+                            //  If we have provided any inputs, pass them to the controller.
+                            if (options.inputs) angular.extend(inputs, options.inputs);
+
+                            //  Compile then link the template element, building the actual element.
+                            //  Set the $element on the inputs so that it can be injected if required.
+                            var linkFn = $compile(template);
+                            var modalElement = linkFn(modalScope);
+                            inputs.$element = modalElement;
+
+                            //  Create the controller, explicitly specifying the scope to use.
+                            var controllerObjBefore = modalScope[options.controllerAs];
+                            var modalController = $controller(options.controller, inputs, false, options.controllerAs);
+
+                            if (options.controllerAs && controllerObjBefore) {
+                                angular.extend(modalController, controllerObjBefore);
+                            }
+
+                            //  Finally, append the modal to the dom.
+                            if (options.appendElement) {
+                                // append to custom append element
+                                appendChild(options.appendElement, modalElement);
+                            } else {
+                                // append to body when no custom append element is specified
+                                appendChild(body, modalElement);
+                            }
+
+                            //  We now have a modal object...
+                            var modal = {
+                                controller: modalController,
+                                scope: modalScope,
+                                element: modalElement,
+                                close: closeDeferred.promise,
+                                closed: closedDeferred.promise
+                            };
+
+                            //  ...which is passed to the caller via the promise.
+                            deferred.resolve(modal);
+
+                        })
+                        .then(null, function (error) { // 'catch' doesn't work in IE8.
+                            deferred.reject(error);
+                        });
+
+                    return deferred.promise;
+                };
+
+            }
+
+            return new ModalService();
+        }]);
+
+}());
+
 /**
  * Created by RSC on 01.04.2016.
  */
@@ -1265,3 +1265,28 @@ myApp.service('Page', function ($rootScope, connection) {
         }
     }
 })();
+/**
+ * Created by B026789 on 12.01.2016.
+ */
+myApp.service('Page', function ($rootScope, connection) {
+    return {
+        setTitle: function (title) {
+            $rootScope.title = title + " - CAMDATA - HomeWatch 2.0";
+        },
+        setHeader: function (header) {
+            $rootScope.header = header;
+        },
+        setMetaData: function (name, content) {
+            $rootScope.MetaDatafhemweb_url = content;
+        },
+        getMetaData: function (name) {
+            var metaData = $rootScope.MetaDataContent;
+            if (angular.isUndefined(metaData)) {
+                metaData = connection.fhemweb_url;
+            }
+            return metaData;
+        }
+
+
+    }
+});

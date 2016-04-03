@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    function WidgetsController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, connection, HomeWidgetsService, Jsonervice, RoomService) {
+    function WidgetsController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, connection, HomeWidgetsService, Jsonervice, RoomService, FillAllDataService, $cookieStore) {
         $log.debug('WidgetsController startet');
 
         $scope.header = $routeParams.name;
@@ -119,7 +119,7 @@
                             deferred.resolve(data);
 
                             if (data.Results.length > 0) {
-                                $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - '  + data.Results.length);
+                                $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
                                 $log.debug(data.Results);
                                 $scope.result.push(data.Results);
                             }
@@ -131,12 +131,11 @@
                 }
                 else {
                     HomeService.getHome(value, $rootScope.type).then(function () {
-                            var data = HomeService.data();
                             // promise successfully resolved
                             deferred.resolve(data);
 
                             if (data.Results.length > 0) {
-                                $log.debug('HomeAll getHome add Widgets: ' + $rootScope.type + ' : ' + value + ' - '  + data.Results.length);
+                                $log.debug('HomeAll getHome add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
                                 $log.debug(data.Results);
                                 $scope.result.push(data.Results);
                             }
@@ -153,7 +152,7 @@
                                     deferred.resolve(data);
 
                                     if (data.Results.length > 0) {
-                                        $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - '  + data.Results.length);
+                                        $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
                                         $log.debug(data.Results);
                                         $scope.result.push(data.Results);
                                     }
@@ -171,6 +170,15 @@
         }
 
         function GetFhemJsonFile($scope, $rootScope) {
+            // check cookie
+            $rootScope.widgets = $cookieStore.get($rootScope.location) || {};
+            if (!$rootScope.widgets.length) {
+                var widget = FillAllDataService.loadWidgets($rootScope.location);
+                if (widget && widget.length && widget.length > 0) {
+                    alert('passt: ' + widget.length);
+                }
+            }
+
             // list of all promises
             var promises = [];
             if (angular.isUndefined($rootScope.name)) {
@@ -216,7 +224,7 @@
 
     }
 
-    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'connection', 'HomeWidgetsService', 'Jsonervice', 'RoomService'];
+    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'connection', 'HomeWidgetsService', 'Jsonervice', 'RoomService', 'FillAllDataService','$cookieStore'];
 
 
     angular.module('myApp')

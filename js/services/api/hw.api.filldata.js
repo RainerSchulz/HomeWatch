@@ -1,60 +1,92 @@
 /**
  * Created by Rainer on 03.04.2016.
  */
-myApp.factory("FillAllDataService", function ($q, HomeService, CookiesService, WidgetService) {
+myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeService, CookiesService, WidgetService, globalSettings) {
     "use strict";
-    var data = [];
+
     var widget = {};
     return {
         loadWidgets: function (cookie) {
             widget = CookiesService.getCookie(cookie) || {};
-            if (!widget.alias) {
+            if (widget && widget.length && widget.length > 0) {
+                return widget;
+            }
+            else {
                 // get type and name from cookie global.home
                 var globals = CookiesService.getCookie('globals');
                 if (globals.home) {
                     var home = globals.home;
                     var type = '';
-                    var name = '';
+                    var names = '';
+                    // check alias name
                     for (var i = 0; i < home.length; i++) {
                         if (home[i].alias == cookie) {
                             type = home[i].type;
-                            name = home[i].name;
+                            names = home[i].name;
                             break;
                         }
                     }
+
+
                     // get widget
-                    widget = getWidget(name, type);
-                    if (widget) {
-                        CookiesService.setCookieName(cookie, widget);
-                        return widget;
-                    }
+                    let promises = [];
+
+                    var values = names.split(',');
+                    var results = [];
+                    angular.forEach(values, function (name) {
+                        var deffered  = $q.defer();
+                        var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd + type + '=' + name + globalSettings.param;
+                        $log.debug('WidgetService.getWidget url: ' + url);
+                        $log.debug('name: ' + name + ' type: ' + type);
+                        // get json list
+                        HomeService.getHome(name, type).then(function () {
+                            var data = HomeService.data();
+                            // promise successfully resolved
+                            deffered.resolve(data.Results);
+
+                            if (data.Results.length > 0) {
+                                $log.debug('WidgetService.getWidget add Widgets: ' + type + ' : ' + name + ' - ' + data.Results.length);
+                                $log.debug(data.Results);
+
+                            }
+
+                        });
+                        promises.push(deffered);
+
+                    });
+
+                    $q.all(promises).then(function (values) {
+                        CookiesService.setCookieName(cookie, values);
+                        return values;
+                    });
+
                 }
 
             }
 
-            return widget;
         },
-        getWidget: function homeWidgets(values, type) {
+        getWidget: function homeWidgets(names, type) {
             // create a $q deferred promise
-            var deferred = $q.defer();
+            let deferred = $q.defer();
             var results = [];
+            var values = names.split(',');
+
             angular.forEach(values, function (value) {
-                var data = WidgetService.getWidget(type, value);
-                // promise successfully resolved
-                deferred.resolve(data);
+                var promise = WidgetService.getWidget(type, value);
+                promise.then(
+                    function (response) {
+                        results.push(response.data.Results);
+                    },
+                    function (error) {
+                        $log.error('failure loading widgets', error);
+                    });
 
-                if (data.Results.length > 0) {
-                    $log.debug('FillAllDataService getWidget add Widgets: ' + type + ' : ' + value + ' - ' + data.Results.length);
-                    $log.debug(data.Results);
-                    results.push(data.Results);
-                }
-
-            })
+            });
+            return results;
         },
         // add Widget to cookie
         addWidgetToCookie: function (name, widget) {
-
-
+            CookiesService.setCookieName(name, widget);
         }
 
     }

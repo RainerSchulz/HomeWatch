@@ -28,7 +28,7 @@
 
             // set Page MetaData
             Page.setMetaData("fhemweb_url", item.Internals.LINK);
-            $log.debug("LiegenschaftenController fhemweb_url:" + age.setMetaData('fhemweb_url'));
+            $log.debug("LiegenschaftenController fhemweb_url:" + Page.setMetaData('fhemweb_url'));
             var path = $scope.location + '/' + item.Name + '/home/';
             $location.path(path);
         };
