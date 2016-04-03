@@ -1,23 +1,17 @@
 <div ng-init="init()">
     <!-- Navigation TOP START -->
-
     <div cnd-navigations-top ng-header="{{header}}" ng-location="{{location}}"></div>
-
     <!-- Navigation TOP END -->
 
     <div id="page-content-wrapper" class="row-e">
         <div class="container-fluid">
             <div class="row  text-center margen-leing  margen-iphone" style="margin-top: 25px; ">
                 <!-- Liegenschaften START -->
-                <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 margeI" ng-repeat="item in results">
+                <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-7 margeI" data-ng-repeat="item in results">
                     <a ng-click="click(item)" class="touch-moveable">
-                        <figure>
-                            <img class="img-responsive center-block margtopMull imgpne" ng-src="images/guiico5.png"
-                                 alt="">
-                            <figcaption>
-                                <h4 class="icon-list ligenletraiphone">{{item.Attributes.alias}}</h4>
-                            </figcaption>
-                        </figure>
+                        <img class="img-responsive center-block margtopMull imgpne" ng-src="images/guiico5.png"
+                             alt="{{item.Attributes.alias}}">
+                        <h4 class="icon-list ligenletraiphone">{{item.Attributes.alias}}</h4>
                     </a>
                 </div>
                 <!-- Liegenschaften END -->
@@ -29,14 +23,12 @@
                 </div>
                 <div class="col-lg-offset-1 ">
                     <!-- Hausmeister usw. START -->
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 margtopMullup " ng-repeat="item in standardButton">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 margtopMullup "
+                         data-ng-repeat="item in standardButton">
                         <a ng-click="defaultClick(item)" class="touch-moveable">
-                            <figure ng-show="item.show=='true'">
-                                <img class="img-responsive img-center" ng-src="{{item.image}}" alt="">
-                                <figcaption>
-                                    <h4 class="icon-list"> {{item.alias}} </h4>
-                                </figcaption>
-                            </figure>
+                            <img class="img-responsive center-block margtopJL " ng-src="{{item.image}}"
+                                 alt="{{item.alias}}">
+                            <h4 class="icon-list ligenletraiphone"> {{item.alias}} </h4>
                         </a>
                     </div>
                     <!-- Hausmeister usw. END -->

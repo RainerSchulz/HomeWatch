@@ -2,9 +2,14 @@
   :: Login Section
   -------------------------------------------------- */
 #login {
-    padding-top: 50px
+    padding-top: 50px;
+    z-index: 1;
 }
 
+#register {
+    padding-top: 50px;
+    z-index: 1;
+}
 #login .form-wrap {
     width: 30%;
     margin: 0 auto;
@@ -67,4 +72,21 @@
     font-size: 13px;
     text-align: center;
     display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #737373;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: 700;
 }

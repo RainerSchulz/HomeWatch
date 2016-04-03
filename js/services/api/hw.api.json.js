@@ -24,18 +24,23 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
                 $log.debug(data);
             })
             .error(function (err, status, headers, config) {
-
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == 404) {
-                    url = originUrl + url;
-                    $log.debug(url);
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
+                if (angular.isUndefined(status)) {
+                    $log.debug('error: ' + config.url);
                 } else {
-                    $log.debug('error: ' + status);
+
+                    // log error
+                    if (status == 500) {
+                        $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                    } else if (status == 404) {
+                        url = originUrl + url;
+                        $log.debug(url);
+                    } else if (status == -1) {
+                        $log.debug('error: connection refused ' + status);
+                    } else {
+
+                        $log.debug('error: ' + status);
+                    }
                 }
 
 
@@ -55,6 +60,47 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
                 for (var i = 0; i < len; i++) {
                     if (res.Results[i].location == id) {
                         data = res.Results[i];
+                        deffered.resolve();
+                        break;
+                    }
+                }
+
+                $log.debug("Jsonervice by getJsonById " + id);
+                $log.debug(data);
+            })
+            .error(function (err, status, headers, config) {
+
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == 404) {
+                    url = originUrl + url;
+                    $log.debug(url);
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+
+
+            });
+    };
+
+    Jsonervice.getConfig = function (name, id) {
+
+        var url = 'json/homewatch/' + name + '.json';
+
+        return $http({
+            method: 'GET',
+            cache: true,
+            url: url
+        }).success(function (res) {
+
+                var len = res.length;
+                for (var i = 0; i < len; i++) {
+                    if (res[i] == id) {
+                        data = res[i];
                         deffered.resolve();
                         break;
                     }

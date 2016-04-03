@@ -1,7 +1,7 @@
 /**
  * Created by rsc on 18.01.2016.
  */
-var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToast', 'ngTouch', 'ngAnimate','ngCookies' , 'ui.router', 'ngSanitize', 'notification', 'tooltip', 'bootstrapLightbox'])
+var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToast', 'ngTouch', 'ngAnimate', 'ngCookies', 'ui.router', 'ngSanitize', 'notification', 'tooltip', 'bootstrapLightbox', 'angularModalService'])
     .constant('globalSettings', {
         url: 'http://login.homewatch-smarthome.de',
         port: ":8130", //:8139
@@ -18,6 +18,17 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
             .when('/', {
                 templateUrl: 'views/logon/logon.html',
                 controller: 'LogonController'
+            })
+            .when('/login', {
+                templateUrl: 'views/login/index.html',
+                controller: 'LoginController',
+                controllerAs: 'vm'
+            })
+
+            .when('/register', {
+                templateUrl: 'views/register/index.html',
+                controller: 'RegisterController',
+                controllerAs: 'vm'
             })
             .when('/agb', {
                 templateUrl: 'views/agb/index.html',
@@ -151,17 +162,17 @@ myApp.value('connection', {
     originUrl: "http://localhost:63342/",
     application: "/HomeWatch 2.0/",
     fhemweb_url: "http://login.homewatch-smarthome.de:8130/fhem",
-    URL_DC:"http://login.homewatch-smarthome.de:8139",
+    URL_DC: "http://login.homewatch-smarthome.de:8139",
     URL_dyndns: "http://rou-wan-002.camdata.de:8083",
     URL_local: "http://10.221.251.126:8083",
-    isDebug: false
+    isDebug: true
 });
 
 
 (function () {
     'use strict';
 
-    function MainController($scope, $window, $log, $http, $state, $rootScope, HomeService, ngDialog, onlineStatus, connection, Page) {
+    function MainController($scope, $window, $log, $http, $rootScope, $cookieStore, $location, onlineStatus, connection, Page) {
         var self = this;
 
         connection.originUrl = $window.location.origin;
@@ -181,49 +192,28 @@ myApp.value('connection', {
         $log.debug($scope.message);
         $scope.user = {};
 
+
+        /*
+         // keep user logged in after page refresh
+         $rootScope.globals = $cookieStore.get('globals') || {};
+         if ($rootScope.globals.currentUser) {
+         $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+         }
+
+         $rootScope.$on('$locationChangeStart', function (event, next, current) {
+         // redirect to login page if not logged in and trying to access a restricted page
+         var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+         var loggedIn = $rootScope.globals.currentUser;
+         if (restrictedPage && !loggedIn) {
+         $location.path('/login');
+         }
+         });
+         */
         // set Page MetaData
         Page.setMetaData("fhemweb_url", connection.fhemweb_url);
-
-        $scope.openTemplate = function () {
-            $scope.value = true;
-
-            ngDialog.open({
-                template: 'views/user/index.html',
-                controller: 'UserController',
-                className: 'ngdialog-theme-default',
-                scope: $scope
-            });
-        };
-
-
-        $scope.startVolume = function () {
-            $scope.result = [];
-
-            GetFhemJsonFile($scope, $http);
-        };
-        // Widget Content
-        function GetFhemJsonFile($scope, $http) {
-            var name = "light_hm,dimmer_hm";
-
-            var values = name.split(',');
-            angular.forEach(values, function (value) {
-
-                HomeService.getHomeByIdJson(value).then(function () {
-                        $log.debug('getHomeByIdJson: ' + value);
-                        var data = HomeService.data();
-                        $scope.result.push(data.Results);
-                        $log.debug('$scope.result.length 2:' + $scope.result.length);
-
-                    })
-                    .catch(function (callback) {
-                        $log.debug(callback);
-                    });
-
-            });
-        }
     }
 
-    MainController.$inject = ['$scope', '$window', '$log', '$http', '$state', '$rootScope', 'HomeService', 'ngDialog', 'onlineStatus', 'connection', 'Page'];
+    MainController.$inject = ['$scope', '$window', '$log', '$http', '$rootScope', '$cookieStore', '$location', 'onlineStatus', 'connection', 'Page'];
 
     angular.module('myApp')
         .controller('MainController', MainController);

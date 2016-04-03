@@ -6,151 +6,6 @@
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
 /**
- * Created by RSC on 16.01.2016.
- */
-angular.module('myApp')
-    .directive('cndiFrame', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/iframe/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
-            }
-        };
-
-        return directiveDefinitionObject;
-    });
-/**
- * Created by B026789 on 18.12.2015.
- */
-(function(){
-    "use strict";
-
-    angular.module('notification', [])
-        .service('notification', function ($rootScope) {
-            this.pop = function (type, title, body) {
-                this.toast = {
-                    type: type,
-                    title: title,
-                    body: body
-                };
-                $rootScope.$broadcast('toaster-newToast');
-            };
-        })
-        .constant('toasterConfig', {
-            'tap-to-dismiss': true,
-            'newest-on-top': true,
-            //'fade-in': 1000,            // done in css
-            //'on-fade-in': undefined,    // not implemented
-            //'fade-out': 1000,           // done in css
-            // 'on-fade-out': undefined,  // not implemented
-            //'extended-time-out': 1000,    // not implemented
-            'time-out': 5000, // Set timeOut and extendedTimeout to 0 to make it sticky
-            'icon-classes': {
-                error: 'toast-error',
-                info: 'toast-info',
-                success: 'toast-success',
-                warning: 'toast-warning'
-            },
-            'icon-class': 'toast-info',
-            'position-class': 'toast-top-right',
-            'title-class': 'toast-title',
-            'message-class': 'toast-message'
-        })
-        .directive('toasterContainer', ['$compile', '$timeout', 'toasterConfig', 'notification',
-            function ($compile, $timeout, toasterConfig, toaster) {
-                return {
-                    replace: true,
-                    restrict: 'EA',
-                    link: function (scope, elm, attrs){
-
-                        var id = 0;
-
-                        var mergedConfig = toasterConfig;
-                        if (attrs.toasterOptions) {
-                            angular.extend(mergedConfig, scope.$eval(attrs.toasterOptions));
-                        }
-
-                        scope.config = {
-                            position: mergedConfig['position-class'],
-                            title: mergedConfig['title-class'],
-                            message: mergedConfig['message-class'],
-                            tap: mergedConfig['tap-to-dismiss']
-                        };
-
-                        function addToast (toast){
-                            toast.type = mergedConfig['icon-classes'][toast.type];
-                            if (!toast.type)
-                                toast.type = mergedConfig['icon-class'];
-
-                            id++;
-                            angular.extend(toast, { id: id });
-
-                            if (mergedConfig['time-out'] > 0)
-                                setTimeout(toast, mergedConfig['time-out']);
-
-                            if (mergedConfig['newest-on-top'] === true)
-                                scope.toasters.unshift(toast);
-                            else
-                                scope.toasters.push(toast);
-                        }
-
-                        function setTimeout(toast, time){
-                            toast.timeout= $timeout(function (){
-                                scope.removeToast(toast.id);
-                            }, time);
-                        }
-
-                        scope.toasters = [];
-                        scope.$on('toaster-newToast', function () {
-                            addToast(toaster.toast);
-                        });
-                    },
-                    controller: function($scope, $element, $attrs) {
-
-                        $scope.stopTimer = function(toast){
-                            if(toast.timeout)
-                                $timeout.cancel(toast.timeout);
-                        };
-
-                        $scope.removeToast = function (id){
-                            var i = 0;
-                            for (i; i < $scope.toasters.length; i++){
-                                if($scope.toasters[i].id === id)
-                                    break;
-                            }
-                            $scope.toasters.splice(i, 1);
-                        };
-
-                        $scope.remove = function(id){
-                            if ($scope.config.tap === true){
-                                $scope.removeToast(id);
-                            }
-                        };
-                    },
-                    template:
-                    '<div  id="toast-container" ng-class="config.position">' +
-                    '<div ng-animate="\'animateToaster\'" ng-repeat="toaster in toasters">' +
-                    '<div class="toast" ng-class="toaster.type" ng-click="remove(toaster.id)" ng-mouseover="stopTimer(toaster)">' +
-                    '<div ng-class="config.title">{{toaster.title}}</div>' +
-                    '<div ng-class="config.message">{{toaster.body}}' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>'
-                };
-            }]);
-}());
-/**
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
@@ -188,20 +43,23 @@ angular.module('myApp')
             scope: {
                 ngSidebarPreference: "@"
             },
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.sidebar_preference = JSON.parse($scope.ngSidebarPreference);
+                    $log.debug('Start Sidebar_Preference');
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    i$scope.buttonClick = function (item) {
+                        if (item.Internals.LINK != '') {
+                            $log.debug('Url: ' + item.Internals.LINK);
+                            // $window.location.href = item.url;
+                            $window.open(item.Internals.LINK, item.target)
+                        } else {
+                            $log.debug('Location: ' + item.Attributes.icon);
+                            $location.path(item.Attributes.icon);
+                        }
 
-            link: function ($scope, element, attrs) {
-                $scope.sidebar_preference = JSON.parse($scope.ngSidebarPreference);
-                $log.debug('Start Sidebar_Preference');
-                $scope.buttonClick = function (item) {
-                    if (item.Internals.LINK != '') {
-                        $log.debug('Url: ' + item.Internals.LINK);
-                        // $window.location.href = item.url;
-                        $window.open(item.Internals.LINK, item.target)
-                    } else {
-                        $log.debug('Location: ' + item.Attributes.icon);
-                        $location.path(item.Attributes.icon);
-                    }
-
+                    };
                 }
             }
         };
@@ -398,6 +256,126 @@ angular.module('myApp')
 (function () {
     "use strict";
 
+    angular.module('notification', [])
+        .service('notification', function ($rootScope) {
+            this.pop = function (type, title, body) {
+                this.toast = {
+                    type: type,
+                    title: title,
+                    body: body
+                };
+                $rootScope.$broadcast('toaster-newToast');
+            };
+        })
+        .constant('toasterConfig', {
+            'tap-to-dismiss': true,
+            'newest-on-top': true,
+            //'fade-in': 1000,            // done in css
+            //'on-fade-in': undefined,    // not implemented
+            //'fade-out': 1000,           // done in css
+            // 'on-fade-out': undefined,  // not implemented
+            //'extended-time-out': 1000,    // not implemented
+            'time-out': 5000, // Set timeOut and extendedTimeout to 0 to make it sticky
+            'icon-classes': {
+                error: 'toast-error',
+                info: 'toast-info',
+                success: 'toast-success',
+                warning: 'toast-warning'
+            },
+            'icon-class': 'toast-info',
+            'position-class': 'toast-top-right',
+            'title-class': 'toast-title',
+            'message-class': 'toast-message'
+        })
+        .directive('toasterContainer', ['$compile', '$timeout', 'toasterConfig', 'notification',
+            function ($compile, $timeout, toasterConfig, toaster) {
+                return {
+                    replace: true,
+                    restrict: 'EA',
+                    link: function (scope, elm, attrs) {
+
+                        var id = 0;
+
+                        var mergedConfig = toasterConfig;
+                        if (attrs.toasterOptions) {
+                            angular.extend(mergedConfig, scope.$eval(attrs.toasterOptions));
+                        }
+
+                        scope.config = {
+                            position: mergedConfig['position-class'],
+                            title: mergedConfig['title-class'],
+                            message: mergedConfig['message-class'],
+                            tap: mergedConfig['tap-to-dismiss']
+                        };
+
+                        function addToast(toast) {
+                            toast.type = mergedConfig['icon-classes'][toast.type];
+                            if (!toast.type)
+                                toast.type = mergedConfig['icon-class'];
+
+                            id++;
+                            angular.extend(toast, {id: id});
+
+                            if (mergedConfig['time-out'] > 0)
+                                setTimeout(toast, mergedConfig['time-out']);
+
+                            if (mergedConfig['newest-on-top'] === true)
+                                scope.toasters.unshift(toast);
+                            else
+                                scope.toasters.push(toast);
+                        }
+
+                        function setTimeout(toast, time) {
+                            toast.timeout = $timeout(function () {
+                                scope.removeToast(toast.id);
+                            }, time);
+                        }
+
+                        scope.toasters = [];
+                        scope.$on('toaster-newToast', function () {
+                            addToast(toaster.toast);
+                        });
+                    },
+                    controller: function ($scope, $element, $attrs) {
+
+                        $scope.stopTimer = function (toast) {
+                            if (toast.timeout)
+                                $timeout.cancel(toast.timeout);
+                        };
+
+                        $scope.removeToast = function (id) {
+                            var i = 0;
+                            for (i; i < $scope.toasters.length; i++) {
+                                if ($scope.toasters[i].id === id)
+                                    break;
+                            }
+                            $scope.toasters.splice(i, 1);
+                        };
+
+                        $scope.remove = function (id) {
+                            if ($scope.config.tap === true) {
+                                $scope.removeToast(id);
+                            }
+                        };
+                    },
+                    template: '<div  id="toast-container" ng-class="config.position">' +
+                    '<div ng-animate="\'animateToaster\'" ng-repeat="toaster in toasters">' +
+                    '<div class="toast" ng-class="toaster.type" ng-click="remove(toaster.id)" ng-mouseover="stopTimer(toaster)">' +
+                    '<div ng-class="config.title">{{toaster.title}}</div>' +
+                    '<div ng-class="config.message">{{toaster.body}}' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>'
+                };
+            }]);
+}());
+/**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
     var dirTooltip = angular.module('tooltip', [])
         .directive('tooltip', function factory($log) {
             return {
@@ -427,18 +405,50 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsSwitch', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/switch/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            Attributes: {},
+
+            scope: {
+                ngName: "@",
+                ngAttributes: "@"
+
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -451,18 +461,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -476,18 +490,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'EA',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -500,18 +518,50 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'EA',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsDimmer', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/dimmer/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'EA',
+            Attributes: {},
+
+            scope: {
+                ngName: "@",
+                ngAttributes: "@"
+
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -525,18 +575,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -549,18 +603,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -574,18 +632,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -598,18 +660,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -623,18 +689,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -647,17 +717,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
+
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -670,17 +745,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
+
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -694,18 +774,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -718,18 +802,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -743,18 +831,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -767,18 +859,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -792,18 +888,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -816,18 +916,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -841,18 +945,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -865,18 +973,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -890,18 +1002,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -915,18 +1031,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -935,22 +1055,26 @@ angular.module('myApp')
     })
     .directive('cndWidgetsContact', function factory($log) {
         var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/contact/index.html',
+            templateUrl: 'templates/widgets/dummy_sec/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -963,18 +1087,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -987,18 +1115,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -1011,18 +1143,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -1035,18 +1171,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -1059,18 +1199,22 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
             }
         };
@@ -1083,40 +1227,23 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
             link: {
                 pre: function preLink($scope, element, attrs, controller) {
-                    $scope.model = JSON.parse($scope.ngKind);
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
                 },
                 post: function postLink($scope, element, attrs, controller) {
-                    initWidget(element, $scope.model.Name);
+                    initWidget(element, $scope.Name);
                 }
-            }
-        };
-
-        return directiveDefinitionObject;
-    })
-
-    .directive('cndWidgetsSite', function factory($log) {
-        var directiveDefinitionObject = {
-            templateUrl: 'templates/widgets/site/index.html',
-            replace: true,
-            transclude: true,
-            restrict: 'A',
-            model: {},
-
-            scope: {
-                ngKind: "@"
-            },
-
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                //$log.debug($scope.model);
             }
         };
 
@@ -1128,15 +1255,23 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                $log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
+                }
             }
         };
 
@@ -1148,15 +1283,23 @@ angular.module('myApp')
             replace: true,
             transclude: true,
             restrict: 'A',
-            model: {},
+            Attributes: {},
 
             scope: {
-                ngKind: "@"
+                ngName: "@",
+                ngAttributes: "@"
+
             },
 
-            link: function ($scope, element, attrs) {
-                $scope.model = JSON.parse($scope.ngKind);
-                $log.debug($scope.model);
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
+                }
             }
         };
 
@@ -1242,6 +1385,26 @@ angular.module('myApp')
                     Lightbox.openModal($scope.images, 0);
 
                 };
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsSite', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/site/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
             }
         };
 

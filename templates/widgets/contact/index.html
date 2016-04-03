@@ -1,27 +1,11 @@
 <div class="text-center contact">
 
-    <div class="col col-xs-12">
-        <div class="img-responsive center-block">
-            <div data-type="switch"
-                 data-device="{{model.Name}}"
-                 class="fa-stack fa-3x margtopF fa-2x">
-                <div ng-click="model.Internals.STATE == 'on' ? model.Internals.STATE = 'off' : model.Internals.STATE = 'on'">
-                    <div ng-show="model.Internals.STATE == 'on' ">
-                        <i id="{{model.Name}}_bg" class="fa fa-stack-2x fa-circle"
-                           style="color: rgba(255, 255, 255, 0.901961);"></i>
-                        <i id="{{model.Name}}_fg" class="fa fa-stack-1x fa-lightbulb-o" style="color: black;"></i>
-                    </div>
-                    <div ng-show="model.Internals.STATE != 'on' ">
-                        <i id="bg" class="fa fa-stack-2x fa-circle" style="color: rgb(175, 5, 57);"></i>
-                        <i id="fg" class="fa fa-stack-1x fa-lightbulb-o" style="color: white;"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <span data-type="label" class="cell">{{model.Attributes.alias}}</span>
-
-            </div>
-        </div>
+    <div data-type="switch"
+         data-device="{.Name}}"
+         class="fa-stack fa-3x margtopF fa-2x">
     </div>
-
+    <div class="row">
+        <span ng-if="Attributes.alias != null" data-type="label" class="cell">{{Attributes.alias}}</span>
+        <span ng-if="Attributes.alias == null" data-type="label" class="cell">{{Name}}</span>
+    </div>
 </div>

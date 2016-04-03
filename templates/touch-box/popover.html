@@ -1,8 +1,0 @@
-<div class="popover cnd-popover {{placemant}}" ng-class="{in: isOpen(), fade: animation()}">
-    <div class="arrow"></div>
-    <div class="popover-inner" ng-click="prevent($event)">
-        <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
-        <div ng-if="isTemplate" ng-bind-html="template"></div>
-        <div ng-if="!isTemplate" ng-bind="content"></div>
-    </div>
-</div>

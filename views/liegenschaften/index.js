@@ -109,7 +109,7 @@
                         $log.debug(type + ' : ' + value);
                         var data = HomeService.data();
                         $scope.results = data.Results;
-                        $log.debug('$scope.result: ' + $scope.result);
+                        $log.debug('$scope.result: ' + $scope.results.length);
 
                     })
                     .catch(function (callback) {

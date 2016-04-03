@@ -1,15 +1,11 @@
 <div class="text-center dummy_sec">
-    <div class="col col-xs-12">
-        <div class="center-block">
-            <div data-type="switch"
-                 data-device="{{model.Name}}"
-                 class="cell fa-3x"
-                 data-icon="fa-bolt">
-            </div>
-            <div class="row">
-                <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{model.Attributes.alias}}</span>
-                <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
-            </div>
-        </div>
+    <div data-type="switch"
+         data-device="{{Name}}"
+         class="cell fa-3x left25"
+         data-icon="fa-user-secret">
+    </div>
+    <div class="row">
+        <span ng-if="Attributes.alias != null" data-type="label" class="cell">{{Attributes.alias}}</span>
+        <span ng-if="Attributes.alias == null" data-type="label" class="cell">{{Name}}</span>
     </div>
 </div>

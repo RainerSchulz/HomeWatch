@@ -9,7 +9,7 @@
                         ng-change="Lightbox.SetPreset(value)"
                         ng-model="value">
                     <option value="">Select a preset</option>
-                    <option ng-repeat="item in Lightbox.presets"
+                    <option data-ng-repeat="item in Lightbox.presets"
                             value="{{item.preset}}">{{item.preset}}
                     </option>
                 </select>

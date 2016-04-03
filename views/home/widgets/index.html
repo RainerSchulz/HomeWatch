@@ -35,8 +35,8 @@
                 <!--  Widgets START -->
                 <div class=" col-md-offset-1 col-md-8">
                     <div class="row row-spc1">
-                        <div ng-repeat="items in result" class="">
-                            <div ng-repeat="item in items | filter:roomFilter" cnd-widgets-fields
+                        <div data-ng-repeat="items in result" class="">
+                            <div data-ng-repeat="item in items | filter:roomFilter" cnd-widgets-fields
                                  ng-kind="{{item}}"></div>
                         </div>
                     </div>

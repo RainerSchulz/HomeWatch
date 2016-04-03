@@ -1,24 +1,23 @@
-
-    <div class="thermostat">
+<div class="text-center thermostat">
         <div data-type="thermostat"
-             data-device='{{model.Name}}'
+             data-device='{{Name}}'
              data-valve="valveposition"
              data-get="state"
              data-temp="temperature"
              data-set="value"
              class="cell small myCanvas2"
-             id="{{model.Name}}">
+             id="{{Name}}">
         </div>
-        <div data-type="label" 
-             data-device="{{model.Name}}" 
-             data-get="state" 
-             data-limits='[-73,19,23]'
-             data-colors='["#6699FF","#aa6900","#bb6242"]' 
-             data-unit="" 
-             class="cell">
+    <div data-type="label"
+         data-device="{{Name}}"
+         data-get="state"
+         data-limits='[-73,19,23]'
+         data-colors='["#6699FF","#aa6900","#bb6242"]'
+         data-unit=""
+         class="cell">
         </div>
         <div class="row">
-            <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{model.Attributes.alias}}</span>
-            <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
+            <span ng-if="Attributes.alias != null" data-type="label" class="cell">{{Attributes.alias}}</span>
+            <span ng-if="Attributes.alias == null" data-type="label" class="cell">{{Name}}</span>
         </div>
     </div>

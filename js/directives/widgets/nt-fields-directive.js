@@ -81,4 +81,24 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
+    .directive('cndWidgetsSite', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/site/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            model: {},
+
+            scope: {
+                ngKind: "@"
+            },
+
+            link: function ($scope, element, attrs) {
+                $scope.model = JSON.parse($scope.ngKind);
+                //$log.debug($scope.model);
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
 ;

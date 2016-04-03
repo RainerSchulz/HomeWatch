@@ -2,49 +2,13 @@
   "Arg":"genericDeviceType=light",
   "Results": [
     {
-      "Name":"LED_Flur",
-      "PossibleSets":"on off dim dimup dimdown HSV RGB",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long gamma dimStep defaultColor defaultRamp colorCast whitePoint event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon sortby webCmd widgetOverride userattr",
-      "Internals": {
-        "CONNECTION": "LW12",
-        "DEF": "RGB LW12:10.221.251.102",
-        "IP": "10.221.251.102",
-        "LEDTYPE": "RGB",
-        "NAME": "LED_Flur",
-        "NR": "254",
-        "NTFY_ORDER": "50-LED_Flur",
-        "PORT": "5577",
-        "PROTO": "1",
-        "SLOT": "0",
-        "STATE": "off",
-        "TYPE": "WifiLight"
-      },
-      "Readings": {
-        "RGB": { "Value":"000000", "Time":"2016-02-27 13:34:33" },
-        "brightness": { "Value":"0", "Time":"2016-02-27 13:34:33" },
-        "hue": { "Value":"0", "Time":"2016-02-27 13:34:33" },
-        "saturation": { "Value":"0", "Time":"2016-02-27 13:34:33" },
-        "state": { "Value":"off", "Time":"2016-02-27 13:34:33" }
-      },
-      "Attributes": {
-        "alias": "LED",
-        "colorCast": "0, -20, -20, -25, 0, -10",
-        "devStateIcon": "{Color_devStateIcon(ReadingsVal($name,\"RGB\",\"000000\"))}",
-        "genericDeviceType": "light",
-        "room": "LED",
-        "webCmd": "RGB",
-        "whitePoint": "1, 0.75, 0.25",
-        "widgetOverride": "RGB:colorpicker,RGB"
-      }
-    },
-    {
       "Name":"Wandtaster_01",
       "PossibleSets":"assignHmKey clear:readings,trigger,register,oldRegs,rssi,msgEvents,attack,all deviceRename getConfig getRegRaw raw regBulk regSet reset unpair",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long do_not_notify:1,0 showtime:1,0 rawToReadable unit expert:0_defReg,1_allReg,2_defReg+raw,3_allReg+raw,4_off,8_templ+default,12_templOnly,251_anything param actAutoTry:0_off,1_on aesCommReq:1,0 ignore:1,0 dummy:1,0 IODev IOList IOgrp hmProtocolEvents:0_off,1_dump,2_dumpFull,3_dumpTrigger rssiLog:1,0 actCycle hmKey hmKey2 hmKey3 serialNr firmware .stc .devInfo actStatus autoReadReg:0_off,1_restart,2_pon-restart,3_onChange,4_reqStatus,5_readMissing,8_stateOnly burstAccess:0_off,1_auto msgRepeat hmProtocolEvents:0_off,1_dump,2_dumpFull,3_dumpTrigger aesKey:5,4,3,2,1,0  repPeers peerIDs tempListTmpl levelRange levelMap event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:ASH550,ASH550I,CCU-FHEM,CMM,DORMA_BRC-H,DORMA_RC-H,DORMA_atent,HM-CC-RT-DN,HM-CC-RT-DN-BoM,HM-CC-SCD,HM-CC-TC,HM-CC-VD,HM-Dis-TD-T,HM-Dis-WM55,HM-ES-PMSw1-DR,HM-ES-PMSw1-Pl,HM-ES-PMSw1-Pl-DN-R1,HM-ES-PMSw1-Pl-DN-R2,HM-ES-PMSw1-Pl-DN-R3,HM-ES-PMSw1-Pl-DN-R4,HM-ES-PMSw1-Pl-DN-R5,HM-ES-PMSw1-SM,HM-ES-TX-WM,HM-LC-BL1-FM,HM-LC-BL1-PB-FM,HM-LC-BL1-SM,HM-LC-Bl1-FM-2,HM-LC-Bl1-SM-2,HM-LC-Bl1PBU-FM,HM-LC-DDC1-PCB,HM-LC-DIM1L-CV,HM-LC-DIM1L-PL,HM-LC-DIM1T-CV,HM-LC-DIM1T-FM,HM-LC-DIM1T-PL,HM-LC-DIM2L-CV,HM-LC-DIM2L-SM,HM-LC-DIM2T-SM,HM-LC-Dim1L-CV-2,HM-LC-Dim1L-CV-644,HM-LC-Dim1L-Pl-2,HM-LC-Dim1L-Pl-3,HM-LC-Dim1L-Pl-644,HM-LC-Dim1PWM-CV,HM-LC-Dim1PWM-CV-2,HM-LC-Dim1T-CV-2,HM-LC-Dim1T-CV-644,HM-LC-Dim1T-FM-2,HM-LC-Dim1T-FM-644,HM-LC-Dim1T-FM-LF,HM-LC-Dim1T-Pl-2,HM-LC-Dim1T-Pl-3,HM-LC-Dim1T-Pl-644,HM-LC-Dim1TPBU-FM,HM-LC-Dim1TPBU-FM-2,HM-LC-Dim2L-SM-2,HM-LC-Dim2L-SM-644,HM-LC-Dim2T-SM,HM-LC-Dim2T-SM-2,HM-LC-RGBW-WM,HM-LC-SW1-BA-PCB,HM-LC-SW1-FM,HM-LC-SW1-PB-FM,HM-LC-SW1-PL,HM-LC-SW1-PL-OM54,HM-LC-SW1-PL2,HM-LC-SW1-SM,HM-LC-SW1-SM-ATMEGA168,HM-LC-SW2-DR,HM-LC-SW2-FM,HM-LC-SW2-PB-FM,HM-LC-SW2-SM,HM-LC-SW4-BA-PCB,HM-LC-SW4-DR,HM-LC-SW4-PCB,HM-LC-SW4-SM,HM-LC-SW4-SM-ATMEGA168,HM-LC-SW4-WM,HM-LC-Sw1-DR,HM-LC-Sw1-FM-2,HM-LC-Sw1-Pl-3,HM-LC-Sw1-Pl-CT-R1,HM-LC-Sw1-Pl-CT-R2,HM-LC-Sw1-Pl-CT-R3,HM-LC-Sw1-Pl-CT-R4,HM-LC-Sw1-Pl-CT-R5,HM-LC-Sw1-Pl-DN-R1,HM-LC-Sw1-Pl-DN-R2,HM-LC-Sw1-Pl-DN-R3,HM-LC-Sw1-Pl-DN-R4,HM-LC-Sw1-Pl-DN-R5,HM-LC-Sw1-SM-2,HM-LC-Sw1PBU-FM,HM-LC-Sw2-DR-2,HM-LC-Sw2-FM-2,HM-LC-Sw4-DR-2,HM-LC-Sw4-PCB-2,HM-LC-Sw4-SM-2,HM-LC-Sw4-WM-2,HM-MOD-Em-8,HM-MOD-Re-8,HM-OU-CF-PL,HM-OU-CFM-PL,HM-OU-CM-PCB,HM-OU-LED16,HM-PB-2-FM,HM-PB-2-WM,HM-PB-2-WM55,HM-PB-2-WM55-2,HM-PB-4-WM,HM-PB-4DIS-WM,HM-PB-4DIS-WM-2,HM-PB-6-WM55,HM-PBI-4-FM,HM-RC-12,HM-RC-12-B,HM-RC-12-SW,HM-RC-19,HM-RC-19-B,HM-RC-19-SW,HM-RC-2-PBU-FM,HM-RC-4,HM-RC-4-2,HM-RC-4-3,HM-RC-4-3-D,HM-RC-4-B,HM-RC-8,HM-RC-Dis-H-x-EU,HM-RC-KEY3,HM-RC-KEY3-B,HM-RC-Key4-2,HM-RC-Key4-3,HM-RC-P1,HM-RC-SEC3,HM-RC-SEC3-B,HM-RC-Sec4-2,HM-RC-Sec4-3,HM-SCI-3-FM,HM-SEC-KEY,HM-SEC-KEY-O,HM-SEC-KEY-S,HM-SEC-MDIR,HM-SEC-MDIR-2,HM-SEC-RHS,HM-SEC-SC,HM-SEC-SC-2,HM-SEC-SCo,HM-SEC-SD,HM-SEC-SD-2,HM-SEC-SFA-SM,HM-SEC-TIS,HM-SEC-WDS,HM-SEC-WDS-2,HM-SEC-WIN,HM-SEN-EP,HM-SEN-MDIR-SM,HM-SWI-3-FM,HM-Sec-Cen,HM-Sen-DB-PCB,HM-Sen-MDIR-O,HM-Sen-MDIR-O-2,HM-Sen-MDIR-WM55,HM-Sen-RD-O,HM-Sen-Wa-Od,HM-Sys-sRP-Pl,HM-TC-IT-WM-W-EU,HM-WDC7000,HM-WDS10-TH-O,HM-WDS100-C6-O,HM-WDS20-TH-O,HM-WDS30-OT2-SM,HM-WDS30-T-O,HM-WDS40-TH-I,HM-WDS40-TH-I-2,HM-WS550,HM-WS550LCB,HM-WS550LCW,HM-WS550Tech,IS-WDS-TH-OD-S-R3,KFM-Display,KFM-Sensor,KS550,KS550LC,KS550TECH,KS888,PS-Th-Sens,PS-switch,ROTO_ZEL-STG-RM-DWT-10,ROTO_ZEL-STG-RM-FDK,ROTO_ZEL-STG-RM-FEP-230V,ROTO_ZEL-STG-RM-FSA,ROTO_ZEL-STG-RM-FST-UP4,ROTO_ZEL-STG-RM-FWT,ROTO_ZEL-STG-RM-FZS,ROTO_ZEL-STG-RM-FZS-2,ROTO_ZEL-STG-RM-HS-4,ROTO_ZEL-STG-RM-WT-2,Roto_ZEL-STG-RM-FFK,Roto_ZEL-STG-RM-FSS-UP3,S550IA,Schueco_263-130,Schueco_263-131,Schueco_263-132,Schueco_263-133,Schueco_263-134,Schueco_263-135,Schueco_263-144,Schueco_263-145,Schueco_263-146,Schueco_263-147,Schueco_263-155,Schueco_263-157,Schueco_263-158,Schueco_263-160,Schueco_263-162,Schueco_263-167,Schueco_263-xxx,WDF-solar,WS888 subType:AlarmControl,KFM100,THSensor,blindActuator,blindActuatorSol,dimmer,keyMatic,motionAndBtn,motionDetector,outputUnit,powerMeter,powerSensor,pushButton,remote,repeater,rgb,sensRain,sensor,singleButton,smokeDetector,swi,switch,thermostat,threeStateSensor,tipTronic,virtual,winMatic alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon sortby webCmd widgetOverride userattr",
+      "PossibleAttrs": "verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long do_not_notify:1,0 showtime:1,0 rawToReadable unit expert:0_defReg,1_allReg,2_defReg+raw,3_allReg+raw,4_off,8_templ+default,12_templOnly,251_anything param actAutoTry:0_off,1_on aesCommReq:1,0 ignore:1,0 dummy:1,0 IODev IOList IOgrp hmProtocolEvents:0_off,1_dump,2_dumpFull,3_dumpTrigger rssiLog:1,0 actCycle hmKey hmKey2 hmKey3 serialNr firmware .stc .devInfo actStatus autoReadReg:0_off,1_restart,2_pon-restart,3_onChange,4_reqStatus,5_readMissing,8_stateOnly burstAccess:0_off,1_auto msgRepeat hmProtocolEvents:0_off,1_dump,2_dumpFull,3_dumpTrigger aesKey:5,4,3,2,1,0  repPeers peerIDs tempListTmpl levelRange levelMap event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:ASH550,ASH550I,CCU-FHEM,CMM,DORMA_BRC-H,DORMA_RC-H,DORMA_atent,HM-CC-RT-DN,HM-CC-RT-DN-BoM,HM-CC-SCD,HM-CC-TC,HM-CC-VD,HM-Dis-TD-T,HM-Dis-WM55,HM-ES-PMSw1-DR,HM-ES-PMSw1-Pl,HM-ES-PMSw1-Pl-DN-R1,HM-ES-PMSw1-Pl-DN-R2,HM-ES-PMSw1-Pl-DN-R3,HM-ES-PMSw1-Pl-DN-R4,HM-ES-PMSw1-Pl-DN-R5,HM-ES-PMSw1-SM,HM-ES-TX-WM,HM-LC-BL1-FM,HM-LC-BL1-PB-FM,HM-LC-BL1-SM,HM-LC-Bl1-FM-2,HM-LC-Bl1-SM-2,HM-LC-Bl1PBU-FM,HM-LC-DDC1-PCB,HM-LC-DIM1L-CV,HM-LC-DIM1L-PL,HM-LC-DIM1T-CV,HM-LC-DIM1T-FM,HM-LC-DIM1T-PL,HM-LC-DIM2L-CV,HM-LC-DIM2L-SM,HM-LC-DIM2T-SM,HM-LC-Dim1L-CV-2,HM-LC-Dim1L-CV-644,HM-LC-Dim1L-Pl-2,HM-LC-Dim1L-Pl-3,HM-LC-Dim1L-Pl-644,HM-LC-Dim1PWM-CV,HM-LC-Dim1PWM-CV-2,HM-LC-Dim1T-CV-2,HM-LC-Dim1T-CV-644,HM-LC-Dim1T-FM-2,HM-LC-Dim1T-FM-644,HM-LC-Dim1T-FM-LF,HM-LC-Dim1T-Pl-2,HM-LC-Dim1T-Pl-3,HM-LC-Dim1T-Pl-644,HM-LC-Dim1TPBU-FM,HM-LC-Dim1TPBU-FM-2,HM-LC-Dim2L-SM-2,HM-LC-Dim2L-SM-644,HM-LC-Dim2T-SM,HM-LC-Dim2T-SM-2,HM-LC-RGBW-WM,HM-LC-SW1-BA-PCB,HM-LC-SW1-FM,HM-LC-SW1-PB-FM,HM-LC-SW1-PL,HM-LC-SW1-PL-OM54,HM-LC-SW1-PL2,HM-LC-SW1-SM,HM-LC-SW1-SM-ATMEGA168,HM-LC-SW2-DR,HM-LC-SW2-FM,HM-LC-SW2-PB-FM,HM-LC-SW2-SM,HM-LC-SW4-BA-PCB,HM-LC-SW4-DR,HM-LC-SW4-PCB,HM-LC-SW4-SM,HM-LC-SW4-SM-ATMEGA168,HM-LC-SW4-WM,HM-LC-Sw1-DR,HM-LC-Sw1-FM-2,HM-LC-Sw1-Pl-3,HM-LC-Sw1-Pl-CT-R1,HM-LC-Sw1-Pl-CT-R2,HM-LC-Sw1-Pl-CT-R3,HM-LC-Sw1-Pl-CT-R4,HM-LC-Sw1-Pl-CT-R5,HM-LC-Sw1-Pl-DN-R1,HM-LC-Sw1-Pl-DN-R2,HM-LC-Sw1-Pl-DN-R3,HM-LC-Sw1-Pl-DN-R4,HM-LC-Sw1-Pl-DN-R5,HM-LC-Sw1-SM-2,HM-LC-Sw1PBU-FM,HM-LC-Sw2-DR-2,HM-LC-Sw2-FM-2,HM-LC-Sw4-DR-2,HM-LC-Sw4-PCB-2,HM-LC-Sw4-SM-2,HM-LC-Sw4-WM-2,HM-MOD-Em-8,HM-MOD-Re-8,HM-OU-CF-PL,HM-OU-CFM-PL,HM-OU-CM-PCB,HM-OU-LED16,HM-PB-2-FM,HM-PB-2-WM,HM-PB-2-WM55,HM-PB-2-WM55-2,HM-PB-4-WM,HM-PB-4DIS-WM,HM-PB-4DIS-WM-2,HM-PB-6-WM55,HM-PBI-4-FM,HM-RC-12,HM-RC-12-B,HM-RC-12-SW,HM-RC-19,HM-RC-19-B,HM-RC-19-SW,HM-RC-2-PBU-FM,HM-RC-4,HM-RC-4-2,HM-RC-4-3,HM-RC-4-3-D,HM-RC-4-B,HM-RC-8,HM-RC-Dis-H-x-EU,HM-RC-KEY3,HM-RC-KEY3-B,HM-RC-Key4-2,HM-RC-Key4-3,HM-RC-P1,HM-RC-SEC3,HM-RC-SEC3-B,HM-RC-Sec4-2,HM-RC-Sec4-3,HM-SCI-3-FM,HM-SEC-KEY,HM-SEC-KEY-O,HM-SEC-KEY-S,HM-SEC-MDIR,HM-SEC-MDIR-2,HM-SEC-RHS,HM-SEC-SC,HM-SEC-SC-2,HM-SEC-SCo,HM-SEC-SD,HM-SEC-SD-2,HM-SEC-SFA-SM,HM-SEC-TIS,HM-SEC-WDS,HM-SEC-WDS-2,HM-SEC-WIN,HM-SEN-EP,HM-SEN-MDIR-SM,HM-SWI-3-FM,HM-Sec-Cen,HM-Sen-DB-PCB,HM-Sen-MDIR-O,HM-Sen-MDIR-O-2,HM-Sen-MDIR-WM55,HM-Sen-RD-O,HM-Sen-Wa-Od,HM-Sys-sRP-Pl,HM-TC-IT-WM-W-EU,HM-WDC7000,HM-WDS10-TH-O,HM-WDS100-C6-O,HM-WDS20-TH-O,HM-WDS30-OT2-SM,HM-WDS30-T-O,HM-WDS40-TH-I,HM-WDS40-TH-I-2,HM-WS550,HM-WS550LCB,HM-WS550LCW,HM-WS550Tech,IS-WDS-TH-OD-S-R3,KFM-Display,KFM-Sensor,KS550,KS550LC,KS550TECH,KS888,PS-Th-Sens,PS-switch,ROTO_ZEL-STG-RM-DWT-10,ROTO_ZEL-STG-RM-FDK,ROTO_ZEL-STG-RM-FEP-230V,ROTO_ZEL-STG-RM-FSA,ROTO_ZEL-STG-RM-FST-UP4,ROTO_ZEL-STG-RM-FWT,ROTO_ZEL-STG-RM-FZS,ROTO_ZEL-STG-RM-FZS-2,ROTO_ZEL-STG-RM-HS-4,ROTO_ZEL-STG-RM-WT-2,Roto_ZEL-STG-RM-FFK,Roto_ZEL-STG-RM-FSS-UP3,S550IA,Schueco_263-130,Schueco_263-131,Schueco_263-132,Schueco_263-133,Schueco_263-134,Schueco_263-135,Schueco_263-144,Schueco_263-145,Schueco_263-146,Schueco_263-147,Schueco_263-155,Schueco_263-157,Schueco_263-158,Schueco_263-160,Schueco_263-162,Schueco_263-167,Schueco_263-xxx,WDF-solar,WS888 subType:AlarmControl,KFM100,THSensor,blindActuator,blindActuatorSol,dimmer,keyMatic,motionAndBtn,motionDetector,outputUnit,powerMeter,powerSensor,pushButton,remote,repeater,rgb,sensRain,sensor,singleButton,smokeDetector,swi,switch,thermostat,threeStateSensor,tipTronic,virtual,winMatic alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,energy_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon ,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
       "Internals": {
         "DEF": "2B45EB",
         "NAME": "Wandtaster_01",
-        "NR": "335",
+        "NR": "359",
         "STATE": "Wandtaster_01_Btn_01 Short",
         "TYPE": "CUL_HM",
         "channel_01": "Wandtaster_01_Btn_01",
@@ -55,10 +19,16 @@
         "D-firmware": { "Value":"1.4", "Time":"2016-02-17 15:09:34" },
         "D-serialNr": { "Value":"LEQ0654102", "Time":"2016-02-17 15:09:34" },
         "R-pairCentral": { "Value":"set_0xF11034", "Time":"2016-02-17 15:09:34" },
-        "battery": { "Value":"ok", "Time":"2016-02-27 12:42:30" },
+        "battery": {
+          "Value": "ok",
+          "Time": "2016-03-03 09:17:27"
+        },
         "sabotageAttackId_ErrIoId_F11034": { "Value":"cnt:2", "Time":"2016-02-17 15:09:34" },
         "sabotageAttack_ErrIoAttack": { "Value":"cnt 2", "Time":"2016-02-17 15:09:34" },
-        "state": { "Value":"Wandtaster_01_Btn_01 Short", "Time":"2016-02-27 12:42:30" }
+        "state": {
+          "Value": "Wandtaster_01_Btn_01 Short",
+          "Time": "2016-03-03 09:17:27"
+        }
       },
       "Attributes": {
         "IODev": "CUL_0",
@@ -66,6 +36,7 @@
         "expert": "2_raw",
         "firmware": "1.4",
         "genericDeviceType": "light",
+        "like": "yes",
         "model": "HM-PB-2-WM55-2",
         "room": "Wandtaster",
         "serialNr": "LEQ0654102",
@@ -76,27 +47,40 @@
     {
       "Name":"Wandtaster_01_Btn_01",
       "PossibleSets":"clear:readings,trigger,register,oldRegs,rssi,msgEvents,attack,all getConfig getRegRaw peerBulk peerChan regBulk regSet sign:on,off",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long do_not_notify:1,0 showtime:1,0 rawToReadable unit expert:0_defReg,1_allReg,2_defReg+raw,3_allReg+raw,4_off,8_templ+default,12_templOnly,251_anything param actAutoTry:0_off,1_on aesCommReq:1,0 ignore:1,0 dummy:1,0 IODev IOList IOgrp hmProtocolEvents:0_off,1_dump,2_dumpFull,3_dumpTrigger rssiLog:1,0 actCycle hmKey hmKey2 hmKey3 serialNr firmware .stc .devInfo actStatus autoReadReg:0_off,1_restart,2_pon-restart,3_onChange,4_reqStatus,5_readMissing,8_stateOnly burstAccess:0_off,1_auto msgRepeat hmProtocolEvents:0_off,1_dump,2_dumpFull,3_dumpTrigger aesKey:5,4,3,2,1,0  repPeers peerIDs tempListTmpl levelRange levelMap event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:ASH550,ASH550I,CCU-FHEM,CMM,DORMA_BRC-H,DORMA_RC-H,DORMA_atent,HM-CC-RT-DN,HM-CC-RT-DN-BoM,HM-CC-SCD,HM-CC-TC,HM-CC-VD,HM-Dis-TD-T,HM-Dis-WM55,HM-ES-PMSw1-DR,HM-ES-PMSw1-Pl,HM-ES-PMSw1-Pl-DN-R1,HM-ES-PMSw1-Pl-DN-R2,HM-ES-PMSw1-Pl-DN-R3,HM-ES-PMSw1-Pl-DN-R4,HM-ES-PMSw1-Pl-DN-R5,HM-ES-PMSw1-SM,HM-ES-TX-WM,HM-LC-BL1-FM,HM-LC-BL1-PB-FM,HM-LC-BL1-SM,HM-LC-Bl1-FM-2,HM-LC-Bl1-SM-2,HM-LC-Bl1PBU-FM,HM-LC-DDC1-PCB,HM-LC-DIM1L-CV,HM-LC-DIM1L-PL,HM-LC-DIM1T-CV,HM-LC-DIM1T-FM,HM-LC-DIM1T-PL,HM-LC-DIM2L-CV,HM-LC-DIM2L-SM,HM-LC-DIM2T-SM,HM-LC-Dim1L-CV-2,HM-LC-Dim1L-CV-644,HM-LC-Dim1L-Pl-2,HM-LC-Dim1L-Pl-3,HM-LC-Dim1L-Pl-644,HM-LC-Dim1PWM-CV,HM-LC-Dim1PWM-CV-2,HM-LC-Dim1T-CV-2,HM-LC-Dim1T-CV-644,HM-LC-Dim1T-FM-2,HM-LC-Dim1T-FM-644,HM-LC-Dim1T-FM-LF,HM-LC-Dim1T-Pl-2,HM-LC-Dim1T-Pl-3,HM-LC-Dim1T-Pl-644,HM-LC-Dim1TPBU-FM,HM-LC-Dim1TPBU-FM-2,HM-LC-Dim2L-SM-2,HM-LC-Dim2L-SM-644,HM-LC-Dim2T-SM,HM-LC-Dim2T-SM-2,HM-LC-RGBW-WM,HM-LC-SW1-BA-PCB,HM-LC-SW1-FM,HM-LC-SW1-PB-FM,HM-LC-SW1-PL,HM-LC-SW1-PL-OM54,HM-LC-SW1-PL2,HM-LC-SW1-SM,HM-LC-SW1-SM-ATMEGA168,HM-LC-SW2-DR,HM-LC-SW2-FM,HM-LC-SW2-PB-FM,HM-LC-SW2-SM,HM-LC-SW4-BA-PCB,HM-LC-SW4-DR,HM-LC-SW4-PCB,HM-LC-SW4-SM,HM-LC-SW4-SM-ATMEGA168,HM-LC-SW4-WM,HM-LC-Sw1-DR,HM-LC-Sw1-FM-2,HM-LC-Sw1-Pl-3,HM-LC-Sw1-Pl-CT-R1,HM-LC-Sw1-Pl-CT-R2,HM-LC-Sw1-Pl-CT-R3,HM-LC-Sw1-Pl-CT-R4,HM-LC-Sw1-Pl-CT-R5,HM-LC-Sw1-Pl-DN-R1,HM-LC-Sw1-Pl-DN-R2,HM-LC-Sw1-Pl-DN-R3,HM-LC-Sw1-Pl-DN-R4,HM-LC-Sw1-Pl-DN-R5,HM-LC-Sw1-SM-2,HM-LC-Sw1PBU-FM,HM-LC-Sw2-DR-2,HM-LC-Sw2-FM-2,HM-LC-Sw4-DR-2,HM-LC-Sw4-PCB-2,HM-LC-Sw4-SM-2,HM-LC-Sw4-WM-2,HM-MOD-Em-8,HM-MOD-Re-8,HM-OU-CF-PL,HM-OU-CFM-PL,HM-OU-CM-PCB,HM-OU-LED16,HM-PB-2-FM,HM-PB-2-WM,HM-PB-2-WM55,HM-PB-2-WM55-2,HM-PB-4-WM,HM-PB-4DIS-WM,HM-PB-4DIS-WM-2,HM-PB-6-WM55,HM-PBI-4-FM,HM-RC-12,HM-RC-12-B,HM-RC-12-SW,HM-RC-19,HM-RC-19-B,HM-RC-19-SW,HM-RC-2-PBU-FM,HM-RC-4,HM-RC-4-2,HM-RC-4-3,HM-RC-4-3-D,HM-RC-4-B,HM-RC-8,HM-RC-Dis-H-x-EU,HM-RC-KEY3,HM-RC-KEY3-B,HM-RC-Key4-2,HM-RC-Key4-3,HM-RC-P1,HM-RC-SEC3,HM-RC-SEC3-B,HM-RC-Sec4-2,HM-RC-Sec4-3,HM-SCI-3-FM,HM-SEC-KEY,HM-SEC-KEY-O,HM-SEC-KEY-S,HM-SEC-MDIR,HM-SEC-MDIR-2,HM-SEC-RHS,HM-SEC-SC,HM-SEC-SC-2,HM-SEC-SCo,HM-SEC-SD,HM-SEC-SD-2,HM-SEC-SFA-SM,HM-SEC-TIS,HM-SEC-WDS,HM-SEC-WDS-2,HM-SEC-WIN,HM-SEN-EP,HM-SEN-MDIR-SM,HM-SWI-3-FM,HM-Sec-Cen,HM-Sen-DB-PCB,HM-Sen-MDIR-O,HM-Sen-MDIR-O-2,HM-Sen-MDIR-WM55,HM-Sen-RD-O,HM-Sen-Wa-Od,HM-Sys-sRP-Pl,HM-TC-IT-WM-W-EU,HM-WDC7000,HM-WDS10-TH-O,HM-WDS100-C6-O,HM-WDS20-TH-O,HM-WDS30-OT2-SM,HM-WDS30-T-O,HM-WDS40-TH-I,HM-WDS40-TH-I-2,HM-WS550,HM-WS550LCB,HM-WS550LCW,HM-WS550Tech,IS-WDS-TH-OD-S-R3,KFM-Display,KFM-Sensor,KS550,KS550LC,KS550TECH,KS888,PS-Th-Sens,PS-switch,ROTO_ZEL-STG-RM-DWT-10,ROTO_ZEL-STG-RM-FDK,ROTO_ZEL-STG-RM-FEP-230V,ROTO_ZEL-STG-RM-FSA,ROTO_ZEL-STG-RM-FST-UP4,ROTO_ZEL-STG-RM-FWT,ROTO_ZEL-STG-RM-FZS,ROTO_ZEL-STG-RM-FZS-2,ROTO_ZEL-STG-RM-HS-4,ROTO_ZEL-STG-RM-WT-2,Roto_ZEL-STG-RM-FFK,Roto_ZEL-STG-RM-FSS-UP3,S550IA,Schueco_263-130,Schueco_263-131,Schueco_263-132,Schueco_263-133,Schueco_263-134,Schueco_263-135,Schueco_263-144,Schueco_263-145,Schueco_263-146,Schueco_263-147,Schueco_263-155,Schueco_263-157,Schueco_263-158,Schueco_263-160,Schueco_263-162,Schueco_263-167,Schueco_263-xxx,WDF-solar,WS888 subType:AlarmControl,KFM100,THSensor,blindActuator,blindActuatorSol,dimmer,keyMatic,motionAndBtn,motionDetector,outputUnit,powerMeter,powerSensor,pushButton,remote,repeater,rgb,sensRain,sensor,singleButton,smokeDetector,swi,switch,thermostat,threeStateSensor,tipTronic,virtual,winMatic alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon sortby webCmd widgetOverride userattr",
+      "PossibleAttrs": "verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long do_not_notify:1,0 showtime:1,0 rawToReadable unit expert:0_defReg,1_allReg,2_defReg+raw,3_allReg+raw,4_off,8_templ+default,12_templOnly,251_anything param actAutoTry:0_off,1_on aesCommReq:1,0 ignore:1,0 dummy:1,0 IODev IOList IOgrp hmProtocolEvents:0_off,1_dump,2_dumpFull,3_dumpTrigger rssiLog:1,0 actCycle hmKey hmKey2 hmKey3 serialNr firmware .stc .devInfo actStatus autoReadReg:0_off,1_restart,2_pon-restart,3_onChange,4_reqStatus,5_readMissing,8_stateOnly burstAccess:0_off,1_auto msgRepeat hmProtocolEvents:0_off,1_dump,2_dumpFull,3_dumpTrigger aesKey:5,4,3,2,1,0  repPeers peerIDs tempListTmpl levelRange levelMap event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat model:ASH550,ASH550I,CCU-FHEM,CMM,DORMA_BRC-H,DORMA_RC-H,DORMA_atent,HM-CC-RT-DN,HM-CC-RT-DN-BoM,HM-CC-SCD,HM-CC-TC,HM-CC-VD,HM-Dis-TD-T,HM-Dis-WM55,HM-ES-PMSw1-DR,HM-ES-PMSw1-Pl,HM-ES-PMSw1-Pl-DN-R1,HM-ES-PMSw1-Pl-DN-R2,HM-ES-PMSw1-Pl-DN-R3,HM-ES-PMSw1-Pl-DN-R4,HM-ES-PMSw1-Pl-DN-R5,HM-ES-PMSw1-SM,HM-ES-TX-WM,HM-LC-BL1-FM,HM-LC-BL1-PB-FM,HM-LC-BL1-SM,HM-LC-Bl1-FM-2,HM-LC-Bl1-SM-2,HM-LC-Bl1PBU-FM,HM-LC-DDC1-PCB,HM-LC-DIM1L-CV,HM-LC-DIM1L-PL,HM-LC-DIM1T-CV,HM-LC-DIM1T-FM,HM-LC-DIM1T-PL,HM-LC-DIM2L-CV,HM-LC-DIM2L-SM,HM-LC-DIM2T-SM,HM-LC-Dim1L-CV-2,HM-LC-Dim1L-CV-644,HM-LC-Dim1L-Pl-2,HM-LC-Dim1L-Pl-3,HM-LC-Dim1L-Pl-644,HM-LC-Dim1PWM-CV,HM-LC-Dim1PWM-CV-2,HM-LC-Dim1T-CV-2,HM-LC-Dim1T-CV-644,HM-LC-Dim1T-FM-2,HM-LC-Dim1T-FM-644,HM-LC-Dim1T-FM-LF,HM-LC-Dim1T-Pl-2,HM-LC-Dim1T-Pl-3,HM-LC-Dim1T-Pl-644,HM-LC-Dim1TPBU-FM,HM-LC-Dim1TPBU-FM-2,HM-LC-Dim2L-SM-2,HM-LC-Dim2L-SM-644,HM-LC-Dim2T-SM,HM-LC-Dim2T-SM-2,HM-LC-RGBW-WM,HM-LC-SW1-BA-PCB,HM-LC-SW1-FM,HM-LC-SW1-PB-FM,HM-LC-SW1-PL,HM-LC-SW1-PL-OM54,HM-LC-SW1-PL2,HM-LC-SW1-SM,HM-LC-SW1-SM-ATMEGA168,HM-LC-SW2-DR,HM-LC-SW2-FM,HM-LC-SW2-PB-FM,HM-LC-SW2-SM,HM-LC-SW4-BA-PCB,HM-LC-SW4-DR,HM-LC-SW4-PCB,HM-LC-SW4-SM,HM-LC-SW4-SM-ATMEGA168,HM-LC-SW4-WM,HM-LC-Sw1-DR,HM-LC-Sw1-FM-2,HM-LC-Sw1-Pl-3,HM-LC-Sw1-Pl-CT-R1,HM-LC-Sw1-Pl-CT-R2,HM-LC-Sw1-Pl-CT-R3,HM-LC-Sw1-Pl-CT-R4,HM-LC-Sw1-Pl-CT-R5,HM-LC-Sw1-Pl-DN-R1,HM-LC-Sw1-Pl-DN-R2,HM-LC-Sw1-Pl-DN-R3,HM-LC-Sw1-Pl-DN-R4,HM-LC-Sw1-Pl-DN-R5,HM-LC-Sw1-SM-2,HM-LC-Sw1PBU-FM,HM-LC-Sw2-DR-2,HM-LC-Sw2-FM-2,HM-LC-Sw4-DR-2,HM-LC-Sw4-PCB-2,HM-LC-Sw4-SM-2,HM-LC-Sw4-WM-2,HM-MOD-Em-8,HM-MOD-Re-8,HM-OU-CF-PL,HM-OU-CFM-PL,HM-OU-CM-PCB,HM-OU-LED16,HM-PB-2-FM,HM-PB-2-WM,HM-PB-2-WM55,HM-PB-2-WM55-2,HM-PB-4-WM,HM-PB-4DIS-WM,HM-PB-4DIS-WM-2,HM-PB-6-WM55,HM-PBI-4-FM,HM-RC-12,HM-RC-12-B,HM-RC-12-SW,HM-RC-19,HM-RC-19-B,HM-RC-19-SW,HM-RC-2-PBU-FM,HM-RC-4,HM-RC-4-2,HM-RC-4-3,HM-RC-4-3-D,HM-RC-4-B,HM-RC-8,HM-RC-Dis-H-x-EU,HM-RC-KEY3,HM-RC-KEY3-B,HM-RC-Key4-2,HM-RC-Key4-3,HM-RC-P1,HM-RC-SEC3,HM-RC-SEC3-B,HM-RC-Sec4-2,HM-RC-Sec4-3,HM-SCI-3-FM,HM-SEC-KEY,HM-SEC-KEY-O,HM-SEC-KEY-S,HM-SEC-MDIR,HM-SEC-MDIR-2,HM-SEC-RHS,HM-SEC-SC,HM-SEC-SC-2,HM-SEC-SCo,HM-SEC-SD,HM-SEC-SD-2,HM-SEC-SFA-SM,HM-SEC-TIS,HM-SEC-WDS,HM-SEC-WDS-2,HM-SEC-WIN,HM-SEN-EP,HM-SEN-MDIR-SM,HM-SWI-3-FM,HM-Sec-Cen,HM-Sen-DB-PCB,HM-Sen-MDIR-O,HM-Sen-MDIR-O-2,HM-Sen-MDIR-WM55,HM-Sen-RD-O,HM-Sen-Wa-Od,HM-Sys-sRP-Pl,HM-TC-IT-WM-W-EU,HM-WDC7000,HM-WDS10-TH-O,HM-WDS100-C6-O,HM-WDS20-TH-O,HM-WDS30-OT2-SM,HM-WDS30-T-O,HM-WDS40-TH-I,HM-WDS40-TH-I-2,HM-WS550,HM-WS550LCB,HM-WS550LCW,HM-WS550Tech,IS-WDS-TH-OD-S-R3,KFM-Display,KFM-Sensor,KS550,KS550LC,KS550TECH,KS888,PS-Th-Sens,PS-switch,ROTO_ZEL-STG-RM-DWT-10,ROTO_ZEL-STG-RM-FDK,ROTO_ZEL-STG-RM-FEP-230V,ROTO_ZEL-STG-RM-FSA,ROTO_ZEL-STG-RM-FST-UP4,ROTO_ZEL-STG-RM-FWT,ROTO_ZEL-STG-RM-FZS,ROTO_ZEL-STG-RM-FZS-2,ROTO_ZEL-STG-RM-HS-4,ROTO_ZEL-STG-RM-WT-2,Roto_ZEL-STG-RM-FFK,Roto_ZEL-STG-RM-FSS-UP3,S550IA,Schueco_263-130,Schueco_263-131,Schueco_263-132,Schueco_263-133,Schueco_263-134,Schueco_263-135,Schueco_263-144,Schueco_263-145,Schueco_263-146,Schueco_263-147,Schueco_263-155,Schueco_263-157,Schueco_263-158,Schueco_263-160,Schueco_263-162,Schueco_263-167,Schueco_263-xxx,WDF-solar,WS888 subType:AlarmControl,KFM100,THSensor,blindActuator,blindActuatorSol,dimmer,keyMatic,motionAndBtn,motionDetector,outputUnit,powerMeter,powerSensor,pushButton,remote,repeater,rgb,sensRain,sensor,singleButton,smokeDetector,swi,switch,thermostat,threeStateSensor,tipTronic,virtual,winMatic alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,energy_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon ,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
       "Internals": {
         "DEF": "2B45EB01",
         "NAME": "Wandtaster_01_Btn_01",
-        "NR": "337",
+        "NR": "361",
         "STATE": "Short (to CUL_0)",
         "TYPE": "CUL_HM",
         "chanNo": "01",
         "device": "Wandtaster_01"
       },
       "Readings": {
-        "state": { "Value":"Short (to CUL_0)", "Time":"2016-02-27 12:42:30" },
-        "trigDst_F11034": { "Value":"noConfig", "Time":"2016-02-27 12:42:30" },
-        "trigger": { "Value":"Short_23", "Time":"2016-02-27 12:42:30" },
-        "trigger_cnt": { "Value":"23", "Time":"2016-02-27 12:42:30" }
+        "state": {
+          "Value": "Short (to CUL_0)",
+          "Time": "2016-03-03 09:17:27"
+        },
+        "trigDst_F11034": {
+          "Value": "noConfig",
+          "Time": "2016-03-03 09:17:27"
+        },
+        "trigger": {
+          "Value": "Short_25",
+          "Time": "2016-03-03 09:17:27"
+        },
+        "trigger_cnt": {
+          "Value": "25",
+          "Time": "2016-03-03 09:17:27"
+        }
       },
       "Attributes": {
         "genericDeviceType": "light",
+        "like": "yes",
         "model": "HM-PB-2-WM55-2",
         "peerIDs": ""
       }
     }  ],
-  "totalResultsReturned":3
+  "totalResultsReturned": 2
 }

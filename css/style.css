@@ -38,6 +38,7 @@ footer {
     min-width: 100%;
     height: auto;
     width: 100%;
+    z-index: 9999;
 }
 
 .active {
@@ -46,7 +47,7 @@ footer {
     line-height: 2em;
 }
 
-h1 {
+h1, h2 {
     color: white;
 }
 
@@ -288,14 +289,6 @@ ul.main-menu > li {
     width: 50px;
 }
 
-.margtopF {
-    margin-bottom: 32px !important
-}
-
-.margtopFi {
-    margin-bottom: 15px !important;
-}
-
 .row-spc1 {
     margin-bottom: 20px;
 }
@@ -339,11 +332,6 @@ ul.main-menu > li {
     margin-top: 50px;
 }
 
-.margtopF {
-
-    margin-bottom: 32px !important
-}
-
 .margtopEIC {
 
     margin-bottom: 2.7em !important;
@@ -370,6 +358,18 @@ ul.main-menu > li {
 
 .margeI2 {
     margin-bottom: 3em;
+}
+
+.margtopF {
+    margin-bottom: 32px !important
+}
+
+.margtopFi {
+    margin-bottom: 15px !important;
+}
+
+.margtopMullup {
+    margin-bottom: 2em !important;
 }
 
 .hoversizesm {
@@ -443,4 +443,16 @@ select option {
 
 .top30 {
     margin-top: 3em;
+}
+
+.top19em {
+    margin-top: -1.9em;
+}
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+}
+
+.small {
+    font-size: 80%;
 }

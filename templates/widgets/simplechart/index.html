@@ -1,36 +1,29 @@
 <div class="text-center actor">
-
-    <div class="col col-xs-12">
-        <div class="center-block">
-            <div data-type="popup" data-width="500px" class="maginS ">
-                <div data-type="simplechart"
-                     data-logdevice="FileLog_OutTemp"
-                     data-columnspec="4:temp"
-                     data-minvalue="-30"
-                     data-maxvalue="30"
-                     data-height="100"
-                     data-width="150"
-                     class="cell">
-                </div>
-                <div class="dialog wellns1">
-                    <header>BIG-CHART</header>
-                    <div data-type="simplechart"
-                         data-logdevice="FileLog_OutTemp"
-                         data-columnspec="4:temp"
-                         data-minvalue="-30"
-                         data-maxvalue="30"
-                         data-yticks="5"
-                         data-height="400"
-                         class="cell hei12">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <span ng-if="model.Attributes.alias != null" data-type="label" class="cell">{{model.Attributes.alias}}</span>
-                <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
+    <div data-type="popup" data-width="500px" class="maginS ">
+        <div data-type="simplechart"
+             data-logdevice="FileLog_OutTemp"
+             data-columnspec="4:temp"
+             data-minvalue="-30"
+             data-maxvalue="30"
+             data-height="100"
+             data-width="150"
+             class="cell">
+        </div>
+        <div class="dialog wellns1">
+            <header>BIG-CHART</header>
+            <div data-type="simplechart"
+                 data-logdevice="FileLog_OutTemp"
+                 data-columnspec="4:temp"
+                 data-minvalue="-30"
+                 data-maxvalue="30"
+                 data-yticks="5"
+                 data-height="400"
+                 class="cell hei12">
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <span ng-if="Attributes.alias != null" data-type="label" class="cell">{{Attributes.alias}}</span>
+        <span ng-if="Attributes.alias == null" data-type="label" class="cell">{{Name}}</span>
+    </div>
 </div>

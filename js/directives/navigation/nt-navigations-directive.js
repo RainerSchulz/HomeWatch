@@ -13,20 +13,23 @@ angular.module('myApp')
             scope: {
                 ngSidebarPreference: "@"
             },
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.sidebar_preference = JSON.parse($scope.ngSidebarPreference);
+                    $log.debug('Start Sidebar_Preference');
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    i$scope.buttonClick = function (item) {
+                        if (item.Internals.LINK != '') {
+                            $log.debug('Url: ' + item.Internals.LINK);
+                            // $window.location.href = item.url;
+                            $window.open(item.Internals.LINK, item.target)
+                        } else {
+                            $log.debug('Location: ' + item.Attributes.icon);
+                            $location.path(item.Attributes.icon);
+                        }
 
-            link: function ($scope, element, attrs) {
-                $scope.sidebar_preference = JSON.parse($scope.ngSidebarPreference);
-                $log.debug('Start Sidebar_Preference');
-                $scope.buttonClick = function (item) {
-                    if (item.Internals.LINK != '') {
-                        $log.debug('Url: ' + item.Internals.LINK);
-                        // $window.location.href = item.url;
-                        $window.open(item.Internals.LINK, item.target)
-                    } else {
-                        $log.debug('Location: ' + item.Attributes.icon);
-                        $location.path(item.Attributes.icon);
-                    }
-
+                    };
                 }
             }
         };

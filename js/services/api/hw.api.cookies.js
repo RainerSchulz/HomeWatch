@@ -2,41 +2,43 @@
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('CookiesService', function ($http, notification, $log, $q, HomeService, $cookies) {
+myApp.service('CookiesService', function ($http, notification, $log, $q, HomeService, Jsonervice, $cookieStore) {
     {
-        var selected_index = -1;
-        var tbFavoriten = localStorage.getItem("tbFavoriten");
-        tbFavoriten = JSON.parse(tbFavoriten);
-        if (tbFavoriten == null) {
-            tbFavoriten = [];
-        }
+        // set cookie with json
+        this.setCookieJson = function (name) {
+            let config = [];
 
-        return {
+            Jsonervice.getJson(name).then(function () {
 
-            addFavorite: function (name, like) {
-                var favorit = {
-                    Name: name,
-                    Like: like
-                };
-                $log.debug(favorit);
-                if (like == 'yes') {
-                    HomeService.setFavorit(name, 'no');
-                    $log.debug("Favorit gelöscht");
-                    tbFavoriten.splice(selected_index, 1);
-                    localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
-                    like = 'yes';
-                }
-                else {
-                    HomeService.setFavorit(name, 'yes');
-                    tbFavoriten.push(favorit);
-                    localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
-                    $log.debug("Favorit gespeichert");
-                    like = 'no';
-                }
+                    config = Jsonervice.data();
+                    localStorage.setItem(name, JSON.stringify(config));
+                    $cookieStore.put(name, config);
+                    return config;
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
 
-
+                });
+        };
+        // set cookie with name and data
+        this.setCookieName = function (name, data) {
+            if (angular.isUndefined(name))
+                return;
+            // check cookie
+            config = $cookieStore.get(name) || {};
+            if (config.length > 0) {
+                $cookieStore.remove(name);
+                localStorage.removeItem(name);
             }
+            localStorage.setItem(name, JSON.stringify(data));
+            $cookieStore.put(name, data);
+        };
+        // get Cookie
+        this.getCookie = function (name) {
 
-        }
+            config = $cookieStore.get(name);
+            return config;
+        };
+
     }
 });

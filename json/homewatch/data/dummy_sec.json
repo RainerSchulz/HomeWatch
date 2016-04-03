@@ -4,14 +4,19 @@
     {
       "Name":"ARM_Alarmanlage",
       "PossibleSets":"on:noArg off:noArg  ",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long readingList setList event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon sortby webCmd widgetOverride userattr",
+      "PossibleAttrs": "verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long readingList setList event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,energy_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon ,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
       "Internals": {
         "NAME": "ARM_Alarmanlage",
-        "NR": "125",
+        "NR": "149",
         "STATE": "off",
         "TYPE": "dummy"
       },
-      "Readings": {      "state": { "Value":"off", "Time":"2016-02-16 13:44:59" }    },
+      "Readings": {
+        "state": {
+          "Value": "off",
+          "Time": "2016-03-22 11:37:13"
+        }
+      },
       "Attributes": {
         "alarmSettings": "alarm6,|ARM_Alarmanlage:on|Alarmanlage Scharfgeschaltet|arm",
         "alias": "Arm",
@@ -24,17 +29,23 @@
     {
       "Name":"Alarm_Canceln",
       "PossibleSets":"on:noArg off:noArg  ",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long readingList setList event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon sortby webCmd widgetOverride userattr",
+      "PossibleAttrs": "verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long readingList setList event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,energy_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon ,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
       "Internals": {
         "NAME": "Alarm_Canceln",
-        "NR": "127",
-        "STATE": "off",
+        "NR": "151",
+        "STATE": "on",
         "TYPE": "dummy"
       },
-      "Readings": {      "state": { "Value":"off", "Time":"2016-02-17 13:49:59" }    },
+      "Readings": {
+        "state": {
+          "Value": "on",
+          "Time": "2016-03-18 00:38:44"
+        }
+      },
       "Attributes": {
         "alarmDevice": "Sensor",
         "alarmSettings": "alarm0,alarm1,alarm2,alarm3,alarm4,alarm5,alarm6,alarm7,|Alarm_Canceln:on|Alarm bestätigt|off",
+        "alias": "Cancel",
         "eventMap": "on off",
         "genericDeviceType": "dummy_sec",
         "group": "Alarmanlage",
@@ -44,17 +55,23 @@
     {
       "Name":"Sirene",
       "PossibleSets":"on:noArg off:noArg  ",
-      "PossibleAttrs":"verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long readingList setList event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon sortby webCmd widgetOverride userattr",
+      "PossibleAttrs": "verbose:0,1,2,3,4,5 room group comment:textField-long alias eventMap userReadings:textField-long readingList setList event-on-change-reading event-on-update-reading event-aggregator event-min-interval stateFormat alarmDevice:Actor,Sensor alarmSettings cmdIcon devStateIcon devStateStyle fm_type genericDeviceType:ignore,kamera,switch_hm,outlet_hm,light_hm,blind_hm,speaker_hm,energy_hm,dummy_sec,dimmer_hm,thermostat_hm,lock,window_hm,water_hm,contact,camera,heating_hm,aircon_hm,smoke_hm,motion_hm,site icon ,localsite icon like:yes,no sortby webCmd widgetOverride userattr",
       "Internals": {
         "NAME": "Sirene",
-        "NR": "129",
+        "NR": "153",
         "STATE": "off",
         "TYPE": "dummy"
       },
-      "Readings": {      "state": { "Value":"off", "Time":"2016-02-17 14:55:07" }    },
+      "Readings": {
+        "state": {
+          "Value": "off",
+          "Time": "2016-03-18 00:34:31"
+        }
+      },
       "Attributes": {
         "alarmDevice": "Actor",
         "alarmSettings": "alarm6,|set Sirene on|set Sirene off|1",
+        "alias": "Sirene",
         "eventMap": "on off",
         "genericDeviceType": "dummy_sec",
         "group": "Alarmanlage",

@@ -18,7 +18,7 @@
       "location": "/home",
       "url": "",
       "target": "",
-      "fhemweb_url": "http:///login.homewatch-smarthome.de:8139/fhem"
+      "fhemweb_url": "http:///login.homewatch-smarthome.de:8130/fhem"
     },
     {
       "alias": "Verwaltung",

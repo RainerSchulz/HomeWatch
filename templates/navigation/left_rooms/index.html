@@ -19,7 +19,7 @@
             <h2 class="colorhg colorhgip">All</h2>
         </a>
     </li>
-    <li ng-repeat="item in rooms">
+    <li data-ng-repeat="item in rooms">
         <a ng-click="buttonNavClick(item)" class="touch-moveable">
             <h2 ng-class="{active: isActiveTab(item.room)}" class="colorhg colorhgip center-block">{{item.room}}</h2>
         </a>

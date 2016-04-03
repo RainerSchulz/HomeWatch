@@ -1,16 +1,11 @@
 <div class="text-center switch">
-    <div class="col col-xs-12">
-        <div class="center-block">
-            <div data-type="switch"
-                 data-device="{{model.Name}}"
-                 data-icon="fa fa-plug"
-                 class="fa-stack fa-3x fa-2x center-block">
-            </div>
-            <div class="row">
-                <span ng-if="model.Attributes.alias != null" data-type="label"
-                      class="cell">{{model.Attributes.alias}}</span>
-                <span ng-if="model.Attributes.alias == null" data-type="label" class="cell">{{model.Name}}</span>
-            </div>
-        </div>
+    <div data-type="switch"
+         data-device="{{Name}}"
+         data-icon="fa fa-plug"
+         class="fa-stack fa-3x fa-2x center-block">
+    </div>
+    <div class="row">
+        <span ng-if="Attributes.alias != null" data-type="label" class="cell">{{Attributes.alias}}</span>
+        <span ng-if="Attributes.alias == null" data-type="label" class="cell">{{Name}}</span>
     </div>
 </div>
