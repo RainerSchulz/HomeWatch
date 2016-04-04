@@ -170,6 +170,17 @@
             </div>
         </div>
     </section>
+    <section ng-switch-when="heating">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="col col-xs-1 pull-left">
+                <div class="fav_light" cnd-widgets-favoriten ng-name="{{model.Name}}"
+                     ng-like="{{model.Attributes.like}}">
+                </div>
+            </div>
+            <div cnd-widgets-heating ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
+            </div>
+        </div>
+    </section>
 
     <!-- Widgets motion -->
     <section ng-switch-when="motion_hm">
@@ -191,6 +202,17 @@
                 </div>
             </div>
             <div cnd-widgets-motion-gira ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
+            </div>
+        </div>
+    </section>
+    <section ng-switch-when="motion">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center center-block">
+            <div class="col col-xs-1 pull-left">
+                <div class="fav_light" cnd-widgets-favoriten ng-name="{{model.Name}}"
+                     ng-like="{{model.Attributes.like}}">
+                </div>
+            </div>
+            <div cnd-widgets-motion ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
             </div>
         </div>
     </section>
@@ -216,6 +238,16 @@
             </div>
         </div>
     </section>
+    <section ng-switch-when="window">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="col col-xs-1 pull-left">
+                <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}" ng-like="{{model.Attributes.like}}">
+                </div>
+            </div>
+            <div cnd-widgets-window ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
+            </div>
+        </div>
+    </section>
 
     <!-- Widgets Smoke -->
     <section ng-switch-when="smoke_hm">
@@ -235,6 +267,16 @@
                 </div>
             </div>
             <div cnd-widgets-smoke-gira ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
+            </div>
+        </div>
+    </section>
+    <section ng-switch-when="smoke">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center center-block">
+            <div class="col col-xs-1 pull-left">
+                <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}" ng-like="{{model.Attributes.like}}">
+                </div>
+            </div>
+            <div cnd-widgets-smoke ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
             </div>
         </div>
     </section>
@@ -260,6 +302,16 @@
             </div>
         </div>
     </section>
+    <section ng-switch-when="water">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center center-block">
+            <div class="col col-xs-1 pull-left">
+                <div class="fav_con" cnd-widgets-favoriten ng-name="{{model.Name}}" ng-like="{{model.Attributes.like}}">
+                </div>
+            </div>
+            <div cnd-widgets-water ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
+            </div>
+        </div>
+    </section>
 
     <!-- Widgets energy -->
     <section ng-switch-when="energy_hm">
@@ -271,6 +323,32 @@
                     </div>
                 </div>
                 <div cnd-widgets-energy-hm ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
+                </div>
+            </article>
+        </div>
+    </section>
+    <section ng-switch-when="energy_gira">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center center-block">
+            <article class="col col-xs-12">
+                <div class="col col-xs-1 pull-left">
+                    <div class="fav_therm" cnd-widgets-favoriten ng-name="{{model.Name}}"
+                         ng-like="{{model.Attributes.like}}">
+                    </div>
+                </div>
+                <div cnd-widgets-energy-gira ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
+                </div>
+            </article>
+        </div>
+    </section>
+    <section ng-switch-when="energy">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center center-block">
+            <article class="col col-xs-12">
+                <div class="col col-xs-1 pull-left">
+                    <div class="fav_therm" cnd-widgets-favoriten ng-name="{{model.Name}}"
+                         ng-like="{{model.Attributes.like}}">
+                    </div>
+                </div>
+                <div cnd-widgets-energy-gira ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
                 </div>
             </article>
         </div>

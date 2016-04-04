@@ -6,126 +6,28 @@
     angular.module('hw.ng.directives', ['ui-router', 'sf.virtualScroll', 'ui-select', 'ngToast']);
 }());
 /**
- * Created by B026789 on 18.12.2015.
+ * Created by B026789 on 16.12.2015.
  */
-(function(){
-    "use strict";
+angular.module('myApp')
+    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
+        var directiveDefinitionObject = {
+            restrict: 'A',
+            templateUrl: 'templates/login/index.html',
 
-    angular.module('notification', [])
-        .service('notification', function ($rootScope) {
-            this.pop = function (type, title, body) {
-                this.toast = {
-                    type: type,
-                    title: title,
-                    body: body
+            link: function (scope) {
+                var showDialog = function () {
+                    scope.visible = true;
                 };
-                $rootScope.$broadcast('toaster-newToast');
-            };
-        })
-        .constant('toasterConfig', {
-            'tap-to-dismiss': true,
-            'newest-on-top': true,
-            //'fade-in': 1000,            // done in css
-            //'on-fade-in': undefined,    // not implemented
-            //'fade-out': 1000,           // done in css
-            // 'on-fade-out': undefined,  // not implemented
-            //'extended-time-out': 1000,    // not implemented
-            'time-out': 5000, // Set timeOut and extendedTimeout to 0 to make it sticky
-            'icon-classes': {
-                error: 'toast-error',
-                info: 'toast-info',
-                success: 'toast-success',
-                warning: 'toast-warning'
-            },
-            'icon-class': 'toast-info',
-            'position-class': 'toast-top-right',
-            'title-class': 'toast-title',
-            'message-class': 'toast-message'
-        })
-        .directive('toasterContainer', ['$compile', '$timeout', 'toasterConfig', 'notification',
-            function ($compile, $timeout, toasterConfig, toaster) {
-                return {
-                    replace: true,
-                    restrict: 'EA',
-                    link: function (scope, elm, attrs){
 
-                        var id = 0;
+                scope.visible = false;
+                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
+                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
+            }
+        };
 
-                        var mergedConfig = toasterConfig;
-                        if (attrs.toasterOptions) {
-                            angular.extend(mergedConfig, scope.$eval(attrs.toasterOptions));
-                        }
-
-                        scope.config = {
-                            position: mergedConfig['position-class'],
-                            title: mergedConfig['title-class'],
-                            message: mergedConfig['message-class'],
-                            tap: mergedConfig['tap-to-dismiss']
-                        };
-
-                        function addToast (toast){
-                            toast.type = mergedConfig['icon-classes'][toast.type];
-                            if (!toast.type)
-                                toast.type = mergedConfig['icon-class'];
-
-                            id++;
-                            angular.extend(toast, { id: id });
-
-                            if (mergedConfig['time-out'] > 0)
-                                setTimeout(toast, mergedConfig['time-out']);
-
-                            if (mergedConfig['newest-on-top'] === true)
-                                scope.toasters.unshift(toast);
-                            else
-                                scope.toasters.push(toast);
-                        }
-
-                        function setTimeout(toast, time){
-                            toast.timeout= $timeout(function (){
-                                scope.removeToast(toast.id);
-                            }, time);
-                        }
-
-                        scope.toasters = [];
-                        scope.$on('toaster-newToast', function () {
-                            addToast(toaster.toast);
-                        });
-                    },
-                    controller: function($scope, $element, $attrs) {
-
-                        $scope.stopTimer = function(toast){
-                            if(toast.timeout)
-                                $timeout.cancel(toast.timeout);
-                        };
-
-                        $scope.removeToast = function (id){
-                            var i = 0;
-                            for (i; i < $scope.toasters.length; i++){
-                                if($scope.toasters[i].id === id)
-                                    break;
-                            }
-                            $scope.toasters.splice(i, 1);
-                        };
-
-                        $scope.remove = function(id){
-                            if ($scope.config.tap === true){
-                                $scope.removeToast(id);
-                            }
-                        };
-                    },
-                    template:
-                    '<div  id="toast-container" ng-class="config.position">' +
-                    '<div ng-animate="\'animateToaster\'" ng-repeat="toaster in toasters">' +
-                    '<div class="toast" ng-class="toaster.type" ng-click="remove(toaster.id)" ng-mouseover="stopTimer(toaster)">' +
-                    '<div ng-class="config.title">{{toaster.title}}</div>' +
-                    '<div ng-class="config.message">{{toaster.body}}' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>'
-                };
-            }]);
-}());
+        return directiveDefinitionObject;
+    })
+;
 /**
  * Created by B026789 on 16.12.2015.
  */
@@ -349,28 +251,150 @@ angular.module('myApp')
 
 ;
 /**
- * Created by B026789 on 16.12.2015.
+ * Created by B026789 on 18.12.2015.
  */
-angular.module('myApp')
-    .directive('cndLoginDialog', function factory($log, AUTH_EVENTS) {
-        var directiveDefinitionObject = {
-            restrict: 'A',
-            templateUrl: 'templates/login/index.html',
+(function(){
+    "use strict";
 
-            link: function (scope) {
-                var showDialog = function () {
-                    scope.visible = true;
+    angular.module('notification', [])
+        .service('notification', function ($rootScope) {
+            this.pop = function (type, title, body) {
+                this.toast = {
+                    type: type,
+                    title: title,
+                    body: body
                 };
+                $rootScope.$broadcast('toaster-newToast');
+            };
+        })
+        .constant('toasterConfig', {
+            'tap-to-dismiss': true,
+            'newest-on-top': true,
+            //'fade-in': 1000,            // done in css
+            //'on-fade-in': undefined,    // not implemented
+            //'fade-out': 1000,           // done in css
+            // 'on-fade-out': undefined,  // not implemented
+            //'extended-time-out': 1000,    // not implemented
+            'time-out': 5000, // Set timeOut and extendedTimeout to 0 to make it sticky
+            'icon-classes': {
+                error: 'toast-error',
+                info: 'toast-info',
+                success: 'toast-success',
+                warning: 'toast-warning'
+            },
+            'icon-class': 'toast-info',
+            'position-class': 'toast-top-right',
+            'title-class': 'toast-title',
+            'message-class': 'toast-message'
+        })
+        .directive('toasterContainer', ['$compile', '$timeout', 'toasterConfig', 'notification',
+            function ($compile, $timeout, toasterConfig, toaster) {
+                return {
+                    replace: true,
+                    restrict: 'EA',
+                    link: function (scope, elm, attrs){
 
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
+                        var id = 0;
 
-        return directiveDefinitionObject;
-    })
-;
+                        var mergedConfig = toasterConfig;
+                        if (attrs.toasterOptions) {
+                            angular.extend(mergedConfig, scope.$eval(attrs.toasterOptions));
+                        }
+
+                        scope.config = {
+                            position: mergedConfig['position-class'],
+                            title: mergedConfig['title-class'],
+                            message: mergedConfig['message-class'],
+                            tap: mergedConfig['tap-to-dismiss']
+                        };
+
+                        function addToast (toast){
+                            toast.type = mergedConfig['icon-classes'][toast.type];
+                            if (!toast.type)
+                                toast.type = mergedConfig['icon-class'];
+
+                            id++;
+                            angular.extend(toast, { id: id });
+
+                            if (mergedConfig['time-out'] > 0)
+                                setTimeout(toast, mergedConfig['time-out']);
+
+                            if (mergedConfig['newest-on-top'] === true)
+                                scope.toasters.unshift(toast);
+                            else
+                                scope.toasters.push(toast);
+                        }
+
+                        function setTimeout(toast, time){
+                            toast.timeout= $timeout(function (){
+                                scope.removeToast(toast.id);
+                            }, time);
+                        }
+
+                        scope.toasters = [];
+                        scope.$on('toaster-newToast', function () {
+                            addToast(toaster.toast);
+                        });
+                    },
+                    controller: function($scope, $element, $attrs) {
+
+                        $scope.stopTimer = function(toast){
+                            if(toast.timeout)
+                                $timeout.cancel(toast.timeout);
+                        };
+
+                        $scope.removeToast = function (id){
+                            var i = 0;
+                            for (i; i < $scope.toasters.length; i++){
+                                if($scope.toasters[i].id === id)
+                                    break;
+                            }
+                            $scope.toasters.splice(i, 1);
+                        };
+
+                        $scope.remove = function(id){
+                            if ($scope.config.tap === true){
+                                $scope.removeToast(id);
+                            }
+                        };
+                    },
+                    template:
+                    '<div  id="toast-container" ng-class="config.position">' +
+                    '<div ng-animate="\'animateToaster\'" ng-repeat="toaster in toasters">' +
+                    '<div class="toast" ng-class="toaster.type" ng-click="remove(toaster.id)" ng-mouseover="stopTimer(toaster)">' +
+                    '<div ng-class="config.title">{{toaster.title}}</div>' +
+                    '<div ng-class="config.message">{{toaster.body}}' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>'
+                };
+            }]);
+}());
+/**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
+    var dirTooltip = angular.module('tooltip', [])
+        .directive('tooltip', function factory($log) {
+            return {
+                restrict: 'A',
+
+                link: function (scope, element, attrs) {
+
+                    $(element).hover(function () {
+                        // on mouseenter
+                        $(element).tooltip('show');
+                    }, function () {
+                        // on mouseleave
+                        $(element).tooltip('hide');
+                    });
+                }
+            };
+        });
+}());
 /**
  * Created by RSC on 16.01.2016.
  */
@@ -801,6 +825,34 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
+    .directive('cndWidgetsHeating', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/heating/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            Attributes: {},
+
+            scope: {
+                ngName: "@",
+                ngAttributes: "@"
+
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
     // motion
     .directive('cndWidgetsMotionGira', function factory($log) {
         var directiveDefinitionObject = {
@@ -976,6 +1028,62 @@ angular.module('myApp')
     .directive('cndWidgetsEnergyHm', function factory($log) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/energy_hm/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            Attributes: {},
+
+            scope: {
+                ngName: "@",
+                ngAttributes: "@"
+
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsEnergyGira', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/energy_gira/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            Attributes: {},
+
+            scope: {
+                ngName: "@",
+                ngAttributes: "@"
+
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsEnergy', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/energy/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
@@ -1426,27 +1534,3 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     });
-/**
- * Created by B026789 on 18.12.2015.
- */
-(function () {
-    "use strict";
-
-    var dirTooltip = angular.module('tooltip', [])
-        .directive('tooltip', function factory($log) {
-            return {
-                restrict: 'A',
-
-                link: function (scope, element, attrs) {
-
-                    $(element).hover(function () {
-                        // on mouseenter
-                        $(element).tooltip('show');
-                    }, function () {
-                        // on mouseleave
-                        $(element).tooltip('hide');
-                    });
-                }
-            };
-        });
-}());

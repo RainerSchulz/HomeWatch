@@ -5,23 +5,42 @@
 
 (function () {
     'use strict';
-    function AssessingController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('AssessingController startet');
+    function ClubmitgliedschaftController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
+        $log.debug('ClubmitgliedschaftController startet');
         var self = this;
 
 // create a message to display in our view
-        $scope.header = 'Assessing';
+        $scope.header = 'Clubmitgliedschaft';
         $scope.location = '/';
 
         // set Page Title
         Page.setTitle($scope.header);
+
+        $scope.init = function () {
+            GetNav($scope, $http);
+        };
+
+        function GetNav($scope, $http) {
+            Jsonervice.getJson('clubmitgliedschaftNav').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.navButton = data.resultNav; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        };
     }
 
-    AssessingController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+    ClubmitgliedschaftController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
 
 
     angular.module('myApp')
-        .controller('AssessingController', AssessingController);
+        .controller('ClubmitgliedschaftController', ClubmitgliedschaftController);
 }());
 /**
  * Created by Rainer on 09.01.2016.
@@ -55,23 +74,23 @@
 
 (function () {
     'use strict';
-    function DigitalerController($scope, $location, $rootScope, $http, $log, Page) {
-        $log.debug('DigitalerController startet');
+    function AssessingController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('AssessingController startet');
         var self = this;
 
 // create a message to display in our view
-        $scope.header = 'Digitaler Hausmeister';
+        $scope.header = 'Assessing';
         $scope.location = '/';
 
         // set Page Title
         Page.setTitle($scope.header);
     }
 
-    DigitalerController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+    AssessingController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
 
 
     angular.module('myApp')
-        .controller('DigitalerController', DigitalerController);
+        .controller('AssessingController', AssessingController);
 }());
 /**
  * Created by Rainer on 09.01.2016.
@@ -107,27 +126,66 @@
 
 (function () {
     'use strict';
-    function ClubmitgliedschaftController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
-        $log.debug('ClubmitgliedschaftController startet');
+    function DigitalerController($scope, $location, $rootScope, $http, $log, Page) {
+        $log.debug('DigitalerController startet');
         var self = this;
 
 // create a message to display in our view
-        $scope.header = 'Clubmitgliedschaft';
+        $scope.header = 'Digitaler Hausmeister';
         $scope.location = '/';
 
         // set Page Title
         Page.setTitle($scope.header);
+    }
 
+    DigitalerController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page'];
+
+
+    angular.module('myApp')
+        .controller('DigitalerController', DigitalerController);
+}());
+/**
+ * Created by Rainer on 29.01.2016.
+ */
+(function () {
+    'use strict';
+    function HomeController($scope, $location, $q, $rootScope, $http, $log, $routeParams, Page, Jsonervice, HomeService, HomeWidgetsService) {
+        $log.debug('HomeController startet');
+
+        var self = this;
+        $scope.header = 'Home';
+        $scope.location = '/Liegenschaften';
+
+        $scope.home = [];
+        $rootScope.sidebar_left = $q.defer();
+
+        // set Page Title
+        Page.setTitle($scope.header);
+
+        // Init
         $scope.init = function () {
-            GetNav($scope, $http);
+
+            $rootScope.sidebar_left.resolve(HomeWidgetsService.getHomeSidebar('sidebar_left'));
+            GetHomeContent($scope, $http);
         };
 
-        function GetNav($scope, $http) {
-            Jsonervice.getJson('clubmitgliedschaftNav').then(function () {
+        $scope.buttonClick = function (item) {
+            $log.debug('nav-click: ');
+            $log.debug(item);
 
+            $rootScope.headerImage = item.headerImage;
+
+            $rootScope.alias = item.alias;
+            $rootScope.name = item.name;
+            $rootScope.type = item.type;
+            var path = $scope.location + '/' + $routeParams.id + '/home/' + item.location;
+            $location.path(path);
+        };
+
+        function GetHomeContent($scope, $http) {
+            Jsonervice.getJson('home').then(function () {
                     var data = Jsonervice.data();
-
-                    $scope.navButton = data.resultNav; // response data
+                    $scope.home = data.Results; // response data
 
                 })
                 .catch(function (callback) {
@@ -138,11 +196,11 @@
         }
     }
 
-    ClubmitgliedschaftController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
+    HomeController.$inject = ['$scope', '$location', '$q', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice', 'HomeService', 'HomeWidgetsService'];
 
 
     angular.module('myApp')
-        .controller('ClubmitgliedschaftController', ClubmitgliedschaftController);
+        .controller('HomeController', HomeController);
 }());
 /**
  * Created by Rainer on 09.01.2016.
@@ -263,127 +321,6 @@
         .controller('LiegenschaftenController', LiegenschaftenController);
 }());
 /**
- * Created by Rainer on 29.01.2016.
- */
-(function () {
-    'use strict';
-    function HomeController($scope, $location, $q, $rootScope, $http, $log, $routeParams, Page, Jsonervice, HomeService, HomeWidgetsService) {
-        $log.debug('HomeController startet');
-
-        var self = this;
-        $scope.header = 'Home';
-        $scope.location = '/Liegenschaften';
-
-        $scope.home = [];
-        $rootScope.sidebar_left = $q.defer();
-
-        // set Page Title
-        Page.setTitle($scope.header);
-
-        // Init
-        $scope.init = function () {
-
-            $rootScope.sidebar_left.resolve(HomeWidgetsService.getHomeSidebar('sidebar_left'));
-            GetHomeContent($scope, $http);
-        };
-
-        $scope.buttonClick = function (item) {
-            $log.debug('nav-click: ');
-            $log.debug(item);
-
-            $rootScope.headerImage = item.headerImage;
-
-            $rootScope.alias = item.alias;
-            $rootScope.name = item.name;
-            $rootScope.type = item.type;
-            var path = $scope.location + '/' + $routeParams.id + '/home/' + item.location;
-            $location.path(path);
-        };
-
-        function GetHomeContent($scope, $http) {
-            Jsonervice.getJson('home').then(function () {
-                    var data = Jsonervice.data();
-                    $scope.home = data.Results; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        }
-    }
-
-    HomeController.$inject = ['$scope', '$location', '$q', '$rootScope', '$http', '$log', '$routeParams', 'Page', 'Jsonervice', 'HomeService', 'HomeWidgetsService'];
-
-
-    angular.module('myApp')
-        .controller('HomeController', HomeController);
-}());
-/**
- * Created by Rainer on 09.01.2016.
- */
-
-
-(function () {
-    'use strict';
-    function MeineDatenController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
-        $log.debug('MeineDatenController startet');
-        var self = this;
-
-// create a message to display in our view
-        $scope.header = 'MeineDaten';
-        $scope.location = '/';
-
-        // set Page Title
-        Page.setTitle($scope.header);
-
-        $scope.result = [];
-        $scope.navButton = [];
-
-        $scope.init = function () {
-            GetNav($scope, $http);
-            GetJsonFile($scope, $http);
-
-        };
-
-        function GetNav($scope, $http) {
-            Jsonervice.getJson('meineDatenNav').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.navButton = data.resultNav; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        }
-        function GetJsonFile($scope, $http) {
-            Jsonervice.getJson('meineDaten').then(function () {
-
-                    var data = Jsonervice.data();
-
-                    $scope.result = data.result[0]; // response data
-
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-
-        }
-    }
-
-    MeineDatenController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
-
-
-    angular.module('myApp')
-        .controller('MeineDatenController', MeineDatenController);
-}());
-/**
  * Created by Rainer on 09.01.2016.
  */
 
@@ -418,7 +355,7 @@
 
                 });
 
-        }
+        };
     }
 
     SecureController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
@@ -482,6 +419,70 @@
 
     angular.module('myApp')
         .controller('LogonController', LogonController);
+}());
+/**
+ * Created by Rainer on 09.01.2016.
+ */
+
+
+(function () {
+    'use strict';
+    function MeineDatenController($scope, $location, $rootScope, $http, $log, Page, Jsonervice) {
+        $log.debug('MeineDatenController startet');
+        var self = this;
+
+// create a message to display in our view
+        $scope.header = 'MeineDaten';
+        $scope.location = '/';
+
+        // set Page Title
+        Page.setTitle($scope.header);
+
+        $scope.result = [];
+        $scope.navButton = [];
+
+        $scope.init = function () {
+            GetNav($scope, $http);
+            GetJsonFile($scope, $http);
+
+        };
+
+        function GetNav($scope, $http) {
+            Jsonervice.getJson('meineDatenNav').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.navButton = data.resultNav; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        };
+
+        function GetJsonFile($scope, $http) {
+            Jsonervice.getJson('meineDaten').then(function () {
+
+                    var data = Jsonervice.data();
+
+                    $scope.result = data.result[0]; // response data
+
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+
+        };
+    }
+
+    MeineDatenController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'Jsonervice'];
+
+
+    angular.module('myApp')
+        .controller('MeineDatenController', MeineDatenController);
 }());
 /**
  * Created by Rainer on 09.01.2016.
@@ -588,6 +589,59 @@
 
 }());
 /**
+ * Created by B026789 on 03.12.2015.
+ */
+(function () {
+    'use strict';
+    function VerwaltungController($scope, $location, $window, $rootScope, $q, $log, $routeParams, Page, HomeWidgetsService) {
+        $log.debug('VerwaltungController startet');
+        $log.debug($routeParams);
+        $log.debug($rootScope);
+        var self = this;
+        $scope.header = 'Verwaltung';
+        $scope.location = '/Liegenschaften';
+
+        $rootScope.sidebar_left = $q.defer();
+        $rootScope.sidebar_preference = $q.defer();
+
+
+        // set Page Title
+        Page.setTitle($scope.header);
+
+        $scope.init = function () {
+            $rootScope.sidebar_left.resolve(HomeWidgetsService.getHomeSidebar('sidebar_left'));
+            $rootScope.sidebar_preference.resolve(HomeWidgetsService.getHomeSidebar('sidebar_preference'));
+        };
+
+        $scope.buttonClick = function (item) {
+            $log.debug('nav-click: ');
+            $log.debug(item);
+
+            $rootScope.alias = item.alias;
+            $rootScope.name = item.name;
+            $rootScope.type = item.type;
+            var path = $scope.location + '/' + $routeParams.id + '/home' + item.buttonClick;
+            $location.path(path);
+        };
+
+        $scope.defaultClick = function (item) {
+            $log.debug('Click: ' + item.url);
+            if (item.target != '') {
+                // $window.location.href = item.url;
+                $window.open(item.url, item.target)
+            } else {
+                $location.path(item.url);
+            }
+        };
+    }
+
+    VerwaltungController.$inject = ['$scope', '$location', '$window', '$rootScope', '$q', '$log', '$routeParams', 'Page', 'HomeWidgetsService'];
+
+
+    angular.module('myApp')
+        .controller('VerwaltungController', VerwaltungController);
+}());
+/**
  * Created by RSC on 30.03.2016.
  */
 (function () {
@@ -678,59 +732,6 @@
     }
 
 })();
-/**
- * Created by B026789 on 03.12.2015.
- */
-(function () {
-    'use strict';
-    function VerwaltungController($scope, $location, $window, $rootScope, $q, $log, $routeParams, Page, HomeWidgetsService) {
-        $log.debug('VerwaltungController startet');
-        $log.debug($routeParams);
-        $log.debug($rootScope);
-        var self = this;
-        $scope.header = 'Verwaltung';
-        $scope.location = '/Liegenschaften';
-
-        $rootScope.sidebar_left = $q.defer();
-        $rootScope.sidebar_preference = $q.defer();
-
-
-        // set Page Title
-        Page.setTitle($scope.header);
-
-        $scope.init = function () {
-            $rootScope.sidebar_left.resolve(HomeWidgetsService.getHomeSidebar('sidebar_left'));
-            $rootScope.sidebar_preference.resolve(HomeWidgetsService.getHomeSidebar('sidebar_preference'));
-        };
-
-        $scope.buttonClick = function (item) {
-            $log.debug('nav-click: ');
-            $log.debug(item);
-
-            $rootScope.alias = item.alias;
-            $rootScope.name = item.name;
-            $rootScope.type = item.type;
-            var path = $scope.location + '/' + $routeParams.id + '/home' + item.buttonClick;
-            $location.path(path);
-        };
-
-        $scope.defaultClick = function (item) {
-            $log.debug('Click: ' + item.url);
-            if (item.target != '') {
-                // $window.location.href = item.url;
-                $window.open(item.url, item.target)
-            } else {
-                $location.path(item.url);
-            }
-        };
-    }
-
-    VerwaltungController.$inject = ['$scope', '$location', '$window', '$rootScope', '$q', '$log', '$routeParams', 'Page', 'HomeWidgetsService'];
-
-
-    angular.module('myApp')
-        .controller('VerwaltungController', VerwaltungController);
-}());
 /**
  * Created by Rainer on 09.02.2016.
  */

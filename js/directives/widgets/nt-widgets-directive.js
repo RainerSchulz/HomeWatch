@@ -428,6 +428,34 @@ angular.module('myApp')
 
         return directiveDefinitionObject;
     })
+    .directive('cndWidgetsHeating', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/heating/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            Attributes: {},
+
+            scope: {
+                ngName: "@",
+                ngAttributes: "@"
+
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
     // motion
     .directive('cndWidgetsMotionGira', function factory($log) {
         var directiveDefinitionObject = {
@@ -603,6 +631,62 @@ angular.module('myApp')
     .directive('cndWidgetsEnergyHm', function factory($log) {
         var directiveDefinitionObject = {
             templateUrl: 'templates/widgets/energy_hm/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            Attributes: {},
+
+            scope: {
+                ngName: "@",
+                ngAttributes: "@"
+
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsEnergyGira', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/energy_gira/index.html',
+            replace: true,
+            transclude: true,
+            restrict: 'A',
+            Attributes: {},
+
+            scope: {
+                ngName: "@",
+                ngAttributes: "@"
+
+            },
+
+            link: {
+                pre: function preLink($scope, element, attrs, controller) {
+                    $scope.Attributes = JSON.parse($scope.ngAttributes);
+                    $scope.Name = $scope.ngName;
+
+                },
+                post: function postLink($scope, element, attrs, controller) {
+                    initWidget(element, $scope.Name);
+                }
+            }
+        };
+
+        return directiveDefinitionObject;
+    })
+    .directive('cndWidgetsEnergy', function factory($log) {
+        var directiveDefinitionObject = {
+            templateUrl: 'templates/widgets/energy/index.html',
             replace: true,
             transclude: true,
             restrict: 'A',
