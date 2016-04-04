@@ -167,12 +167,12 @@ angular.module('myApp')
             navRightTop: {},
 
             scope: {
-                ngNavRightTop: "@"
+                ngSidebarTop: "@"
             },
 
             link: function ($scope, element, attrs) {
                 if ($scope.ngNavRightTop != '') {
-                    $scope.navRightTop = JSON.parse($scope.ngNavRightTop);
+                    $scope.navRightTop = JSON.parse($scope.ngSidebarTop);
                 }
 
                 $scope.buttonClick = function (item) {

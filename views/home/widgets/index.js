@@ -19,8 +19,8 @@
         $scope.init = function () {
             $log.debug('HomeAll fhemweb_url: ' + $rootScope.MetaDatafhemweb_url);
 
-            $rootScope.navRight = $q.defer();
             $rootScope.home = $q.defer();
+            $rootScope.sidebar_right = $q.defer();
             $rootScope.navRightTop = $q.defer();
             $rootScope.rooms = $q.defer();
 
@@ -55,29 +55,10 @@
         function GetNavRight($scope) {
             $scope.headerImage = $rootScope.headerImage;
 
-            var value = 'sidebar_right';
+            var sidebar = 'sidebar_right';
             var type = 'room';
-            $log.debug('start NavRight: ' + value);
-            HomeService.getHome(value, type).then(function () {
-                    $log.debug('Success getHome: ' + type + ' : ' + value);
-
-                    var data = HomeService.data();
-                    $rootScope.navRight.resolve(HomeService.data().Results);
-                    $rootScope.navRightTop.resolve(HomeService.data().Results);
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                    Jsonervice.getJson('data/sidebar_right').then(function () {
-                            var data = Jsonervice.data();
-                            $scope.navRight = data.Results;
-                            $log.debug('$scope.navRight.length by getJson: ' + $scope.navRight.length);
-                        })
-                        .catch(function (callback) {
-                            $log.debug(callback);
-                        });
-
-                });
+            $log.debug('start widget NavRight: ' + sidebar);
+            $rootScope.sidebar_right.resolve(HomeWidgetsService.getHomeSidebar(sidebar));
 
         }
 
@@ -95,14 +76,15 @@
                 // create a $q deferred promise
                 var deferred = $q.defer();
 
-                HomeService.getHome(value, $rootScope.type).then(function () {
+                HomeService.getHome(value, $rootScope.type).then(function (response) {
                         // promise successfully resolved
+                        var data = response.data.Results;
                         deferred.resolve(data);
 
-                        if (data.Results.length > 0) {
-                            $log.debug('HomeAll getHome add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
-                            $log.debug(data.Results);
-                            $scope.result.push(data.Results);
+                        if (data.length > 0) {
+                            $log.debug('HomeAll getHome add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.length);
+                            $log.debug(data);
+                            $scope.result.push(data);
                         }
 
                     })
@@ -188,7 +170,7 @@
 
     }
 
-    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'HomeWidgetsService', 'Jsonervice', 'RoomService', 'FillAllDataService','$cookieStore'];
+    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'HomeWidgetsService', 'Jsonervice', 'RoomService', 'FillAllDataService', '$cookieStore'];
 
 
     angular.module('myApp')

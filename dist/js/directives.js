@@ -29,6 +29,30 @@ angular.module('myApp')
     })
 ;
 /**
+ * Created by B026789 on 18.12.2015.
+ */
+(function () {
+    "use strict";
+
+    var dirTooltip = angular.module('tooltip', [])
+        .directive('tooltip', function factory($log) {
+            return {
+                restrict: 'A',
+
+                link: function (scope, element, attrs) {
+
+                    $(element).hover(function () {
+                        // on mouseenter
+                        $(element).tooltip('show');
+                    }, function () {
+                        // on mouseleave
+                        $(element).tooltip('hide');
+                    });
+                }
+            };
+        });
+}());
+/**
  * Created by B026789 on 16.12.2015.
  */
 angular.module('myApp')
@@ -197,12 +221,12 @@ angular.module('myApp')
             navRightTop: {},
 
             scope: {
-                ngNavRightTop: "@"
+                ngSidebarTop: "@"
             },
 
             link: function ($scope, element, attrs) {
                 if ($scope.ngNavRightTop != '') {
-                    $scope.navRightTop = JSON.parse($scope.ngNavRightTop);
+                    $scope.navRightTop = JSON.parse($scope.ngSidebarTop);
                 }
 
                 $scope.buttonClick = function (item) {
@@ -370,30 +394,6 @@ angular.module('myApp')
                     '</div>'
                 };
             }]);
-}());
-/**
- * Created by B026789 on 18.12.2015.
- */
-(function () {
-    "use strict";
-
-    var dirTooltip = angular.module('tooltip', [])
-        .directive('tooltip', function factory($log) {
-            return {
-                restrict: 'A',
-
-                link: function (scope, element, attrs) {
-
-                    $(element).hover(function () {
-                        // on mouseenter
-                        $(element).tooltip('show');
-                    }, function () {
-                        // on mouseleave
-                        $(element).tooltip('hide');
-                    });
-                }
-            };
-        });
 }());
 /**
  * Created by RSC on 16.01.2016.

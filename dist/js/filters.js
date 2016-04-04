@@ -110,7 +110,6 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, Jso
             $log.debug('HomeWidgetsService getHome: ' + value + ' - ' + type);
 
             HomeService.getHome(value, type).then(function () {
-                    $rootScope.config.connection.isDebug = false;
 
                     var data = HomeService.data();
                     // check if widget has values
@@ -132,7 +131,6 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, Jso
             $log.debug('HomeWidgetsService getJson: ' + value);
 
             HomeService.getHomeByIdJson(value).then(function () {
-                    $rootScope.config.connection.isDebug = true;
                     var data = HomeService.data();
                     // check if widget has values
                     if (data.Results.length > 0) {
@@ -152,7 +150,7 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, Jso
 
         // no values
         if (angular.isUndefined(sidebar) || sidebar == '') {
-            $log.debug('HomeWidgetsService.getHomeSidebar: sidebar isUndefined');
+            $log.debug('ERROR: HomeWidgetsService.getHomeSidebar: sidebar isUndefined');
             return;
         }
 

@@ -10,15 +10,17 @@
         $scope.header = 'Home';
         $scope.location = '/Liegenschaften';
 
-        $scope.home = [];
-        $rootScope.sidebar_left = $q.defer();
 
         // set Page Title
         Page.setTitle($scope.header);
 
         // Init
         $scope.init = function () {
-
+            $scope.home = [];
+            $rootScope.sidebar_left = $q.defer();
+            if (!$rootScope.MetaDatafhemweb_url) {
+                Page.setMetaData('fhemweb_url', $rootScope.config.connection.fhemweb_url);
+            }
             $rootScope.sidebar_left.resolve(HomeWidgetsService.getHomeSidebar('sidebar_left'));
             GetHomeContent($scope, $http);
         };

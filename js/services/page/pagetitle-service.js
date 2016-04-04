@@ -13,7 +13,7 @@ myApp.service('Page', function ($rootScope) {
             $rootScope.MetaDatafhemweb_url = content;
         },
         getMetaData: function (name) {
-            var metaData = $rootScope.MetaDataContent;
+            var metaData = $rootScope.MetaDatafhemweb_url;
             if (angular.isUndefined(metaData)) {
                 if ($rootScope.config) {
                     metaData = $rootScope.config.connection.fhemweb_url;

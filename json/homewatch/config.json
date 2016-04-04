@@ -1,11 +1,12 @@
 {
   "globals": {
-    "url2": "http://login.homewatch-smarthome.de",
+    "url": "http://login.homewatch-smarthome.de",
     "port": ":8130",
     "cmd": "?cmd=jsonlist2%20",
     "room": "room",
     "genericDeviceType": "genericDeviceType=",
-    "param": "&XHR=1"
+    "param": "&XHR=1",
+    "fhem": "/fhem"
   },
   "connection": {
     "internet": true,
@@ -16,7 +17,7 @@
     "URL_DC": "http://login.homewatch-smarthome.de:8139",
     "URL_dyndns": "http://rou-wan-002.camdata.de:8083",
     "URL_local": "http://10.221.251.126:8083",
-    "isDebug": true
+    "isDebug": false
   },
   "home": [
     {

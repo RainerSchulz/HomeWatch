@@ -26,8 +26,8 @@
         $scope.click = function (item) {
             $rootScope.id = item.id;
             // set Page MetaData
-            Page.setMetaData("fhemweb_url", item.Internals.LINK);
-            $log.debug("LiegenschaftenController fhemweb_url:" + Page.setMetaData('fhemweb_url'));
+            Page.setMetaData("fhemweb_url", item.Internals.LINK + $rootScope.config.globals.fhem);
+            $log.debug("LiegenschaftenController fhemweb_url:" + Page.getMetaData('fhemweb_url'));
             var path = $scope.location + '/' + item.Name + '/home/';
             $location.path(path);
         };
@@ -57,7 +57,7 @@
         function GetStandard($scope, $http) {
             Jsonervice.getJson('liegenschaftenDefault').then(function () {
                     var data = Jsonervice.data();
-                    $scope.standardButton = data.result; // response data
+                    $scope.standardButton = data.Results; // response data
                 })
                 .catch(function (callback) {
                     $log.debug(callback);
@@ -68,7 +68,10 @@
 
             var value = 'site';
             var type = 'genericDeviceType';
+            if (!$rootScope.MetaDatafhemweb_url) {
+                Page.setMetaData('fhemweb_url', $rootScope.config.connection.fhemweb_url);
 
+            }
             HomeService.getHome(value, type).then(function () {
                     $log.debug(type + ' : ' + value);
                     var data = HomeService.data();

@@ -8,22 +8,19 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
     var HomeService = {};
 
     HomeService.getHomeByRoom = function (room) {
-        var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + $rootScope.config.globals.room + room + $rootScope.config.globals.param;
+        var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + $rootScope.config.globals.room + '=' + room + $rootScope.config.globals.param;
         $log.debug(url);
         return $http({
             method: 'GET',
-            cache: true,
             url: url
         }).success(function (d) {
                 data = d;
                 deffered.resolve();
-                $rootScope.config.connection.isDebug = true;
                 $log.debug("HomeService by room");
                 $log.debug(data);
             })
             .error(function (err, status, headers, config) {
                 $rootScope.config.connection.internet = "false";
-                $rootScope.config.connection.isDebug = false;
                 // log error
                 if (status == 500) {
                     $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
@@ -48,7 +45,6 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
         $log.debug('$rootScope.config.connection.internet: ' + $rootScope.config.connection.internet);
         return $http({
             method: 'GET',
-            cache: true,
             url: url
         }).success(function (d) {
                 data = d;
@@ -83,7 +79,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
             url: url
         }).success(function (d) {
                 data = d;
-                deffered.resolve();
+                deffered.resolve(data);
 
                 $log.debug("Success HomeService.getHome");
             })
