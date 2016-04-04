@@ -111,6 +111,17 @@
             </div>
         </div>
     </section>
+    <section ng-switch-when="blind">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center center-block">
+            <div class="col col-xs-1 pull-left">
+                <div class="fav_vol" cnd-widgets-favoriten ng-name="{{model.Name}}" ng-like="{{model.Attributes.like}}">
+                </div>
+            </div>
+            <div cnd-widgets-blind ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
+            </div>
+        </div>
+    </section>
+
 
     <!-- Widgets light -->
     <section ng-switch-when="light_hm">
@@ -390,6 +401,7 @@
             </div>
             <div cnd-widgets-aircon ng-attributes="{{model.Attributes}}" ng-name="{{model.Name}}">
             </div>
+        </div>
     </section>
 
     <!-- Widgets Push -->
