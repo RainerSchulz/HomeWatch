@@ -2,11 +2,10 @@
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheService, connection) {
+myApp.service('Jsonervice', function ($http, notification, $log, $q, $rootScope) {
     var data = [];
     var deffered = $q.defer();
     var Jsonervice = {};
-    var originUrl = connection.originUrl;
 
     Jsonervice.getJson = function (name) {
 
@@ -14,7 +13,6 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
 
         return $http({
             method: 'GET',
-            cache: true,
             url: url
         }).success(function (d) {
                 data = d;
@@ -33,7 +31,7 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
                         $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
 
                     } else if (status == 404) {
-                        url = originUrl + url;
+                        url = $rootScope.config.connection.originUrl + url;
                         $log.debug(url);
                     } else if (status == -1) {
                         $log.debug('error: connection refused ' + status);
@@ -75,7 +73,7 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
                     $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
 
                 } else if (status == 404) {
-                    url = originUrl + url;
+                    url = $rootScope.config.connection.originUrl + url;
                     $log.debug(url);
                 } else if (status == -1) {
                     $log.debug('error: connection refused ' + status);
@@ -116,7 +114,7 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheServic
                     $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
 
                 } else if (status == 404) {
-                    url = originUrl + url;
+                    url = $rootScope.config.connection.originUrl + url;
                     $log.debug(url);
                 } else if (status == -1) {
                     $log.debug('error: connection refused ' + status);

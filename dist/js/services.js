@@ -1,582 +1,4 @@
 /**
- * Created by Rainer on 03.04.2016.
- */
-myApp.factory("WidgetService", function ($http, $rootScope, $log, $q, globalSettings) {
-    "use strict";
-    var widgets = [];
-    return {
-        getWidget: function (type, name) {
-            var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd + type + '=' + name + globalSettings.param;
-            $log.debug('WidgetService.getWidget url: ' + url);
-            $log.debug('name: ' + name + ' type: ' + type);
-            return $http.get(url);
-        }
-    }
-
-});
-
-/**
- * Created by Rainer on 03.04.2016.
- */
-myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeService, CookiesService, WidgetService, globalSettings) {
-    "use strict";
-
-    var widget = {};
-    return {
-        loadWidgets: function (cookie) {
-            widget = CookiesService.getCookie(cookie) || {};
-            if (widget && widget.length && widget.length > 0) {
-                return widget;
-            }
-            else {
-                // get type and name from cookie global.home
-                var globals = CookiesService.getCookie('globals');
-                if (globals.home) {
-                    var home = globals.home;
-                    var type = '';
-                    var names = '';
-                    // check alias name
-                    for (var i = 0; i < home.length; i++) {
-                        if (home[i].alias == cookie) {
-                            type = home[i].type;
-                            names = home[i].name;
-                            break;
-                        }
-                    }
-
-
-                    // get widget
-                    let promises = [];
-
-                    var values = names.split(',');
-                    var results = [];
-                    angular.forEach(values, function (name) {
-                        var deffered  = $q.defer();
-                        var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd + type + '=' + name + globalSettings.param;
-                        $log.debug('WidgetService.getWidget url: ' + url);
-                        $log.debug('name: ' + name + ' type: ' + type);
-                        // get json list
-                        HomeService.getHome(name, type).then(function () {
-                            var data = HomeService.data();
-                            // promise successfully resolved
-                            deffered.resolve(data.Results);
-
-                            if (data.Results.length > 0) {
-                                $log.debug('WidgetService.getWidget add Widgets: ' + type + ' : ' + name + ' - ' + data.Results.length);
-                                $log.debug(data.Results);
-
-                            }
-
-                        });
-                        promises.push(deffered);
-
-                    });
-
-                    $q.all(promises).then(function (values) {
-                        CookiesService.setCookieName(cookie, values);
-                        return values;
-                    });
-
-                }
-
-            }
-
-        },
-        getWidget: function homeWidgets(names, type) {
-            // create a $q deferred promise
-            let deferred = $q.defer();
-            var results = [];
-            var values = names.split(',');
-
-            angular.forEach(values, function (value) {
-                var promise = WidgetService.getWidget(type, value);
-                promise.then(
-                    function (response) {
-                        results.push(response.data.Results);
-                    },
-                    function (error) {
-                        $log.error('failure loading widgets', error);
-                    });
-
-            });
-            return results;
-        },
-        // add Widget to cookie
-        addWidgetToCookie: function (name, widget) {
-            CookiesService.setCookieName(name, widget);
-        }
-
-    }
-});
-/**
- * Created by RSC on 18.01.2016.
- */
-
-myApp.service('FavoritenService', function ($http, notification, $log, $q, HomeService) {
-    {
-        var selected_index = -1;
-        var tbFavoriten = localStorage.getItem("tbFavoriten");
-        tbFavoriten = JSON.parse(tbFavoriten);
-        if (tbFavoriten == null)
-            tbFavoriten = [];
-        return {
-
-            addFavorite: function (name, like) {
-                var favorit = {
-                    Name: name,
-                    Like: like
-                };
-                $log.debug(favorit);
-                if (like == 'yes') {
-                    HomeService.setFavorit(name, 'no');
-                    $log.debug("Favorit gelöscht");
-                    tbFavoriten.splice(selected_index, 1);
-                    localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
-                    like = 'yes';
-                }
-                else {
-                    HomeService.setFavorit(name, 'yes');
-                    tbFavoriten.push(favorit);
-                    localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
-                    $log.debug("Favorit gespeichert");
-                    like = 'no';
-                }
-
-
-            }
-
-        }
-    }
-});
-
-/**
- * Created by RSC on 18.01.2016.
- */
-
-myApp.service('HomeService', function ($http, notification, $log, $q, globalSettings, CacheService, connection, $rootScope, Page) {
-    var data = [];
-    var deffered = $q.defer();
-    var HomeService = {};
-    var urlcmd = Page.getMetaData('fhemweb_url') + globalSettings.cmd;
-
-    HomeService.getHomeByRoom = function (room) {
-        var url = urlcmd + globalSettings.room + room + globalSettings.param;
-        $log.debug(url);
-        return $http({
-            method: 'GET',
-            cache: true,
-            url: url
-        }).success(function (d) {
-                data = d;
-                deffered.resolve();
-                connection.isDebug = true;
-                $log.debug("HomeService by room");
-                $log.debug(data);
-            })
-            .error(function (err, status, headers, config) {
-                connection.internet = "false";
-                connection.isDebug = false;
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-            });
-
-
-        /*
-         return CacheService.jsonCache(room, data, url);
-
-         */
-    };
-
-    HomeService.getHomeByAdvice = function (device) {
-        var url = urlcmd + globalSettings.genericDeviceType + device + globalSettings.param;
-        $log.debug(url);
-        $log.debug('connection.internet: ' + connection.internet);
-        return $http({
-            method: 'GET',
-            cache: true,
-            url: url
-        }).success(function (d) {
-                data = d;
-            })
-            .error(function (err, status, headers, config) {
-                connection.internet = "false";
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-            });
-
-    };
-
-    HomeService.getHome = function (name, type) {
-
-        var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd + type + '=' + name + globalSettings.param;
-        $log.debug('getHome url: ' + url);
-        $log.debug('name: ' + name + ' type: ' + type);
-        return $http({
-            method: 'GET',
-
-            url: url
-        }).success(function (d) {
-                data = d;
-                deffered.resolve();
-
-                $log.debug("Success HomeService.getHome");
-            })
-            .error(function (err, status, headers, config) {
-                connection.internet = "false";
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-            });
-
-    };
-
-    HomeService.setFavorit = function (name, type) {
-
-        var url = $rootScope.MetaDatafhemweb_url + '?cmd=attr%20' + name + '%20like%20' + type + globalSettings.param;
-        $log.debug(url);
-        return $http({
-            method: 'GET',
-            url: url
-        }).success(function (d) {
-                data = d;
-                deffered.resolve();
-
-            })
-            .error(function (err, status, headers, config) {
-                connection.internet = "false";
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-            });
-
-    };
-
-    HomeService.setPreset = function (name, preset) {
-        //set Cam_Demowand preset alarm
-        var url = $rootScope.MetaDatafhemweb_url + '?cmd=%20set%20' + name + '%20preset%20' + preset + globalSettings.param;
-        $log.debug(url);
-        return $http({
-            method: 'GET',
-            url: url
-        }).success(function (d) {
-                data = d;
-                deffered.resolve();
-
-                $log.debug("HomeService Camera set preset OK");
-            })
-            .error(function (err, status, headers, config) {
-                connection.internet = "false";
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-            });
-
-    };
-
-    HomeService.getHomeByIdJson = function (name) {
-        var url = 'json/homewatch/data/' + name + '.json';
-        return $http({
-            method: 'GET',
-            cache: true,
-            url: url
-        }).success(function (d) {
-                data = d;
-                deffered.resolve();
-            })
-            .error(function (err, status, headers, config) {
-
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-
-
-            });
-
-
-    };
-
-    HomeService.data = function () {
-        return data;
-    };
-    return HomeService;
-});
-
-/**
- * Created by RSC on 18.01.2016.
- */
-
-myApp.service('Jsonervice', function ($http, notification, $log, $q, CacheService, connection) {
-    var data = [];
-    var deffered = $q.defer();
-    var Jsonervice = {};
-    var originUrl = connection.originUrl;
-
-    Jsonervice.getJson = function (name) {
-
-        var url = 'json/homewatch/' + name + '.json';
-
-        return $http({
-            method: 'GET',
-            cache: true,
-            url: url
-        }).success(function (d) {
-                data = d;
-                deffered.resolve();
-
-                $log.debug("Jsonervice by Json " + name);
-                $log.debug(data);
-            })
-            .error(function (err, status, headers, config) {
-                if (angular.isUndefined(status)) {
-                    $log.debug('error: ' + config.url);
-                } else {
-
-                    // log error
-                    if (status == 500) {
-                        $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                    } else if (status == 404) {
-                        url = originUrl + url;
-                        $log.debug(url);
-                    } else if (status == -1) {
-                        $log.debug('error: connection refused ' + status);
-                    } else {
-
-                        $log.debug('error: ' + status);
-                    }
-                }
-
-
-            });
-    };
-
-    Jsonervice.getJsonById = function (name, id) {
-
-        var url = 'json/homewatch/' + name + '.json';
-
-        return $http({
-            method: 'GET',
-            url: url
-        }).success(function (res) {
-
-                var len = res.Results.length;
-                for (var i = 0; i < len; i++) {
-                    if (res.Results[i].location == id) {
-                        data = res.Results[i];
-                        deffered.resolve();
-                        break;
-                    }
-                }
-
-                $log.debug("Jsonervice by getJsonById " + id);
-                $log.debug(data);
-            })
-            .error(function (err, status, headers, config) {
-
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == 404) {
-                    url = originUrl + url;
-                    $log.debug(url);
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-
-
-            });
-    };
-
-    Jsonervice.getConfig = function (name, id) {
-
-        var url = 'json/homewatch/' + name + '.json';
-
-        return $http({
-            method: 'GET',
-            cache: true,
-            url: url
-        }).success(function (res) {
-
-                var len = res.length;
-                for (var i = 0; i < len; i++) {
-                    if (res[i] == id) {
-                        data = res[i];
-                        deffered.resolve();
-                        break;
-                    }
-                }
-
-                $log.debug("Jsonervice by getJsonById " + id);
-                $log.debug(data);
-            })
-            .error(function (err, status, headers, config) {
-
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == 404) {
-                    url = originUrl + url;
-                    $log.debug(url);
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-
-
-            });
-    };
-
-    Jsonervice.data = function () {
-        return data;
-    };
-
-    return Jsonervice;
-});
-
-/**
- * Created by RSC on 18.01.2016.
- */
-
-myApp.service('CookiesService', function ($http, notification, $log, $q, HomeService, Jsonervice, $cookieStore) {
-    {
-        // set cookie with json
-        this.setCookieJson = function (name) {
-            let config = [];
-
-            Jsonervice.getJson(name).then(function () {
-
-                    config = Jsonervice.data();
-                    localStorage.setItem(name, JSON.stringify(config));
-                    $cookieStore.put(name, config);
-                    return config;
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-
-                });
-        };
-        // set cookie with name and data
-        this.setCookieName = function (name, data) {
-            if (angular.isUndefined(name))
-                return;
-            // check cookie
-            config = $cookieStore.get(name) || {};
-            if (config.length > 0) {
-                $cookieStore.remove(name);
-                localStorage.removeItem(name);
-            }
-            localStorage.setItem(name, JSON.stringify(data));
-            $cookieStore.put(name, data);
-        };
-        // get Cookie
-        this.getCookie = function (name) {
-
-            config = $cookieStore.get(name);
-            return config;
-        };
-
-    }
-});
-
-/**
- * Created by B026789 on 14.12.2015.
- */
-/*
-(function () {
-    'use strict';
-    angular.module('myApp.ng.services').provider('notification', {
-        defaultMessages: {},
-        setDefaultMesaages: function (message) {
-            this.defaultMessages = message;
-        },
-
-        $get: [function () {
-            var messages = this.defaultMessages;
-
-            function show(type, title, body) {
-                if (type == 'error') {
-                    toastr.error(body, title);
-                } else if (type == 'warning') {
-                    toastr.warning(body, title);
-                } else if (type == 'success') {
-                    toastr.success(body, title);
-                } else {
-                    toastr.info(body, title);
-                }
-            }
-
-            return {
-                show: function(type, title, body){
-                    show(type, title, body);
-                },
-                showError: function(type, title, body){
-                    show('error', title, body);
-                },
-                showWarning: function(type, title, body){
-                    show('warning', title, body);
-                },
-                showSuccess: function(type, title, body){
-                    show('success', title, body);
-                },
-                showSaveSuccess: function(type, title, body){
-                    show('success', messages.saveSucess || 'Speicherung erfolgreich', body);
-                },
-                showDeleteSuccess: function(type, title, body){
-                    show('success', messages.deleteSucess || 'Löschen erfolgreich', body);
-                },
-                showDefaultError: function(body){
-                    show('success', messages.defaultError || 'Ein Feher ist aufgetreten', body);
-                }
-            };
-        }]
-    });
-
-}());
-    */
-/**
  * Created by Fabrice on 25.01.2016.
  */
 myApp.service('CacheService', function ($log, $http, $cacheFactory) {
@@ -613,82 +35,6 @@ myApp.service('CacheService', function ($log, $http, $cacheFactory) {
         }
     }
 });
-/**
- * Created by Fabrice on 26.01.2016.
- */
-myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $rootScope) {
-    var onlineStatus = {};
-
-    onlineStatus.onLine = $window.navigator.onLine;
-
-    onlineStatus.isOnline = function () {
-        return onlineStatus.onLine;
-    }
-
-    $window.addEventListener("online", function () {
-        onlineStatus.onLine = true;
-        $rootScope.$digest();
-    }, true);
-
-    $window.addEventListener("offline", function () {
-        onlineStatus.onLine = false;
-        $rootScope.$digest();
-    }, true);
-
-    return onlineStatus;
-}]);
-
-myApp.service('Internet', function ($http, connection) {
-    this.IsOk = function () {
-        return $http({
-            method: 'HEAD',
-            url: connection.url
-        })
-            .then(function (response) {
-                var status = response.status;
-                return status >= 200 && status < 300 || status === 304;
-            });
-    };
-
-});
-
-/*
- var OnOffService = angular.module('myApp', [],
- function ($httpProvider) {
-
- var interceptor = ['$rootScope', '$q', function ($rootScope, $q) {
-
- function success(response) {
- return response;
- }
-
- function error(response) {
- var status = response.status;
-
- if ((status >= 400) && (status < 500)) {
- $rootScope.broadcast("AuthError", status);
- return;
- }
-
- if ((status >= 500) && (status < 600)) {
- $rootScope.broadcast("ServerError", status);
- return;
- }
-
-
- return $q.reject(response);
-
- }
-
- return function (promise) {
- return promise.then(success, error);
- }
-
- }];
- $httpProvider.responseInterceptors.push(interceptor);
- })
- */
-
 /**
  * Created by Rainer on 01.03.2016.
  */
@@ -870,6 +216,708 @@ myApp.service('MetaService', function() {
         }]);
 
 }());
+
+/**
+ * Created by Fabrice on 26.01.2016.
+ */
+myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $rootScope) {
+    var onlineStatus = {};
+
+    onlineStatus.onLine = $window.navigator.onLine;
+
+    onlineStatus.isOnline = function () {
+        return onlineStatus.onLine;
+    };
+
+    $window.addEventListener("online", function () {
+        onlineStatus.onLine = true;
+        $rootScope.$digest();
+    }, true);
+
+    $window.addEventListener("offline", function () {
+        onlineStatus.onLine = false;
+        $rootScope.$digest();
+    }, true);
+
+    return onlineStatus;
+}]);
+
+myApp.service('Internet', function ($http, $rootScope) {
+    this.IsOk = function () {
+        return $http({
+            method: 'HEAD',
+            url: $rootScope.config.connection.url
+        })
+            .then(function (response) {
+                var status = response.status;
+                return status >= 200 && status < 300 || status === 304;
+            });
+    };
+
+});
+
+/*
+ var OnOffService = angular.module('myApp', [],
+ function ($httpProvider) {
+
+ var interceptor = ['$rootScope', '$q', function ($rootScope, $q) {
+
+ function success(response) {
+ return response;
+ }
+
+ function error(response) {
+ var status = response.status;
+
+ if ((status >= 400) && (status < 500)) {
+ $rootScope.broadcast("AuthError", status);
+ return;
+ }
+
+ if ((status >= 500) && (status < 600)) {
+ $rootScope.broadcast("ServerError", status);
+ return;
+ }
+
+
+ return $q.reject(response);
+
+ }
+
+ return function (promise) {
+ return promise.then(success, error);
+ }
+
+ }];
+ $httpProvider.responseInterceptors.push(interceptor);
+ })
+ */
+
+/**
+ * Created by B026789 on 12.01.2016.
+ */
+myApp.service('Page', function ($rootScope) {
+    return {
+        setTitle: function (title) {
+            $rootScope.title = title + " - CAMDATA - HomeWatch 2.0";
+        },
+        setHeader: function (header) {
+            $rootScope.header = header;
+        },
+        setMetaData: function (name, content) {
+            $rootScope.MetaDatafhemweb_url = content;
+        },
+        getMetaData: function (name) {
+            var metaData = $rootScope.MetaDataContent;
+            if (angular.isUndefined(metaData)) {
+                if ($rootScope.config) {
+                    metaData = $rootScope.config.connection.fhemweb_url;
+                }
+            }
+            return metaData;
+        }
+
+
+    }
+});
+/**
+ * Created by B026789 on 14.12.2015.
+ */
+/*
+(function () {
+    'use strict';
+    angular.module('myApp.ng.services').provider('notification', {
+        defaultMessages: {},
+        setDefaultMesaages: function (message) {
+            this.defaultMessages = message;
+        },
+
+        $get: [function () {
+            var messages = this.defaultMessages;
+
+            function show(type, title, body) {
+                if (type == 'error') {
+                    toastr.error(body, title);
+                } else if (type == 'warning') {
+                    toastr.warning(body, title);
+                } else if (type == 'success') {
+                    toastr.success(body, title);
+                } else {
+                    toastr.info(body, title);
+                }
+            }
+
+            return {
+                show: function(type, title, body){
+                    show(type, title, body);
+                },
+                showError: function(type, title, body){
+                    show('error', title, body);
+                },
+                showWarning: function(type, title, body){
+                    show('warning', title, body);
+                },
+                showSuccess: function(type, title, body){
+                    show('success', title, body);
+                },
+                showSaveSuccess: function(type, title, body){
+                    show('success', messages.saveSucess || 'Speicherung erfolgreich', body);
+                },
+                showDeleteSuccess: function(type, title, body){
+                    show('success', messages.deleteSucess || 'Löschen erfolgreich', body);
+                },
+                showDefaultError: function(body){
+                    show('success', messages.defaultError || 'Ein Feher ist aufgetreten', body);
+                }
+            };
+        }]
+    });
+
+}());
+    */
+/**
+ * Created by RSC on 18.01.2016.
+ */
+
+myApp.service('CookiesService', function ($http, notification, $log, $q, $rootScope, HomeService, Jsonervice, $cookieStore) {
+    {
+        // set cookie with json
+        this.setCookieJson = function (name) {
+            let config = [];
+
+            Jsonervice.getJson(name).then(function () {
+
+                    config = Jsonervice.data();
+
+                    localStorage.setItem(name, JSON.stringify(config));
+                    $cookieStore.put(name, config);
+                    $rootScope.config = config;
+                    return config;
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
+
+                });
+        };
+        // set cookie with name and data
+        this.setCookieName = function (name, data) {
+            if (angular.isUndefined(name))
+                return;
+            // check cookie
+            config = $cookieStore.get(name) || {};
+            if (config.length > 0) {
+                $cookieStore.remove(name);
+                localStorage.removeItem(name);
+            }
+            localStorage.setItem(name, JSON.stringify(data));
+            $cookieStore.put(name, JSON.stringify(data));
+        };
+        // get Cookie
+        this.getCookie = function (name) {
+
+            config = $cookieStore.get(name);
+            $log.debug('CookiesService getCookie: ' + name);
+            $log.debug(config);
+            return config;
+        };
+
+    }
+});
+
+/**
+ * Created by RSC on 18.01.2016.
+ */
+
+myApp.service('HomeService', function ($http, notification, $log, $q, CacheService, $rootScope, Page) {
+    var data = [];
+    var deffered = $q.defer();
+    var HomeService = {};
+
+    HomeService.getHomeByRoom = function (room) {
+        var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + $rootScope.config.globals.room + room + $rootScope.config.globals.param;
+        $log.debug(url);
+        return $http({
+            method: 'GET',
+            cache: true,
+            url: url
+        }).success(function (d) {
+                data = d;
+                deffered.resolve();
+                $rootScope.config.connection.isDebug = true;
+                $log.debug("HomeService by room");
+                $log.debug(data);
+            })
+            .error(function (err, status, headers, config) {
+                $rootScope.config.connection.internet = "false";
+                $rootScope.config.connection.isDebug = false;
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+            });
+
+
+        /*
+         return CacheService.jsonCache(room, data, url);
+
+         */
+    };
+
+    HomeService.getHomeByAdvice = function (device) {
+        var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + $rootScope.config.globals.genericDeviceType + device + $rootScope.config.globals.param;
+        $log.debug(url);
+        $log.debug('$rootScope.config.connection.internet: ' + $rootScope.config.connection.internet);
+        return $http({
+            method: 'GET',
+            cache: true,
+            url: url
+        }).success(function (d) {
+                data = d;
+            })
+            .error(function (err, status, headers, config) {
+                $rootScope.config.connection.internet = "false";
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+            });
+
+    };
+
+    HomeService.getHome = function (name, type) {
+        var url = '';
+        if ($rootScope.config.connection.isDebug) {
+            url = 'json/homewatch/data/' + name + '.json';
+        } else {
+            url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + type + '=' + name + $rootScope.config.globals.param;
+        }
+
+        $log.debug('getHome url: ' + url);
+        $log.debug('name: ' + name + ' type: ' + type);
+        return $http({
+            method: 'GET',
+            url: url
+        }).success(function (d) {
+                data = d;
+                deffered.resolve();
+
+                $log.debug("Success HomeService.getHome");
+            })
+            .error(function (err, status, headers, config) {
+                $rootScope.config.connection.internet = "false";
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+            });
+
+    };
+
+    HomeService.setFavorit = function (name, type) {
+
+        var url = $rootScope.MetaDatafhemweb_url + '?cmd=attr%20' + name + '%20like%20' + type + $rootScope.config.globals.param;
+        $log.debug(url);
+        return $http({
+            method: 'GET',
+            url: url
+        }).success(function (d) {
+                data = d;
+                deffered.resolve();
+
+            })
+            .error(function (err, status, headers, config) {
+                $rootScope.config.connection.internet = "false";
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+            });
+
+    };
+
+    HomeService.setPreset = function (name, preset) {
+        //set Cam_Demowand preset alarm
+        var url = $rootScope.MetaDatafhemweb_url + '?cmd=%20set%20' + name + '%20preset%20' + preset + $rootScope.config.globals.param;
+        $log.debug(url);
+        return $http({
+            method: 'GET',
+            url: url
+        }).success(function (d) {
+                data = d;
+                deffered.resolve();
+
+                $log.debug("HomeService Camera set preset OK");
+            })
+            .error(function (err, status, headers, config) {
+                $rootScope.config.connection.internet = "false";
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+            });
+
+    };
+
+    HomeService.getHomeByIdJson = function (name) {
+        var url = 'json/homewatch/data/' + name + '.json';
+        return $http({
+            method: 'GET',
+            url: url
+        }).success(function (d) {
+                data = d;
+                deffered.resolve();
+            })
+            .error(function (err, status, headers, config) {
+
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+
+
+            });
+
+
+    };
+
+    HomeService.data = function () {
+        return data;
+    };
+    return HomeService;
+});
+
+/**
+ * Created by Rainer on 03.04.2016.
+ */
+myApp.factory("WidgetService", function ($http, $rootScope, $log, $q) {
+    "use strict";
+    var widgets = [];
+    return {
+        getWidget: function (type, name) {
+            var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + type + '=' + name + $rootScope.config.globals.param;
+            $log.debug('WidgetService.getWidget url: ' + url);
+            $log.debug('name: ' + name + ' type: ' + type);
+            return $http.get(url);
+        }
+    }
+
+});
+
+/**
+ * Created by Rainer on 03.04.2016.
+ */
+myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeService, CookiesService, WidgetService) {
+    "use strict";
+
+    var widget = {};
+    return {
+        loadWidgets: function (cookie) {
+            widget = CookiesService.getCookie(cookie) || {};
+            if (widget && widget.length && widget.length > 0) {
+                return widget;
+            }
+            else {
+                // get type and name from cookie global.home
+                var config = CookiesService.getCookie('config');
+                if (config.home) {
+                    var home = config.home;
+                    var type = '';
+                    var names = '';
+                    // check alias name
+                    for (var i = 0; i < home.length; i++) {
+                        if (home[i].alias == cookie) {
+                            type = home[i].type;
+                            names = home[i].name;
+                            break;
+                        }
+                    }
+
+                    // get widget
+                    let promises = [];
+
+                    var values = names.split(',');
+                    angular.forEach(values, function (name) {
+
+                        var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + type + '=' + name + $rootScope.config.globals.param;
+                        $log.debug('WidgetService.getWidget url: ' + url);
+                        $log.debug('name: ' + name + ' type: ' + type);
+
+                        var deffered = $q.defer();
+
+                        $http({
+                            url: url,
+                            method: 'GET'
+                        }).success(function (data) {
+                            deffered.resolve(data.Results);
+                        }).error(function (error) {
+                            deffered.reject();
+                        });
+
+                        /*
+                         HomeService.getHome(name, type).then(function () {
+                         var data = HomeService.data();
+                         deffered.resolve(data.Results);
+
+                         if (data.Results.length > 0) {
+                         $log.debug('WidgetService.getWidget add Widgets: ' + type + ' : ' + name + ' - ' + data.Results.length);
+                         $log.debug(data.Results);
+
+                         }
+
+                         });
+                         */
+
+                        promises.push(deffered);
+
+                    });
+
+                    return $q.all(promises).then(function (values) {
+                        CookiesService.setCookieName(cookie, values);
+                    });
+
+                }
+
+            }
+
+        },
+        getWidget: function homeWidgets(names, type) {
+
+            // create a $q deferred promise
+            let deferred = $q.defer();
+            var promises = [];
+            var values = names.split(',');
+
+            angular.forEach(values, function (name) {
+                var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + type + '=' + name + $rootScope.config.globals.param;
+                promises.push($http.get(url));
+            });
+
+            $q.all(urlCalls)
+                .then(
+                    function (results) {
+                        deferred.resolve(
+                            JSON.stringify(results))
+                    },
+                    function (errors) {
+                        deferred.reject(errors);
+                    },
+                    function (updates) {
+                        deferred.update(updates);
+                    });
+            return deferred.promise;
+        },
+        // add Widget to cookie
+        addWidgetToCookie: function (name, widget) {
+            CookiesService.setCookieName(name, widget);
+        }
+
+    }
+});
+/**
+ * Created by RSC on 18.01.2016.
+ */
+
+myApp.service('Jsonervice', function ($http, notification, $log, $q, $rootScope) {
+    var data = [];
+    var deffered = $q.defer();
+    var Jsonervice = {};
+
+    Jsonervice.getJson = function (name) {
+
+        var url = 'json/homewatch/' + name + '.json';
+
+        return $http({
+            method: 'GET',
+            url: url
+        }).success(function (d) {
+                data = d;
+                deffered.resolve();
+
+                $log.debug("Jsonervice by Json " + name);
+                $log.debug(data);
+            })
+            .error(function (err, status, headers, config) {
+                if (angular.isUndefined(status)) {
+                    $log.debug('error: ' + config.url);
+                } else {
+
+                    // log error
+                    if (status == 500) {
+                        $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                    } else if (status == 404) {
+                        url = $rootScope.config.connection.originUrl + url;
+                        $log.debug(url);
+                    } else if (status == -1) {
+                        $log.debug('error: connection refused ' + status);
+                    } else {
+
+                        $log.debug('error: ' + status);
+                    }
+                }
+
+
+            });
+    };
+
+    Jsonervice.getJsonById = function (name, id) {
+
+        var url = 'json/homewatch/' + name + '.json';
+
+        return $http({
+            method: 'GET',
+            url: url
+        }).success(function (res) {
+
+                var len = res.Results.length;
+                for (var i = 0; i < len; i++) {
+                    if (res.Results[i].location == id) {
+                        data = res.Results[i];
+                        deffered.resolve();
+                        break;
+                    }
+                }
+
+                $log.debug("Jsonervice by getJsonById " + id);
+                $log.debug(data);
+            })
+            .error(function (err, status, headers, config) {
+
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == 404) {
+                    url = $rootScope.config.connection.originUrl + url;
+                    $log.debug(url);
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+
+
+            });
+    };
+
+    Jsonervice.getConfig = function (name, id) {
+
+        var url = 'json/homewatch/' + name + '.json';
+
+        return $http({
+            method: 'GET',
+            cache: true,
+            url: url
+        }).success(function (res) {
+
+                var len = res.length;
+                for (var i = 0; i < len; i++) {
+                    if (res[i] == id) {
+                        data = res[i];
+                        deffered.resolve();
+                        break;
+                    }
+                }
+
+                $log.debug("Jsonervice by getJsonById " + id);
+                $log.debug(data);
+            })
+            .error(function (err, status, headers, config) {
+
+                // log error
+                if (status == 500) {
+                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
+
+                } else if (status == 404) {
+                    url = $rootScope.config.connection.originUrl + url;
+                    $log.debug(url);
+                } else if (status == -1) {
+                    $log.debug('error: connection refused ' + status);
+                } else {
+                    $log.debug('error: ' + status);
+                }
+
+
+            });
+    };
+
+    Jsonervice.data = function () {
+        return data;
+    };
+
+    return Jsonervice;
+});
+
+/**
+ * Created by RSC on 18.01.2016.
+ */
+
+myApp.service('FavoritenService', function ($http, notification, $log, $q, HomeService) {
+    {
+        var selected_index = -1;
+        var tbFavoriten = localStorage.getItem("tbFavoriten");
+        tbFavoriten = JSON.parse(tbFavoriten);
+        if (tbFavoriten == null)
+            tbFavoriten = [];
+        return {
+
+            addFavorite: function (name, like) {
+                var favorit = {
+                    Name: name,
+                    Like: like
+                };
+                $log.debug(favorit);
+                if (like == 'yes') {
+                    HomeService.setFavorit(name, 'no');
+                    $log.debug("Favorit gelöscht");
+                    tbFavoriten.splice(selected_index, 1);
+                    localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
+                    like = 'yes';
+                }
+                else {
+                    HomeService.setFavorit(name, 'yes');
+                    tbFavoriten.push(favorit);
+                    localStorage.setItem("tbFavoriten", JSON.stringify(tbFavoriten));
+                    $log.debug("Favorit gespeichert");
+                    like = 'no';
+                }
+
+
+            }
+
+        }
+    }
+});
 
 /**
  * Created by RSC on 01.04.2016.
@@ -1265,28 +1313,3 @@ myApp.service('MetaService', function() {
         }
     }
 })();
-/**
- * Created by B026789 on 12.01.2016.
- */
-myApp.service('Page', function ($rootScope, connection) {
-    return {
-        setTitle: function (title) {
-            $rootScope.title = title + " - CAMDATA - HomeWatch 2.0";
-        },
-        setHeader: function (header) {
-            $rootScope.header = header;
-        },
-        setMetaData: function (name, content) {
-            $rootScope.MetaDatafhemweb_url = content;
-        },
-        getMetaData: function (name) {
-            var metaData = $rootScope.MetaDataContent;
-            if (angular.isUndefined(metaData)) {
-                metaData = connection.fhemweb_url;
-            }
-            return metaData;
-        }
-
-
-    }
-});

@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    function LogonController($scope, $location, $rootScope, $http, $log, Page, ModalService, $cookieStore, CookiesService, FillAllDataService) {
+    function LogonController($scope, $location, $rootScope, $http, $log, Page, ModalService, CookiesService) {
         $log.debug('LogonController gestartet!');
 
         var self = this;
@@ -19,21 +19,16 @@
         Page.setTitle("Login");
 
         $scope.init = function () {
-
+            // load config.json to cookies
+            $rootScope.config = CookiesService.getCookie('config') || {};
+            if (!$rootScope.config.globals) {
+                CookiesService.setCookieJson('config');
+            }
+            Page.setMetaData("fhemweb_url", $rootScope.config.connection.fhemweb_url);
         };
 
         $scope.startLiegenschaften = function () {
-
-            // keep homewatch in after page refresh
-            $rootScope.globals = $cookieStore.get('globals') || {};
-            if (!$rootScope.globals.homewatch) {
-                CookiesService.setCookieJson('globals');
-            }
-
-            var widget = FillAllDataService.loadWidgets('Sicherheit');
-            if (widget) {
-                alert('passt: ' + widget.length);
-            }
+            $log.debug($rootScope.config);
             $location.path($scope.location);
         };
 
@@ -53,7 +48,7 @@
 
     }
 
-    LogonController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'ModalService', '$cookieStore', 'CookiesService', 'FillAllDataService'];
+    LogonController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', 'Page', 'ModalService', 'CookiesService'];
 
 
     angular.module('myApp')

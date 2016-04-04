@@ -8,7 +8,7 @@ myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $root
 
     onlineStatus.isOnline = function () {
         return onlineStatus.onLine;
-    }
+    };
 
     $window.addEventListener("online", function () {
         onlineStatus.onLine = true;
@@ -23,11 +23,11 @@ myApp.factory('onlineStatus', ["$window", "$rootScope", function ($window, $root
     return onlineStatus;
 }]);
 
-myApp.service('Internet', function ($http, connection) {
+myApp.service('Internet', function ($http, $rootScope) {
     this.IsOk = function () {
         return $http({
             method: 'HEAD',
-            url: connection.url
+            url: $rootScope.config.connection.url
         })
             .then(function (response) {
                 var status = response.status;

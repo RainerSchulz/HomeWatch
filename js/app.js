@@ -2,14 +2,6 @@
  * Created by rsc on 18.01.2016.
  */
 var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToast', 'ngTouch', 'ngAnimate', 'ngCookies', 'ui.router', 'ngSanitize', 'notification', 'tooltip', 'bootstrapLightbox', 'angularModalService'])
-    .constant('globalSettings', {
-        url: 'http://login.homewatch-smarthome.de',
-        port: ":8130", //:8139
-        cmd: "?cmd=jsonlist2%20",
-        room: "room=", // Bungslow, Kamera, Alarm, Bad, Web, Rauchmelder usw.
-        genericDeviceType: "genericDeviceType=", // switch_hm, light_hm, volume usw.
-        param: "&XHR=1"
-    })
     // configure our routes
     .config(['$routeProvider', 'ngDialogProvider', function ($routeProvider, ngDialogProvider) {
         $routeProvider
@@ -136,7 +128,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
             animation: 'slide' // or 'fade'
         });
     }])
-    .run(function ($window, $rootScope) {
+    .run(function ($window, $rootScope, CookiesService) {
         $rootScope.onLine = navigator.onLine;
         $window.addEventListener("offLine", function () {
             $rootScope.$apply(function () {
@@ -149,38 +141,20 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngResource', 'ngDialog', 'ngToa
             });
         }, false);
 
+
         $rootScope.connection = 'Internet';
         $rootScope.company = 'CAMDATA';
     });
 myApp.value('user', {
     staffId: 1,
-    fullName: "Rainer Schulz",
+    fullName: "Rainer Schulz"
 });
-myApp.value('connection', {
-    internet: true,
-    onlineStatus: "URL_local",
-    originUrl: "http://localhost:63342/",
-    application: "/HomeWatch 2.0/",
-    fhemweb_url: "http://login.homewatch-smarthome.de:8130/fhem",
-    URL_DC: "http://login.homewatch-smarthome.de:8139",
-    URL_dyndns: "http://rou-wan-002.camdata.de:8083",
-    URL_local: "http://10.221.251.126:8083",
-    isDebug: true
-});
-
 
 (function () {
     'use strict';
 
-    function MainController($scope, $window, $log, $http, $rootScope, $cookieStore, $location, onlineStatus, connection, Page) {
+    function MainController($scope, $window, $log, $http, $rootScope, CookiesService, $location, onlineStatus, Page) {
         var self = this;
-
-        connection.originUrl = $window.location.origin;
-        connection.applicationUrl = connection.originUrl + connection.application;
-
-        connection.online = onlineStatus;
-
-        $scope.onlineStatus = onlineStatus;
 
         $scope.$watch('onlineStatus.isOnline()', function (online) {
             $scope.online_status_string = online ? 'online' : 'offline';
@@ -192,6 +166,13 @@ myApp.value('connection', {
         $log.debug($scope.message);
         $scope.user = {};
 
+        // load config.json to cookies
+        $rootScope.config = CookiesService.getCookie('config') || {};
+        if (!$rootScope.config.globals) {
+            CookiesService.setCookieJson('config');
+        }
+
+        $scope.onlineStatus = onlineStatus;
 
         /*
          // keep user logged in after page refresh
@@ -210,10 +191,10 @@ myApp.value('connection', {
          });
          */
         // set Page MetaData
-        Page.setMetaData("fhemweb_url", connection.fhemweb_url);
+
     }
 
-    MainController.$inject = ['$scope', '$window', '$log', '$http', '$rootScope', '$cookieStore', '$location', 'onlineStatus', 'connection', 'Page'];
+    MainController.$inject = ['$scope', '$window', '$log', '$http', '$rootScope', 'CookiesService', '$location', 'onlineStatus', 'Page'];
 
     angular.module('myApp')
         .controller('MainController', MainController);

@@ -42,7 +42,7 @@ myApp.service('RoomService', function ($http, notification, $log) {
  * Created by RSC on 24.03.2016.
  */
 'use strict';
-myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, connection, Jsonervice, HomeService) {
+myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, Jsonervice, HomeService) {
     this.getHomeWidgets = function (homeLocation) {
         let widgets = [];
         var name = '';
@@ -64,13 +64,13 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, con
                 type = data.type;
 
                 // get all Widgets
-                var res = getWidgets(name, type);
+                widgets = this.getWidgets(name, type);
             })
             .catch(function (callback) {
                 $log.debug(callback);
             });
 
-        // get all Widgets
+        // return all Widgets
         return widgets;
 
         function getWidgets(name, type) {
@@ -93,50 +93,52 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, con
                 let data = $q.defer();
 
                 // check if isDebug mode
-                if (connection.isDebug) {
-                    data.resolve(getJson(value));
+                if ($rootScope.config.connection.isDebug) {
+                    data.resolve(this.getJson(value));
                 } else {
-                    data.resolve(getHome(value, type));
+                    data.resolve(this.getHome(value, type));
                 }
-
 
             });
 
-            return result;
+            return data.promise;
         }
 
         // get data from service
         function getHome(value, type) {
+            let results = [];
+            $log.debug('HomeWidgetsService getHome: ' + value + ' - ' + type);
 
             HomeService.getHome(value, type).then(function () {
-                    connection.isDebug = false;
+                    $rootScope.config.connection.isDebug = false;
 
-                    $log.debug('getHome: ' + value + ' - ' + type);
                     var data = HomeService.data();
                     // check if widget has values
                     if (data.Results.length > 0) {
                         $log.debug('data.Results.length: ' + data.Results.length);
-                        widgets.push(data.Results);
+                        results = data.Results;
+                        return results;
                     }
                 })
                 .catch(function (callback) {
                     $log.debug(callback);
-                    // get from json-file
-                    return getJson(value);
                 });
         }
 
         // get data from json-file
         function getJson(value) {
-            HomeService.getHomeByIdJson(value).then(function () {
-                    connection.isDebug = true;
+            let results = [];
 
-                    $log.debug('getHomeByIdJson: ' + value);
+            $log.debug('HomeWidgetsService getJson: ' + value);
+
+            HomeService.getHomeByIdJson(value).then(function () {
+                    $rootScope.config.connection.isDebug = true;
                     var data = HomeService.data();
                     // check if widget has values
                     if (data.Results.length > 0) {
                         $log.debug('data.Results.length: ' + data.Results.length);
-                        widgets.push(data.Results);
+                        results = data.Results;
+                        return results;
                     }
                 })
                 .catch(function (callback) {
@@ -158,32 +160,18 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, con
         // "sidebar": "siedebar_left",
         HomeService.getHomeByRoom(sidebar).then(function () {
                 var data = Jsonervice.data();
-                if (data.length > 0) {
-                    $log.debug('getHomeByRoom: ' + sidebar + ' = ' + data.Results.length);
+                if (data.Results.length > 0) {
+                    $log.debug('HomeWidgetsService getHomeSidebar: ' + sidebar + ' = ' + data.Results.length);
                     $log.debug(data.Results);
                     results = data.Results;
+                    return results;
                 }
 
             })
             .catch(function (callback) {
                 $log.debug(callback);
-                getJson(sidebar);
             });
-        // get data from json-file
-        function getJson(sidebar) {
-            HomeService.getHomeByIdJson(sidebar).then(function () {
-                    var data = HomeService.data();
-                    if (data.length > 0) {
-                        $log.debug('getHomeByIdJson: ' + sidebar + ' = ' + data.Results.length);
-                        $log.debug(data.Results);
-                        results = data.Results;
-                    }
-                })
-                .catch(function (callback) {
-                    $log.debug('Error ' + callback);
-                });
-        }
-
+        
         // get results
         return results;
 

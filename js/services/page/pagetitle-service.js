@@ -1,7 +1,7 @@
 /**
  * Created by B026789 on 12.01.2016.
  */
-myApp.service('Page', function ($rootScope, connection) {
+myApp.service('Page', function ($rootScope) {
     return {
         setTitle: function (title) {
             $rootScope.title = title + " - CAMDATA - HomeWatch 2.0";
@@ -15,7 +15,9 @@ myApp.service('Page', function ($rootScope, connection) {
         getMetaData: function (name) {
             var metaData = $rootScope.MetaDataContent;
             if (angular.isUndefined(metaData)) {
-                metaData = connection.fhemweb_url;
+                if ($rootScope.config) {
+                    metaData = $rootScope.config.connection.fhemweb_url;
+                }
             }
             return metaData;
         }

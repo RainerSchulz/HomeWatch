@@ -2,7 +2,7 @@
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('CookiesService', function ($http, notification, $log, $q, HomeService, Jsonervice, $cookieStore) {
+myApp.service('CookiesService', function ($http, notification, $log, $q, $rootScope, HomeService, Jsonervice, $cookieStore) {
     {
         // set cookie with json
         this.setCookieJson = function (name) {
@@ -11,8 +11,10 @@ myApp.service('CookiesService', function ($http, notification, $log, $q, HomeSer
             Jsonervice.getJson(name).then(function () {
 
                     config = Jsonervice.data();
+
                     localStorage.setItem(name, JSON.stringify(config));
                     $cookieStore.put(name, config);
+                    $rootScope.config = config;
                     return config;
                 })
                 .catch(function (callback) {
@@ -31,12 +33,14 @@ myApp.service('CookiesService', function ($http, notification, $log, $q, HomeSer
                 localStorage.removeItem(name);
             }
             localStorage.setItem(name, JSON.stringify(data));
-            $cookieStore.put(name, data);
+            $cookieStore.put(name, JSON.stringify(data));
         };
         // get Cookie
         this.getCookie = function (name) {
 
             config = $cookieStore.get(name);
+            $log.debug('CookiesService getCookie: ' + name);
+            $log.debug(config);
             return config;
         };
 

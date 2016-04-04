@@ -7,7 +7,11 @@
     "genericDeviceType": "genericDeviceType=",
     "param": "&XHR=1"
   },
-  "homewatch": {
+  "connection": {
+    "internet": true,
+    "onlineStatus": "URL_local",
+    "originUrl": "http://localhost:63342/",
+    "application": "/HomeWatch%202.0/",
     "fhemweb_url": "http://login.homewatch-smarthome.de:8130/fhem",
     "URL_DC": "http://login.homewatch-smarthome.de:8139",
     "URL_dyndns": "http://rou-wan-002.camdata.de:8083",

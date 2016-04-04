@@ -1,7 +1,7 @@
 /**
  * Created by Rainer on 03.04.2016.
  */
-myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeService, CookiesService, WidgetService, globalSettings) {
+myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeService, CookiesService, WidgetService) {
     "use strict";
 
     var widget = {};
@@ -13,9 +13,9 @@ myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeS
             }
             else {
                 // get type and name from cookie global.home
-                var globals = CookiesService.getCookie('globals');
-                if (globals.home) {
-                    var home = globals.home;
+                var config = CookiesService.getCookie('config');
+                if (config.home) {
+                    var home = config.home;
                     var type = '';
                     var names = '';
                     // check alias name
@@ -27,37 +27,47 @@ myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeS
                         }
                     }
 
-
                     // get widget
                     let promises = [];
 
                     var values = names.split(',');
-                    var results = [];
                     angular.forEach(values, function (name) {
-                        var deffered  = $q.defer();
-                        var url = $rootScope.MetaDatafhemweb_url + globalSettings.cmd + type + '=' + name + globalSettings.param;
+
+                        var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + type + '=' + name + $rootScope.config.globals.param;
                         $log.debug('WidgetService.getWidget url: ' + url);
                         $log.debug('name: ' + name + ' type: ' + type);
-                        // get json list
-                        HomeService.getHome(name, type).then(function () {
-                            var data = HomeService.data();
-                            // promise successfully resolved
+
+                        var deffered = $q.defer();
+
+                        $http({
+                            url: url,
+                            method: 'GET'
+                        }).success(function (data) {
                             deffered.resolve(data.Results);
-
-                            if (data.Results.length > 0) {
-                                $log.debug('WidgetService.getWidget add Widgets: ' + type + ' : ' + name + ' - ' + data.Results.length);
-                                $log.debug(data.Results);
-
-                            }
-
+                        }).error(function (error) {
+                            deffered.reject();
                         });
+
+                        /*
+                         HomeService.getHome(name, type).then(function () {
+                         var data = HomeService.data();
+                         deffered.resolve(data.Results);
+
+                         if (data.Results.length > 0) {
+                         $log.debug('WidgetService.getWidget add Widgets: ' + type + ' : ' + name + ' - ' + data.Results.length);
+                         $log.debug(data.Results);
+
+                         }
+
+                         });
+                         */
+
                         promises.push(deffered);
 
                     });
 
-                    $q.all(promises).then(function (values) {
+                    return $q.all(promises).then(function (values) {
                         CookiesService.setCookieName(cookie, values);
-                        return values;
                     });
 
                 }
@@ -66,23 +76,30 @@ myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeS
 
         },
         getWidget: function homeWidgets(names, type) {
+
             // create a $q deferred promise
             let deferred = $q.defer();
-            var results = [];
+            var promises = [];
             var values = names.split(',');
 
-            angular.forEach(values, function (value) {
-                var promise = WidgetService.getWidget(type, value);
-                promise.then(
-                    function (response) {
-                        results.push(response.data.Results);
-                    },
-                    function (error) {
-                        $log.error('failure loading widgets', error);
-                    });
-
+            angular.forEach(values, function (name) {
+                var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + type + '=' + name + $rootScope.config.globals.param;
+                promises.push($http.get(url));
             });
-            return results;
+
+            $q.all(urlCalls)
+                .then(
+                    function (results) {
+                        deferred.resolve(
+                            JSON.stringify(results))
+                    },
+                    function (errors) {
+                        deferred.reject(errors);
+                    },
+                    function (updates) {
+                        deferred.update(updates);
+                    });
+            return deferred.promise;
         },
         // add Widget to cookie
         addWidgetToCookie: function (name, widget) {

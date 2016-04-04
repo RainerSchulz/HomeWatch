@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    function WidgetsController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, connection, HomeWidgetsService, Jsonervice, RoomService, FillAllDataService, $cookieStore) {
+    function WidgetsController($scope, $location, $rootScope, $http, $log, $q, $routeParams, Page, HomeService, HomeWidgetsService, Jsonervice, RoomService, FillAllDataService, $cookieStore) {
         $log.debug('WidgetsController startet');
 
         $scope.header = $routeParams.name;
@@ -31,7 +31,7 @@
 
             // get HomeWidgets
             $rootScope.homeWidgets = $q.defer();
-            GetHomeWidgets($scope);
+            //GetHomeWidgets($scope);
 
             GetFhemJsonFile($scope, $rootScope);
             GetNavRight($scope, $http);
@@ -55,46 +55,29 @@
         function GetNavRight($scope) {
             $scope.headerImage = $rootScope.headerImage;
 
-            if (connection.isDebug) {
-                Jsonervice.getJson('data/sidebar_right').then(function () {
-                        var data = Jsonervice.data();
+            var value = 'sidebar_right';
+            var type = 'room';
+            $log.debug('start NavRight: ' + value);
+            HomeService.getHome(value, type).then(function () {
+                    $log.debug('Success getHome: ' + type + ' : ' + value);
 
-                        $rootScope.navRight.resolve(data.Results);
-                        $rootScope.navRightTop.resolve(data.Results);
-                        //$scope.navRight = $scope.navRightTop = data.Results;
-                        //$log.debug('$scope.navRight.length by getJson: ' + $scope.navRight.length);
-                    })
-                    .catch(function (callback) {
-                        $log.debug(callback);
-                    });
-            }
-            else {
-                var value = 'sidebar_right';
-                var type = 'room';
-                $log.debug('start NavRight: ' + value);
-                HomeService.getHome(value, type).then(function () {
-                        $log.debug('Success getHome: ' + type + ' : ' + value);
+                    var data = HomeService.data();
+                    $rootScope.navRight.resolve(HomeService.data().Results);
+                    $rootScope.navRightTop.resolve(HomeService.data().Results);
+                })
+                .catch(function (callback) {
+                    $log.debug(callback);
 
-                        var data = HomeService.data();
-                        $rootScope.navRight.resolve(HomeService.data().Results);
-                        $rootScope.navRightTop.resolve(HomeService.data().Results);
-                        //$log.debug('$scope.navRight.length by getHome: ' + $scope.navRight.length);
+                    Jsonervice.getJson('data/sidebar_right').then(function () {
+                            var data = Jsonervice.data();
+                            $scope.navRight = data.Results;
+                            $log.debug('$scope.navRight.length by getJson: ' + $scope.navRight.length);
+                        })
+                        .catch(function (callback) {
+                            $log.debug(callback);
+                        });
 
-                    })
-                    .catch(function (callback) {
-                        $log.debug(callback);
-
-                        Jsonervice.getJson('data/sidebar_right').then(function () {
-                                var data = Jsonervice.data();
-                                $scope.navRight = data.Results;
-                                $log.debug('$scope.navRight.length by getJson: ' + $scope.navRight.length);
-                            })
-                            .catch(function (callback) {
-                                $log.debug(callback);
-                            });
-
-                    });
-            }
+                });
 
         }
 
@@ -111,59 +94,40 @@
 
                 // create a $q deferred promise
                 var deferred = $q.defer();
-                if (connection.isDebug) {
-                    HomeService.getHomeByIdJson(value).then(function () {
-                            var data = HomeService.data();
 
-                            // promise successfully resolved
-                            deferred.resolve(data);
+                HomeService.getHome(value, $rootScope.type).then(function () {
+                        // promise successfully resolved
+                        deferred.resolve(data);
 
-                            if (data.Results.length > 0) {
-                                $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
-                                $log.debug(data.Results);
-                                $scope.result.push(data.Results);
-                            }
+                        if (data.Results.length > 0) {
+                            $log.debug('HomeAll getHome add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
+                            $log.debug(data.Results);
+                            $scope.result.push(data.Results);
+                        }
 
-                        })
-                        .catch(function (callback) {
-                            $log.debug(callback);
-                        });
-                }
-                else {
-                    HomeService.getHome(value, $rootScope.type).then(function () {
-                            // promise successfully resolved
-                            deferred.resolve(data);
+                    })
+                    .catch(function (callback) {
+                        $log.debug(callback);
 
-                            if (data.Results.length > 0) {
-                                $log.debug('HomeAll getHome add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
-                                $log.debug(data.Results);
-                                $scope.result.push(data.Results);
-                            }
+                        HomeService.getHomeByIdJson(value).then(function () {
+                                $log.debug('getHomeByIdJson: ' + value);
 
-                        })
-                        .catch(function (callback) {
-                            $log.debug(callback);
+                                var data = HomeService.data();
+                                // promise successfully resolved
+                                deferred.resolve(data);
 
-                            HomeService.getHomeByIdJson(value).then(function () {
-                                    $log.debug('getHomeByIdJson: ' + value);
+                                if (data.Results.length > 0) {
+                                    $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
+                                    $log.debug(data.Results);
+                                    $scope.result.push(data.Results);
+                                }
 
-                                    var data = HomeService.data();
-                                    // promise successfully resolved
-                                    deferred.resolve(data);
+                            })
+                            .catch(function (callback) {
+                                $log.debug(callback);
+                            });
 
-                                    if (data.Results.length > 0) {
-                                        $log.debug('HomeAll getHomeByIdJson add Widgets: ' + $rootScope.type + ' : ' + value + ' - ' + data.Results.length);
-                                        $log.debug(data.Results);
-                                        $scope.result.push(data.Results);
-                                    }
-
-                                })
-                                .catch(function (callback) {
-                                    $log.debug(callback);
-                                });
-
-                        });
-                }
+                    });
                 // add to the list of promises
                 promises.push(deferred.promise);
             });
@@ -224,7 +188,7 @@
 
     }
 
-    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'connection', 'HomeWidgetsService', 'Jsonervice', 'RoomService', 'FillAllDataService','$cookieStore'];
+    WidgetsController.$inject = ['$scope', '$location', '$rootScope', '$http', '$log', '$q', '$routeParams', 'Page', 'HomeService', 'HomeWidgetsService', 'Jsonervice', 'RoomService', 'FillAllDataService','$cookieStore'];
 
 
     angular.module('myApp')
