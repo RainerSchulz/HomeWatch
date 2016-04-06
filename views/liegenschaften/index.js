@@ -4,7 +4,7 @@
 
 (function () {
     'use strict';
-    function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, Jsonervice, HomeService) {
+    function LiegenschaftenController($scope, $location, $window, $rootScope, $http, $log, Page, HomeWatchFactory) {
         $log.debug('LiegenschaftenController startet');
         var self = this;
 
@@ -12,7 +12,7 @@
         $scope.header = 'Liegenschaften';
         $scope.location = '/Liegenschaften';
 
-        $scope.results = [];
+        $scope.sites = [];
         $scope.standardButton = [];
 
         // set Page Title
@@ -32,7 +32,7 @@
             $location.path(path);
         };
 
-        $scope.defaultClick = function (item) {
+        $scope.standardClick = function (item) {
             var gotoLocation = $scope.location + '/' + item.id + '/home/';
 
             if (item.fhemweb_url != '') {
@@ -48,45 +48,48 @@
                 $log.debug('Url: ' + item.url);
                 // $window.location.href = item.url;
                 $window.open(item.url, item.target)
-            } else {
+            }
+            else {
                 $log.debug('Location: ' + item.location);
                 $location.path(item.location);
             }
         };
 
+        // der untere Bereich unterhalb der Linie, werden aus einer Json Datei geholt
         function GetStandard($scope, $http) {
-            Jsonervice.getJson('liegenschaftenDefault').then(function () {
-                    var data = Jsonervice.data();
-                    $scope.standardButton = data.Results; // response data
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-                });
+
+            var name = 'liegenschaftenDefault';
+            $scope.standardButton = HomeWatchFactory.getJson(name);
+            //the model returns a promise and THEN items
+            $scope.standardButton.then(function (data) {
+                $scope.standardButton = data.Results
+            }, function (status) {
+                $log.debug(status);
+            });
         }
 
+        // die Liegenschaften werden über einen Service Jsonlist geholt
         function GetSites($scope, $http) {
 
-            var value = 'site';
-            var type = 'genericDeviceType';
+            // prüfen ob die Metadaten gefüllt sind
             if (!$rootScope.MetaDatafhemweb_url) {
                 Page.setMetaData('fhemweb_url', $rootScope.config.connection.fhemweb_url);
-
             }
-            HomeService.getHome(value, type).then(function () {
-                    $log.debug(type + ' : ' + value);
-                    var data = HomeService.data();
-                    $scope.results = data.Results;
-                    $log.debug('$scope.result: ' + $scope.results.length);
 
-                })
-                .catch(function (callback) {
-                    $log.debug(callback);
-                });
+            var name = 'site';
+            var type = 'genericDeviceType';
+            $scope.sites = HomeWatchFactory.getFhemJsonList(name, type);
+            //the model returns a promise and THEN items
+            $scope.sites.then(function (data) {
+                $scope.sites = data.Results
+            }, function (status) {
+                $log.debug(status);
+            });
         }
 
     }
 
-    LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'Jsonervice', 'HomeService'];
+    LiegenschaftenController.$inject = ['$scope', '$location', '$window', '$rootScope', '$http', '$log', 'Page', 'HomeWatchFactory'];
 
 
     angular.module('myApp')

@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row  text-center margen-leing  margen-iphone" style="margin-top: 25px; ">
                 <!-- Liegenschaften START -->
-                <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-7 margeI" data-ng-repeat="item in results">
+                <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-7 margeI" data-ng-repeat="item in sites">
                     <a ng-click="click(item)" class="touch-moveable">
                         <img class="img-responsive center-block margtopMull imgpne" ng-src="images/guiico5.png"
                              alt="{{item.Attributes.alias}}">
@@ -25,7 +25,7 @@
                     <!-- Hausmeister usw. START -->
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 margtopMullup "
                          data-ng-repeat="item in standardButton">
-                        <a ng-click="defaultClick(item)" class="touch-moveable">
+                        <a ng-click="standardClick(item)" class="touch-moveable">
                             <img class="img-responsive center-block margtopJL " ng-src="{{item.image}}"
                                  alt="{{item.alias}}">
                             <h4 class="icon-list ligenletraiphone"> {{item.alias}} </h4>

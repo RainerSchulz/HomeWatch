@@ -8,17 +8,16 @@
 
     <!-- Sidebar left START -->
     <div id="sidebar-wrapper" class="wrapper ">
-        <div cnd-navigations-left ng-nav-button="{{sidebar_left}}"></div>
+        <div cnd-navigations-left ng-sidebar-left="{{sidebar_left}}"></div>
     </div>
     <!-- Sidebar left END -->
-
     <!-- Page Content START -->
     <div id="page-content-wrapper" class="row-e">
         <a class=" touch-moveable margtopF margtopFi">
             <div class="nav_down touch-moveable"></div>
         </a>
         <div class="container-fluid">
-            <div class="row text-center mar_h">
+            <div class="row text-center">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 margeI" data-ng-repeat="item in home">
                     <a ng-click="buttonClick(item)" class="touch-moveable">
                         <img class="img-responsive joimh center-block margtopJL" ng-src="{{item.image}}" alt="">

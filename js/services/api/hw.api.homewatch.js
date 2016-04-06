@@ -2,12 +2,13 @@
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('HomeService', function ($http, notification, $log, $q, CacheService, $rootScope, Page) {
+myApp.service('HomeWatchService', function ($http, notification, $log, $q, CacheService, $rootScope, Page) {
     var data = [];
     var deffered = $q.defer();
-    var HomeService = {};
+    var HomeWatchService = {};
 
-    HomeService.getHomeByRoom = function (room) {
+
+    HomeWatchService.getJsonListByRoom = function (room) {
         var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + $rootScope.config.globals.room + '=' + room + $rootScope.config.globals.param;
         $log.debug(url);
         return $http({
@@ -16,7 +17,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
         }).success(function (d) {
                 data = d;
                 deffered.resolve();
-                $log.debug("HomeService by room");
+                $log.debug("HomeWatchService by room");
                 $log.debug(data);
             })
             .error(function (err, status, headers, config) {
@@ -39,7 +40,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
          */
     };
 
-    HomeService.getHomeByAdvice = function (device) {
+    HomeWatchService.getJsonListByAdvice = function (device) {
         var url = $rootScope.MetaDatafhemweb_url + $rootScope.config.globals.cmd + $rootScope.config.globals.genericDeviceType + device + $rootScope.config.globals.param;
         $log.debug(url);
         $log.debug('$rootScope.config.connection.internet: ' + $rootScope.config.connection.internet);
@@ -64,7 +65,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
 
     };
 
-    HomeService.getHome = function (name, type) {
+    HomeWatchService.getJsonList = function (name, type) {
         var url = '';
         if ($rootScope.config.connection.isDebug) {
             url = 'json/homewatch/data/' + name + '.json';
@@ -81,7 +82,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
                 data = d;
                 deffered.resolve(data);
 
-                $log.debug("Success HomeService.getHome");
+                $log.debug("Success HomeWatchService.getJsonList");
             })
             .error(function (err, status, headers, config) {
                 $rootScope.config.connection.internet = "false";
@@ -98,7 +99,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
 
     };
 
-    HomeService.setFavorit = function (name, type) {
+    HomeWatchService.setFavorit = function (name, type) {
 
         var url = $rootScope.MetaDatafhemweb_url + '?cmd=attr%20' + name + '%20like%20' + type + $rootScope.config.globals.param;
         $log.debug(url);
@@ -125,7 +126,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
 
     };
 
-    HomeService.setPreset = function (name, preset) {
+    HomeWatchService.setPreset = function (name, preset) {
         //set Cam_Demowand preset alarm
         var url = $rootScope.MetaDatafhemweb_url + '?cmd=%20set%20' + name + '%20preset%20' + preset + $rootScope.config.globals.param;
         $log.debug(url);
@@ -136,7 +137,7 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
                 data = d;
                 deffered.resolve();
 
-                $log.debug("HomeService Camera set preset OK");
+                $log.debug("HomeWatchService Camera set preset OK");
             })
             .error(function (err, status, headers, config) {
                 $rootScope.config.connection.internet = "false";
@@ -153,35 +154,8 @@ myApp.service('HomeService', function ($http, notification, $log, $q, CacheServi
 
     };
 
-    HomeService.getHomeByIdJson = function (name) {
-        var url = 'json/homewatch/data/' + name + '.json';
-        return $http({
-            method: 'GET',
-            url: url
-        }).success(function (d) {
-                data = d;
-                deffered.resolve();
-            })
-            .error(function (err, status, headers, config) {
-
-                // log error
-                if (status == 500) {
-                    $log.debug('error: ' + err.exceptionMessage + ' - Status: ' + status);
-
-                } else if (status == -1) {
-                    $log.debug('error: connection refused ' + status);
-                } else {
-                    $log.debug('error: ' + status);
-                }
-
-
-            });
-
-
-    };
-
-    HomeService.data = function () {
+    HomeWatchService.data = function () {
         return data;
     };
-    return HomeService;
+    return HomeWatchService;
 });

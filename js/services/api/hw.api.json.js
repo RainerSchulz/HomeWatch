@@ -46,7 +46,7 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, $rootScope)
             });
     };
 
-    Jsonervice.getJsonById = function (name, id) {
+    Jsonervice.getLocationWidgets = function (name, id) {
 
         var url = 'json/homewatch/' + name + '.json';
 
@@ -64,7 +64,7 @@ myApp.service('Jsonervice', function ($http, notification, $log, $q, $rootScope)
                     }
                 }
 
-                $log.debug("Jsonervice by getJsonById " + id);
+                $log.debug("Jsonervice by getLocationWidgets " + id);
                 $log.debug(data);
             })
             .error(function (err, status, headers, config) {

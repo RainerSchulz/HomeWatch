@@ -25,6 +25,7 @@
                 CookiesService.setCookieJson('config');
             }
             Page.setMetaData("fhemweb_url", $rootScope.config.connection.fhemweb_url);
+            $log.debug('fhemweb_url' +  $rootScope.config.connection.fhemweb_url)
         };
 
         $scope.startLiegenschaften = function () {

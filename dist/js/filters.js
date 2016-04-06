@@ -8,7 +8,7 @@ myApp.service('RoomService', function ($http, notification, $log) {
         let room = '';
 
         angular.forEach(jsondata, function (obj, ids) {
-            angular.forEach(obj.Results, function (obj, idx) {
+            angular.forEach(obj, function (obj, idx) {
                 if (obj == 0 || angular.isUndefined(obj.Attributes.room)) {
                     $log.debug('RoomService.getRooms: room isUndefined');
                 }
@@ -42,7 +42,7 @@ myApp.service('RoomService', function ($http, notification, $log) {
  * Created by RSC on 24.03.2016.
  */
 'use strict';
-myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, Jsonervice, HomeService) {
+myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, $rootScope, HomeWatchFactory) {
     this.getHomeWidgets = function (homeLocation) {
         let widgets = [];
         var name = '';
@@ -58,8 +58,7 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, Jso
         // "homeLocation": "Beleuchtung",
         // "name": "light_hm,dimmer_hm,light_gira,dimmer_gira,light",
         // "type": "genericDeviceType"
-        Jsonervice.getJsonById('home', homeLocation).then(function () {
-                var data = Jsonervice.data();
+        HomeWatchFactory.getLocationWidgets(homeLocation).then(function (data) {
                 name = data.name;
                 type = data.type;
 
@@ -169,7 +168,7 @@ myApp.service('HomeWidgetsService', function ($http, notification, $log, $q, Jso
             .catch(function (callback) {
                 $log.debug(callback);
             });
-        
+
         // get results
         return results;
 

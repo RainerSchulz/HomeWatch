@@ -1,7 +1,7 @@
 /**
  * Created by Rainer on 03.04.2016.
  */
-myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeService, CookiesService, WidgetService) {
+myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeWatchService, CookiesService, WidgetService) {
     "use strict";
 
     var widget = {};
@@ -49,8 +49,8 @@ myApp.factory("FillAllDataService", function ($q, $log, $rootScope, $http, HomeS
                         });
 
                         /*
-                         HomeService.getHome(name, type).then(function () {
-                         var data = HomeService.data();
+                         HomeWatchService.getJsonList(name, type).then(function () {
+                         var data = HomeWatchService.data();
                          deffered.resolve(data.Results);
 
                          if (data.Results.length > 0) {

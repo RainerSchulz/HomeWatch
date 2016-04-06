@@ -2,7 +2,7 @@
  * Created by RSC on 18.01.2016.
  */
 
-myApp.service('FavoritenService', function ($http, notification, $log, $q, HomeService) {
+myApp.service('FavoritenService', function ($http, notification, $log, $q, HomeWatchService) {
     {
         var selected_index = -1;
         var tbFavoriten = localStorage.getItem("tbFavoriten");
